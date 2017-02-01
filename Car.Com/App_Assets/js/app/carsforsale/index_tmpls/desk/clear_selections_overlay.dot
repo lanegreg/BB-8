@@ -1,0 +1,18 @@
+﻿<div id="clear_selections_overlay_js" class="overlay overlay-dk max-650" style="display:none">
+  <button type="button" class="overlay-close">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div class="dead-middle center">
+    <section id="clear-selections-container" style="display: block">
+      <h1 id="clear-selections-text"></h1>
+      <div class="center">
+        <button id="continue-clear-selections-container" class="btn-primary lg" type="button">Continue</button>
+        <button id="close-clear-selections-container" class="btn-default lg" type="button">Cancel</button>
+      </div>
+    </section>
+  </div>
+</div>

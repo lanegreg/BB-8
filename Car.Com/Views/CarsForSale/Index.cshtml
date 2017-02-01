@@ -1,0 +1,223 @@
+﻿@model Car.Com.Models.CarsForSale.IndexViewModel
+
+<section class="hero">
+  <div class="backdrop carsforsale" role="img">
+    <span class="inner">
+    </span>
+    <div class="hero-link-container">
+      <div class="page-title">
+        <h1>@Model.PageMeta.H1</h1>
+      </div>
+      <div class="hero-link">
+        <a id="by_make_st" href="#by_make_js" class="hero-btn one">
+          By Make
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="hero-link">
+        <a id="by_cat_st" href="#by_cat_js" class="hero-btn two">
+          By Category
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div>
+  <div class="ldrboard-cont">
+    <div class="ad-container">
+      <div id="js_tile_1" class="ad"></div>
+    </div>
+  </div>
+</section>
+<div class="main main-bg">
+  <div class="mask-lt"></div>
+  <div class="cell primary">
+    <div class="section-pad">
+      <section id="by_make_js" class="jump-to">
+        <h1 class="h2 line-on-sides mgb-0">Popular Makes</h1>
+        <button class="btn-zero block" id="show_more_makes_btn_js">
+          <span id="show_more_js">View All</span>
+          <span id="show_less_js" style="display: none">View Less</span>
+        </button>
+        <ul id="makes_js" class="make-list">
+          @{
+
+            var removedMakes = new List<string> { "Freightliner", "International", "Morgan", "Spyker", "THINK"};
+
+            // removes above makes from list of Makes and groups list so there are no duplicates.
+            Model.Makes = Model.Makes.Where(x => !removedMakes.Contains(x.Name)).GroupBy(x => x.Name).Select(g => g.First());
+
+            var makeList = Model.Makes.ToList();
+            var makeCount = Model.Makes.Count();
+            var makeLinkRenderedCount = 0;
+            var currFirstLetter = makeList[0].Name.Substring(0, 1).ToUpper();
+          }
+            
+          @*<div data-id="0" data-value="0">
+            <button id="allmakes" type="button" class="btn-default-ovl carsForSaleMake selected">All Makes</button>
+          </div>*@
+
+          @do
+          {
+            if (makeLinkRenderedCount > 0)
+            {
+              currFirstLetter = makeList[makeLinkRenderedCount].Name.Substring(0, 1).ToUpper();
+            }
+            <li>
+              <span class="list-head">@currFirstLetter</span>
+              <ul>
+    @{
+
+
+      var currFirstLetterMakes = Model.Makes.Where(m => m.Name.Substring(0, 1).ToUpper() == currFirstLetter);
+      foreach (var letterMake in currFirstLetterMakes)
+      {
+        <li @(letterMake.CanShow ? "" : "style=display:none") data-hideable="@(letterMake.CanShow ? "false" : "true")">
+          <div data-id="@letterMake.MatchValue" data-value="@letterMake.MatchValue">
+            <button id="@(letterMake.Name.ToLower() + "_st")" type="button" class="btn-mm carsForSaleMake">@letterMake.Name</button>
+          </div>
+          @*@Html.SeoRouteLink("CarsForSale_Make",
+    new RouteValues {
+      {UriTokenNames.Make, letterMake.SeoName}
+    },
+    "{SEO_ANCHOR_TEXT}",
+    new Attributes {
+      {"id", letterMake.SeoName + "_st"},
+      {"class", "block"},
+      {"data-id", letterMake.MatchValue}
+    })*@
+        </li>
+        makeLinkRenderedCount++;
+      }
+    }
+              </ul>
+            </li>
+          } while (makeLinkRenderedCount < makeCount);
+        </ul>
+        <div class="center">
+          <button id="btnChooseModels" type="button" class="btn-primary lg" style="display:none;"><small class="block">Next:</small> Choose Models</button>
+          <button id="btnShowAllMakes" type="button" class="btn-primary lg">Show All Cars</button>
+        </div>
+      </section>
+      <section id="by_cat_js" class="jump-to">
+        <h1 class="h2 line-on-sides">Category</h1>
+        <ul id="categories_js" class="category-list">
+          @{
+            const string svgIdPrefix = "filter-icon-vehiclecategory-";
+          } 
+          @foreach (var category in Model.Categories) {
+            var categoryMatchName = category.Name.Replace(" ", "").ToLower();
+            var svgId = String.Empty;
+            var viewboxWidth = String.Empty;
+            var iconLabelName = category.Name;
+
+            switch (categoryMatchName) {
+              case "coupe":
+                svgId = svgIdPrefix + "coupe";
+                viewboxWidth = "1823";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "convertible":
+                svgId = svgIdPrefix + "convertible";
+                viewboxWidth = "1975";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "sedan":
+                svgId = svgIdPrefix + "sedan";
+                viewboxWidth = "1936";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "suv":
+                svgId = svgIdPrefix + "suv";
+                viewboxWidth = "1501";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "truck":
+                svgId = svgIdPrefix + "truck";
+                viewboxWidth = "1866";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "van":
+                svgId = svgIdPrefix + "van";
+                viewboxWidth = "1594";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              case "wagon":
+                svgId = svgIdPrefix + "wagon";
+                viewboxWidth = "1793";
+                iconLabelName = iconLabelName + "s";
+                break;
+
+              default:
+                svgId = svgIdPrefix + "sedan";
+                viewboxWidth = "1936";
+                break;
+            }
+            @*<li>
+                <div data-id="@category.MatchValue" data-name="@categoryMatchName">
+                  <button type="button" class="btn-mm carsForSaleCateory">@iconLabelName</button>
+                </div>
+            </li>*@
+            <li>
+              <div data-id="@category.MatchValue" data-name="@categoryMatchName">
+                  <span style="cursor: pointer;"
+                     class="block carsForSaleCategory"
+                     data-id="@category.MatchValue">
+                    <span id="@categoryMatchName" class="icon">
+                      <svg viewBox="0 0 @viewboxWidth 1024">
+                        <use xlink:href="/assets/svg/global-sprite.svg#@svgId"></use>
+                      </svg>
+                    </span>
+                      <span class="value">@iconLabelName</span>
+                  </span>
+              </div>
+            </li>
+          }
+        </ul>
+        <div class="center">
+          <button id="btnChooseMakes" type="button" class="btn-primary lg" style="display:none;"><small class="block">Next:</small> Choose Makes</button>
+          <button id="btnShowAllCategories" type="button" class="btn-primary lg">Show All Cars</button>
+        </div>
+      </section>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+@{ Html.RenderPartial("_FilterIconsVehicleCategory"); }

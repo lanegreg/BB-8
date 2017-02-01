@@ -1,0 +1,4 @@
+﻿<option value="">Select a Vehicle</option>
+{{~it.trimArr :trimItem:midx}}
+<option value="{{=trimItem.id}}">{{=trimItem.year}} {{=trimItem.name}}</option>
+{{~}}

@@ -1,0 +1,255 @@
+﻿<div id="leadform_overlay_js" class="overlay overlay-dk" style="display:none">
+  <button type="button" id="close_ovl_btn_js" class="overlay-close"
+          data-omnitarget="leadpop:closebtn">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div class="dead-middle">
+    <section class="get-pricing-step2-container" id="ol_Leadform" style="display: block">
+      <span id="LeadForm_NewCar_Info">
+        <h1 id="leadFormH1">Year Make Model Price Quote</h1>
+        <div class="col">
+          <h2 class="h2">
+            <span class="label-circle blue">1</span> Make &amp; Model
+          </h2>
+          <div id="ol_form_ymm" style="display: none;">
+            <form>
+              <p>
+                <span id="makeErrorMessage2" style="color: red; display: none;">
+                  You must select a Make<br />
+                </span>
+                <label>
+                  <select id="ncLeadMakeSelect2" class="full">
+                    <option value="">Select a Make</option>
+                  </select>
+                </label>
+              </p>
+              <p>
+                <span id="modelErrorMessage2" style="color: red; display: none;">
+                  You must select a Model<br />
+                </span>
+                <label>
+                  <select id="ncLeadModelSelect2" class="full" disabled="disabled">
+                    <option value="">Select a Model</option>
+                  </select>
+                </label>
+              </p>
+              <p>
+                <span id="trimErrorMessage2" style="color: red; display: none;">
+                  There are no vehicles available<br />
+                </span>
+                <label>
+                  <select id="ncLeadTrimSelect2" class="full" disabled="disabled">
+                    <option value="">Select a Vehicle</option>
+                  </select>
+                </label>
+              </p>
+              <p>
+                <span id="zipcodeErrorMessage2" style="color: red; display: none;">
+                  You must enter a valid ZIP Code<br />
+                </span>
+                <span id="zipcodeConfirmMessage2" style="color: red; display: none;">
+                  Confirm Your ZIP Code<br />
+                </span>
+                <label>
+                  <input type="text" id="ncLeadZipcode2" name="ncLeadZipcode2" class="full js_offers_zipcode" pattern="[0-9]*" placeholder="ZIP Code" value="" maxlength="5" />
+                </label>
+              </p>
+              <p>
+                <button id="stp1_get_pricing_btn_js" class="btn-primary block"
+                        data-omnitarget="leadpop:step1:getpricing">
+                  Continue to Get Pricing
+                </button>
+              </p>
+            </form>
+          </div>
+          <div id="ol_display_ymm" style="display: block;">
+            <div class="img-container">
+              <img id="leadFormSelectedImage" src="/assets/svg/no-image-avail_4x3.svg" />
+            </div>
+            <h3>
+              <span id="leadFormCarDesc"></span>
+              <span class="strike" id="leadFormCarMsrp">
+
+              </span>
+            </h3>
+            <a id="displaySidePanel" class="btn-opaque">
+              Change location or make/model
+            </a>
+            <div style="display: none">
+              <p>
+                <label for="ContactTime alt-label">
+                  Best Time to Contact
+                </label>
+                <span class="custom-style with-arrow">
+                  <select id="ContactTime">
+                    <option value="NoPreference">No Preference</option>
+                    <option value="Morning">Morning</option>
+                    <option value="Afternoon">Afternoon</option>
+                    <option value="Evening">Evening</option>
+                  </select>
+                </span>
+              </p>
+              <p>
+                <label for="TimeFrame alt-label">
+                  I plan to buy a car within
+                </label>
+                <span class="custom-style with-arrow">
+                  <select id="TimeFrame">
+                    <option value="Within30Days">Please Select</option>
+                    <option value="Within48Hours">Within 48 Hours</option>
+                    <option value="Within14Days">Within 14 Days</option>
+                    <option value="Within30Days">Within 30 Days</option>
+                    <option value="Over30Days">Over 30 Days</option>
+                  </select>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div id="DealerListSection" class="col">
+          <h2 class="h2">
+            <span class="label-circle blue">2</span> Select Dealers
+          </h2>
+          <span id="DealerErrorMessage" class="error" style="display: none">
+            You must select a Dealer
+          </span>
+          <form class="car-form">
+            <ul id="DealerList" class="get-pricing-dlr-list border">
+            </ul>
+          </form>
+        </div>
+      </span>
+      <div id="LeadForm_PersonalInfo" class="col">
+        <h2 id="LeadForm_NewCar_Header" class="h2">
+          <span class="label-circle blue">3</span> Provide Info
+        </h2>
+        <h1 id="LeadForm_C4S_Header" class="h1">
+          Contact the Seller
+          <small>
+            <span id="c4sPhoneNum"></span>
+            Please provide all of the information below.
+          </small>
+        </h1>
+        <form class="car-form">
+          <span id="LeadPostErrorMessage" class="error" style="display: none"></span>
+          <p>
+            <label>
+              <input id="fName" type="text" name="firstname" class="full" placeholder="First Name" />
+            </label>
+          </p>
+          <p>
+            <label>
+              <input id="lName" name="lastname" type="text" class="full" placeholder="Last Name" />
+            </label>
+          </p>
+          <p>
+            <label>
+              <input id="strAddr" name="streetaddress" type="text" class="full" placeholder="Street Address" />
+            </label>
+          </p>
+          <p id="leadFormCityState"></p>
+          <p>
+            <label>
+              ( <input id="HParea" name="" type="tel" class="xxs" maxlength="3" placeholder="" /> )
+            </label>
+            <label>
+              <input id="HPpre" name="" type="tel" class="xxs" maxlength="3" placeholder="" />
+            </label>
+            <label>
+              <input id="HPphone" name="" type="tel" class="xs" maxlength="4" placeholder="" />
+            </label>
+            <input type="hidden" name="Home_Phone_full_ch" id="HPfull" />
+            <small>Phone Number</small>
+          </p>
+          <p>
+            <label>
+              <input id="email" name="email" type="text" class="full" placeholder="Email Address" />
+            </label>
+          </p>
+          <input id="leadMessage" name="leadMessage" type="hidden" class="full" value="" />
+          <input type="hidden" name="c4sSimTrimId" id="c4sSimTrimId" value="0" />
+          <p id="ol_personalinfo_ymm">
+            <button id="submit_lead_btn_js" data-formtype="new" class="btn-primary block"
+                    data-omnitarget="popupstep3:submitlead"
+                    data-omnicallback="trackLeadSubmission"></button>
+          </p>
+          <ul class="block-list">
+            <li>
+              <input type="checkbox" name="optInAll" id="autobytelNewsletterBox" />
+              <label for="autobytelNewsletterBox">
+                <small>
+                  Yes, please send car reviews, rebates, and other important auto information
+                  from Car.com and our partners. (Un-check if you don't want to receive).
+                </small>
+              </label>
+            </li>
+            <li>
+              <input type="checkbox" name="optMkgBox" id="optMkgBox" />
+              <label for="optMkgBox">
+                <small>Optional Marketing Consent</small>
+                <small>
+                  By checking the "Optional Marketing Consent" box, I am expressly consenting to be contacted by Autobytel Inc.,
+                  the vehicle Dealer(s) I select and/or the manufacturer of the vehicle I selected (or by their respective agents
+                  or representatives) via the phone number(s) I provided for marketing purposes through use of automatic telephone
+                  dialing systems, SMS texts or artificial or prerecorded voice messages.
+                  This consent is not required as a condition to purchase services or products.
+                </small>
+              </label>
+            </li>
+          </ul>
+        </form>
+      </div>
+    </section>
+    <section class="leadform-thx-cont" id="ol_ofr_Thankyou" style="display: none">
+      <div class="row inner-cont">
+        <div class="confirm-cont" id="ol_ofr_TY_LeadInfo" style="display: none"></div>
+        <div class="aw-feed-cont" id="ol_ofr_TY_AutowebAds" style="display: block"></div>
+      </div>
+      <div class="row">
+        <div id="ol_ofr_TY_Similar" style="display: none">
+
+          <section class="widget-cont" id="js_lead_similar_vehicles" style="">
+            <h3 class="widget-heading">You may also be interested in:</h3>
+
+            <div class="sugged-widget-cont" id="js_lead_similar_vehicles_content">
+            </div>
+          </section>
+
+          <div class="sel-dlr-ovl-outer" style="display: none">
+            <div class="sel-dlr-ovl-mid">
+              <div class="sel-dlr-ovl-inner">
+                <button class="close_btn_js overlay-close" id="js_close_lead_thankyou_dealerlist">
+                  <span class="icon">
+                    <svg>
+                      <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+                    </svg>
+                  </span>
+                </button>
+                <h1 class="h1">Select Dealers</h1>
+                <span id="SimilarDealerErrorMessage" class="error" style="display: none">
+                  You must select a Dealer
+                </span>
+                <ul id="Ty_Similar_DealerList" class="get-pricing-dlr-list car-form">
+                </ul>
+                <div class="center">
+                  <button class="btn-primary" id="js_post_similar_lead" data-formtype="new" style="display: none;">Submit and Get Pricing</button>
+                  <input type="hidden" name="similarMake" id="js_similarMake" value=""></input>
+                  <input type="hidden" name="similarModel" id="js_similarModel" value=""></input>
+                  <input type="hidden" name="similarYear" id="js_similarYear" value=""></input>
+                  <input type="hidden" name="similarTrim" id="js_similarTrim" value=""></input>
+                  <input type="hidden" name="similarTrimId" id="js_similarTrimId" value=""></input>
+                  <input type="hidden" name="similarVehicleId" id="js_similarVehicleId" value=""></input>
+                  <input type="hidden" name="similarItem" id="js_similarItem" value=""></input>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

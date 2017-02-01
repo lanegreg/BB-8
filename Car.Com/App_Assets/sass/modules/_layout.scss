@@ -1,0 +1,148 @@
+﻿/**
+ *  This sass module contains the definitions of layout containers that divide the website into sections (wireframe). These styles apply to all devices.
+ */
+
+@charset "UTF-8";
+
+// $LAYOUT CONTAINERS
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  position: relative;
+}
+
+.wrapper {
+  position: relative;
+
+  @include breakpoint($small) {
+    display: table;
+    width: 100%;
+    height: 100%;
+    table-layout: fixed;
+  }
+
+  @include breakpoint($medium) {
+    padding-left: $sitenav-col-width;
+  }
+}
+
+.header {
+  @include breakpoint($small) {
+    display: table-row;
+    height: 1px;
+  }
+}
+
+.main {
+  @include breakpoint($small) {
+    height: 100%;
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    @include background-image(linear-gradient($body-background-color, white));
+  }
+
+  @include breakpoint($small) {
+    position: relative;
+  }
+}
+
+.cell {
+  @include breakpoint($small) {
+    display: table-cell;
+    vertical-align: top;
+  }
+
+  @include breakpoint($medium-portrait) {
+    width: 100%;
+  }
+
+  @include breakpoint($medium) {
+    display: table-cell;
+  }
+}
+
+.primary {
+  width: 100%;
+}
+
+.sidebar {
+
+  .ad-set {
+    display: none;
+
+    @include breakpoint($medium-portrait) {
+      display: block;
+    }
+
+    @include breakpoint($medium) {
+      display: block;
+    }
+  }
+
+  @include breakpoint($medium-portrait) {
+    display: table-row;
+  }
+
+  @include breakpoint($medium) {
+    display: table-cell;
+    width: 364px;
+  }
+}
+
+.site-footer {
+
+  @include breakpoint($small) {
+    display: table-row;
+    height: 1px;
+  }
+}
+
+// $MAIN SECTION PADDING
+.section {
+
+  &-wrap {
+    padding: 2em $primary-side-pad 5em;
+
+    @include breakpoint($small) {
+      padding: $primary-v-pad 0 $primary-v-pad $primary-side-pad;
+    }
+  }
+
+  &-pad {
+    padding: 1em;
+
+    & > p {
+      margin-top: 0;
+    }
+
+    @include breakpoint($small) {
+      padding: $primary-v-pad $primary-side-pad;
+      margin-top: 84px; // So leaderboard can fit right below the H1 bar
+    }
+
+    @include breakpoint($medium) {
+      padding: $primary-v-pad 0 $primary-v-pad $primary-side-pad;
+    }
+
+    @include breakpoint($large) {
+      margin-top: 0;
+    }
+  }
+
+  &-break {
+    margin-bottom: 3em;
+  }
+
+  &-pad-tb {
+    padding: 1em 0;
+  }
+}

@@ -1,0 +1,14 @@
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Domain.dll.config
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Domain.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Domain.XmlSerializers.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Domain.pdb
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Common.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Newtonsoft.Json.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\log4net.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Car.Com.Common.pdb
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\Newtonsoft.Json.xml
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\bin\Release\log4net.xml
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\obj\Release\Car.Com.Domain.csprojResolveAssemblyReference.cache
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\obj\Release\Car.Com.Domain.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\obj\Release\Car.Com.Domain.pdb
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Domain\obj\Release\Car.Com.Domain.XmlSerializers.dll

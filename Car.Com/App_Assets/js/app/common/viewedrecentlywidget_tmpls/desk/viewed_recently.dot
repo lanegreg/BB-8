@@ -1,0 +1,39 @@
+﻿{{
+  var maxShow = 4,
+  carTotal = it.carArr.length;
+}}
+
+<a id="viewedrecently_wdg_compareall_btn_js" class="btn-primary block">Compare Recently Viewed</a>
+<div style="display: block;">
+  {{~ it.carArr :car:carIdx}}
+    {{? carIdx == 4}}
+      <div id="viewedrecently_wdg_loadhidden_btn_js" style="display: none;">
+    {{?}}
+    <div class="widget-list-item">
+      <a href="/{{=car.makeseoname}}/{{=car.super_model_seoname}}/{{=car.year}}/{{=car.seo_name}}/">
+        <div>
+          <div class="img-container">
+            {{?car.images.length > 0}}
+              <img src="{{=car.images[0].small}}" alt="{{=car.year}} {{=car.make}} {{=car.model}}">
+            {{?? true }}
+              <img class="frame_js" src="/assets/svg/no-image-avail.svg" alt="{{=car.year}} {{=car.make}} {{=car.model}}">
+            {{?}}
+          </div>
+          <div class ="desc">
+            <span class="data secondary-data"><strong>{{=car.year}} {{=car.make}} {{=car.model}}</strong></span>
+            <span class="data secondary-data">{{=car.name}}</span>
+          </div>
+        </div>
+        {{? carIdx === 0}}
+        <div class="cur-viewed-cont">
+          <span class="data primary-data cur-viewed-text">Currently Viewing</span>
+        </div>
+        {{?}}
+      </a>
+    </div>
+  {{~}}
+  {{? carTotal > 4}}
+    </div>
+    <button id="viewedrecently_wdg_showall_btn_js" class="btn-default block">Show All ({{=carTotal}})</button>
+  {{?}}
+</div>

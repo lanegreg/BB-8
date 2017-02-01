@@ -1,0 +1,115 @@
+﻿@model Car.Com.Models.Research.TrimSafetyViewModel
+
+@{ // Nativo in-content ads
+    var nativoAds = String.Format("<!-- Nativo Ads -->");
+    nativoAds = nativoAds + String.Format("<script type=\"text/javascript\" src=\"http://a.postrelease.com/serve/load.js?async=true\"></script>");
+}
+
+@section Nativo { @Html.Raw(nativoAds) }
+
+<div class="mobilead-cont top">
+  <div class="ad-container">
+    <div id="js_tile_11" class="ad"></div>
+  </div>
+</div>
+<div class="header has-nav-tab">
+  <div class="page-title">
+    <div class="group-inline">
+      @* -- To do in later time --
+          <span class="item">
+          <a href="" class="btn-back-to">
+            <span class="icon inline">
+              <svg>
+                <use xlink:href="/assets/svg/global-sprite.svg#i_level_up"></use>
+              </svg>
+            </span>
+            <span class="text">Back to BMW 3 Series</span>
+          </a>
+        </span>*@
+      @*<span class="item i-double-up">
+          <button class="btn-zero">
+            <span class="icon inline">
+              <svg>
+                <use xlink:href="/assets/svg/global-sprite.svg#i_angle_double_up"></use>
+              </svg>
+            </span>
+          </button>
+        </span>*@
+      @{ Html.RenderPartial("_TrimHeader"); }
+    </div>
+  </div>
+  <button class="nav-tab">
+    <span class="icon inline">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_angle_double_down"></use>
+      </svg>
+    </span>
+    <span class="text"></span>
+  </button>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <h1>@Model.Trim.FullDisplayName</h1>
+      <div class="r-tbl">
+        @if (Model.SafetyItems.Count() < 1)
+        {
+          @:Currently we do not have any Safety information for the @Model.Trim.FullDisplayName. Please come back later
+        }
+        else
+        {
+          <table class="left-align">
+            <thead>
+              <tr>
+                <th>Source</th>
+                <th>Type</th>
+                <th>Rating</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach (var safetyItem in Model.SafetyItems)
+              {
+                <tr>
+                  <td data-label="Source">@safetyItem.Group</td>
+                  <td data-label="Type">@safetyItem.Title</td>
+                  <td data-label="Rating">@safetyItem.Data</td>
+                </tr>
+              }
+            </tbody>
+
+          </table>
+        }
+      </div>       
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+    <section data-widget="c4s" class="widget-cont sidebar-widget" style="display: none"></section>
+    <section data-widget="viewed-recently" class="widget-cont sidebar-widget" style="display: none"></section>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

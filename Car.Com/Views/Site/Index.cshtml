@@ -1,0 +1,321 @@
+﻿@model Car.Com.Models.Site.IndexViewModel
+
+@section BingMeta { <meta name="msvalidate.01" content="D4ED2B93AC03A2D7DD427AB6D43CDAD5" /> }
+
+<section class="hero arrow-down">
+  <div class="page-title">
+    <a href="/">
+      <span class="icon icon-carlogo">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_carLogo"></use>
+        </svg>
+      </span>
+    </a>
+  </div>
+  <div class="backdrop home" role="img">
+    <span class="inner"></span>
+    <div class="hero-link-container">
+      <div class="hero-link">
+        @Html.SeoRouteLink("Research_Index",
+          null,
+          "{SEO_ANCHOR_TEXT}",
+          new Attributes {
+            {"id", "research_st"},
+						{"class", "hero-btn one"}
+					})
+      </div>
+      <div class="hero-link">
+        @Html.SeoRouteLink("CarsForSale_Index",
+          null,
+          "{SEO_ANCHOR_TEXT}",
+          new Attributes {
+            {"id", "c4s_st"},
+						{"class", "hero-btn two"}
+					})
+      </div>
+    </div>
+  </div>
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div>
+  <div class="ldrboard-cont">
+    <div class="ad-container">
+      <div id="js_tile_1" class="ad home"></div>
+    </div>
+  </div>
+</section>
+<div class="content-bg bleed" id="moreResearch">
+  <a class="more" href="#moreResearch">More Research</a>
+  <div class="section-wrap">
+    <section>
+      <h1>
+        @Html.SeoRouteLink("BuyingGuides_Index",
+            null,
+            "{SEO_ANCHOR_TEXT} <span class='icon inline'><svg>" +
+            "<use xlink:href='/assets/svg/global-sprite.svg#i_arrow_r'></use>" +
+            "</svg></span>",
+            new Attributes{
+	            {"class", "home-header"}
+            })
+      </h1>
+      <ul id="articles_wrapper_st" class="grid-view-container">
+        <li class="grid-view-item">
+          <article class="post post-card-view">
+            @if (Model.BuyingGuides[0].MainArticleImage.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[0].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[0].MainArticleImage" alt="@Model.BuyingGuides[0].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[0].Title</h2>
+                </div>
+              </a>
+            }
+            else if (Model.BuyingGuides[0].VideoImageUrl.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[0].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[0].VideoImageUrl" alt="@Model.BuyingGuides[0].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[0].Title</h2>
+                </div>
+              </a>
+            }
+            else {
+              <a href="@Model.BuyingGuides[0].Url">
+                <div class="img-container">
+                  <img src="/assets/svg/no-image-avail_4x3.svg" alt="@Model.BuyingGuides[0].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[0].Title</h2>
+                </div>
+              </a>
+            }
+          </article>
+        </li>
+        <li class="grid-view-item">
+          <article class="post post-card-view">
+            @if (Model.BuyingGuides[1].MainArticleImage.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[1].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[1].MainArticleImage" alt="@Model.BuyingGuides[1].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[1].Title</h2>
+                </div>
+              </a>
+            }
+            else if (Model.BuyingGuides[1].VideoImageUrl.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[1].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[1].VideoImageUrl" alt="@Model.BuyingGuides[1].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[1].Title</h2>
+                </div>
+              </a>
+            }
+            else {
+              <a href="@Model.BuyingGuides[1].Url">
+                <div class="img-container">
+                  <img src="/assets/svg/no-image-avail_4x3.svg" alt="@Model.BuyingGuides[1].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[1].Title</h2>
+                </div>
+              </a>
+            }
+          </article>
+        </li>
+        <li class="grid-view-item">
+          <div class="ad-container ad300">
+            <div id="js_tile_2" class="ad"></div>
+          </div>
+        </li>
+        <li class="grid-view-item">
+          <article class="post post-card-view">
+            @if (Model.BuyingGuides[2].MainArticleImage.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[2].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[2].MainArticleImage" alt="@Model.BuyingGuides[2].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[2].Title</h2>
+                </div>
+              </a>
+            }
+            else if (Model.BuyingGuides[2].VideoImageUrl.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[2].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[2].VideoImageUrl" alt="@Model.BuyingGuides[2].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[2].Title</h2>
+                </div>
+              </a>
+            }
+            else {
+              <a href="@Model.BuyingGuides[2].Url">
+                <div class="img-container">
+                  <img src="/assets/svg/no-image-avail_4x3.svg" alt="@Model.BuyingGuides[2].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[2].Title</h2>
+                </div>
+              </a>
+            }
+          </article>
+        </li>
+        <li class="grid-view-item">
+          <article class="post post-card-view">
+            @if (Model.BuyingGuides[3].MainArticleImage.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[3].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[3].MainArticleImage" alt="@Model.BuyingGuides[3].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[3].Title</h2>
+                </div>
+              </a>
+            }
+            else if (Model.BuyingGuides[3].VideoImageUrl.IsNotNullOrEmpty()) {
+              <a href="@Model.BuyingGuides[3].Url">
+                <div class="img-container">
+                  <img src="@Model.BuyingGuides[3].VideoImageUrl" alt="@Model.BuyingGuides[3].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[3].Title</h2>
+                </div>
+              </a>
+            }
+            else {
+              <a href="@Model.BuyingGuides[3].Url">
+                <div class="img-container">
+                  <img src="/assets/svg/no-image-avail_4x3.svg" alt="@Model.BuyingGuides[3].ImageAlt">
+                </div>
+                <div class="desc">
+                  <h2 class="title">@Model.BuyingGuides[3].Title</h2>
+                </div>
+              </a>
+            }
+          </article>
+        </li>
+        <li class="grid-view-item">
+          <ul class="mini-list">
+            <li><a href="@Model.BuyingGuides[4].Url">@Model.BuyingGuides[4].Title</a></li>
+            <li><a href="@Model.BuyingGuides[5].Url">@Model.BuyingGuides[5].Title</a></li>
+            <li><a href="@Model.BuyingGuides[6].Url">@Model.BuyingGuides[6].Title</a></li>
+          </ul>
+          <div class="ad-container">
+            <div id="js_tile_3" class="ad"></div>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </div>
+</div>
+<div class="tools-bg bleed">
+  <div class="mask-lt"></div>
+  <div class="section-wrap">
+    <h1>
+      @Html.SeoRouteLink("Site_Tools",
+        null,
+        "{SEO_ANCHOR_TEXT} <span class='icon inline'><svg>" +
+        "<use xlink:href='/assets/svg/global-sprite.svg#i_arrow_r'></use>" +
+        "</svg></span>",
+        new Attributes{
+          {"class", "home-header"}
+        })
+    </h1>
+    <div class="tools-grid-outer">
+      <section class="col1">
+        <div class="tools-grid-inner">
+          <h2>
+            @Html.SeoRouteLink("CompareCars_Index",
+              null,
+              "Car Comparisons",
+              new Attributes {
+                {"class", ""}
+              })
+          </h2>
+          <ul class="tools-list">
+            <li>
+              <a id="popCompareBtn1" href="#">
+                Honda Odyssey <span class="sub">vs</span> Toyota Sienna
+              </a>
+            </li>
+            <li>
+              <a id="popCompareBtn2" href="#">
+                Toyota RAV4-EV <span class="sub">vs</span> Chevrolet Volt
+              </a>
+            </li>
+            <li>
+              <a id="popCompareBtn3" href="#">
+                Nissan Frontier <span class="sub">vs</span> Toyota Tacoma
+              </a>
+            </li>
+            <li>
+              <a id="popCompareBtn4" href="#">
+                Subaru BRZ <span class="sub">vs</span> Scion FR-S
+              </a>
+            </li>
+            <li>
+              <a id="popCompareBtn5" href="#">
+                GMC Sierra 1500 <span class="sub">vs</span> Chevrolet Silverado 1500
+              </a>
+            </li>
+            <li>
+              <a id="popCompareBtn6" href="#">
+                Chevrolet Camaro <span class="sub">vs</span> Ford Mustang
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section class="col2">
+        <div class="tools-grid-inner">
+          <h2>
+            @Html.SeoRouteLink("Calculator_Index",
+              null,
+              "Calculators",
+              new Attributes {
+                {"class", ""}
+              })
+          </h2>
+          <ul class="tools-list">
+            <li>
+              @Html.SeoRouteLink("Calculator_PaymentEstimate", null, "Calculate Car Payments")
+            </li>
+            <li>
+              @Html.SeoRouteLink("Calculator_LeaseOrPurchase", null, "Should I lease or purchase?")
+            </li>
+            <li>
+              @Html.SeoRouteLink("Calculator_LoanVsFinancing", null, "Rebate vs. 0% Financing")
+            </li>
+            <li>
+              @Html.SeoRouteLink("Calculator_Affordability", null, "How much car can I afford?")
+            </li>
+            <li>
+              @Html.SeoRouteLink("Calculator_AcceleratedPayoff", null, "Car Accelerated Payoff")
+            </li>
+            <li>
+              @Html.SeoRouteLink("Calculator_FuelEfficiency", null, "Fuel Savings Calculator")
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+<div class="mobilead-cont bottom">
+  <div class="ad-container">
+    <div id="js_tile_12" class="ad"></div>
+  </div>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

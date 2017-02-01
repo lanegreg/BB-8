@@ -1,0 +1,256 @@
+﻿@model Car.Com.Models.CarsForSale.ResultsViewModel
+
+<div class="header cfs">
+  <div class="page-title">
+    <div class="group-inline">
+      <h1 class="item h1-title">
+        @Model.PageMeta.H1       
+        <span class="v-count" id="cars_found_h1_js"></span>
+      </h1>
+      <div class="item h1-inline-item-full">
+        <button id="zip_pop_btn_js" class="btn-combo btn-opaque" title="Change ZipCode/Radius">
+          <label class="label-1">near <span class="zip_js"></span></label>
+          <label class="label-2"><span class="radius_js">0</span> mi</label>
+        </button>
+      </div>
+      <div class="item h1-inline-item-compact">
+        @*<button id="zip_pop_btn2_js" class="btn-zip">
+          <span class="icon inline location">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_location"></use>
+            </svg>
+          </span>
+          <span class="zip_js"></span>
+        </button>*@
+        <button id="toggle_filters_js" class="btn-filter">Filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="main cfs">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div class="search-bar-cont">
+        <div class="search-count">
+          <div class="count-bar">
+            <span class="row count" id="cars_found_js"></span>
+            <small class="row">Cars Found</small>
+          </div>
+          <span class="btn-done" id="btn_filters_done_js">Done</span>
+        </div>
+        <div class="cfs-search-filters">
+            <fieldset class="filter-menu">
+              <legend>
+                <span class="menu-label" id="price_menu_js">
+                  <span class="label" id="price_menu_selected_value_js" data-label="Price"></span>
+                  <span class="icon inline arrow">
+                    <svg>
+                      <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+                    </svg>
+                  </span>
+                </span>
+              </legend>
+              <div class="filter-pane">
+                <div class="user-entry">
+                  <div class="col from">
+                    <input maxlength="11" size="7" name="" id="prices_min_textbox_js" type="text" placeholder="Min">
+                  </div>
+                  <div class="col dash">&ndash;</div>
+                  <div class="col to">
+                    <input maxlength="11" size="7" name="" id="prices_max_textbox_js" type="text" placeholder="Max">
+                  </div>
+                </div>
+                <div class="preset-filter">
+                  <ul>
+                    <li>
+                      <input class="prices_js" id="prices_0-100Percent_js" value="0|42" type="checkbox" checked />
+                      <label for="prices_0-100Percent_js" id="label_prices_0-100Percent_js">All Prices</label>
+                    </li>
+                    <li>
+                      <input class="prices_js" id="prices_0-20Percent_js" value="0|30" type="checkbox" />
+                      <label for="prices_0-20Percent_js" id="label_prices_0-20Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="prices_js" id="prices_20-40Percent_js" value="30|33" type="checkbox" />
+                      <label for="prices_20-40Percent_js" id="label_prices_20-40Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="prices_js" id="prices_40-60Percent_js" value="33|36" type="checkbox" />
+                      <label for="prices_40-60Percent_js" id="label_prices_40-60Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="prices_js" id="prices_60-80Percent_js" value="36|40" type="checkbox" />
+                      <label for="prices_60-80Percent_js" id="label_prices_60-80Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="prices_js" id="prices_80-100Percent_js" value="40|42" type="checkbox" />
+                      <label for="prices_80-100Percent_js" id="label_prices_80-100Percent_js"></label>
+                    </li>
+                  </ul>
+                  <button class="btn-primary" id="button_prices_apply_js">Apply</button>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="filter-menu">
+              <legend>
+                <span class="menu-label" id="mileage_menu_js">
+                  <span class="label" id="mileage_menu_selected_value_js" data-label="Mileage"></span>
+                  <span class="icon inline arrow">
+                    <svg>
+                      <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+                    </svg>
+                  </span>
+                </span>
+              </legend>
+              <div class="filter-pane">
+                <div class="user-entry">
+                  <div class="col from">
+                    <input maxlength="11" size="7" name="" id="mileage_min_textbox_js" type="text" placeholder="Min">
+                  </div>
+                  <div class="col dash">&ndash;</div>
+                  <div class="col to">
+                    <input maxlength="11" size="7" name="" id="mileage_max_textbox_js" type="text" placeholder="Max">
+                  </div>
+                </div>
+                <div class="preset-filter">
+                  <ul>
+                    <li>
+                      <input class="mileage_js" id="mileage_0-100Percent_js" value="0|42" type="checkbox" checked />
+                      <label for="mileage_0-100Percent_js" id="label_mileage_0-100Percent_js">Any Mileage</label>
+                    </li>
+                    <li>
+                      <input class="mileage_js" id="mileage_0-20Percent_js" value="0|30" type="checkbox" />
+                      <label for="mileage_0-20Percent_js" id="label_mileage_0-20Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="mileage_js" id="mileage_20-40Percent_js" value="30|33" type="checkbox" />
+                      <label for="mileage_20-40Percent_js" id="label_mileage_20-40Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="mileage_js" id="mileage_40-60Percent_js" value="33|36" type="checkbox" />
+                      <label for="mileage_40-60Percent_js" id="label_mileage_40-60Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="mileage_js" id="mileage_60-80Percent_js" value="36|40" type="checkbox" />
+                      <label for="mileage_60-80Percent_js" id="label_mileage_60-80Percent_js"></label>
+                    </li>
+                    <li>
+                      <input class="mileage_js" id="mileage_80-100Percent_js" value="40|42" type="checkbox" />
+                      <label for="mileage_80-100Percent_js" id="label_mileage_80-100Percent_js"></label>
+                    </li>
+                  </ul>
+                  <button class="btn-primary" id="button_mileage_apply_js">Apply</button>
+                </div>
+              </div>
+            </fieldset>
+            <fieldset class="filter-menu">
+              <legend>
+                <span class="menu-label" id="year_menu_js">
+                  <span class="label" id="year_menu_selected_value_js" data-label="Years"></span>
+                  <span class="icon inline arrow">
+                    <svg>
+                      <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+                    </svg>
+                  </span>
+                </span>
+              </legend>
+              <div class="filter-pane">
+                <div class="user-entry">
+                  <div class="col from">
+                    <select id="year_from_ddl_js">
+                        @{
+                          var startingYear = 1999;
+                          var menuHighestYear = DateTime.Now.Year + 1;
+                          for (int yearValueFrom = startingYear; yearValueFrom < menuHighestYear + 1; yearValueFrom++) {
+                            <option value="@yearValueFrom.ToString()">@yearValueFrom.ToString()</option>
+                          }
+                        }
+                      </select>
+                  </div>
+                  <div class="col dash">&ndash;</div>
+                  <div class="col to">
+                    <select id="year_to_ddl_js">
+                        @{
+                          startingYear = 1999;
+                          menuHighestYear = DateTime.Now.Year + 1;
+                          for (int yearValueTo = startingYear; yearValueTo < menuHighestYear + 1; yearValueTo++) {
+                            <option value="@yearValueTo.ToString()">@yearValueTo.ToString()</option>
+                          }
+                        }
+                      </select>
+                  </div>
+                </div>
+                @*<div class="preset-filter">
+                  <button class="btn-primary" id="button_years_js">Apply</button>
+                </div>*@
+              </div>
+            </fieldset>
+            <fieldset class="filter-menu">
+              <legend>
+                <a class="menu-label" id="filters_pop_btn_js">
+                  <span class="label" data-label="More"></span>
+                </a>
+              </legend>
+            </fieldset>
+        </div>
+      </div>
+      <div id="results_first_load_js" data-status="@Model.FirstLoad" data-maxmileage="0" data-maxprice="0"></div>
+      <div class="tag-sort-cont">
+        <div class="col1">
+          <button id="make_tag_pop_btn_js" class="btn-add-cars btn-primary slim">Add Cars</button>
+          <ul id="tag_lister_js" class="tag-list"></ul>
+        </div>
+        <div class="col2">
+          <label for="sortby_dd_js"><small><strong>Sort By: </strong></small></label>
+          <select id="sortby_dd_js" class="minimal">
+            <option value="best_match|desc" selected>Best Match</option>
+            <option value="distance|asc">Distance: Low-high</option>
+            <option value="distance|desc">Distance: High-low</option>
+            <option value="price|asc">Price: Low-high</option>
+            <option value="price|desc">Price: High-low</option>
+            <option value="mileage|asc">Mileage: Low-high</option>
+            <option value="mileage|desc">Mileage: High-low</option>
+          </select>
+        </div>
+      </div>
+      <section id="c4s_wrap_js">
+        <ul id="c4s_list_js" class="grid-view-container"></ul>
+        <div id="paginator_js" class="pager2"></div>
+      </section>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+    <section data-widget="c4s-recvwd" class="widget-cont sidebar-widget" style="display: none"></section>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

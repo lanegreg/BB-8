@@ -1,0 +1,110 @@
+﻿@model Car.Com.Models.Research.MakeViewModel
+<div class="header">
+  <div class="page-title">
+    <h1>@Model.PageMeta.H1</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+        @{
+          var superModelsCount = Model.SuperModels.Select(s => s.Name).Distinct().Count();
+
+          if (superModelsCount >= 6)
+          {
+            <div class="ad-container">
+              <div id="js_tile_4" class="ad"></div>
+            </div>
+          }
+        }
+      <ul class="trim-tile-container">
+        @foreach (var superModel in Model.SuperModels.OrderBy(s => s.Name)) {
+          var trimImgPath = superModel.ImagePath;
+          var tmpImgSrc = "";
+
+          if (trimImgPath == null || trimImgPath.Length < 30) {
+            tmpImgSrc = "/assets/svg/no-image-avail.svg";
+          }
+          else {
+            tmpImgSrc = String.Format("{0}_320x.png", trimImgPath);
+          }
+
+          var tmpImgAltTag = String.Format("{0} {1}", Model.Make.SeoName, superModel.SeoName);
+
+          int startingMsrpRaw = Convert.ToInt32(superModel.StartingMsrp);
+          var startingMsrpLabel = superModel.FormattedStartingMsrp;
+          if (startingMsrpRaw == 0) {
+            startingMsrpLabel = "NA";
+          }
+          <li class="tile-item reflow">
+            @Html.SeoRouteLink("Research_SuperModel",
+              new RouteValues {
+                {UriTokenNames.Make, Model.Make.SeoName},
+                {UriTokenNames.SuperModel, superModel.SeoName}
+              },
+              "<div class=\"caption-1\">" +
+              " <div class=\"col\">" +
+              "  <h2>" +
+              "   <span class=\"sub\">" + Model.Make.Name + "</span>" +
+              "   <span class=\"item trim-name\">" + superModel.Name + "</span>" +
+              "  </h2>" +
+              " </div>" +
+              " <div class=\"col\"></div>" +
+              "</div>" +
+              "<div class=\"img-container\">" +
+              " <img src=\"" + tmpImgSrc + "\" alt=\"" + tmpImgAltTag + "\" />" +
+              "</div>" +
+              "<div class=\"caption-2\">" +
+              " <div class=\"col\">" +
+              "  <small class=\"sub\">starting at</small>" +
+              "   <span class=\"item\">" + startingMsrpLabel + "</span>" +
+              " </div>" +
+              " <div class=\"col\"></div>" +
+              "</div>"
+              ,
+              new Attributes {
+                {"id", Model.Make.SeoName + "_" + superModel.SeoName + "_st"},
+                {"class", "item"}
+              })
+          </li>
+        }
+      </ul>
+      @if (superModelsCount < 6)
+      {
+          <div class="ad-container">
+            <div id="js_tile_4" class="ad"></div>
+          </div>
+      }
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

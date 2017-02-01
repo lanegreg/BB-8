@@ -1,0 +1,11 @@
+﻿/*
+ *  This sass module represents the mobile version of research.category http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base";
+
+.trim-tile-container {
+  @extend %trim-tile-container;
+}

@@ -1,0 +1,42 @@
+﻿/**
+ *  This sass module represents the desktop version of httperror.status500 http://www.autobytel.com/error/status-500/
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+.page-title {
+  display: none;
+}
+
+.hero {
+  @extend %hero-error;
+
+  .hero-copy-container {
+
+    @include breakpoint($medium-portrait) {
+      top: 30%;
+      right: 0;
+      width: 60%;
+      background: none;
+    }
+  }
+
+  .hero-copy-content {
+    padding: 2em 1em;
+  }
+}
+
+// $MAKE, MODEL LIST
+.make-list, .model-list {
+  @extend %mnm-list;
+}
+
+.make-list {
+  @extend %make-list;
+}
+
+.category-list {
+  @extend %category-list;
+}

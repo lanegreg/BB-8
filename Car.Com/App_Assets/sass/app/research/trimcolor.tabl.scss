@@ -1,0 +1,22 @@
+﻿/*
+ *  This sass module represents the tablet version of {controller}.{action} http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base";
+
+// has fixed secondary menu at the top
+.wrapper .header {
+  @include has-nav-tab;
+}
+
+// reserve vertical space for secondary menu
+.main {
+  margin-top: 69px;
+}
+
+.inpage-nav {
+
+  @include inpage-nav;
+}

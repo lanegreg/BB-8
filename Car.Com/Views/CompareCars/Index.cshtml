@@ -1,0 +1,279 @@
+﻿@model Car.Com.Models.CompareCars.IndexViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>Compare Cars</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div id="selectedCompareTable" class="select-to-compare">
+        <button class="btn-tools left">
+          <a class="js_add_compare_car">
+            <span class="icon i-select-car">
+              <svg  viewbox="0 0 1986 1024">
+                <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+              </svg>
+            </span><h3 class="heading">Select a Car</h3>
+          </a>
+        </button>
+        <button class="btn-tools left">
+          <a class="js_add_compare_car">
+            <span class="icon i-select-car">
+              <svg  viewbox="0 0 1986 1024">
+                <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+              </svg>
+            </span><h3 class="heading">Select a Car</h3>
+          </a>
+        </button>
+        @*<button class="btn-tools left">
+          <a class="js_add_compare_car">
+            <span class="icon i-select-car">
+              <svg  viewbox="0 0 1986 1024">
+                <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+              </svg>
+            </span><h3 class="heading">Select a Car</h3>
+          </a>
+        </button>*@
+      </div>
+      <div class="center">
+        <button id="compare_btn_st" class="btn-primary lg js_compare_results">Compare</button>
+      </div>
+      <h2 class="line-on-sides">Popular Comparisons</h2>
+      <div class="popular-comparisons">
+        <div class="col">
+          <a id="popCompareBtn1" href="/compare-cars/results/">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/honda/odyssey/33210_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/honda/odyssey/33210_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/honda/odyssey/33210_11_2_320x.png" alt="2014 Honda Odyssey">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Honda<br /> Odyssey EXL</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/toyota/sienna/34259_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/toyota/sienna/34259_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/toyota/sienna/34259_11_2_320x.png" alt="2014 Toyota Sienna">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Toyota<br /> Sienna XLE-v6-8-(a6)-FWD</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a id="popCompareBtn2" href="#">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/toyota/rav4-ev/34198_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/toyota/rav4-ev/34198_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/toyota/rav4-ev/34198_11_2_320x.png" alt="2014 Toyota RAV4 EV">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Toyota<br /> RAV4-EV Base</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/chevrolet/volt/32437_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/chevrolet/volt/32437_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/chevrolet/volt/32437_11_2_320x.png" alt="2014 Chevrolet Volt">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Chevrolet<br /> Volt Base</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a id="popCompareBtn3" href="#">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/nissan/frontier/33802_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/nissan/frontier/33802_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/nissan/frontier/33802_11_2_320x.png" alt="2014 Nissan Frontier">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Nissan<br /> Frontier s-(m5)-4x2-king-Cab</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/toyota/tacoma/34217_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/toyota/tacoma/34217_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/toyota/tacoma/34217_11_2_320x.png" alt="2014 Toyota Tacoma">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Toyota<br /> Tacoma 4x4 Double Cab Long box</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a id="popCompareBtn4" href="#">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2015/subaru/brz/36669_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2015/subaru/brz/36669_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2015/subaru/brz/36669_11_2_320x.png" alt="2015 Subaru BRZ">
+                  </picture>
+                </div>
+                <h2 class="h5">2015 Subaru<br /> BRZ Limited a6</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2015/scion/fr-s/36634_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2015/scion/fr-s/36634_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2015/scion/fr-s/36634_11_2_320x.png" alt="2015 Scion FR-S">
+                  </picture>
+                </div>
+                <h2 class="h5">2015 Scion<br /> FR-S a6</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a id="popCompareBtn5" href="#">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/gmc/sierra-1500/33023_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/gmc/sierra-1500/33023_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/gmc/sierra-1500/33023_11_2_320x.png" alt="2014 GMC Sierra 1500">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 GMC<br /> Sierra 1500 Base 4x4 Crew Cab 6 box</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_320x.png" alt="2014 Chevrolet Silverado 1500">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Chevrolet<br /> Silverado 1500 LTZ 4x4 Crew Cab</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+        <div class="col">
+          <a id="popCompareBtn6" href="#">
+            <div class="side-by-side">
+              <div class="col1">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/chevrolet/camaro/32397_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/chevrolet/camaro/32397_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/chevrolet/camaro/32397_11_2_320x.png" alt="2014 Chevrolet Camaro">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Chevrolet<br /> Camaro 2LS Coupe</h2>
+              </div>
+              <div class="col-vs">
+                <div class="circle-text"><div>vs</div></div>
+              </div>
+              <div class="col2">
+                <div class="img-container">
+                  <picture>
+                    <!--[if IE 9]><video style="display: none;"><![endif]-->
+                    <source srcset="//img.car.com/2014/ford/mustang/32718_11_2_640x.png" media="(min-width: 640px)">
+                    <source srcset="//img.car.com/2014/ford/mustang/32718_11_2_320x.png" media="(min-width: 320px)">
+                    <!--[if IE 9]></video><![endif]-->
+                    <img src="//img.car.com/2014/ford/mustang/32718_11_2_320x.png" alt="2014 Ford Mustang">
+                  </picture>
+                </div>
+                <h2 class="h5">2014 Ford<br /> Mustang GT Premium Coupe</h2>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

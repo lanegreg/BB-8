@@ -1,0 +1,129 @@
+﻿
+// Global Unslider styling
+.banner {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  margin: 0 auto;
+  text-align: center;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: block;
+      float: left;
+      width: 33%;
+    }
+  }
+
+  .dot {
+    @include box-shadow(drop-shadow(0 1px 2px rgba(0,0,0,.3)));
+  }
+
+  .dots {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding-left: 0;
+
+    li {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      padding: 4px;
+      margin: 0 4px;
+      background: rgba(0, 0, 0, 0.5);
+      text-indent: -999em;
+      border: 1px solid #fff;
+      border-radius: 6px;
+      cursor: pointer;
+      opacity: .4;
+      -webkit-transition: background .5s, opacity .5s;
+      -moz-transition: background .5s, opacity .5s;
+      transition: background .5s, opacity .5s;
+
+      &.active {
+        background: #000;
+        opacity: 1;
+      }
+    }
+  }
+
+  .pager {
+    position: absolute;
+    width: 100%;
+    @extend %vertical-align;
+  }
+}
+
+.slider-pager {
+  position: absolute;
+  left: 0;
+  right: 0;
+  @extend %vertical-align;
+  @include cf;
+
+  button {
+    float: left;
+    padding: .5em .25em .5em 0;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    &:last-of-type {
+      float: right;
+      padding: .5em 0 .5em .25em;
+    }
+
+    &.prev {
+      @include border-top-right-radius(3px);
+      @include border-bottom-right-radius(3px);
+    }
+
+    &.next {
+      @include border-top-left-radius(3px);
+      @include border-bottom-left-radius(3px);
+    }
+  }
+
+  .icon {
+    width: 2.6em;
+    height: 2.6em;
+    vertical-align: middle;
+
+    svg {
+      fill: #FFF;
+      stroke: #000;
+      stroke-width: 10px;
+      stroke-linecap: round;
+      stroke-linejoin: miter;
+    }
+  }
+
+
+  .xofy {
+    padding: 0 1.5em;
+  }
+}
+
+.unslider-ct {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1.5em;
+  width: 120px;
+  padding: .25em;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.4);
+  color: #FFF;
+  @include border-radius(20px);
+  @include text-shadow(1px 1px 1px #000);
+}

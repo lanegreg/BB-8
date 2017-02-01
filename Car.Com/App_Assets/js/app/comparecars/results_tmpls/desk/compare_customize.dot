@@ -1,0 +1,110 @@
+﻿{{ var selectedOverviewArr = it.selItemArr,
+       pricingNameArr = ["Invoice Price", "MSRP"],
+       convNameArr = ["Front A/C","Rear A/C","Power Windows","Tilt Steering","Cruise Control","Leather Seats","Driver Seat Power","Sunroof","Rear View Camera","Navigation","Bluetooth"],
+       perfNameArr = ["Engine","Drive","Transmission","Horsepower","Torque","Fuel Capacity","Fuel Type","MPG","Towing Capacity"],
+       dimNameArr = ["Seating Capacity","Cargo Capacity","Max Cargo","Doors","Bed Length"],
+
+       overviewNameArr = ["Invoice Price", "MSRP","Front A/C","Rear A/C","Power Windows","Tilt Steering","Cruise Control","Leather Seats","Driver Seat Power",
+          "Sunroof","Rear View Camera","Navigation","Bluetooth","Engine","Drive","Transmission","Horsepower","Torque","Fuel Capacity","Fuel Type","MPG","Towing Capacity",
+          "Seating Capacity","Cargo Capacity","Max Cargo","Doors","Bed Length"],
+
+       replaceMultSpace = new RegExp(' ', 'g');
+}}
+
+
+
+    <div class="col1" style="display: none">
+      <section class="compare-tag-list">
+        <ul>
+          {{~overviewNameArr :selectedItem:Selidx}}
+            {{?selectedOverviewArr.indexOf(selectedItem) > -1}}
+            <li id="selectedOverview_{{=selectedItem.replace(replaceMultSpace,'-').replace('/','-')}}">
+            {{?? true }}
+            <li id="selectedOverview_{{=selectedItem.replace(replaceMultSpace,'-').replace('/','-')}}" style="display: none;">
+            {{?}}
+              <button class="btn-search-tag js_delete_custom_overview" data-custitem="{{=selectedItem}}">
+                {{=selectedItem}}
+                <span class="icon">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+                  </svg>
+                </span>
+              </button>
+            </li>
+          {{~}}
+        </ul>
+      </section>
+    </div>
+
+    
+    
+    <div class="wrap">
+      <section class="compare-tag-list">
+        <ul>
+
+          <li>
+            <h2 class="h2">Pricing</h2>
+            <ul class="inline-block-list">
+              {{~pricingNameArr :priceItem:Priidx}}
+                <li id="addOverview_{{=priceItem.replace(replaceMultSpace,'-').replace('/','-')}}" {{?selectedOverviewArr.indexOf(priceItem) > -1}}class="selected"{{?}}>
+                  <button class="btn-default-ovl js_toggle_custom_overview" data-custitem="{{=priceItem}}">
+                    {{=priceItem}}
+                  </button>
+                </li>
+              {{~}}
+            </ul>
+          </li>
+
+          <li>
+            <h2 class="h2">Convenience</h2>
+            <ul class="inline-block-list">
+              {{~convNameArr :convItem:convidx}}
+                <li id="addOverview_{{=convItem.replace(replaceMultSpace,'-').replace('/','-')}}" {{?selectedOverviewArr.indexOf(convItem) > -1}}class="selected"{{?}}>
+                  <button class="btn-default-ovl js_toggle_custom_overview" data-custitem="{{=convItem}}">
+                    {{=convItem}}
+                  </button>
+                </li>
+              {{~}}
+            </ul>
+          </li>
+
+          <li>
+            <h2 class="h2">Performance</h2>
+            <ul class="inline-block-list">
+              {{~perfNameArr :perfItem:perfidx}}
+                <li id="addOverview_{{=perfItem.replace(replaceMultSpace,'-').replace('/','-')}}" {{?selectedOverviewArr.indexOf(perfItem) > -1}}class="selected"{{?}}>
+                  <button class="btn-default-ovl js_toggle_custom_overview" data-custitem="{{=perfItem}}">
+                    {{=perfItem}}
+                  </button>
+                </li>
+              {{~}}
+            </ul>
+          </li>
+
+          <li>
+            <h2 class="h2">Dimensions</h2>
+            <ul class="inline-block-list">
+              {{~dimNameArr :dimItem:dimidx}}
+                <li id="addOverview_{{=dimItem.replace(replaceMultSpace,'-').replace('/','-')}}" {{?selectedOverviewArr.indexOf(dimItem) > -1}}class="selected"{{?}}>
+                  <button class="btn-default-ovl js_toggle_custom_overview" data-custitem="{{=dimItem}}">
+                    {{=dimItem}}
+                  </button>
+                </li>
+              {{~}}
+            </ul>
+          </li>
+
+        </ul>
+      </section> 
+      <p class="center">      
+        <button class="btn-primary js_update_custom_overview">
+          <span class="icon inline">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_l"></use>
+            </svg>
+          </span>
+          Update
+        </button>
+      </p>
+    </div>
+

@@ -1,0 +1,374 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <title>ad loader</title>
+  
+  <!--Load Google Publisher Tag (GPT) library into iFrame-->
+
+  <script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+      var gads = document.createElement('script');
+      gads.async = true;
+      gads.type = 'text/javascript';
+      var useSSL = 'https:' == document.location.protocol;
+      gads.src = (useSSL ? 'https:' : 'http:') +
+        '//www.googletagservices.com/tag/js/gpt.js';
+      var node = document.getElementsByTagName('script')[0];
+      node.parentNode.insertBefore(gads, node);
+    })();
+  </script>
+  
+  <!--Set styles for enclosing iFrame-->
+
+  <script>
+    var $ = jQuery = window.parent.jQuery;
+    var $frame = $(window.frameElement);
+    var adSize = $frame.data('ad-size');
+    var adSrc = $frame.data('ad-src');
+
+    var adFrameId = $frame[0].id;
+    var adSpotId = adFrameId.replace("frame", "spot");
+    var adSpotDivId = 'abtl-gpt-' + adSpotId;
+
+    var resizeFlag = true;
+
+    setTimeout(function () {
+      resize();
+    }, 500);
+    setTimeout(function () {
+      if (resizeFlag)
+        resize();
+    }, 1000);
+    setTimeout(function () {
+      if (resizeFlag)
+        resize();
+    }, 1500);
+    setTimeout(function () {
+      if (resizeFlag)
+        resize();
+    }, 2000);
+    setTimeout(function () {
+      if (resizeFlag)
+        resize();
+    }, 2500);
+
+    var resize = function () {
+
+      var $adSpotDiv = $frame.contents().find('#' + adSpotDivId);
+      var googleFrameContainerWidth = "0";
+      var googleFrameContainerHeight = "0";
+
+      //attempt to fetch google iframe container width and height attributes
+      try {
+        googleFrameContainerWidth = $adSpotDiv[0].childNodes[0].childNodes[0].width;
+        googleFrameContainerHeight = $adSpotDiv[0].childNodes[0].childNodes[0].height;
+      }
+      catch(err) {
+        googleFrameContainerWidth = "0";
+        googleFrameContainerHeight = "0";
+      }
+
+      if (typeof googleFrameContainerWidth != 'undefined' && googleFrameContainerWidth > 0) {
+        resizeFlag = false;
+      }
+
+      switch (adSize) {
+
+        case '728x90':  //aka: leaderboard
+          {
+            $frame.css({
+              'width': 728,
+              'height': 90
+            })
+            .parent().css('height', 90);
+          break;
+        }
+        case '728x90,970x90':  //aka: leaderboard-flex
+          {
+            if (googleFrameContainerWidth == "728") {
+              $frame.css({
+                'width': 728,
+                'height': 90
+              })
+              .parent().css({
+                'width': 728,
+                'height' : 90
+              });
+            } else {
+              $frame.css({
+                'width' : 970,
+                'height' : 90
+              })
+              .parent().css({
+                'width': 970,
+                'height': 90
+              });
+            }
+          break;
+        }
+        case '300x50':  //aka: mobile
+        {
+          $frame.css('width', 300)
+            .css('height', 50)
+            .parent().css('height', 50);
+          break;
+        }
+        case '300x50,320x50':  //aka: mobile
+        {
+          $frame.css('width', 320)
+            .css('height', 50)
+            .parent().css('height', 50);
+          break;
+        }
+        case '320x50,300x250,300x120':  //aka: mobile
+        {
+          if (googleFrameContainerHeight == "50") {
+            $frame.css('width', 320)
+              .css('height', 50)
+              .parent().css('height', 50);
+          } else if (googleFrameContainerHeight == "250") {
+            $frame.css('width', 320)
+            .css('height', 250)
+            .parent().css('height', 250);
+          } else if (googleFrameContainerHeight == "120") {
+            $frame.css('width', 320)
+            .css('height', 120)
+            .parent().css('height', 120);
+          } else  {
+            $frame.css('width', 320)
+            .css('height', 50)
+            .parent().css('height', 50);
+          }
+          break;
+        }
+        case '300x120':  //aka: spotlight
+        {
+          $frame.css('width', 300)
+            .css('height', 120)
+            .parent().css('height', 120);
+          break;
+        }
+        case '300x251':
+        {
+          $frame.css('width', 300)
+          .css('height', 251)
+          .parent().css('height', 251);
+          break;
+        }
+        case '300x250':  //aka: content-unit
+        {
+          $frame.css('width', 300)
+            .css('height', 250)
+            .parent().css('height', 250);
+          break;
+        }
+        case '300x250,300x600':  //aka: 300x250-flex
+        {
+          if (googleFrameContainerHeight == "250") {
+            $frame.css('width', 300)
+              .css('height', 250)
+              .parent().css('height', 250);
+          } else {
+            $frame.css('width', 300)
+            .css('height', 600)
+            .parent().css('height', 600);
+          }
+          break;
+        }
+        case '400x40':  //aka: shopping-links
+        {
+          $frame.css({
+              'width' : '100%',
+              'height' : 100
+            })
+  	        .parent().css({
+  	          'width': '100%',
+  	          'height': 100
+          });
+
+          $frame.contents().find('#' + adSpotDivId + ' > div > iframe').css({
+            'width': '100%',
+            'height': 100
+          });
+
+          try {
+            $adSpotDiv[0].childNodes[0].childNodes[0].width = "100%";
+            $adSpotDiv[0].childNodes[0].childNodes[0].height = 100;
+          }
+          catch (err) {
+          }
+          break;
+        }
+      }
+    };
+
+
+    //------------------------------------------------------------------------
+    //  Build GPT parameter variables - prod, subprod, type, style, test, tile
+    //------------------------------------------------------------------------
+
+    //patterns
+    var prodPattern = new RegExp(/;prod=[\w]+/g); 
+    var subProdPattern = new RegExp(/;subprod=[\w]+/g); 
+    var typePattern = new RegExp(/type=[\w]+/g); 
+    var stylePattern = new RegExp(/style=[\w]+/g); 
+    var testPattern = new RegExp(/jumpstart=[\w]+/g); 
+    var jagAdPattern = new RegExp(/jag=[\w]+/g);
+    var tilePattern = new RegExp(/tile=[\w]+/g);
+    //extracts-1
+    var extractedProd = prodPattern.exec(adSrc);
+    var extractedSubProd = subProdPattern.exec(adSrc);
+    var extractedType = typePattern.exec(adSrc);
+    var extractedStyle = stylePattern.exec(adSrc);
+    var extractedTest = testPattern.exec(adSrc);
+    var extractedJagAd = jagAdPattern.exec(adSrc);
+    var extractedTile = tilePattern.exec(adSrc);
+    //extracts-2
+    var paramProd = (extractedProd == null) ? '' : extractedProd[0]; 
+    var paramSubProd = (extractedSubProd == null) ? '' : extractedSubProd[0]; 
+    var paramType = (extractedType == null) ? '' : extractedType[0]; 
+    var paramStyle = (extractedStyle == null) ? '' : extractedStyle[0]; 
+    var paramTest = (extractedTest == null) ? '' : extractedTest[0];
+    var paramJagAd = (extractedJagAd == null) ? '' : extractedJagAd[0];
+    var paramTile = (extractedTile == null) ? '' : extractedTile[0];
+    //parameters
+    paramProd = paramProd.replace(";prod=", ""); 
+    paramSubProd = paramSubProd.replace(";subprod=", ""); 
+    paramType = paramType.replace("type=", ""); 
+    paramStyle = paramStyle.replace("style=", ""); 
+    paramTest = paramTest.replace("jumpstart=", "");
+    paramJagAd = paramJagAd.replace("jag=", "");
+    paramTile = paramTile.replace("tile=", "");
+
+    //-----------------------------------------------------------------
+    // (yr, mak, mod, fuel)
+    //-----------------------------------------------------------------
+
+    //patterns
+    var yearPattern = new RegExp(/yr=[\w]+/g); 
+    var makePattern = new RegExp(/mak=[\w]+/g); 
+    var modelPattern = new RegExp(/mod=[\w]+/g); 
+    var fuelPattern = new RegExp(/fuel=[\w]+/g); 
+    //extracts-1
+    var extractedYear = yearPattern.exec(adSrc);
+    var extractedMake = makePattern.exec(adSrc);
+    var extractedModel = modelPattern.exec(adSrc);
+    var extractedFuel = fuelPattern.exec(adSrc);
+    //extracts-2
+    var paramYear = (extractedYear == null) ? '' : extractedYear[0]; 
+    var paramMake = (extractedMake == null) ? '' : extractedMake[0]; 
+    var paramModel = (extractedModel == null) ? '' : extractedModel[0]; 
+    var paramFuel = (extractedFuel == null) ? '' : extractedFuel[0]; 
+    //parameters
+    paramYear = paramYear.replace("yr=", ""); 
+    paramMake = paramMake.replace("mak=", ""); 
+    paramModel = paramModel.replace("mod=", ""); 
+    paramFuel = paramFuel.replace("fuel=", ""); 
+    
+    //-----------------------------------------------------------------
+    //build site string parameter
+    //-----------------------------------------------------------------
+    var sitePattern = new RegExp(/N2909\/adj\/[a-z./]+/g); 
+    var extractedSite = sitePattern.exec(adSrc);
+    var slotSite = extractedSite[0]; 
+    slotSite = slotSite.replace("N2909/adj/", "/2909/"); 
+
+    //-----------------------------------------------------------------
+    //build size array parameter
+    //-----------------------------------------------------------------
+    var sizePattern = new RegExp(/sz=[\w,]+/g); 
+    var extractedSize = sizePattern.exec(adSrc);
+    var slotSize = []; 
+    var width1 = 0, width2 = 0, width3 = 0, height1 = 0, height2 = 0, height3 = 0;
+    var workingSizeString = extractedSize[0]; 
+
+    if (workingSizeString.search(',') > 0) {
+
+      workingSizeString = workingSizeString.replace("sz=", ""); 
+      workingSizeString = workingSizeString.replace(/x/g, ","); 
+
+      var sizeArray = workingSizeString.split(",");
+
+      width1 = parseInt(sizeArray[0]);
+      height1 = parseInt(sizeArray[1]);
+      width2 = parseInt(sizeArray[2]);
+      height2 = parseInt(sizeArray[3]);
+
+      if (sizeArray.length > 4) {
+        width3 = parseInt(sizeArray[4]);
+        height3 = parseInt(sizeArray[5]);
+        slotSize = [[width1, height1], [width2, height2], [width3, height3]];
+      } else {
+        slotSize = [[width1, height1], [width2, height2]];
+      }
+
+    } else { 
+
+      workingSizeString = workingSizeString.replace("sz=", ""); 
+      workingSizeString = workingSizeString.replace("x", ","); 
+
+      sizeArray = workingSizeString.split(",");
+      width1 = parseInt(sizeArray[0]);
+      height1 = parseInt(sizeArray[1]);
+
+      slotSize = [width1, height1];
+    }
+
+  </script>
+</head>
+  <body>
+    
+    <script type='text/javascript'>
+      
+      if (paramTest.toLowerCase() == 'test') {
+
+        document.write("<div id='" + adSpotDivId + "' style=\"text-align: center;\">");
+        googletag.cmd.push(function () {
+          googletag.defineSlot(slotSite, slotSize, adSpotDivId)
+            .addService(googletag.pubads())
+            .setTargeting('prod', (paramProd || ''))
+            .setTargeting('subprod', (paramSubProd || ''))
+            .setTargeting('type', (paramType || ''))
+            .setTargeting('style', (paramStyle || ''))
+            .setTargeting('yr', (paramYear || ''))
+            .setTargeting('mak', (paramMake || ''))
+            .setTargeting('mod', (paramModel || ''))
+            .setTargeting('fuel', (paramFuel || ''))
+            .setTargeting('jag', (paramJagAd || ''))
+            .setTargeting('tile', (paramTile || ''))
+            .setTargeting('jumpstart', 'test');
+          googletag.enableServices();
+          googletag.display(adSpotDivId);
+        });
+        document.write("</div>");
+
+      } else {
+
+        document.write("<div id='" + adSpotDivId + "' style=\"text-align: center;\">");
+        googletag.cmd.push(function () {
+          googletag.defineSlot(slotSite, slotSize, adSpotDivId)
+          .addService(googletag.pubads())
+          .setTargeting('prod', (paramProd || ''))
+          .setTargeting('subprod', (paramSubProd || ''))
+          .setTargeting('type', (paramType || ''))
+          .setTargeting('style', (paramStyle || ''))
+          .setTargeting('yr', (paramYear || ''))
+          .setTargeting('mak', (paramMake || ''))
+          .setTargeting('mod', (paramModel || ''))
+          .setTargeting('fuel', (paramFuel || ''))
+          .setTargeting('jag', (paramJagAd || ''))
+          .setTargeting('tile', (paramTile || ''));
+          googletag.enableServices();
+          googletag.display(adSpotDivId);
+        });
+        document.write("</div>");
+
+      }
+
+    </script>
+
+  </body>
+</html>

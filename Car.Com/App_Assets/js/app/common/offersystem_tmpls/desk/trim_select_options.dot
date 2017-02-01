@@ -1,0 +1,3 @@
+﻿{{~it.trimArr :trimItem:midx}}
+<option value="{{=trimItem.year}}-{{=trimItem.seo_name}}" data-model="{{=trimItem.model}}" data-year="{{=trimItem.year}}" data-msrp="{{=trimItem.msrp}}" data-trim="{{=trimItem.lead_trim_name}}" data-acode="{{=trimItem.acode}}" data-id="{{=trimItem.id}}">{{=trimItem.full_display_name}}</option>
+{{~}}

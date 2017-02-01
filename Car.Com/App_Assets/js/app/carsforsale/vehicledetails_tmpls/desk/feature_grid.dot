@@ -1,0 +1,6 @@
+﻿{{~it :el:idx}}
+<li class="row">
+  <span class="label">{{= el.label}}</span>
+  <span class="value">{{= el.value}}</span>
+</li>
+{{~}}

@@ -1,0 +1,50 @@
+﻿/**
+ ** The styles in this file should only be a minimal set to facilitate fast loading pages without a FOUC. **
+ *
+ *  These styles should only be for content that is on this page, and lives above the fold.
+ *  These styles will be inlined in the <head> section at the top of the page.
+ * 
+ *  !!! DO NOT ADD ANYTHING THAT BELONGS TO OTHER PAGES OR LIVES BELOW THE FOLD !!!
+ */
+
+@charset "UTF-8";
+
+@import "global-head";
+
+.hero {
+
+  .backdrop {
+    width: 100%;
+    height: 92.6vh;
+    display: inline-block;
+    color: transparent;
+    vertical-align: middle;
+    display: table;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-color: $dove-gray;
+    @include background-size(cover);
+
+    @include breakpoint($medium) {
+      height: 100vh;
+      padding-left: $sitenav-col-width;
+    }
+
+    &.alt-fuel {
+      background-image: url(/assets/img/hero-alt-fuel640x960.jpg);
+
+      @include breakpoint($small) {
+        background-image: url(/assets/img/hero-alt-fuel.jpg);
+      }
+    }
+
+    .inner {
+      display: block;
+      height: 0;
+
+      @include breakpoint($small) {
+        padding-top: 65rem;
+      }
+    }
+  }
+}

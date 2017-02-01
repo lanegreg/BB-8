@@ -1,0 +1,9 @@
+﻿{{var car=it;}}
+<ul>
+  {{~car.image_urls :imgUrl:idx}}
+  <li>
+    <img src="{{? idx < 2}}{{= imgUrl}}{{?}}" data-lazysrc="{{? idx > 1}}{{= imgUrl}}{{?}}"
+        class="frame_js" alt="{{= car.year}} {{= car.make}} {{= car.model}}">
+  </li>
+  {{~}}
+</ul>

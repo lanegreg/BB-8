@@ -1,0 +1,697 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.autobytel.com/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.autobytel.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.autobytel.com/">
+      <s:element name="Ping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="providerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="make" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trim" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PingResult" type="tns:PingResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PingResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Coverage" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfError" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dealers" type="tns:ArrayOfDealer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfError">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Error" nillable="true" type="tns:Error" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Error">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Code" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfDealer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Dealer" nillable="true" type="tns:Dealer" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Dealer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Distance" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Latitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="Longitude" type="s:double" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProgramID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DealerID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="DealerCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PingEx">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="providerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="year" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="make" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="model" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="trim" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="zipCode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="ppcSourceGroupID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingExResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PingExResult" type="tns:PingResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Post">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lead" type="tns:Lead" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Lead">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProspectID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RequestDate" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Vehicle" type="tns:Vehicle" />
+          <s:element minOccurs="0" maxOccurs="1" name="Tradein" type="tns:Tradein" />
+          <s:element minOccurs="0" maxOccurs="1" name="Customer" type="tns:Customer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dealers" type="tns:ArrayOfDealer" />
+          <s:element minOccurs="0" maxOccurs="1" name="Provider" type="tns:Provider" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Vehicle">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:VehicleStatus" />
+          <s:element minOccurs="0" maxOccurs="1" name="VehicleID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Make" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Trim" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InteriorColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExteriorColor" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Options" type="tns:ArrayOfString" />
+          <s:element minOccurs="1" maxOccurs="1" name="PreferedFinanceMethod" type="tns:FinanceMethod" />
+          <s:element minOccurs="1" maxOccurs="1" name="DownPayment" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ImageTag" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="VehicleStatus">
+        <s:restriction base="s:string">
+          <s:enumeration value="New" />
+          <s:enumeration value="Used" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="FinanceMethod">
+        <s:restriction base="s:string">
+          <s:enumeration value="Cash" />
+          <s:enumeration value="Finance" />
+          <s:enumeration value="Lease" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Tradein">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Year" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Make" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Trim" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Odometer" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Customer">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FaxPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="BestContactMethod" type="tns:ContactMethod" />
+          <s:element minOccurs="1" maxOccurs="1" name="BestContactTime" type="tns:ContactTime" />
+          <s:element minOccurs="1" maxOccurs="1" name="PurchaseTimeFrame" type="tns:TimeFrame" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="ContactMethod">
+        <s:restriction base="s:string">
+          <s:enumeration value="HomePhone" />
+          <s:enumeration value="WorkPhone" />
+          <s:enumeration value="FaxPhone" />
+          <s:enumeration value="Email" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="ContactTime">
+        <s:restriction base="s:string">
+          <s:enumeration value="Morning" />
+          <s:enumeration value="Afternoon" />
+          <s:enumeration value="Evening" />
+          <s:enumeration value="NoPreference" />
+          <s:enumeration value="Day" />
+        </s:restriction>
+      </s:simpleType>
+      <s:simpleType name="TimeFrame">
+        <s:restriction base="s:string">
+          <s:enumeration value="Within48Hours" />
+          <s:enumeration value="Within14Days" />
+          <s:enumeration value="Within30Days" />
+          <s:enumeration value="Over30Days" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="Provider">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="ProviderID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Service" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostResult" type="tns:PostResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="PostResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Accepted" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LeadID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfError" />
+          <s:element minOccurs="0" maxOccurs="1" name="Dealers" type="tns:ArrayOfDealer" />
+          <s:element minOccurs="0" maxOccurs="1" name="TransactionID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="PostCommOptFlag">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lead" type="tns:Lead" />
+            <s:element minOccurs="1" maxOccurs="1" name="optionsFlag" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostCommOptFlagResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostCommOptFlagResult" type="tns:PostResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostCommOptions">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="lead" type="tns:Lead" />
+            <s:element minOccurs="1" maxOccurs="1" name="emailOptIn" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" name="phoneOptIn" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PostCommOptionsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PostCommOptionsResult" type="tns:PostResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Disposition">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="providerID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="leadID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DispositionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DispositionResult" type="tns:DispositionResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="DispositionResult">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Status" type="tns:Disposition" />
+          <s:element minOccurs="0" maxOccurs="1" name="Reason" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Errors" type="tns:ArrayOfError" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Disposition">
+        <s:restriction base="s:string">
+          <s:enumeration value="Unknown" />
+          <s:enumeration value="Pending" />
+          <s:enumeration value="Accepted" />
+          <s:enumeration value="Rejected" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="Errors">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="providerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ErrorsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ErrorsResult" type="tns:ArrayOfError" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingResult" nillable="true" type="tns:PingResult" />
+      <s:element name="DispositionResult" nillable="true" type="tns:DispositionResult" />
+      <s:element name="ArrayOfError" nillable="true" type="tns:ArrayOfError" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingExSoapIn">
+    <wsdl:part name="parameters" element="tns:PingEx" />
+  </wsdl:message>
+  <wsdl:message name="PingExSoapOut">
+    <wsdl:part name="parameters" element="tns:PingExResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostSoapIn">
+    <wsdl:part name="parameters" element="tns:Post" />
+  </wsdl:message>
+  <wsdl:message name="PostSoapOut">
+    <wsdl:part name="parameters" element="tns:PostResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostCommOptFlagSoapIn">
+    <wsdl:part name="parameters" element="tns:PostCommOptFlag" />
+  </wsdl:message>
+  <wsdl:message name="PostCommOptFlagSoapOut">
+    <wsdl:part name="parameters" element="tns:PostCommOptFlagResponse" />
+  </wsdl:message>
+  <wsdl:message name="PostCommOptionsSoapIn">
+    <wsdl:part name="parameters" element="tns:PostCommOptions" />
+  </wsdl:message>
+  <wsdl:message name="PostCommOptionsSoapOut">
+    <wsdl:part name="parameters" element="tns:PostCommOptionsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DispositionSoapIn">
+    <wsdl:part name="parameters" element="tns:Disposition" />
+  </wsdl:message>
+  <wsdl:message name="DispositionSoapOut">
+    <wsdl:part name="parameters" element="tns:DispositionResponse" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsSoapIn">
+    <wsdl:part name="parameters" element="tns:Errors" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsSoapOut">
+    <wsdl:part name="parameters" element="tns:ErrorsResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpGetIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="make" type="s:string" />
+    <wsdl:part name="model" type="s:string" />
+    <wsdl:part name="trim" type="s:string" />
+    <wsdl:part name="zipCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpGetOut">
+    <wsdl:part name="Body" element="tns:PingResult" />
+  </wsdl:message>
+  <wsdl:message name="PingExHttpGetIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="make" type="s:string" />
+    <wsdl:part name="model" type="s:string" />
+    <wsdl:part name="trim" type="s:string" />
+    <wsdl:part name="zipCode" type="s:string" />
+    <wsdl:part name="ppcSourceGroupID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PingExHttpGetOut">
+    <wsdl:part name="Body" element="tns:PingResult" />
+  </wsdl:message>
+  <wsdl:message name="DispositionHttpGetIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="leadID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DispositionHttpGetOut">
+    <wsdl:part name="Body" element="tns:DispositionResult" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsHttpGetIn">
+    <wsdl:part name="providerID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsHttpGetOut">
+    <wsdl:part name="Body" element="tns:ArrayOfError" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpPostIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="make" type="s:string" />
+    <wsdl:part name="model" type="s:string" />
+    <wsdl:part name="trim" type="s:string" />
+    <wsdl:part name="zipCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PingHttpPostOut">
+    <wsdl:part name="Body" element="tns:PingResult" />
+  </wsdl:message>
+  <wsdl:message name="PingExHttpPostIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="year" type="s:string" />
+    <wsdl:part name="make" type="s:string" />
+    <wsdl:part name="model" type="s:string" />
+    <wsdl:part name="trim" type="s:string" />
+    <wsdl:part name="zipCode" type="s:string" />
+    <wsdl:part name="ppcSourceGroupID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PingExHttpPostOut">
+    <wsdl:part name="Body" element="tns:PingResult" />
+  </wsdl:message>
+  <wsdl:message name="DispositionHttpPostIn">
+    <wsdl:part name="providerID" type="s:string" />
+    <wsdl:part name="leadID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DispositionHttpPostOut">
+    <wsdl:part name="Body" element="tns:DispositionResult" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsHttpPostIn">
+    <wsdl:part name="providerID" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ErrorsHttpPostOut">
+    <wsdl:part name="Body" element="tns:ArrayOfError" />
+  </wsdl:message>
+  <wsdl:portType name="DropZoneSoap">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <wsdl:input message="tns:PingExSoapIn" />
+      <wsdl:output message="tns:PingExSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Post">
+      <wsdl:input message="tns:PostSoapIn" />
+      <wsdl:output message="tns:PostSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptFlag">
+      <wsdl:input message="tns:PostCommOptFlagSoapIn" />
+      <wsdl:output message="tns:PostCommOptFlagSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptions">
+      <wsdl:input message="tns:PostCommOptionsSoapIn" />
+      <wsdl:output message="tns:PostCommOptionsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <wsdl:input message="tns:DispositionSoapIn" />
+      <wsdl:output message="tns:DispositionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <wsdl:input message="tns:ErrorsSoapIn" />
+      <wsdl:output message="tns:ErrorsSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DropZoneHttpGet">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpGetIn" />
+      <wsdl:output message="tns:PingHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <wsdl:input message="tns:PingExHttpGetIn" />
+      <wsdl:output message="tns:PingExHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <wsdl:input message="tns:DispositionHttpGetIn" />
+      <wsdl:output message="tns:DispositionHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <wsdl:input message="tns:ErrorsHttpGetIn" />
+      <wsdl:output message="tns:ErrorsHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="DropZoneHttpPost">
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingHttpPostIn" />
+      <wsdl:output message="tns:PingHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <wsdl:input message="tns:PingExHttpPostIn" />
+      <wsdl:output message="tns:PingExHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <wsdl:input message="tns:DispositionHttpPostIn" />
+      <wsdl:output message="tns:DispositionHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <wsdl:input message="tns:ErrorsHttpPostIn" />
+      <wsdl:output message="tns:ErrorsHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="DropZoneSoap" type="tns:DropZoneSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://www.autobytel.com/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <soap:operation soapAction="http://www.autobytel.com/PingEx" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Post">
+      <soap:operation soapAction="http://www.autobytel.com/Post" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptFlag">
+      <soap:operation soapAction="http://www.autobytel.com/PostCommOptFlag" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptions">
+      <soap:operation soapAction="http://www.autobytel.com/PostCommOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <soap:operation soapAction="http://www.autobytel.com/Disposition" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <soap:operation soapAction="http://www.autobytel.com/Errors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropZoneSoap12" type="tns:DropZoneSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://www.autobytel.com/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <soap12:operation soapAction="http://www.autobytel.com/PingEx" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Post">
+      <soap12:operation soapAction="http://www.autobytel.com/Post" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptFlag">
+      <soap12:operation soapAction="http://www.autobytel.com/PostCommOptFlag" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PostCommOptions">
+      <soap12:operation soapAction="http://www.autobytel.com/PostCommOptions" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <soap12:operation soapAction="http://www.autobytel.com/Disposition" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <soap12:operation soapAction="http://www.autobytel.com/Errors" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropZoneHttpGet" type="tns:DropZoneHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <http:operation location="/PingEx" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <http:operation location="/Disposition" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <http:operation location="/Errors" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="DropZoneHttpPost" type="tns:DropZoneHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="Ping">
+      <http:operation location="/Ping" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PingEx">
+      <http:operation location="/PingEx" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Disposition">
+      <http:operation location="/Disposition" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Errors">
+      <http:operation location="/Errors" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="DropZone">
+    <wsdl:port name="DropZoneSoap" binding="tns:DropZoneSoap">
+      <soap:address location="http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropZoneSoap12" binding="tns:DropZoneSoap12">
+      <soap12:address location="http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropZoneHttpGet" binding="tns:DropZoneHttpGet">
+      <http:address location="http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx" />
+    </wsdl:port>
+    <wsdl:port name="DropZoneHttpPost" binding="tns:DropZoneHttpPost">
+      <http:address location="http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

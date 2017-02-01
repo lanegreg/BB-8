@@ -1,0 +1,38 @@
+﻿<div id="zip_overlay_js" class="overlay overlay-dk max-450" style="display:none">
+  <button class="close_btn_js overlay-close">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div class="dead-middle">
+    <div class="form center">
+      <h1 class="h1">Zip Code &amp; Distance</h1>
+      <form>
+        <p>
+          <label>
+            Find cars within<br />
+            <select id="radius_js">
+              <option value="10">10 miles</option>
+              <option value="25">25 miles</option>
+              <option value="50">50 miles</option>
+              <option value="100" selected>100 miles</option>
+              <option value="500">500 miles</option>
+              <option value="2000">Unlimited miles</option>
+            </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            of Zip code
+            <input id="zip_js" type="text" placeholder="99999" class="xs" pattern="[0-9]{5}" required />
+          </label>
+        </p>
+        <p>
+          <button id="inventory_zipdist_st" class="query_btn_js btn-primary block lg">I'm done, show results</button>
+        </p>
+      </form>
+    </div>
+  </div>
+</div>

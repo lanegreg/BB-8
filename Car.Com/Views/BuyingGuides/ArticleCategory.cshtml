@@ -1,0 +1,150 @@
+﻿@model Car.Com.Models.BuyingGuides.CategoryViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>@Model.PageMeta.H1</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div class="group-inline mgb-half">
+        @Html.SeoRouteLink("BuyingGuides_Index",
+        new RouteValues { { UriTokenNames.Page, "" } },
+        "Buying Guides",
+        new Attributes {
+        {"class", "h3 item"}
+      })
+        <h2 class="h1 item">@Model.PageMeta.H2</h2>
+      </div>
+      <ul class="grid-view-container">
+        @foreach (var article in Model.CategoriesSectionArticles) {
+          <li class="grid-view-item">
+            <article class="post post-card-view">
+              @if (article.MainArticleImage.IsNotNullOrEmpty()) {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="@article.MainArticleImage" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h2 class="title">@article.Title</h2>
+                  </div>
+                </a>
+              }
+              else if (article.VideoImageUrl.IsNotNullOrEmpty()) {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="@article.VideoImageUrl" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h2 class="title">@article.Title</h2>
+                  </div>
+                </a>
+              }
+              else {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="/assets/svg/no-image-avail_4x3.svg" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h2 class="title">@article.Title</h2>
+                  </div>
+                </a>
+              }
+            </article>
+          </li>
+        }
+          @{
+            switch (Model.VehicleCategoryName)
+            {
+              case "Alternative Fuel":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/coupes">Coupes</a>
+                </li>
+                  break;
+              case "Coupe":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/station-wagons">Wagons</a>
+                </li>
+                  break;
+              case "Convertible":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/alternative-fuel-vehicles">Alternative Fuels</a>
+                </li>
+                break;
+              case "Sedan":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/sports-cars">Sports Cars</a>
+                </li>
+                break;
+              case "SUV":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/sedans">Sedans</a>
+                </li>
+                break;
+              case "Truck":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/luxury-vehicles">Luxury</a>
+                </li>
+              break;
+              case "Van":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/suvs">SUVs</a>
+                </li>
+                break;
+              case "Wagon":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/compact-cars">Compacts</a>
+                </li>
+                break;
+              case "Luxury":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/convertibles">Convertibles</a>
+                </li>
+                break;
+              case "Sport":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/trucks">Trucks</a>
+                </li>
+                break;
+              case "Compact":
+                <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                  <a id="js_viewMoreArticles" href="/buying-guides/vans">Vans</a>
+                </li>
+                break;
+            }
+          }
+      </ul>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

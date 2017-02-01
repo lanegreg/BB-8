@@ -1,0 +1,26 @@
+﻿/**
+ *  This sass module represents the desktop version of research.index http://www.autobytel.com/
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+.main-bg {
+  @include breakpoint($small) {
+    background-image: url(img/fade-bg1.jpg);
+  }
+}
+
+// $MAKE, MODEL LIST
+.make-list, .model-list {
+  @extend %mnm-list;
+}
+
+.make-list {
+  @extend %make-list;
+}
+
+.category-list {
+  @extend %category-list;
+}

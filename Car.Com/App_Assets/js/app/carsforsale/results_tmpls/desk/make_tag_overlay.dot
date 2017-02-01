@@ -1,0 +1,58 @@
+﻿<div id="make_tag_overlay_js" class="overlay overlay-dk" style="display:none">
+  <button class="close_btn_js overlay-close">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div id="mt_pg1_js">
+    <form>
+      <h1 class="h1">Select Make or Category</h1>
+      <div id="mt_tabs_js" class="tabs-wrapper has-two">
+        <input type="radio" name="mt_tabs" id="tab1" class="tab-head" checked="" />
+        <label id="mamo_tab_lbl_js" for="tab1">Find by Make</label>
+        <input type="radio" name="mt_tabs" id="tab2" class="tab-head" />
+        <label id="cama_tab_lbl_js" for="tab2">Find by Category</label>
+        <div class="tab-body-wrapper">
+          <div id="tab-body-1" class="tab-body">
+            <div class="section-pad-tb" id="mamo_alert_js">
+              <ul id="mamo_makes_js" class="inline-block-list"></ul>
+              <p class="center">
+                <button id="goto_mamo_pg2_btn_js" type="button" class="btn-primary center">Next: Select Model</button>
+              </p>
+            </div>
+          </div>
+          <div id="tab-body-2" class="tab-body">
+            <div class="section-pad-tb" id="cama_alert_js">
+              <ul id="cama_cats_js" class="inline-block-list"></ul>
+              <p class="center">
+                <button id="goto_cama_pg2_btn_js" type="button" class="btn-primary center">Next: Select Make</button>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div id="mamo_pg2_js" style="display:none">
+    <form>
+      <h1 class="h1">Select Model</h1>
+      <div id="mamo_models_wrap_js"></div>
+      <p class="center">
+        <button id="backto_mamo_pg1_btn_js" type="button" class="btn-back">Go Back</button>
+        <button id="mamo_query_btn_js" class="btn-primary">I'm done, show results</button>
+      </p>
+    </form>
+  </div>
+  <div id="cama_pg2_js" style="display:none">
+    <form>
+      <h1 class="h1">Select Make</h1>
+      <div id="cama_makes_wrap_js"></div>
+      <p class="center">
+        <button id="backto_cama_pg1_btn_js" type="button" class="btn-back">Go Back</button>
+        <button id="cama_query_btn_js" class="btn-primary">I'm done, show results</button>
+      </p>
+    </form>
+  </div>
+</div>

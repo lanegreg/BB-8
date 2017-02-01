@@ -1,0 +1,1319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Car.Com</RootNamespace>
+    <AssemblyName>Car.Com</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <IsCompassProject>True</IsCompassProject>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Common, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.Web.Common.3.2.2.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Ninject.MVC3.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="RouteDebugger">
+      <HintPath>..\packages\routedebugger.2.1.4.0\lib\net40\RouteDebugger.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.2\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.2\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.2\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.2\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease, Version=1.6.5135.21930, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Wurfl, Version=1.5.1.1, Culture=neutral, PublicKeyToken=816aeec277aa13b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WURFL_Official_API.1.5.1.1\lib\Wurfl.dll</HintPath>
+    </Reference>
+    <Reference Include="Wurfl.Aspnet.Extensions, Version=1.5.1.1, Culture=neutral, PublicKeyToken=816aeec277aa13b9, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\WURFL_Official_API.1.5.1.1\lib\Wurfl.Aspnet.Extensions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\CacheableComponents.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\Advertisement\Common\Criteria.cs" />
+    <Compile Include="Common\Advertisement\Common\PageContext.cs" />
+    <Compile Include="Common\Advertisement\Common\StringExtensions.cs" />
+    <Compile Include="Common\Advertisement\Common\TagAs.cs" />
+    <Compile Include="Common\Advertisement\Routes\ArticleRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\CalculatorRoutes.cs" />
+    <Compile Include="Common\Advertisement\Common\ITagGenerator.cs" />
+    <Compile Include="Common\Advertisement\Router.cs" />
+    <Compile Include="Common\Advertisement\Routes\CarValueRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\CompareCarsRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\HttpErrorRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\FinanceRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\BuyingGuidesRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\SponsoredRoutes.cs" />
+    <Compile Include="Common\Api\DataWrapper.cs" />
+    <Compile Include="Common\Api\Status.cs" />
+    <Compile Include="Common\Cacheability\CacheConfig.cs" />
+    <Compile Include="Common\Cacheability\TimeToLive.cs" />
+    <Compile Include="Common\Environment\AppEnvironment.cs" />
+    <Compile Include="Common\Environment\CacheBustedAsset.cs" />
+    <Compile Include="Common\Environment\IAppEnvironment.cs" />
+    <Compile Include="Common\HtmlHelperExtensions.cs" />
+    <Compile Include="Common\HttpContextExtensions.cs" />
+    <Compile Include="Common\DeviceDetection\BrowserCaps.cs" />
+    <Compile Include="Common\DeviceDetection\DeviceDetector.cs" />
+    <Compile Include="Common\DeviceDetection\IBrowserCaps.cs" />
+    <Compile Include="Common\HttpRequestExtensions.cs" />
+    <Compile Include="Common\Pagination\Paginator.cs" />
+    <Compile Include="Common\SiteMeta\OfferMeta.cs" />
+    <Compile Include="Common\SiteMeta\AdvertMeta.cs" />
+    <Compile Include="Common\StringExtensions.cs" />
+    <Compile Include="Common\SiteMeta\TrackMeta.cs" />
+    <Compile Include="Common\Tracking\TrafficChannel.cs" />
+    <Compile Include="Common\UrlHelperExtensions.cs" />
+    <Compile Include="Controllers\Api\ArticleController.cs" />
+    <Compile Include="Controllers\Api\DevOpsController.cs" />
+    <Compile Include="Controllers\Api\CarsForSaleController.cs" />
+    <Compile Include="Controllers\Api\AdvertisementTagController.cs" />
+    <Compile Include="Common\Advertisement\Common\AdSpot.cs" />
+    <Compile Include="Common\Advertisement\Routes\CarsForSaleRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\ResearchRoutes.cs" />
+    <Compile Include="Common\Advertisement\Routes\SiteRoutes.cs" />
+    <Compile Include="Controllers\Api\BaseApiController.cs" />
+    <Compile Include="Controllers\Api\CarValueController.cs" />
+    <Compile Include="Controllers\Api\GeoLocationController.cs" />
+    <Compile Include="Controllers\Api\LeadEngineController.cs" />
+    <Compile Include="Controllers\Api\DeviceDetectController.cs" />
+    <Compile Include="Controllers\Api\CompareCarsController.cs" />
+    <Compile Include="Controllers\Api\ResearchController.cs" />
+    <Compile Include="Controllers\Api\ResearchFilterController.cs" />
+    <Compile Include="Controllers\Api\TrackingController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\BuyingGuidesController.cs" />
+    <Compile Include="Controllers\CompareCarsController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\CalculatorController.cs" />
+    <Compile Include="Controllers\Filters\ApiCacheabilityAttribute.cs" />
+    <Compile Include="Controllers\Filters\CacheabilityAttribute.cs" />
+    <Compile Include="Common\Cacheability\TimeToLiveLevel.cs" />
+    <Compile Include="Controllers\Filters\ErrorAttribute.cs" />
+    <Compile Include="Controllers\FinanceController.cs" />
+    <Compile Include="Controllers\RouteConstraints\SitemapSectionNamesConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\CategoriesConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\AbtMakesConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\MakesConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\NewSuperModelsConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\SuperModelsConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\TrimSectionsConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\TrimsConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\ResearchYearsConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\VehicleAttributesConstraint.cs" />
+    <Compile Include="Controllers\RouteConstraints\YearsConstraint.cs" />
+    <Compile Include="Controllers\HttpErrorController.cs" />
+    <Compile Include="Controllers\SiteController.cs" />
+    <Compile Include="Controllers\ResearchController.cs" />
+    <Compile Include="Controllers\CarsForSaleController.cs" />
+    <Compile Include="Controllers\CarValueController.cs" />
+    <Compile Include="Controllers\SponsoredController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BuyingGuides\ArticleViewModel.cs" />
+    <Compile Include="Models\Article\ArticleViewModel.cs" />
+    <Compile Include="Models\BuyingGuides\CategoryViewModel.cs" />
+    <Compile Include="Models\BuyingGuides\IndexViewModel.cs" />
+    <Compile Include="Models\CarsForSale\SelectCategoryMakesViewModel.cs" />
+    <Compile Include="Models\CarsForSale\SelectModelsViewModel.cs" />
+    <Compile Include="Models\CompareCars\ResultsViewModel.cs" />
+    <Compile Include="Models\CompareCars\IndexViewModel.cs" />
+    <Compile Include="Models\Article\IndexViewModel.cs" />
+    <Compile Include="Models\Calculator\AcceleratedPayoffViewModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\Calculator\FuelEfficiencyViewModel.cs" />
+    <Compile Include="Models\Calculator\AffordabilityViewModel.cs" />
+    <Compile Include="Models\Calculator\PaymentEstimateViewModel.cs" />
+    <Compile Include="Models\Calculator\LoanVsFinancingViewModel.cs" />
+    <Compile Include="Models\Calculator\LeaseOrPurchaseViewModel.cs" />
+    <Compile Include="Models\Calculator\IndexViewModel.cs" />
+    <Compile Include="Models\CarsForSale\MakeViewModel.cs" />
+    <Compile Include="Models\CarsForSale\ResultsViewModel.cs" />
+    <Compile Include="Models\CarsForSale\VehicleDetailsViewModel.cs" />
+    <Compile Include="Models\Finance\ArticleViewModel.cs" />
+    <Compile Include="Models\Finance\IndexViewModel.cs" />
+    <Compile Include="Models\Research\TrimIncentivesViewModel.cs" />
+    <Compile Include="Models\Research\TrimColorViewModel.cs" />
+    <Compile Include="Models\Research\TrimPicsnVidsViewModel.cs" />
+    <Compile Include="Models\Research\TrimSafetyViewModel.cs" />
+    <Compile Include="Models\Research\TrimWarrantyViewModel.cs" />
+    <Compile Include="Models\Research\TrimSpecsViewModel.cs" />
+    <Compile Include="Models\HttpError\ErrorViewModel.cs" />
+    <Compile Include="Models\Research\AlternativeFuelViewModel.cs" />
+    <Compile Include="Models\Research\VehicleAttributeNoCategoryViewModel.cs" />
+    <Compile Include="Models\Research\VehicleAttributeViewModel.cs" />
+    <Compile Include="Models\Shared\ArticleGalleryViewModel.cs" />
+    <Compile Include="Models\Site\ToolsViewModel.cs" />
+    <Compile Include="Models\Research\CategoryViewModel.cs" />
+    <Compile Include="Models\Research\TrimOverviewViewModel.cs" />
+    <Compile Include="Models\Research\SuperModelViewModel.cs" />
+    <Compile Include="Models\Research\YearViewModel.cs" />
+    <Compile Include="Models\Research\MakeViewModel.cs" />
+    <Compile Include="Models\Site\FraudViewModel.cs" />
+    <Compile Include="Models\Site\TermsViewModel.cs" />
+    <Compile Include="Models\Site\ContactViewModel.cs" />
+    <Compile Include="Models\Site\AboutViewModel.cs" />
+    <Compile Include="Models\Site\CopyrightViewModel.cs" />
+    <Compile Include="Models\Site\PrivacyViewModel.cs" />
+    <Compile Include="Models\Site\XmlSitemapSectionViewModel.cs" />
+    <Compile Include="Models\Site\XmlSitemapIndexViewModel.cs" />
+    <Compile Include="Models\Site\IndexViewModel.cs" />
+    <Compile Include="Models\Research\IndexViewModel.cs" />
+    <Compile Include="Models\CarsForSale\IndexViewModel.cs" />
+    <Compile Include="Models\CarValue\IndexViewModel.cs" />
+    <Compile Include="Models\Sponsored\NativoViewModel.cs" />
+    <Compile Include="Models\ViewModelBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Assets\js\app\article\article.desk.js" />
+    <Content Include="App_Assets\js\app\article\article.mobi.js" />
+    <Content Include="App_Assets\js\app\article\article.tabl.js" />
+    <Content Include="App_Assets\js\app\buyingguides\article.desk.js" />
+    <Content Include="App_Assets\js\app\buyingguides\article.mobi.js" />
+    <Content Include="App_Assets\js\app\buyingguides\article.tabl.js" />
+    <Content Include="App_Assets\js\app\buyingguides\articlecategory.desk.js" />
+    <Content Include="App_Assets\js\app\buyingguides\articlecategory.mobi.js" />
+    <Content Include="App_Assets\js\app\buyingguides\articlecategory.tabl.js" />
+    <Content Include="App_Assets\js\app\finance\article.desk.js" />
+    <Content Include="App_Assets\js\app\finance\article.mobi.js" />
+    <Content Include="App_Assets\js\app\finance\article.tabl.js" />
+    <Content Include="App_Assets\js\app\finance\index.desk.js" />
+    <Content Include="App_Assets\js\app\finance\index.mobi.js" />
+    <Content Include="App_Assets\js\app\finance\index.tabl.js" />
+    <Content Include="App_Assets\js\app\buyingguides\index.desk.js" />
+    <Content Include="App_Assets\js\app\buyingguides\index.mobi.js" />
+    <Content Include="App_Assets\js\app\buyingguides\index.tabl.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectcategorymakes.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectcategorymakes.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectcategorymakes.tabl.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectmodels.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectmodels.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\selectmodels.tabl.js" />
+    <Content Include="App_Assets\js\app\common\c4srecentlyviewedwdg.desk.js" />
+    <Content Include="App_Assets\js\app\common\c4srecentlyviewedwdg.mobi.js" />
+    <Content Include="App_Assets\js\app\common\c4srecentlyviewedwdg.tabl.js" />
+    <Content Include="App_Assets\js\app\common\viewedrecentlywidget.tabl.js" />
+    <Content Include="App_Assets\js\app\common\viewedrecentlywidget.mobi.js" />
+    <Content Include="App_Assets\js\app\common\viewedrecentlywidget.desk.js" />
+    <Content Include="App_Assets\js\app\common\c4swidget.mobi.js" />
+    <Content Include="App_Assets\js\app\common\c4swidget.tabl.js" />
+    <Content Include="App_Assets\js\app\common\c4swidget.desk.js" />
+    <Content Include="App_Assets\js\app\common\offersystem.tabl.js" />
+    <Content Include="App_Assets\js\app\common\offersystem.mobi.js" />
+    <Content Include="App_Assets\js\app\common\offersystem.desk.js" />
+    <Content Include="App_Assets\js\app\common\offerbootstrap.desk.js" />
+    <Content Include="App_Assets\js\app\common\offerbootstrap.mobi.js" />
+    <Content Include="App_Assets\js\app\common\offerbootstrap.tabl.js" />
+    <Content Include="App_Assets\js\app\comparecars\results.desk.js" />
+    <Content Include="App_Assets\js\app\comparecars\index.desk.js" />
+    <Content Include="App_Assets\js\app\comparecars\results.mobi.js" />
+    <Content Include="App_Assets\js\app\comparecars\index.mobi.js" />
+    <Content Include="App_Assets\js\app\comparecars\results.tabl.js" />
+    <Content Include="App_Assets\js\app\comparecars\index.tabl.js" />
+    <Content Include="App_Assets\js\app\carsforsale\make.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\make.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\make.tabl.js" />
+    <Content Include="App_Assets\js\app\carsforsale\results.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\results.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\results.tabl.js" />
+    <Content Include="App_Assets\js\app\global.site.js" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails.tabl.js" />
+    <Content Include="App_Assets\js\app\carvalue\index.desk.js" />
+    <Content Include="App_Assets\js\app\carvalue\index.mobi.js" />
+    <Content Include="App_Assets\js\app\carvalue\index.tabl.js" />
+    <Content Include="App_Assets\js\app\research\alternativefuel.desk.js" />
+    <Content Include="App_Assets\js\app\research\alternativefuel.mobi.js" />
+    <Content Include="App_Assets\js\app\research\alternativefuel.tabl.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributenocategoryresult.desk.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributenocategoryresult.mobi.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributenocategoryresult.tabl.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributeresult.desk.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributeresult.mobi.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattributeresult.tabl.js" />
+    <Content Include="App_Assets\js\app\research\supermodel.desk.js" />
+    <Content Include="App_Assets\js\app\research\supermodel.mobi.js" />
+    <Content Include="App_Assets\js\app\research\supermodel.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimcolor.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimcolor.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimcolor.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimincentives.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimincentives.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimincentives.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimpicsnvids.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimpicsnvids.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimsafety.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimsafety.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimsafety.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimwarranty.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimwarranty.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimwarranty.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimspecs.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimpicsnvids.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimspecs.tabl.js" />
+    <Content Include="App_Assets\js\app\httperror\status500.desk.js" />
+    <Content Include="App_Assets\js\app\httperror\status404.desk.js" />
+    <Content Include="App_Assets\js\app\httperror\status500.mobi.js" />
+    <Content Include="App_Assets\js\app\httperror\status404.mobi.js" />
+    <Content Include="App_Assets\js\app\httperror\status500.tabl.js" />
+    <Content Include="App_Assets\js\app\httperror\status404.tabl.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattribute.desk.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattribute.mobi.js" />
+    <Content Include="App_Assets\js\app\research\vehicleattribute.tabl.js" />
+    <Content Include="App_Assets\js\app\site\fraud.desk.js" />
+    <Content Include="App_Assets\js\app\site\fraud.mobi.js" />
+    <Content Include="App_Assets\js\app\site\fraud.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\acceleratedpayoff.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\acceleratedpayoff.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\acceleratedpayoff.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\fuelefficiency.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\fuelefficiency.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\fuelefficiency.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\affordability.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\affordability.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\affordability.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate.tabl.js" />
+    <Content Include="App_Assets\js\app\calculator\index.desk.js" />
+    <Content Include="App_Assets\js\app\calculator\index.mobi.js" />
+    <Content Include="App_Assets\js\app\calculator\index.tabl.js" />
+    <Content Include="App_Assets\js\app\site\tools.desk.js" />
+    <Content Include="App_Assets\js\app\site\tools.mobi.js" />
+    <Content Include="App_Assets\js\app\site\tools.tabl.js" />
+    <Content Include="App_Assets\js\app\sponsored\nativo.desk.js" />
+    <Content Include="App_Assets\js\app\sponsored\nativo.mobi.js" />
+    <Content Include="App_Assets\js\app\sponsored\nativo.tabl.js" />
+    <Content Include="App_Assets\js\libs\jquery-2.1.3.min.js" />
+    <Content Include="App_Assets\js\libs\jquery.event.move-1.3.6.js" />
+    <Content Include="App_Assets\js\libs\jquery.event.move-1.3.6.min.js" />
+    <Content Include="App_Assets\js\libs\jquery.lazyload.min.js" />
+    <Content Include="App_Assets\js\libs\lodash-2.4.1.min.js" />
+    <Content Include="App_Assets\js\libs\crypto-sha1.min.js" />
+    <Content Include="App_Assets\js\libs\crypto-aes.min.js" />
+    <Content Include="App_Assets\js\libs\crypto-lz.min.js" />
+    <Content Include="App_Assets\js\libs\omni.dev-20150908.min.js" />
+    <Content Include="App_Assets\js\libs\omni.prod-20150908.min.js" />
+    <Content Include="App_Assets\js\libs\picturefill-2.1.0.min.js" />
+    <Content Include="App_Assets\js\libs\popup-1.7.4.js" />
+    <Content Include="App_Assets\js\libs\popup-1.7.4.min.js" />
+    <Content Include="App_Assets\js\libs\salvattore-1.0.8.min.js" />
+    <Content Include="App_Assets\js\libs\svg4ie-1.0.0.min.js" />
+    <Content Include="App_Assets\js\libs\unslider-1.0.0-c1.0.js" />
+    <Content Include="App_Assets\js\libs\unslider-1.0.0-c1.0.min.js" />
+    <Content Include="App_Assets\js\modules\abt-cache.js" />
+    <Content Include="App_Assets\js\modules\abt-eventify.js" />
+    <Content Include="App_Assets\js\modules\abt-filters.js" />
+    <Content Include="App_Assets\js\modules\abt-packify.js" />
+    <Content Include="App_Assets\js\modules\abt-persona.js" />
+    <Content Include="App_Assets\js\modules\abt-svc-c4s-suggested.js" />
+    <Content Include="App_Assets\js\modules\abt-trk.js" />
+    <Content Include="App_Assets\js\modules\abt-ads.js" />
+    <Content Include="App_Assets\js\modules\abt-spinify.js" />
+    <Content Include="App_Assets\js\modules\abt-utils.js" />
+    <Content Include="App_Assets\js\modules\abt-validate.js" />
+    <Content Include="App_Assets\sass\fonts\slick.svg" />
+    <Content Include="assets\img\autonation\an-logo-wh-108x23.png" />
+    <Content Include="App_Assets\sass\img\fade-bg1.jpg" />
+    <Content Include="App_Assets\sass\img\fade-bg2.jpg" />
+    <Content Include="App_Assets\sass\img\fade-bg3.jpg" />
+    <Content Include="assets\img\autonation\an-logo_108x23.png" />
+    <Content Include="assets\img\autonation\an-logo_75x16.png" />
+    <Content Include="assets\img\autonation\an-recall-free-badge-60x45.png" />
+    <Content Include="App_Workflow\tasks\buyingguides\article.js" />
+    <Content Include="App_Workflow\tasks\buyingguides\articlecategory.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\selectcategorymakes.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\selectmodels.js" />
+    <Content Include="App_Workflow\tasks\common\c4srecentlyviewedwdg.js" />
+    <Content Include="App_Workflow\tasks\common\viewedrecentlywidget.js" />
+    <Content Include="App_Workflow\tasks\common\carsforsalewidget.js" />
+    <Content Include="App_Workflow\tasks\finance\article.js" />
+    <Content Include="App_Workflow\tasks\finance\index.js" />
+    <Content Include="App_Workflow\tasks\george.js" />
+    <Content Include="App_Workflow\tasks\greg.js" />
+    <Content Include="App_Workflow\tasks\sam.js" />
+    <Content Include="App_Workflow\tasks\sponsored\nativo.js" />
+    <Content Include="assets\img\autonation\autonation-rep_70x90.png" />
+    <Content Include="assets\img\autonation\autonation-rep_90x116.png" />
+    <Content Include="assets\img\autonation\recall-free-badge-126x95.png" />
+    <Content Include="assets\img\favicon\android-chrome-144x144.png" />
+    <Content Include="assets\img\favicon\android-chrome-192x192.png" />
+    <Content Include="assets\img\favicon\android-chrome-36x36.png" />
+    <Content Include="assets\img\favicon\android-chrome-48x48.png" />
+    <Content Include="assets\img\favicon\android-chrome-72x72.png" />
+    <Content Include="assets\img\favicon\android-chrome-96x96.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-114x114.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-120x120.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-144x144.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-152x152.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-180x180.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-57x57.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-60x60.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-72x72.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-76x76.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon-precomposed.png" />
+    <Content Include="assets\img\favicon\apple-touch-icon.png" />
+    <Content Include="assets\img\favicon\browserconfig.xml" />
+    <Content Include="assets\img\favicon\favicon-16x16.png" />
+    <Content Include="assets\img\favicon\favicon-194x194.png" />
+    <Content Include="assets\img\favicon\favicon-32x32.png" />
+    <Content Include="assets\img\favicon\favicon-96x96.png" />
+    <Content Include="assets\img\favicon\favicon.ico" />
+    <Content Include="assets\img\favicon\mstile-144x144.png" />
+    <Content Include="assets\img\favicon\mstile-150x150.png" />
+    <Content Include="assets\img\favicon\mstile-310x150.png" />
+    <Content Include="assets\img\favicon\mstile-310x310.png" />
+    <Content Include="assets\img\favicon\mstile-70x70.png" />
+    <Content Include="assets\img\hero-404.jpg" />
+    <Content Include="assets\img\hero-500.jpg" />
+    <Content Include="App_Assets\sass\img\ajax-loader.gif" />
+    <Content Include="assets\img\hero-alt-fuel.jpg" />
+    <Content Include="assets\img\hero-alt-fuel640x960.jpg" />
+    <Content Include="assets\img\hero-carsforsale.jpg" />
+    <Content Include="assets\img\hero-carsforsale640x960.jpg" />
+    <Content Include="assets\img\hero-home640x960.jpg" />
+    <Content Include="assets\img\hero-research.jpg" />
+    <Content Include="App_Assets\sass\img\filter-icon-sprites.png" />
+    <Content Include="assets\img\hero-research640x960.jpg" />
+    <Content Include="assets\img\hero-tools.jpg" />
+    <Content Include="App_Assets\sass\img\home-alfa-romeo.jpg" />
+    <Content Include="App_Assets\sass\img\kbb-large.png" />
+    <Content Include="App_Assets\sass\img\kbb-small.png" />
+    <Content Include="App_Assets\sass\img\nav-icon-sprites.png" />
+    <Content Include="App_Assets\sass\img\no-image-avail.svg" />
+    <Content Include="App_Assets\sass\img\no-image-avail_4x3.svg" />
+    <Content Include="App_Assets\sass\img\sprite-compare.png" />
+    <Content Include="App_Workflow\tasks\research\vehicleattributenocategoryresult.js" />
+    <Content Include="assets\img\1x1white.png" />
+    <Content Include="assets\img\hero-tools640x960.jpg" />
+    <Content Include="assets\svg\no-image-avail_4x3.svg" />
+    <Content Include="assets\svg\no-image-avail.svg" />
+    <Content Include="App_Assets\sass\img\util-icon-sprites.png" />
+    <Content Include="App_Workflow\tasks\article\articlegallery.js" />
+    <Content Include="App_Workflow\tasks\common\offersystem.js" />
+    <Content Include="App_Workflow\tasks\common\offerbootstrap.js" />
+    <Content Include="App_Workflow\tasks\comparecars\results.js" />
+    <Content Include="App_Workflow\tasks\comparecars\index.js" />
+    <Content Include="App_Workflow\tasks\calculator\acceleratedpayoff.js" />
+    <Content Include="App_Workflow\tasks\calculator\fuelefficiency.js" />
+    <Content Include="App_Workflow\tasks\calculator\affordability.js" />
+    <Content Include="App_Workflow\tasks\calculator\leaseorpurchase.js" />
+    <Content Include="App_Workflow\tasks\calculator\loanvsfinancing.js" />
+    <Content Include="App_Workflow\tasks\calculator\paymentestimate.js" />
+    <Content Include="App_Workflow\tasks\calculator\index.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\make.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\results.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\vehicledetails.js" />
+    <Content Include="App_Workflow\tasks\carvalue\index.js" />
+    <Content Include="App_Workflow\tasks\research\trimcolor.js" />
+    <Content Include="App_Workflow\tasks\research\trimsafety.js" />
+    <Content Include="App_Workflow\tasks\research\trimincentives.js" />
+    <Content Include="App_Workflow\tasks\research\trimwarranty.js" />
+    <Content Include="App_Workflow\tasks\research\trimpicsnvids.js" />
+    <Content Include="App_Workflow\tasks\research\trimspecs.js" />
+    <Content Include="App_Workflow\tasks\httperror\status500.js" />
+    <Content Include="App_Workflow\tasks\httperror\status404.js" />
+    <Content Include="App_Workflow\tasks\research\alternativefuel.js" />
+    <Content Include="App_Workflow\tasks\research\vehicleattributeresult.js" />
+    <Content Include="App_Workflow\tasks\research\vehicleattribute.js" />
+    <Content Include="App_Workflow\tasks\site\tools.js" />
+    <Content Include="App_Workflow\tasks\buyingguides\index.js" />
+    <Content Include="App_Workflow\tasks\research\supermodel.js" />
+    <Content Include="App_Workflow\tasks\site\fraud.js" />
+    <Content Include="assets\img\hero-home.jpg" />
+    <Content Include="assets\img\colorchip.png" />
+    <Content Include="App_Assets\js\app\head.inline.js" />
+    <Content Include="App_Assets\js\app\research\category.desk.js" />
+    <Content Include="App_Assets\js\app\research\category.mobi.js" />
+    <Content Include="App_Assets\js\app\research\category.tabl.js" />
+    <Content Include="App_Assets\js\app\research\year.desk.js" />
+    <Content Include="App_Assets\js\app\research\year.mobi.js" />
+    <Content Include="App_Assets\js\app\research\year.tabl.js" />
+    <Content Include="App_Assets\js\app\research\trimoverview.desk.js" />
+    <Content Include="App_Assets\js\app\research\trimoverview.mobi.js" />
+    <Content Include="App_Assets\js\app\research\trimoverview.tabl.js" />
+    <Content Include="App_Assets\js\app\research\make.desk.js" />
+    <Content Include="App_Assets\js\app\research\make.mobi.js" />
+    <Content Include="App_Assets\js\app\research\make.tabl.js" />
+    <Content Include="App_Assets\js\app\research\index.desk.js" />
+    <Content Include="App_Assets\js\app\research\index.tabl.js" />
+    <Content Include="App_Assets\js\app\research\index.mobi.js" />
+    <Content Include="App_Assets\js\app\atmpl.desk.js" />
+    <Content Include="App_Assets\js\app\atmpl.mobi.js" />
+    <Content Include="App_Assets\js\app\atmpl.tabl.js" />
+    <Content Include="App_Assets\js\app\site\sitemap.desk.js" />
+    <Content Include="App_Assets\js\app\site\sitemap.mobi.js" />
+    <Content Include="App_Assets\js\app\site\sitemap.tabl.js" />
+    <Content Include="App_Assets\js\app\site\copyright.desk.js" />
+    <Content Include="App_Assets\js\app\site\copyright.mobi.js" />
+    <Content Include="App_Assets\js\app\site\copyright.tabl.js" />
+    <Content Include="App_Assets\js\app\site\privacy.desk.js" />
+    <Content Include="App_Assets\js\app\site\privacy.mobi.js" />
+    <Content Include="App_Assets\js\app\site\privacy.tabl.js" />
+    <Content Include="App_Assets\js\app\site\terms.desk.js" />
+    <Content Include="App_Assets\js\app\site\terms.mobi.js" />
+    <Content Include="App_Assets\js\app\site\terms.tabl.js" />
+    <Content Include="App_Assets\js\app\site\about.desk.js" />
+    <Content Include="App_Assets\js\app\site\about.mobi.js" />
+    <Content Include="App_Assets\js\app\site\about.tabl.js" />
+    <Content Include="App_Assets\js\app\site\contact.desk.js" />
+    <Content Include="App_Assets\js\app\site\contact.mobi.js" />
+    <Content Include="App_Assets\js\app\site\contact.tabl.js" />
+    <Content Include="App_Assets\js\app\site\index.tabl.js" />
+    <Content Include="App_Assets\js\app\site\index.desk.js" />
+    <Content Include="App_Assets\js\libs\picturefill-2.1.0.js" />
+    <Content Include="App_Assets\js\modules\doT.js" />
+    <Content Include="App_Assets\js\modules\fragify.js" />
+    <Content Include="App_Assets\js\app\carsforsale\index.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\index.mobi.js" />
+    <Content Include="App_Assets\js\app\carsforsale\index.tabl.js" />
+    <Content Include="App_Assets\js\libs\jquery-1.11.0.min.js" />
+    <Content Include="App_Assets\js\libs\jquery-2.1.0.min.js" />
+    <Content Include=".editorconfig" />
+    <Content Include="App_Assets\js\app\research\trimspecs.desk.js" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\filters_overlay.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\zip_overlay.dot">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\car_for_sale.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\make_tag_overlay.dot" />
+    <Content Include="App_Assets\js\app\research\trimincentives_tmpls\desk\incentives_by_zip.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\paginator.dot" />
+    <Content Include="App_Assets\js\app\research\trimincentives_tmpls\mobi\incentives_by_zip.dot" />
+    <Content Include="App_Assets\js\app\research\trimincentives_tmpls\tabl\incentives_by_zip.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\range_btn.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\compare_data.dot" />
+    <Content Include="App_Assets\js\app\comparecars\index_tmpls\desk\compare_data.dot" />
+    <Content Include="App_Assets\js\app\comparecars\index_tmpls\desk\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\comparecars\index_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\comparecars\index_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\comparecars\index_tmpls\desk\default_compare_items.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\common\offerbootstrap_tmpls\desk\add_side_panel.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\sp_mmy_form.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\dealerlist_ping_data.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\overlay_lead_thankyou.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\add_offers_overlay.dot">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\make_tag_btn.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\make_tag_btn_group.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\tag_btn.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\compare_customize.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\desk\compare_no_data.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\overlay_lead_autoweb.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\make_tag_alert.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\sp_autoweb.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\no_results.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\missing_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\sp_c4s.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\make_select_options.dot" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate_tmpls\desk\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\mobi\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\mobi\compare_data.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\mobi\compare_no_data.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\mobi\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\comparecars\results_tmpls\mobi\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\inventory_nav.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\dealer_car_contact.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\dealer_identifier.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\feature_grid.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\dlr_car_messaging.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\slider_frames.dot" />
+    <Content Include="App_Assets\js\app\research\trimoverview_tmpls\desk\trimlist_by_supertrim.dot" />
+    <Content Include="App_Assets\js\app\research\trimoverview_tmpls\desk\similar_vehicles.dot" />
+    <Content Include="App_Assets\js\app\common\c4swidget_tmpls\desk\car_for_sale.dot" />
+    <Content Include="App_Assets\js\app\common\c4swidget_tmpls\desk\widget_wrap.dot" />
+    <Content Include="App_Assets\js\app\common\c4swidget_tmpls\desk\view_all_btn.dot" />
+    <Content Include="App_Assets\js\libs\unslider-1.0.0-c1.0.min.js.map">
+      <DependentUpon>unslider-1.0.0-c1.0.min.js</DependentUpon>
+    </Content>
+    <Content Include="App_Assets\js\app\common\viewedrecentlywidget_tmpls\desk\viewed_recently.dot" />
+    <Content Include="App_Assets\js\app\article\articlegallery_tmpls\desk\endcap.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\overlay_lead_similar_vehicles.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\dealerlist_similar_ping_data.dot" />
+    <Content Include="App_Assets\js\app\common\c4srecentlyviewedwdg_tmpls\desk\widget_wrap.dot" />
+    <Content Include="App_Assets\js\app\common\c4srecentlyviewedwdg_tmpls\desk\car_for_sale.dot" />
+    <Content Include="App_Assets\js\app\common\offersystem_tmpls\desk\overlay_multilead_thankyou.dot" />
+    <Content Include="App_Assets\js\app\calculator\paymentestimate_tmpls\desk\similar_vehicles.dot" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing_tmpls\desk\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing_tmpls\desk\similar_vehicles.dot" />
+    <Content Include="App_Assets\js\app\calculator\loanvsfinancing_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase_tmpls\desk\add_change_car_overlay.dot" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase_tmpls\desk\model_select_options.dot" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase_tmpls\desk\similar_vehicles.dot" />
+    <Content Include="App_Assets\js\app\calculator\leaseorpurchase_tmpls\desk\trim_select_options.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\index_tmpls\desk\clear_selections_overlay.dot" />
+    <Content Include="App_Assets\js\libs\popup-1.7.4.min.js.map">
+      <DependentUpon>popup-1.7.4.min.js</DependentUpon>
+    </Content>
+    <Content Include="App_Assets\js\app\carsforsale\results_tmpls\desk\zip_verify_overlay.dot">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Assets\js\app\common\offerbootstrap_tmpls\desk\nav_zip_overlay.dot">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Assets\js\app\common\offerbootstrap_tmpls\desk\overlay_byg_autoweb.dot" />
+    <Content Include="App_Assets\js\app\common\offerbootstrap_tmpls\desk\add_byg_overlay.dot">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\dealer_map.dot" />
+    <Content Include="App_Assets\js\app\carsforsale\vehicledetails_tmpls\desk\dealer_hours.dot" />
+    <None Include="App_Assets\js\_references.js" />
+    <Content Include="App_Assets\js\libs\modernizr-2.8.3.js" />
+    <Content Include="App_Assets\js\modules\abt-svc-c4s.js" />
+    <Content Include="App_Assets\js\modules\ajax.js" />
+    <Content Include="App_Assets\js\modules\kizzy.js" />
+    <Content Include="App_Assets\js\modules\lang-util.js" />
+    <Content Include="App_Data\web_browsers_patch.xml" />
+    <Content Include="App_Docs\Carnado_high_level_topology.png" />
+    <Content Include="App_Workflow\tasks\a.cntrl.tmpl\a.task.tmpl.js" />
+    <Content Include="App_Workflow\tasks\research\category.js" />
+    <Content Include="App_Workflow\tasks\research\year.js" />
+    <Content Include="App_Workflow\tasks\research\trimoverview.js" />
+    <Content Include="App_Workflow\tasks\research\make.js" />
+    <Content Include="App_Workflow\tasks\research\index.js" />
+    <Content Include="App_Workflow\tasks\carsforsale\index.js" />
+    <Content Include="App_Workflow\tasks\site\copyright.js" />
+    <Content Include="App_Workflow\tasks\site\sitemap.js" />
+    <Content Include="App_Workflow\tasks\site\privacy.js" />
+    <Content Include="App_Workflow\tasks\site\terms.js" />
+    <Content Include="App_Workflow\tasks\site\about.js" />
+    <Content Include="App_Workflow\tasks\site\contact.js" />
+    <Content Include="assets\img\research-alt-fuel.png" />
+    <Content Include="assets\svg\global-sprite.svg" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="App_Assets\js\modules\abt-never-use.js" />
+    <Content Include="App_Assets\js\app\site\index.mobi.js" />
+    <Content Include="App_Workflow\gulpfile.js" />
+    <Content Include="humans.txt" />
+    <Content Include="robots.txt" />
+    <Content Include="App_Assets\sass\modules\_app-mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\index.mobi.scss" />
+    <Content Include="App_Assets\sass\modules\_app-tabl.scss" />
+    <Content Include="App_Docs\README.md" />
+    <Content Include="App_Docs\LEARN_MARKDOWN.md" />
+    <Content Include="App_Workflow\tasks\common.js" />
+    <Content Include="App_Workflow\tasks\site\index.js" />
+    <Content Include="Services.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="static\ad_loader.html" />
+    <Content Include="static\load_iframe.txt" />
+    <Content Include="Views\BuyingGuides\Index.cshtml" />
+    <Content Include="Views\Finance\Index.cshtml" />
+    <Content Include="Views\CarsForSale\Index.cshtml" />
+    <Content Include="Views\CarsForSale\Results.cshtml" />
+    <Content Include="Views\CarsForSale\VehicleDetails.cshtml" />
+    <Content Include="Views\Research\AlternativeFuel.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Research\VehicleAttribute.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Research\VehicleAttributeResult.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Research\_FilterSectionVehicleCategory.cshtml" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Site\Index.cshtml" />
+    <Content Include="App_Data\wurfl-latest.zip" />
+    <Content Include="Views\Research\Index.cshtml" />
+    <Content Include="App_Docs\JQUERY-CUSTOM-BUILD.md" />
+    <Content Include="App_Workflow\package.json" />
+    <Content Include="App_Workflow\README.md" />
+    <Content Include="Views\Site\About.cshtml" />
+    <Content Include="Views\Site\Contact.cshtml" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\double\_default-pair.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\double\_default.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\double\_double-string.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\resolution\_resolution.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\single\_default.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\triple\_default.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\_double.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\_query.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\_resolution.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\_single.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\parsers\_triple.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\_context.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\_helpers.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\_no-query.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\_parsers.scss" />
+    <Content Include="App_Assets\sass\libs\breakpoint\_respond-to.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_animation.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_appearance.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_background-clip.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_background-origin.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_background-size.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_border-radius.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_box-shadow.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_box-sizing.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_box.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_columns.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_deprecated-support.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_filter.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_flexbox.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_font-face.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_hyphenation.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_images.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_inline-block.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_opacity.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_pie.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_regions.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_selection.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_shared.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_text-shadow.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_transform.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_transition.scss" />
+    <Content Include="App_Assets\sass\libs\compass\css3\_user-interface.scss" />
+    <Content Include="App_Assets\sass\libs\compass\layout\_grid-background.scss" />
+    <Content Include="App_Assets\sass\libs\compass\layout\_sticky-footer.scss" />
+    <Content Include="App_Assets\sass\libs\compass\layout\_stretching.scss" />
+    <Content Include="App_Assets\sass\libs\compass\reset\_utilities-legacy.scss" />
+    <Content Include="App_Assets\sass\libs\compass\reset\_utilities.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\links\_hover-link.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\links\_link-colors.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\links\_unstyled-link.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\lists\_bullets.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\lists\_horizontal-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\lists\_inline-block-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\lists\_inline-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\text\_ellipsis.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\text\_force-wrap.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\text\_nowrap.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\text\_replacement.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\_links.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\_lists.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\_text.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\_units.scss" />
+    <Content Include="App_Assets\sass\libs\compass\typography\_vertical_rhythm.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\color\_brightness.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\color\_contrast.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_clearfix.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_float.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_hacks.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_min.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_reset.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_tabs.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\general\_tag-cloud.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\links\_hover-link.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\links\_link-colors.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\links\_unstyled-link.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\lists\_bullets.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\lists\_horizontal-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\lists\_inline-block-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\lists\_inline-list.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\sass\_lists.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\sass\_maps.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\sprites\_base.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\sprites\_sprite-img.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\tables\_alternating-rows-and-columns.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\tables\_borders.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\tables\_scaffolding.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\text\_ellipsis.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\text\_nowrap.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\text\_replacement.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_color.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_general.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_links.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_lists.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_print.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_sass.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_sprites.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_tables.scss" />
+    <Content Include="App_Assets\sass\libs\compass\utilities\_text.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_configuration.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_css3.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_layout.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_reset-legacy.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_reset.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_support.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_typography.scss" />
+    <Content Include="App_Assets\sass\libs\compass\_utilities.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_background.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_functions.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_grid.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_isolation.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_margin.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_media.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_padding.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susyone\_settings.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_background.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_bleed.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_box-sizing.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_breakpoint-plugin.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_container.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_context.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_gallery.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_grids.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_gutters.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_isolate.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_margins.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_padding.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_rows.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_settings.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_span.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\susy\_validation.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\_susy.scss" />
+    <Content Include="App_Assets\sass\libs\susy\language\_susyone.scss" />
+    <Content Include="App_Assets\sass\libs\susy\math\su\_grid.scss" />
+    <Content Include="App_Assets\sass\libs\susy\math\su\_maps.scss" />
+    <Content Include="App_Assets\sass\libs\susy\math\su\_settings.scss" />
+    <Content Include="App_Assets\sass\libs\susy\math\su\_validation.scss" />
+    <Content Include="App_Assets\sass\libs\susy\math\_su.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\float\_container.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\float\_end.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\float\_isolate.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\float\_span.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_background.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_container.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_direction.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_margins.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_output.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\shared\_padding.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_background.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_box-sizing.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_clearfix.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_prefix.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_rem.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\support\_support.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\_float.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\_shared.scss" />
+    <Content Include="App_Assets\sass\libs\susy\output\_support.scss" />
+    <Content Include="App_Assets\sass\libs\susy\_math.scss" />
+    <Content Include="App_Assets\sass\libs\_breakpoint.scss" />
+    <Content Include="App_Assets\sass\libs\_compass.scss" />
+    <Content Include="App_Assets\sass\libs\_lemonade.scss" />
+    <Content Include="App_Assets\sass\libs\_normalize.scss" />
+    <Content Include="App_Assets\sass\libs\_susy.scss" />
+    <Content Include="App_Assets\sass\libs\_susyone.scss" />
+    <Content Include="App_Assets\sass\app\site\index.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\index.head.scss" />
+    <Content Include="Views\Shared\_DefaultHeader.cshtml" />
+    <Content Include="Views\Shared\_SiteNav.cshtml" />
+    <Content Include="App_Assets\sass\app\atmpl.desk.scss" />
+    <Content Include="App_Assets\sass\app\atmpl.head.scss" />
+    <Content Include="App_Assets\sass\app\atmpl.mobi.scss" />
+    <Content Include="App_Assets\sass\app\atmpl.tabl.scss" />
+    <Content Include="Views\Shared\_DefaultFooter.cshtml" />
+    <Content Include="Views\Shared\_Breadcrumbs.cshtml" />
+    <Content Include="App_Assets\sass\app\carsforsale\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\index.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\index.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\index.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\index.head.scss" />
+    <Content Include="App_Assets\sass\app\research\index.mobi.scss" />
+    <Content Include="Views\Research\Make.cshtml" />
+    <Content Include="App_Assets\sass\app\research\make.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\make.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\make.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimoverview.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimoverview.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimoverview.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimoverview.tabl.scss" />
+    <Content Include="Views\Research\Year.cshtml" />
+    <Content Include="App_Assets\sass\app\research\year.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\year.head.scss" />
+    <Content Include="App_Assets\sass\app\research\year.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\year.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\make.mobi.scss" />
+    <Content Include="Views\Research\TrimOverview.cshtml" />
+    <Content Include="App_Assets\sass\app\research\category.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\category.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\category.head.scss" />
+    <Content Include="App_Assets\sass\app\research\category.mobi.scss" />
+    <Content Include="Views\Research\Category.cshtml" />
+    <Content Include="App_Assets\sass\app\site\contact.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\contact.head.scss" />
+    <Content Include="App_Assets\sass\app\site\contact.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\contact.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\about.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\about.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\about.head.scss" />
+    <Content Include="App_Assets\sass\app\site\about.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\terms.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\terms.head.scss" />
+    <Content Include="App_Assets\sass\app\site\terms.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\terms.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\copyright.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\copyright.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\copyright.head.scss" />
+    <Content Include="App_Assets\sass\app\site\copyright.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\privacy.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\privacy.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\privacy.head.scss" />
+    <Content Include="App_Assets\sass\app\site\privacy.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\sitemap.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\sitemap.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\sitemap.head.scss" />
+    <Content Include="App_Assets\sass\app\site\sitemap.mobi.scss" />
+    <Content Include="Views\Site\Copyright.cshtml" />
+    <Content Include="Views\Site\Privacy.cshtml" />
+    <Content Include="Views\Site\Terms.cshtml" />
+    <Content Include="Views\Site\XmlSitemapSection.cshtml" />
+    <Content Include="Views\Research\SuperModel.cshtml" />
+    <Content Include="App_Assets\sass\app\research\supermodel.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\supermodel.head.scss" />
+    <Content Include="App_Assets\sass\app\research\supermodel.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\supermodel.tabl.scss" />
+    <Content Include="Views\Site\Fraud.cshtml" />
+    <Content Include="App_Assets\sass\app\site\fraud.tabl.scss" />
+    <Content Include="App_Assets\sass\app\site\fraud.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\fraud.head.scss" />
+    <Content Include="App_Assets\sass\app\site\fraud.mobi.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\index.head.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\index.tabl.scss" />
+    <Content Include="Views\Site\Tools.cshtml" />
+    <Content Include="App_Assets\sass\app\site\tools.desk.scss" />
+    <Content Include="App_Assets\sass\app\site\tools.head.scss" />
+    <Content Include="App_Assets\sass\app\site\tools.mobi.scss" />
+    <Content Include="App_Assets\sass\app\site\tools.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\acceleratedpayoff.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\acceleratedpayoff.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\acceleratedpayoff.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\acceleratedpayoff.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\fuelefficiency.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\fuelefficiency.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\fuelefficiency.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\fuelefficiency.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\affordability.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\affordability.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\affordability.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\affordability.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\leaseorpurchase.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\leaseorpurchase.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\leaseorpurchase.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\leaseorpurchase.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\loanvsfinancing.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\loanvsfinancing.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\loanvsfinancing.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\loanvsfinancing.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\paymentestimate.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\paymentestimate.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\paymentestimate.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\paymentestimate.tabl.scss" />
+    <Content Include="App_Assets\sass\app\calculator\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\calculator\index.head.scss" />
+    <Content Include="App_Assets\sass\app\calculator\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\calculator\index.tabl.scss" />
+    <Content Include="Views\Calculator\AcceleratedPayoff.cshtml" />
+    <Content Include="Views\Calculator\FuelEfficiency.cshtml" />
+    <Content Include="Views\Calculator\Affordability.cshtml" />
+    <Content Include="Views\Calculator\LeaseOrPurchase.cshtml" />
+    <Content Include="Views\Calculator\LoanVsFinancing.cshtml" />
+    <Content Include="Views\Calculator\PaymentEstimate.cshtml" />
+    <Content Include="Views\Calculator\Index.cshtml" />
+    <Content Include="App_Assets\sass\app\carsforsale\vehicledetails.tabl.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\vehicledetails.mobi.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\vehicledetails.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\results.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\make.tabl.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\make.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\make.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\make.mobi.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\index.head.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\index.tabl.scss" />
+    <Content Include="App_Assets\sass\app\article\article.desk.scss" />
+    <Content Include="App_Assets\sass\app\article\article.head.scss" />
+    <Content Include="App_Assets\sass\app\article\article.mobi.scss" />
+    <Content Include="App_Assets\sass\app\article\article.tabl.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectmodels.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectmodels.mobi.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectmodels.tabl.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectmodels.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectcategorymakes.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectcategorymakes.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectcategorymakes.mobi.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\selectcategorymakes.tabl.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\articlecategory.desk.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\articlecategory.head.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\articlecategory.mobi.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\articlecategory.tabl.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\article.desk.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\article.head.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\article.mobi.scss" />
+    <Content Include="App_Assets\sass\app\buyingguides\article.tabl.scss" />
+    <None Include="App_Assets\sass\app\carsforsale\vehicledetails.desk.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\results.tabl.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\results.head.scss" />
+    <Content Include="App_Assets\sass\app\carsforsale\results.mobi.scss" />
+    <Content Include="Views\CarsForSale\Make.cshtml" />
+    <Content Include="Views\Research\_TrimHeader.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimspecs.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimspecs.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimspecs.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimspecs.tabl.scss" />
+    <Content Include="Views\Research\TrimSpecs.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimpicsnvids.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimpicsnvids.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimpicsnvids.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimpicsnvids.tabl.scss" />
+    <Content Include="Views\Research\TrimPicsnVids.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimwarranty.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimwarranty.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimwarranty.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimwarranty.tabl.scss" />
+    <Content Include="Views\Research\TrimWarranty.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimsafety.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimsafety.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimsafety.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimsafety.tabl.scss" />
+    <Content Include="Views\Research\TrimSafety.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimcolor.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimcolor.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimcolor.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimcolor.tabl.scss" />
+    <Content Include="Views\Research\TrimColor.cshtml" />
+    <Content Include="App_Assets\sass\app\research\trimincentives.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\trimincentives.head.scss" />
+    <Content Include="App_Assets\sass\app\research\trimincentives.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\trimincentives.tabl.scss" />
+    <Content Include="Views\Research\TrimIncentives.cshtml" />
+    <Content Include="App_Assets\sass\fonts\slick.eot" />
+    <Content Include="App_Assets\sass\fonts\slick.ttf" />
+    <Content Include="App_Assets\sass\fonts\slick.woff" />
+    <Content Include="Views\Research\_TrimOverviewSedan.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewConvertible.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewAltFuel.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewCompact.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewSport.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewSuv.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewTruck.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewVan.cshtml" />
+    <Content Include="Views\Research\_TrimOverviewWagon.cshtml" />
+    <Content Include="Views\CompareCars\Index.cshtml" />
+    <Content Include="App_Assets\sass\app\comparecars\results.desk.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\results.head.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\results.mobi.scss" />
+    <Content Include="App_Assets\sass\app\comparecars\results.tabl.scss" />
+    <Content Include="Views\CompareCars\Results.cshtml" />
+    <Content Include="App_Assets\sass\modules\_global-head.scss" />
+    <Content Include="App_Assets\sass\modules\_mixins.scss" />
+    <Content Include="Views\Article\ArticleGallery.cshtml" />
+    <Content Include="Views\Shared\_SidePanel.cshtml" />
+    <Content Include="Views\Research\_FilterSection.cshtml" />
+    <Content Include="Views\Research\_FilterSectionTransmission.cshtml" />
+    <Content Include="Views\Research\_FilterSectionCargocapacity.cshtml" />
+    <Content Include="Views\Research\_FilterSectionDoors.cshtml" />
+    <Content Include="Views\Research\_FilterSectionDriverange.cshtml" />
+    <Content Include="Views\Research\_FilterSectionDrivetrain.cshtml" />
+    <Content Include="Views\Research\_FilterSectionEngine.cshtml" />
+    <Content Include="Views\Research\_FilterSectionFueltype.cshtml" />
+    <Content Include="Views\Research\_FilterSectionSeating.cshtml" />
+    <Content Include="Views\Research\_FilterSectionTowingcapacity.cshtml" />
+    <Content Include="Views\Research\_FilterSectionBedlength.cshtml" />
+    <Content Include="Views\Research\_FilterSectionBodystyle.cshtml" />
+    <Content Include="Views\Shared\_LeadForms.cshtml" />
+    <Content Include="Views\HttpError\Status404.cshtml" />
+    <Content Include="Views\HttpError\Status500.cshtml" />
+    <Content Include="App_Assets\sass\app\httperror\status404.desk.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status404.head.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status404.mobi.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status404.tabl.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status500.desk.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status500.head.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status500.mobi.scss" />
+    <Content Include="App_Assets\sass\app\httperror\status500.tabl.scss" />
+    <Content Include="App_Docs\Redis_Databases.md" />
+    <Content Include="App_Assets\sass\app\research\vehicleattribute.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattribute.head.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattribute.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattribute.tabl.scss" />
+    <Content Include="Views\Site\XmlSitemapIndex.cshtml" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributeresult.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributeresult.head.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributeresult.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributeresult.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\alternativefuel.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\alternativefuel.head.scss" />
+    <Content Include="App_Assets\sass\app\research\alternativefuel.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\alternativefuel.tabl.scss" />
+    <Content Include="Views\CarValue\Index.cshtml" />
+    <Content Include="App_Assets\sass\libs\_unslider.scss" />
+    <Content Include="Views\Shared\_GlobalSpriteInline.cshtml" />
+    <Content Include="App_Assets\sass\modules\_hero.scss" />
+    <Content Include="App_Assets\sass\app\carvalue\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\carvalue\index.head.scss" />
+    <Content Include="App_Assets\sass\app\carvalue\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\carvalue\index.tabl.scss" />
+    <Content Include="App_Workflow\tasks\config.json" />
+    <Content Include="Views\Research\VehicleAttributeNoCategoryResult.cshtml" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributenocategoryresult.tabl.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributenocategoryresult.desk.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributenocategoryresult.mobi.scss" />
+    <Content Include="App_Assets\sass\app\research\vehicleattributenocategoryresult.head.scss" />
+    <Content Include="App_Assets\sass\modules\_components.scss" />
+    <Content Include="App_Assets\sass\modules\_base.scss" />
+    <Content Include="App_Assets\sass\modules\_helpers.scss" />
+    <Content Include="App_Assets\sass\modules\_layout.scss" />
+    <Content Include="App_Assets\sass\modules\_variables.scss" />
+    <Content Include="Views\CompareCars\ResultsMobile.cshtml" />
+    <Content Include="Views\Research\_FilterIcons.cshtml" />
+    <Content Include="Views\Research\_FilterIconsBedlength.cshtml" />
+    <Content Include="Views\Research\_FilterIconsBodystyle.cshtml" />
+    <Content Include="Views\Research\_FilterIconsCargocapacity.cshtml" />
+    <Content Include="Views\Research\_FilterIconsDoors.cshtml" />
+    <Content Include="Views\Research\_FilterIconsDriverange.cshtml" />
+    <Content Include="Views\Research\_FilterIconsDrivetrain.cshtml" />
+    <Content Include="Views\Research\_FilterIconsEngine.cshtml" />
+    <Content Include="Views\Research\_FilterIconsFueltype.cshtml" />
+    <Content Include="Views\Research\_FilterIconsSeating.cshtml" />
+    <Content Include="Views\Research\_FilterIconsTowingcapacity.cshtml" />
+    <Content Include="Views\Research\_FilterIconsTransmission.cshtml" />
+    <Content Include="Views\Shared\_FilterIconsVehicleCategory.cshtml" />
+    <Content Include="assets\img\favicon\manifest.json" />
+    <Content Include="Views\Sponsored\Nativo.cshtml" />
+    <Content Include="App_Assets\sass\app\sponsored\nativo.desk.scss" />
+    <Content Include="App_Assets\sass\app\sponsored\nativo.head.scss" />
+    <Content Include="App_Assets\sass\app\sponsored\nativo.mobi.scss" />
+    <Content Include="App_Assets\sass\app\sponsored\nativo.tabl.scss" />
+    <Content Include="Views\CarsForSale\SelectModels.cshtml" />
+    <Content Include="Views\CarsForSale\SelectCategoryMakes.cshtml" />
+    <Content Include="Views\BuyingGuides\ArticleCategory.cshtml" />
+    <Content Include="Views\BuyingGuides\VehicleCategoryGuides\_CategoryGroup.cshtml" />
+    <Content Include="App_Assets\sass\app\finance\index.desk.scss" />
+    <Content Include="App_Assets\sass\app\finance\index.head.scss" />
+    <Content Include="App_Assets\sass\app\finance\index.mobi.scss" />
+    <Content Include="App_Assets\sass\app\finance\index.tabl.scss" />
+    <Content Include="Views\Finance\Article.cshtml" />
+    <Content Include="Views\Shared\_ArticleGallery.cshtml" />
+    <Content Include="App_Assets\sass\app\finance\article.desk.scss" />
+    <Content Include="App_Assets\sass\app\finance\article.head.scss" />
+    <Content Include="App_Assets\sass\app\finance\article.mobi.scss" />
+    <Content Include="App_Assets\sass\app\finance\article.tabl.scss" />
+    <Content Include="Views\BuyingGuides\Article.cshtml" />
+    <Content Include="Views\CarsForSale\VehicleDetailsBranded.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Assets\dist\" />
+    <Folder Include="doubleclick\" />
+    <Folder Include="Views\Article\Templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Car.Com.Common\Car.Com.Common.csproj">
+      <Project>{e4302754-10c7-4c43-b4c3-9d8031132092}</Project>
+      <Name>Car.Com.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Car.Com.Domain\Car.Com.Domain.csproj">
+      <Project>{38d76885-8ef0-4d84-8376-d66b206dff57}</Project>
+      <Name>Car.Com.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Car.Com.Service\Car.Com.Service.csproj">
+      <Project>{17d290f4-4928-4471-9aa7-3ff62867983a}</Project>
+      <Name>Car.Com.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Assets\sass\modules\_app-base.scss" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>REM Ref: http://stackoverflow.com/questions/8713960/cmd-exe-k-switch
+REM cd $(SolutionDir)workflow
+REM call C:\Windows\System32\cmd.exe /k "C:\Program Files\nodejs\nodevars.bat &amp; npm install &amp; gulp buildall"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

@@ -1,0 +1,89 @@
+
+           ______
+          /  __  \
+         /  /  \__\  ___ _ _ __  ___   ___  _   _
+        (  (    ___ / _ V | V / /  _\ / _ \| \ / |
+         \  \__/  /| (_)  |  / |  (_ | (_) | |`| |
+          \______/  \__/|_|__|(_)___/ \___/|_| |_|
+         ..._________________...____________________...........
+ .......///_________________///____________________///
+
+
+/* TEAM */
+
+  Name: Daly Yoo
+  Role: Creative Director
+  Location: Irvine, CA USA
+
+  Name: Janet Megee
+  Role: Director, SEO and Social Media, the keeper of Super Top Secret Excel Files
+  Location: Irvine, CA USA
+
+  Name: Don Linville
+  Role: Overlord of All Things DESIGN,  Husband of Michelle and Father of Kai and Sophie, Fitness Over 40 Revolutionary, Rap and Hip-Hop Enthusiast.
+  Location: Irvine, CA USA
+
+  Name: Mioko Chavira
+  Role: Lead Web Designer, Front-end Developer, Wife of Chris and Mother of Kai, SASS-meister Aficionado
+  Location: Irvine, CA USA
+
+  Name: Greg Lane
+  Role: Full Stack Developer, Architect, Perf, SEO, Team Rebel Rouser (shutup already)
+  Location: Irvine, CA USA
+
+  Name: Bill Ray
+  Role: Senior Developer, Research, Team Linebacker (go-to man)
+  Location: Irvine, CA USA
+
+  Name: Marvin Fetalino
+  Role: Senior Developer, CMS, Happily Married Team Food Advisor (here, try this)
+  Location: Irvine, CA USA
+
+  Name: Sam Schulte
+  Role: Senior Full Stack Developer, New Kid on Block (Let's go wheeling! Got dirt?)
+  Location: Irvine, CA USA
+
+  Name: Taren Peng
+  Role: Uber Developer, Dev Orchestration (I wanna go faster!)
+  Location: Irvine, CA USA
+
+  Name: Tom Velarde
+  Role: Project Manager, Master of the Plan, Cracker of the Whip
+  Location: Irvine, CA USA
+
+  Name: Richard Bell
+  Role: Network Engineering, Infrastructure, Epic Guru, aka "Blade" (we're not worthy)
+  Location: Irvine, CA USA
+
+  Name: John Glover
+  Role: Systems Engineering, Infrastructure, "G-Lover" (got drums? ...or maybe guns?)
+  Location: Irvine, CA USA
+
+  Name: John Skocilic
+  Role: Epic Leader, Technology, Human Encylopedia (just tell me the answer)
+  Location: Irvine, CA USA
+
+
+/* SITE */
+  Last update: 2015/03/16
+  Url: http://www.car.com
+  Language: English
+  Doctype: HTML5
+  Standards: HTML5, CSS3, ReST
+  Components: Modernizr
+  Frameworks: jQuery
+  Software: .NET4.5/MVC5, Redis, NodeJS
+  Tools: Visual Studio 2013.4, Sass, Susy, Gulp, Jenkins, Browser-Stack, NUnit
+
+
+/* THANKS */
+  To everyone else that supports this team!
+                                                                                          __
+    ______                   __                                                          |  |
+   /  __  \                 /  \             _          _               _           __   |  |
+  /  /  \__\  _____        / /\ \  _    _ __| |__  ___ | |_  _     _ __| |__  ___  |  |  |  |
+ (  (  _____ /  _  \      / /__\ \| |  | |__   __|/ _ \|    \  \ /  |__   __|/  _ \|  |  |__|
+  \  \__/  /|  (_)  |    /  ____  \ \__/ /  | |  | (_) | (_) |  v  /   | |  |   __/|  |   __
+   \______/  \_____/    /_/      \_\____/   |_|   \___/|____/ \   /    |_|   \____/|__|  (  )
+                                                              /  /
+                                                             /__/

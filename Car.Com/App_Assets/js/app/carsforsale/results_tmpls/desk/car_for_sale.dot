@@ -1,0 +1,52 @@
+﻿{{~it.cars_for_sale :car:index}}
+<li class="grid-view-item" data-id="{{= car.id}}">
+  <a href="/cars-for-sale/vehicle-details/?q={{= car.dealer.id}}|{{= car.id}}|{{= it.zipcode}}|{{= car.make_id}}|{{= car.model}}" class="card-c4s">
+    <div class="img-container">
+      <img src="{{= car.primary_image_url}}" alt="{{= car.year}} {{= car.make}} {{= car.model}}" />
+    </div>
+    <div class="desc{{? car.dealer.autonationdealer}} an-dlr{{?}}">
+      
+    {{? car.dealer.autonationdealer}} 
+    <div class="an-label-tab">
+        <div class="label">
+            <img src="/assets/img/autonation/an-logo-wh-108x23.png" alt="AutoNation logo" class="logo" />
+        </div>
+    </div>
+    {{?}}
+
+      <div class="member-label{{? !car.dealer.is_trusted || car.dealer.autonationdealer}} disabled{{?}}">
+        <span class="label">
+          <span class="icon inline">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_member-dlr"></use>
+            </svg>
+          </span>
+          Member Dealer
+        </span>
+      </div>
+      <div class="group">
+        <span class="price">{{? car.has_missing_price}}Request A Quote{{??}}${{= car.price}}{{?}}</span>
+        <span class="mileage">{{? !car.has_missing_mileage}}{{= car.mileage}} miles{{?}}</span>
+      </div>
+      <span class="v-name">{{= car.year}} {{= car.make}} {{= car.model}}</span>
+      <span class="loc">{{= car.dealer.city}}, {{= car.dealer.state}}</span>
+      <span class="loc">VIN {{= car.vin}}</span>
+      <span class="loc">{{= car.distance}} miles from you!</span>
+			
+			{{? car.dealer.autonationdealer}}
+			<div class="an-recall-free-badge" title="Recall Free">
+				<img src="/assets/img/autonation/an-recall-free-badge-60x45.png" alt="Recall Free" />
+			</div>
+			{{?}}
+
+      <div class="lead_pop_btn_js email">
+        <span class="icon i-envelope">
+           <svg>
+            <use xlink:href="/assets/svg/global-sprite.svg#i-envelope"></use>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </a>
+</li>
+{{~}}

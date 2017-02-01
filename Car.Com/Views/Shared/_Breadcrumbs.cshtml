@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Car.Com.Domain.Models.SiteMeta.Breadcrumb>
+
+@if (Model != null && Model.Any()) {
+  <ul class="breadcrumbs">
+    @foreach (var crumb in @Model.OrderBy(c => c.OrdinalPosition)) {
+      if (crumb.IsAnchor) {
+        <li typeof="Breadcrumb">
+          <a property="url" href="@crumb.Href" title="@crumb.Title">
+            <span property="title">@crumb.Text</span>
+          </a> / 
+        </li>
+      }
+      else {
+        <li typeof="Breadcrumb">
+          <span property="title">@crumb.Text</span>
+        </li>
+      }
+    }
+  </ul>
+}

@@ -1,0 +1,59 @@
+﻿<button id="js_sitenav_zipcode_btn" class="btn-zip" style="display: none;">
+  <span class="icon inline location">
+    <svg>
+      <use xlink:href="/assets/svg/global-sprite.svg#i_location"></use>
+    </svg>
+  </span>
+  <span id="js_sitenav_zipcode" class="zip"></span>
+</button>
+
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger"></label>
+<nav>
+  <ul>
+    <li>
+      @Html.SeoRouteLink("Research_Index",
+        null,
+        "<span class='icon i-nav'><svg>" +
+        "<use xlink:href='/assets/svg/global-sprite.svg#nav-icon-research'></use>" +
+        "</svg></span><span class='value'>{SEO_ANCHOR_TEXT}</span>",
+        new Attributes {{"class", "block"}})
+    </li>
+    <li>
+      @Html.SeoRouteLink("CarsForSale_Index",
+        null,
+        "<span class='icon i-nav'><svg>" +
+        "<use xlink:href='/assets/svg/global-sprite.svg#nav-icon-inventory'></use>" +
+        "</svg></span><span class='value'>{SEO_ANCHOR_TEXT}</span>",
+        new Attributes {{"class", "block"}})
+    </li>
+    <li>
+      @Html.SeoRouteLink("Site_Tools",
+        null,
+        "<span class='icon i-nav'><svg>" +
+        "<use xlink:href='/assets/svg/global-sprite.svg#nav-icon-tools'></use>" +
+        "</svg></span><span class='value'>{SEO_ANCHOR_TEXT}</span>",
+        new Attributes {{"class", "block"}})
+    </li>
+    <li>
+      @Html.SeoRouteLink("BuyingGuides_Index",
+        new RouteValues {{UriTokenNames.Page, ""}},
+        "<span class='icon i-nav'><svg>" +
+        "<use xlink:href='/assets/svg/global-sprite.svg#nav-icon-buying-guides'></use>" +
+        "</svg></span><span class='value'>{SEO_ANCHOR_TEXT}</span>",
+        new Attributes {{"class", "block"}})
+    </li>
+    <li>
+      <a id="pno_btn_js" href="#" class="block" 
+         data-omnitarget="sidenav:piggy">
+        <span class='icon i-nav'>
+          <svg>
+            <use xlink:href="/assets/svg/global-sprite.svg#nav-icon-special-offers"></use>
+          </svg>
+        </span>
+        <span class="value">Pricing &amp; Offers</span>
+      </a>
+    </li>
+  </ul>
+</nav>

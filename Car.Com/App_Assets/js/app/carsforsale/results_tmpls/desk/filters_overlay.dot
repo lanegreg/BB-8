@@ -1,0 +1,35 @@
+﻿<div id="filters_overlay_js" class="overlay overlay-dk" style="display:none">
+  <button class="close_btn_js overlay-close">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <h1 class="h1">Narrow your search by selecting the features</h1>
+  <form>
+    <h2 class="h2">Fuel Types</h2>
+    <ul id="fuel_types_js" class="inline-block-list">
+      {{~it.fuelTypes.get() :fuelType:index}}
+      <li data-id="{{=fuelType.id}}" class="{{? fuelType.selected }}selected{{?}}">
+        <button type="button" class="btn-default-ovl" data-id="{{=fuelType.id}}">
+          {{=fuelType.descr}}
+        </button>
+      </li>
+      {{~}}
+    </ul>
+    <h2 class="h2">More Options</h2>
+    <ul id="options_js" class="inline-block-list">
+      {{~it.options.get() :option:index}}
+      <li data-id="{{=option.id}}" class="{{? option.selected }}selected{{?}}">
+        <button type="button" class="btn-default-ovl" data-id="{{=option.id}}">
+          {{=option.descr}}
+        </button>
+      </li>
+      {{~}}
+    </ul>
+    <p class="center">
+      <button class="query_btn_js btn-primary">I'm done, show results</button>
+    </p>
+  </form>
+</div>

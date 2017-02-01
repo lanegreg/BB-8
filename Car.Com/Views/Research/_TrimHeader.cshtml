@@ -1,0 +1,65 @@
+﻿@{
+  var overviewChecked = "";
+  var specificationChecked = "";
+  var warrantyChecked = "";
+  var picsnvidsChecked = "";
+  var safetyChecked = "";
+  var colorChecked = "";
+  var incentivesChecked = "";
+  
+  if (Model.TrimSectionSeoName == "overview")
+  {
+    overviewChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "specifications")
+  {
+    specificationChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "warranty")
+  {
+    warrantyChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "picturesvideos")
+  {
+    picsnvidsChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "safety")
+  {
+    safetyChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "color")
+  {
+    colorChecked = "selected";
+  }
+  else if (Model.TrimSectionSeoName == "incentives")
+  {
+    incentivesChecked = "selected";
+  }
+}
+
+<nav class="item inpage-nav">
+  <ul>
+    <li class="@overviewChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/">Overview</a></li>
+    <li class="@specificationChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/specifications/">Specs</a></li>
+    <li class="@warrantyChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/warranty/">Warranty</a></li>
+    <li class="@incentivesChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/incentives/">Incentives</a></li>
+    <li class="@picsnvidsChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/pictures-videos/">Photos</a></li>
+    <li class="@safetyChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/safety/">Safety</a></li>
+    <li class="@colorChecked"><a href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/color/">Color</a></li>
+  </ul>
+</nav>
+
+@*<input type="radio" name="tab" id="tab1" class="tab-head" @overviewChecked />
+<label for="tab1" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/">Overview</a></label>
+<input type="radio" name="tab" id="tab2" class="tab-head" @specificationChecked />
+<label for="tab2" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/specifications/">Specs</a></label>
+<input type="radio" name="tab" id="tab3" class="tab-head" @warrantyChecked />
+<label for="tab3" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/warranty/">Warranty</a></label>
+<input type="radio" name="tab" id="tab4" class="tab-head" @picsnvidsChecked/>
+<label for="tab4" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/pictures-videos/">Pictures &amp; Videos</a></label>
+<input type="radio" name="tab" id="tab5" class="tab-head" @safetyChecked />
+<label for="tab5" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/safety/">Safety</a></label>
+<input type="radio" name="tab" id="tab6" class="tab-head" @colorChecked />
+<label for="tab6" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/color/">Color</a></label>
+<input type="radio" name="tab" id="tab7" class="tab-head" @incentivesChecked />
+<label for="tab7" class="details"><a class="label-text" href="/@Model.Make.SeoName/@Model.SuperModel.SeoName/@Model.Year/@Model.Trim.SeoName/incentives/">Incentives</a></label>*@

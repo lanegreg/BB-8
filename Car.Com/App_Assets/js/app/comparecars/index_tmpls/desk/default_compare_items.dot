@@ -1,0 +1,24 @@
+﻿<button class="btn-tools left js_add_compare_car">
+  <span class="icon i-select-car">
+    <svg  viewbox="0 0 1986 1024">
+      <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+    </svg>
+  </span>
+  <h3 class="heading">Select a Car</h3>
+</button>
+<button class="btn-tools left js_add_compare_car">
+  <span class="icon i-select-car">
+    <svg  viewbox="0 0 1986 1024">
+      <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+    </svg>
+  </span>
+  <h3 class="heading">Select a Car</h3>
+</button>
+<!--<button class="btn-tools left js_add_compare_car">
+  <span class="icon i-select-car">
+    <svg  viewbox="0 0 1986 1024">
+      <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+    </svg>
+  </span>
+  <h3 class="heading">Select a Car</h3>
+</button>-->

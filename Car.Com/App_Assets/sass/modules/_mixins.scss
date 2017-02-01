@@ -1,0 +1,498 @@
+﻿/**
+ *  This sass module contains the application-wide mixins that apply to all devices.
+ */
+
+@import "compass/css3", "compass/typography", "compass/utilities", "susy", "breakpoint";
+
+@charset "UTF-8";
+
+// Clearfix
+@mixin cf {
+  &:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+// Font Alpha Transparency Mixin
+@mixin alpha-attribute($attribute, $color, $background) {
+  $percent: alpha($color) * 100%;
+  $opaque: opacify($color, 1);
+  $solid-color: mix($opaque, $background, $percent);
+  #{$attribute}: $solid-color;
+  #{$attribute}: $color;
+}
+
+@mixin antialiasing( $type: antialiased ) {
+  /* antialiased, none, subpixel-antialiased*/
+  -webkit-font-smoothing: $type;
+  font-smoothing: $type;
+  font-smooth: always;
+}
+
+// Font size / Line height Mixin
+@mixin font($size: 1.6, $line-height: 1.8) {
+  font-size: ($size * 10) + px;
+  line-height: ($size * $line-height * 10) + px;
+  font-size: $size + rem;
+  line-height: $size * $line-height + rem;
+}
+
+// Image replacement Mixin
+@mixin hide-text {
+  text-shadow: none;
+  color: transparent;
+}
+
+@mixin multi-ellipsis($font-size, $line-height, $lines-to-show) {
+  display: block; /* Fallback for non-webkit */
+  display: -webkit-box;
+  max-width: 400px;
+  height: $font-size*$line-height*$lines-to-show; /* Fallback for non-webkit */
+  margin: 0 auto;
+  font-size: ($font-size * 10) + px;
+  line-height: $line-height;
+  -webkit-line-clamp: $lines-to-show;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Center both horizontally and vertically
+@mixin center-align-hnv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin first-letter-bold($color: $brand-color,$font-size: 1.6em) {
+  display: inline-block;
+
+  &:first-letter {
+    font-weight: bold;
+    color: $color;
+  }
+}
+
+@mixin block-list($margin-bottom: .75em) {
+  @include no-bullet;
+  padding-left: 0;
+  margin-top: 0;
+
+  li {
+    display: block;
+    margin-bottom: $margin-bottom;
+  }
+}
+
+/* Grid Layout */
+@mixin grid($padding, $n) {
+  @include container;
+  @include cf;
+
+  .col {
+    padding: ($padding) + px;
+    @include span((12/$n) of 12);
+
+    &:nth-child(#{$n}n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(#{$n}n + 1) {
+      clear: left;
+    }
+  }
+}
+
+/* Basic linear list with optional thumbnail */
+@mixin linear-list ($border-padding: 1.5em) {
+  padding-left: 0;
+  margin-top: 0;
+  @include cf;
+  @include no-bullet;
+
+  a {
+    overflow: hidden;
+  }
+
+  .wrap {
+    @include container();
+    @include center-align-hnv;
+  }
+
+  li {
+    @include cf;
+  }
+
+  > li {
+    padding: $border-padding 0;
+  }
+
+  &.border {
+    > li {
+      border-bottom: solid 1px $alto;
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
+
+/* Tabs */
+@mixin keyframe ($animation_name) {
+  @-webkit-keyframes
+  $animation_name
+
+{
+  @content;
+}
+
+@-moz-keyframes
+$animation_name
+
+{
+  @content;
+}
+
+@-o-keyframes
+$animation_name
+
+{
+  @content;
+}
+
+@keyframes
+$animation_name
+
+{
+  @content;
+}
+
+}
+
+@mixin animation ($delay, $duration, $animation) {
+  -webkit-animation-delay: $delay;
+  -webkit-animation-duration: $duration;
+  -webkit-animation-name: $animation;
+  -webkit-animation-fill-mode: forwards;
+  -moz-animation-delay: $delay;
+  -moz-animation-duration: $duration;
+  -moz-animation-name: $animation;
+  -moz-animation-fill-mode: forwards;
+  -o-animation-delay: $delay;
+  -o-animation-duration: $duration;
+  -o-animation-name: $animation;
+  -o-animation-fill-mode: forwards;
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $animation;
+  animation-fill-mode: forwards;
+}
+
+/* Data List (full content width)*/
+@mixin data-list {
+
+  ul {
+    width: 100%;
+    padding-left: 0;
+    margin: 0 0 .75em;
+    @include no-bullet;
+  }
+
+  .title {
+    display: block;
+    margin: 0;
+    border-bottom: solid 5px $porcelain;
+    text-transform: uppercase;
+  }
+
+  .row {
+      display: flex;
+      @include break-inside(avoid);
+  }
+
+  .label, .value {
+    width: 50%;
+    padding: .5em 0;
+    @include font(1.4, 1.3);
+  }
+
+  .label {
+    font-weight: bold;
+  }
+}
+
+@mixin fix-nav-on-scroll {
+  transition: display 0.2s;
+
+  &.fix-nav {
+    position: fixed;
+    top: 55px;
+  }
+}
+
+@mixin has-nav-tab {
+  // fixed secondary nav
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+
+  .nav-tab {
+    display: none;
+  }
+
+  &.hide {
+
+    .page-title {
+      display: none;
+      padding: 0;
+    }
+
+    .nav-tab {
+      top: 60px;
+      display: block;
+      position: absolute;
+      right: 0;
+      bottom: -40px;
+      padding: .25em 1em .5em;
+      background: $chathams-blue;
+      color: white;
+
+      @include breakpoint($medium) {
+        left: auto;
+        right: initial;
+        top: 0;
+        bottom: inherit;
+      }
+    }
+
+    & + .main {
+      margin-top: 0;
+    }
+  }
+
+  svg {
+    fill: white;
+  }
+}
+
+@mixin inpage-nav {
+
+  ul {
+    @include horizontal-list(0);
+
+    @include breakpoint($medium) {
+      @include horizontal-list(.25em);
+    }
+  }
+
+  li {
+
+    @include breakpoint($medium) {
+      width: auto;
+    }
+
+    &:hover, &.selected {
+      a {
+        background: #103E66;
+      }
+    }
+  }
+
+  a {
+    display: inline-block;
+    padding: .5em 1.25em;
+    color: #FFF;
+    @include border-radius(25px);
+    @include font(1.4);
+  }
+}
+
+//1:1 ratio layout
+@mixin col-1of2 {
+  @include cf;
+
+  .col {
+    @include span(6 of 12);
+
+    &:last-of-type {
+      @include last;
+    }
+  }
+}
+
+// $BUTTONS
+%btn {
+  display: inline-block;
+  padding: $default-btn-padding;
+  border: 0;
+  line-height: 1;
+  font-weight: normal;
+  text-align: center;
+  cursor: pointer;
+  @include border-radius(5px);
+}
+
+%btn-3d {
+  @include box-shadow(0 1px 1px rgba(255, 255, 255, 0.6) inset);
+}
+
+// $ARTICLE CARD VIEW
+@mixin post {
+  position: relative;
+  // display article in list-view on up to $xsmall size screen
+  &.post-list-view {
+    padding: .75em 0;
+    margin-bottom: 0;
+    /*border-bottom: solid 1px $alto;*/
+    @include cf;
+
+    .img-container {
+      @include span(1 of 3);
+    }
+
+    .desc {
+      position: static;
+      padding: 0;
+      background: transparent;
+      @include span(2 of 3 last);
+
+      .title {
+        margin: 0;
+        color: #000;
+        @include font(1.6, 1.3);
+        // display category label above article title on up to $xsmall size screen
+        &:before {
+          content: attr(data-category);
+          display: block;
+          margin-bottom: .25em;
+          color: $picton-blue;
+          text-transform: capitalize;
+          @include font(1.3, 1.3);
+
+          @include breakpoint($small) {
+            display: none;
+          }
+        }
+      }
+    }
+    // display the above post-list-view item in card-view on $small and up size screen
+    @include breakpoint($small) {
+      @include post-card-view;
+    }
+  }
+}
+
+@mixin post-card-view {
+  padding: 0;
+  margin-bottom: .75em;
+  border-bottom: none;
+
+  @include breakpoint($medium-portrait) {
+    margin-bottom: 1em;
+  }
+
+  @include breakpoint($medium) {
+    margin-bottom: .75em;
+  }
+
+  @include breakpoint($large) {
+    margin-bottom: 1.1em;
+  }
+
+  @include breakpoint($xlarge) {
+    margin-bottom: 1.25em;
+  }
+
+  @include breakpoint($xxlarge) {
+    margin-bottom: 1.5em;
+  }
+
+  .img-container {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+    overflow: hidden;
+    padding: 66.67% 0 0 0; // 100(%) x (900/600) = 66.6666(%).
+
+    &:before {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    content: "";
+    background-color: rgba(0,0,0,.15);
+    z-index: 2;
+    @include transition(background-color .15s ease-out);
+    }
+
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &:hover .img-container:before {
+    background-color: rgba(0,0,0,0);
+  }
+
+  .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: .5em;
+    @include background(rgba(0,0,0,.7));
+
+    @include breakpoint($medium) {
+      padding: .25em .5em;
+    }
+
+    @include breakpoint($large) {
+      padding: .5em;
+    }
+
+    @include breakpoint($xlarge) {
+      padding: .75em;
+    }
+
+    .title {
+      margin: 0;
+      color: #fff;
+
+      @include breakpoint($medium-portrait) {
+        font-weight: normal;
+        @include font(1.4, 1.3);
+      }
+
+      @include breakpoint($medium) {
+        font-weight: normal;
+        @include font(1.3, 1.3);
+      }
+
+      @include breakpoint($large) {
+        font-weight: normal;
+        @include font(1.4, 1.3);
+      }
+
+      @include breakpoint($xlarge) {
+        @include font(1.5, 1.3);
+      }
+
+      @include breakpoint($xxlarge) {
+        @include font(1.6, 1.3);
+      }
+    }
+  }
+}

@@ -1,0 +1,81 @@
+﻿
+// Response json data structure
+{
+  "inventory_count": 48,
+  "page": {
+    "number": 1,
+    "total": 5
+  },
+  "filter_counts": {
+    "make_model": [
+      {
+        "match_value": "8",
+        "count": "539"
+      },
+      {
+        "match_value": "9",
+        "count": "7"
+      }
+    ],
+    "city_mpg": [
+      {
+        "match_value": "10",
+        "count": "49"
+      },
+      {
+        "match_value": "15",
+        "count": "49"
+      }
+    ]
+  },
+  "cars_for_sale": [
+    {
+      "id": 83905,
+      "vin": "JHMGE8G33DC030398",
+      "year": "2014",
+      "make": "Honda",
+      "model": "Fit",
+      "mileage": "95,029",
+      "features_list": "",
+      "city_mpg": "27",
+      "highway_mpg": "33",
+      "price": "$12,988",
+      "tranny_type": "MAN",
+      "drive_type": "2WD",
+      "cylinders": "4 Cylinder",
+      "color": "Alabaster Silver Metallic",
+      "image_url": "http://images.autobytel.com/cyber/297512/tJHMGE8G33DC030398_1.jpg",
+      "dealer": {
+        "name": "Toyota Carlsbad",
+        "city": "Carlsbad",
+        "state": "CA",
+        "phone": "(844) 646-0321",
+        "is_trusted": true
+      }
+    },
+    {
+      "id": 83905,
+      "vin": "JHMGE8G33DC030398",
+      "year": "2014",
+      "make": "Honda",
+      "model": "Fit",
+      "mileage": "95,029",
+      "features_list": "",
+      "city_mpg": "27",
+      "highway_mpg": "33",
+      "price": "$12,988",
+      "tranny_type": "MAN",
+      "drive_type": "2WD",
+      "cylinders": "4 Cylinder",
+      "color": "Alabaster Silver Metallic",
+      "image_url": "http://images.autobytel.com/cyber/297512/tJHMGE8G33DC030398_1.jpg",
+      "dealer": {
+        "name": "Toyota Carlsbad",
+        "city": "Carlsbad",
+        "state": "CA",
+        "phone": "(844) 646-0321",
+        "is_trusted": true
+      }
+    }
+  ]
+}

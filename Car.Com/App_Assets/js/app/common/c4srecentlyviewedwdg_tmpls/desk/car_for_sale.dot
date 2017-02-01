@@ -1,0 +1,43 @@
+﻿{{~ it.cars :t:idx}}
+{{var img=t.imgUrl,p=t.price,m=t.mileage,c=t.city,s=t.state,y=t.year,k=t.make,l=t.model,u=t.url,v=t.vin;}}
+  <div class="vwrec_card_js widget-list-item">
+    <!--<div class="vwrec_card_js widget-list-item" style="{{? idx >= it.maxToShow}}display:none{{?}}">-->
+    <div class="img-container has-chkbox">
+      {{? img.length}}
+      <img src="{{= img}}" alt="" style="width:100%;" />
+      {{??}}
+      <img src="/assets/svg/no-image-avail_4x3.svg" alt="" style="width:100%;"/>
+      {{?}}
+      {{? (idx - parseInt(it.recentsPerPage)) >= 0}}
+        <span id="suggested_vehicle_label" class="img-label suggested">SUGGESTED</span>
+      {{?}}
+      <label for="{{= v}}{{= idx}}">
+        <input id="{{= v}}{{= idx}}" name="{{= v}}{{= idx}}" value="Selected" type="checkbox" />
+        Select
+      </label>
+    </div>
+    <a href="/cars-for-sale/vehicle-details/?q={{= t.dealerId}}|{{= t.id}}|{{= it.zipcode}}|{{= t.make_id}}|{{= t.model}}" title="View this vehicle">
+      <div class="desc">
+        <span class="data secondary-data">{{= y}}, {{= k}}, {{= l}}</span>
+        <span class="data secondary-data"><small>VIN {{= v}}</small></span>
+        <span class="data secondary-data">{{= m}} Miles</span>
+        <span class="data secondary-data">{{= c}}, {{= s}}</span>
+        <span class="data primary-data"><strong>${{= p}}</strong></span>
+        <!--{{? idx === 0}}
+      <div class="cur-viewed-cont">
+        <FONT style="BACKGROUND-COLOR: white">&nbsp;Currently Viewing&nbsp;</FONT>
+      </div>
+      {{?}}-->
+      </div>
+      <div>
+        <input type="hidden" id="vin" name="vin" value="{{= v}}"> 
+        <input type="hidden" id="carId" name="carId" value="{{= t.id}}"> 
+        <input type="hidden" id="make" name="make" value="{{= k}}"> 
+        <input type="hidden" id="model" name="model" value="{{= l}}"> 
+        <input type="hidden" id="year" name="year" value="{{= y}}"> 
+        <input type="hidden" id="dealerId" name="dealerId" value="{{= t.dealerId}}"> 
+        <input type="hidden" id="dealerPhone" name="dealerPhone" value="{{= t.phone}}"> 
+      </div>
+    </a>
+  </div>
+  {{~}}

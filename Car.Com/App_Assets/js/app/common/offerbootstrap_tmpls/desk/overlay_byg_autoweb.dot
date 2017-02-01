@@ -1,0 +1,75 @@
+﻿/* Version A: flip (.byg-bg-b) class to (.byg-bg-a) in add_byg_overlay.dot */
+/*
+<section id="v-a">
+  <h1 id="awBygMessage">
+    <span class="byg">Before you go...</span>
+    <span class="h3">Check out these great deals on a {{=it.adData.Make}} {{=it.adData.Model}} in {{=it.adData.Location}}.</span>
+  </h1>
+  <ul>
+    {{~it.adData.adList.Listings :adItem:adidx}}
+    {{?adidx < 5}}
+  <li>
+      <a href="{{=adItem.LandingUrl}}"
+         data-omnitarget="leadpop:autoweb"
+         data-omnicallback="trackAutoweb" target="_blank">
+        <div class="col-thumb">
+          <img src="{{=adItem.LogoUrl}}" />
+        </div>
+        <div class="col-desc">
+          <h3 class="header">{{=adItem.Title}}</h3>
+          <p>
+            <span class="aw-url aw_url_js">{{=adItem.DisplayUrl}}</span>
+            <br />
+            <span>{{=adItem.Description1}}</span>
+            <br />
+            <span>{{?adItem.Description2}}{{=adItem.Description2}}{{?}}</span>
+          </p>
+        </div>
+      </a>
+    </li>
+    {{?}}
+    {{~}}
+  </ul>
+</section>
+*/
+
+/* Version B: flip (.byg-bg-a) class to (.byg-bg-b) in add_byg_overlay.dot */
+ <section id="v-b">
+  <h1 id="awBygMessage" class="hdr-cont">
+    <span class="byg">Before You Go!</span> <span class="h3">Get the Best Price on a new {{=it.adData.Make}} {{=it.adData.Model}} in {{=it.adData.Location}}.</span>
+  </h1>
+  <ul class="aw-feed-list">
+    {{~it.adData.adList.Listings :adItem:adidx}}
+    {{?adidx < 5}}
+    <li class="aw-feed-item">
+      <a href="{{=adItem.LandingUrl}}"
+         data-omnitarget="leadpop:autoweb"
+         data-omnicallback="trackAutoweb" target="_blank">
+        <div class="col-thumb">
+          <img src="{{=adItem.LogoUrl}}" />
+        </div>
+        <div class="col-desc">
+          <h3 class="header">{{=adItem.Title}}</h3>
+          <p>
+            <span>{{=adItem.Description1}}</span>
+            <br />
+            <span>{{?adItem.Description2}}{{=adItem.Description2}}{{?}}</span>
+            <br />
+            <span class="aw-url aw_url_js">{{=adItem.DisplayUrl}}</span>
+          </p>
+        </div>
+        <div class="col-btn">
+          <button class="btn-secondary lg">Get Quote
+           <span class="icon inline">
+             <svg>
+               <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+             </svg>
+           </span>
+          </button>
+        </div>
+      </a>
+    </li>
+    {{?}}
+    {{~}}
+  </ul>
+</section>

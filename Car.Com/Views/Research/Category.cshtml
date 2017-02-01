@@ -1,0 +1,424 @@
+﻿@using System.Text.RegularExpressions
+@using Car.Com.Models.Research
+@model CategoryViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>@Model.PageMeta.H1</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+
+      @if (!Model.CategoryFilters.Select(s => s.FilterGroupName).Distinct().Any())
+      {
+        @:<div id="filter_js" style="display: none" class="context-driven-container">
+      }
+      else
+      {
+        @:<div id="filter_js" class="context-driven-container">
+      }
+
+      <div class="tot-count-cont">
+        <span class="sub">Total</span>
+        <span class="tot-count-research" id="js-totaltrimscount1">@Model.Trims.Count().ToString("#,##0") <small>trims</small></span>
+      </div>
+      <div class="filter-cont-header">
+        Narrow Your Search
+      </div>
+      <div class="auto-scroll">
+        <div class="filter-cont research">
+          @{
+            foreach (var filterGroupName in Model.CategoryFilters.Select(s => s.FilterGroupName).Distinct())
+            {
+              if (filterGroupName == "bedlength") { Html.RenderPartial("_FilterSectionBedlength"); }
+              else if (filterGroupName == "bodystyle") { Html.RenderPartial("_FilterSectionBodystyle"); }
+              else if (filterGroupName == "cargocapacity") { Html.RenderPartial("_FilterSectionCargocapacity"); }
+              else if (filterGroupName == "doors") { Html.RenderPartial("_FilterSectionDoors"); }
+              else if (filterGroupName == "driverange") { Html.RenderPartial("_FilterSectionDriverange"); }
+              else if (filterGroupName == "drivetrain") { Html.RenderPartial("_FilterSectionDrivetrain"); }
+              else if (filterGroupName == "engine") { Html.RenderPartial("_FilterSectionEngine"); }
+              else if (filterGroupName == "fueltype") { Html.RenderPartial("_FilterSectionFueltype"); }
+              else if (filterGroupName == "seating") { Html.RenderPartial("_FilterSectionSeating"); }
+              else if (filterGroupName == "towingcapacity") { Html.RenderPartial("_FilterSectionTowingcapacity"); }
+              else if (filterGroupName == "transmission") { Html.RenderPartial("_FilterSectionTransmission"); }
+              else if (filterGroupName == "vehiclecategory") { Html.RenderPartial("_FilterSectionVehicleCategory"); }
+              else { Html.RenderPartial("_FilterSection"); }
+            }
+          }
+        </div>
+      </div>
+    </div>
+    @{
+      var superTrimsCount = Model.Trims.Select(s => s.SuperTrim).Distinct().Count();
+
+      if (superTrimsCount >= 6)
+      {
+        <div class="ad-container">
+          <div id="js_tile_4" class="ad"></div>
+        </div>
+      }
+
+      if (superTrimsCount >= 3)
+      {
+        @:<ul class="trim-tile-container">
+      }
+      else
+      {
+        //the wide class is for the big supertrim display with HP and MPG values
+        //that span the entire content area width
+        @:<ul class="trim-tile-container wide">
+      }
+
+      int supertrimImageLoadCounter = 1;
+      foreach (var superTrimPipeString in Model.Trims.Select(s => s.SuperTrim + '|' + s.Make + '|' + s.Model).Distinct())
+      {
+
+        //======================================
+        //renders all the supertrim image blocks
+        //======================================
+
+        var superTrimValueArray = superTrimPipeString.Split('|');
+        var superTrim = superTrimValueArray[0];
+        var superTrimMake = superTrimValueArray[1];
+        var superTrimModel = superTrimValueArray[2];
+
+        var superTrimTrims = Model.Trims.Where(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]);
+        var trimTrims = superTrimTrims as IList<CategoryViewModel.Dto.Trim> ?? superTrimTrims.ToList();
+        var maxMsrp = trimTrims.Max(t => t.Msrp);
+
+        int minMsrpRaw = trimTrims.Min(t => Convert.ToInt32(t.Msrp));
+        var minMsrp = "$" + minMsrpRaw.ToString("#,##0");
+        if (minMsrpRaw == 0) { minMsrp = "NA"; }
+        
+        var tmpYear = trimTrims.First(t => t.Msrp == maxMsrp).Year;
+        var trimImgPath = trimTrims.Max(t => t.ImagePath);
+        var tmpImgSrc = "_320x.png";
+        if (trimImgPath != null && trimImgPath.Length > 30)
+        {
+          tmpImgSrc = trimImgPath + tmpImgSrc;
+        }
+        else
+        {
+          tmpImgSrc = "/assets/svg/no-image-avail.svg";
+        }
+
+        var tmpImgAltTag = String.Format("{0}", Model.Category.SeoName);
+        var subTrimCount = Model.Trims.Count(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]);
+        
+        var trimCollectionPartialIdString = superTrimModel + superTrim;
+
+        //special character exceptions...
+        if (superTrim.Contains("+"))
+        {
+          trimCollectionPartialIdString = superTrimModel + superTrim.Replace("+", "plussign");
+        }
+        else if (superTrim.Contains("!"))
+        {
+          trimCollectionPartialIdString = superTrimModel + superTrim.Replace("!", "exclamationpoint");
+        }
+
+        trimCollectionPartialIdString = Regex.Replace(trimCollectionPartialIdString, "[^a-zA-Z0-9_]+", "", RegexOptions.Compiled);
+
+        var viewTrimsButtonId = "js-viewtrimcollectionbutton-" + trimCollectionPartialIdString.ToLower();
+        var viewTrimsCollectionId = "js-trimcollection-" + trimCollectionPartialIdString.ToLower();
+        var disableSuperTrimAreaId = "js-disablesupertrim-" + trimCollectionPartialIdString.ToLower();
+        var toggleSuperTrimImageId = "js-togglesupertrimimage-" + trimCollectionPartialIdString.ToLower();
+        var trimMsrpDivId = "js-trimmsrp-" + trimCollectionPartialIdString.ToLower();
+
+        var trimSeating = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).Seating;
+        var trimMpg = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).CityMpg + "/" + Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).HighwayMpg;
+        var trimHorsepower = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).Horsepower;
+
+        if (trimSeating == null) { trimSeating = "NA"; }
+        if (trimMpg == "/" || trimMpg == "0/0") { trimMpg = "NA"; }
+        trimHorsepower = trimHorsepower != null ? trimHorsepower.Replace(" hp", "") : "NA";
+
+        <li class="tile-item reflow" id="@disableSuperTrimAreaId">
+          <div class="caption-1">
+            <div class="col">
+              <h2><small class="sub">@superTrimMake @superTrimModel</small> <span class="item trim-name">@superTrim</span></h2>
+            </div>
+
+            @if (superTrimsCount >= 3)
+            {
+              <div class="col"></div>
+            }
+            else
+            {
+              <div class="col">
+                <ul class="trim-highlights-list">
+                  <li><small class="sub">Seating</small><span class="item">@trimSeating</span></li>
+                  <li><small class="sub">Horsepower</small><span class="item">@trimHorsepower <sup class="sub inline">hp</sup></span></li>
+                  <li><small class="sub">MPG</small><span class="item">@trimMpg</span></li>
+                </ul>
+              </div>
+            }
+
+          </div>
+          <div class="img-container">
+            
+            @if (supertrimImageLoadCounter < 13) 
+            {
+              <img src="@tmpImgSrc" alt="@tmpImgAltTag" />
+            }
+            else
+            {
+              <img class="lazy" data-original="@tmpImgSrc" data-img-src-placeholder="@tmpImgSrc" id="@toggleSuperTrimImageId" alt="@tmpImgAltTag" />
+            }
+            
+          </div>
+          <div class="caption-2">
+            <div class="col" id="@trimMsrpDivId">
+              <small class="sub">starting at</small><span class="item">@minMsrp</span>
+            </div>
+            <div class="col" id="@viewTrimsButtonId">
+              <span class="trim-count">@subTrimCount <small>trims</small></span>
+            </div>
+          </div>
+        </li>
+        supertrimImageLoadCounter++;
+      }
+      @:</ul>
+      
+      foreach (var superTrimPipeString in Model.Trims.Select(s => s.SuperTrim + '|' + s.Make + '|' + s.Model).Distinct().OrderBy(s => s))
+      {
+
+        //============================================
+        //renders the trim overlays for each supertrim
+        //============================================
+
+        var superTrimValueArray = superTrimPipeString.Split('|');
+        var superTrim = superTrimValueArray[0];
+        var superTrimMake = superTrimValueArray[1];
+        var superTrimModel = superTrimValueArray[2];
+
+        var superTrimTrims = Model.Trims.Where(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]);
+
+        var trimTrims = superTrimTrims as IList<CategoryViewModel.Dto.Trim> ?? superTrimTrims.ToList();
+        var maxMsrp = trimTrims.Max(t => t.Msrp);
+        int minMsrpRaw = trimTrims.Min(t => Convert.ToInt32(t.Msrp));
+        var minMsrp = "$" + minMsrpRaw.ToString("#,##0");
+        if (minMsrpRaw == 0) { minMsrp = "NA"; }
+        var tmpYear = trimTrims.First(t => t.Msrp == maxMsrp).Year;
+        var subTrimCount = Model.Trims.Count(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]);
+        
+        var trimCollectionPartialIdString = superTrimModel + superTrim;
+
+        //special character exceptions...
+        if (superTrim.Contains("+"))
+        {
+          trimCollectionPartialIdString = superTrimModel + superTrim.Replace("+", "plussign");
+        }
+        else if (superTrim.Contains("!"))
+        {
+          trimCollectionPartialIdString = superTrimModel + superTrim.Replace("!", "exclamationpoint");
+        }
+
+        trimCollectionPartialIdString = Regex.Replace(trimCollectionPartialIdString, "[^a-zA-Z0-9_]+", "", RegexOptions.Compiled);
+        var viewTrimsButtonId = "js-viewtrimcollectionbutton-" + trimCollectionPartialIdString.ToLower();
+        var viewTrimsCollectionId = "js-trimcollection-" + trimCollectionPartialIdString.ToLower();
+        var disableSuperTrimAreaId = "js-disablesupertrim-" + trimCollectionPartialIdString.ToLower();
+
+        var trimSeating = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).Seating;
+        var trimMpg = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).CityMpg + "/" + Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).HighwayMpg;
+        var trimHorsepower = Model.Trims.First(t => t.SuperTrim == superTrim && t.Make == superTrimValueArray[1] && t.Model == superTrimValueArray[2]).Horsepower;
+
+        if (trimSeating == null) { trimSeating = "NA"; }
+        if (trimMpg == "/") { trimMpg = "NA/NA"; }
+        trimHorsepower = trimHorsepower != null ? trimHorsepower.Replace(" hp", "") : "NA";
+
+        var overLayId = "overlay" + @viewTrimsCollectionId;
+        var tab1StyleId = "researchtabstyle1-" + @viewTrimsCollectionId;
+        var tab2StyleId = "researchtabstyle2-" + @viewTrimsCollectionId;
+        var tab3StyleId = "researchtabstyle3-" + @viewTrimsCollectionId;
+        var tab4StyleId = "researchtabstyle4-" + @viewTrimsCollectionId;
+        var tabBody1StyleId = "researchtabbodystyle1-" + @viewTrimsCollectionId;
+        var tabBody2StyleId = "researchtabbodystyle2-" + @viewTrimsCollectionId;
+        var tabBody3StyleId = "researchtabbodystyle3-" + @viewTrimsCollectionId;
+        var tabBody4StyleId = "researchtabbodystyle4-" + @viewTrimsCollectionId;
+        var tabGroupName = "tab-" + @viewTrimsCollectionId;
+        int tabCounter = 1;
+        int tabBodyCounter = 1;
+
+        var distinctTrimYears = Model.Trims.Select(t => t.Year).Distinct().OrderByDescending(t => t);
+
+        //===============================================================================
+        //NOTE:  Visibility of the tab-body div is handled by CSS based on id names.
+        //       If the tabXStyleId or tabBodyXStyleId names are changed we will need to
+        //       update the CSS accordingly.
+        //
+        //       We anticipate up to 4 "new" years... At time of design, only 2016/15/14.
+        //       But experience has shown that we may have 4 new years for some models.
+        //===============================================================================
+
+        <div class="overlay overlay-dk" style="display:none" id="@overLayId">
+          <button class="close_btn_js overlay-close">
+            <span class="icon">
+              <svg>
+                <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+              </svg>
+            </span>
+          </button>
+          <h1 class="h1"><small>@superTrimMake @superTrimModel @superTrim</small></h1>
+          <div class="tabs-wrapper" style="display: none;" id="@viewTrimsCollectionId">
+
+            @foreach (var trimYear in distinctTrimYears)
+            {
+
+              //renders the tab(s), with the first one checked (highlighted)
+
+              if (Model.Trims.Any(t => t.SuperTrim == superTrim && t.Make == superTrimMake && t.Model == superTrimModel && t.Year == trimYear))
+              {
+                if (tabCounter == 1)
+                {
+                  <input type="radio" name="@tabGroupName" id="@tab1StyleId" checked />
+                  <label for="@tab1StyleId">@trimYear</label>
+                }
+                else if (tabCounter == 2)
+                {
+                  <input type="radio" name="@tabGroupName" id="@tab2StyleId" />
+                  <label for="@tab2StyleId">@trimYear</label>
+                }
+                else if (tabCounter == 3)
+                {
+                  <input type="radio" name="@tabGroupName" id="@tab3StyleId" />
+                  <label for="@tab3StyleId">@trimYear</label>
+                }
+                else if (tabCounter == 4)
+                {
+                  <input type="radio" name="@tabGroupName" id="@tab4StyleId" />
+                  <label for="@tab4StyleId">@trimYear</label>
+                }
+                tabCounter++;
+              }
+            }
+
+            <div class="tab-body-wrapper">
+
+              @foreach (var trimYear in distinctTrimYears)
+              {
+
+                //renders the tabbody(s)
+
+                if (Model.Trims.Any(t => t.SuperTrim == superTrim && t.Make == superTrimMake && t.Model == superTrimModel && t.Year == trimYear))
+                {
+                  if (tabBodyCounter == 1)
+                  {
+                    @:<div id="@tabBody1StyleId" class="tab-body">
+                }
+                  else if (tabBodyCounter == 2)
+                  {
+                    @:<div id="@tabBody2StyleId" class="tab-body">
+                }
+                  else if (tabBodyCounter == 3)
+                  {
+                    @:<div id="@tabBody3StyleId" class="tab-body">
+                }
+                  else if (tabBodyCounter == 4)
+                  {
+                    @:<div id="@tabBody4StyleId" class="tab-body">
+                }
+                  tabBodyCounter++;
+
+                  <div class="section-pad-tb">
+                    <div class="trim-list-cont">
+
+                      @foreach (var trim in Model.Trims.Where(t => t.SuperTrim == superTrim && t.Make == superTrimMake && t.Model == superTrimModel && t.Year == trimYear))
+                      {
+                        int trimMsrpRaw = Convert.ToInt32(trim.Msrp);
+                        var trimMsrp = "$" + trimMsrpRaw.ToString("#,##0");
+                        if (trimMsrpRaw == 0) { trimMsrp = "NA"; }
+
+                        var trimRowId = "js-trimrow-" + trim.Id;
+
+                        <div class="row" id="@trimRowId" data-trim-msrp="@trim.Msrp">
+
+                          @Html.SeoRouteLink("Research_Trim",
+                              new RouteValues
+                              {
+                                {UriTokenNames.Make, trim.MakeSeoName},
+                                {UriTokenNames.SuperModel, trim.SuperModel},
+                                {UriTokenNames.Year, trim.Year},
+                                {UriTokenNames.Trim, trim.SeoName}
+                              },
+                              "<div class=\"col1\">" + trim.FullDisplayName + "</div>" +
+                              "<div class=\"col2\"><small>Starting at</small>" +
+                              trimMsrp + "</div>"
+                              ,
+                              new Attributes
+                              {
+                                {"class", "link-group"}
+                              })
+                        </div>
+                      }
+                    </div>
+                  </div>
+                  @:</div>
+              }
+              }
+            </div>
+          </div>
+        </div>
+
+      }
+    }
+              
+    @if (superTrimsCount < 6)
+      {
+          <div class="ad-container">
+            <div id="js_tile_4" class="ad"></div>
+          </div>
+      }
+  </div>
+  <div class="mobilead-cont bottom">
+    <div class="ad-container">
+      <div id="js_tile_12" class="ad"></div>
+    </div>
+  </div>
+</div>
+<aside class="cell sidebar">
+  <div class="ad-set">
+    <div class="ad-container">
+      <div id="js_tile_2" class="ad"></div>
+    </div>
+    <div class="ad-container">
+      <div id="js_tile_3" class="ad"></div>
+    </div>
+  </div>
+</aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+
+@{foreach (var filterGroupName in Model.CategoryFilters.Select(s => s.FilterGroupName).Distinct())
+  {
+    if (filterGroupName == "bedlength") { Html.RenderPartial("_FilterIconsBedlength"); }
+    else if (filterGroupName == "bodystyle") { Html.RenderPartial("_FilterIconsBodystyle"); }
+    else if (filterGroupName == "cargocapacity") { Html.RenderPartial("_FilterIconsCargocapacity"); }
+    else if (filterGroupName == "doors") { Html.RenderPartial("_FilterIconsDoors"); }
+    else if (filterGroupName == "driverange") { Html.RenderPartial("_FilterIconsDriverange"); }
+    else if (filterGroupName == "drivetrain") { Html.RenderPartial("_FilterIconsDrivetrain"); }
+    else if (filterGroupName == "engine") { Html.RenderPartial("_FilterIconsEngine"); }
+    else if (filterGroupName == "fueltype") { Html.RenderPartial("_FilterIconsFueltype"); }
+    else if (filterGroupName == "seating") { Html.RenderPartial("_FilterIconsSeating"); }
+    else if (filterGroupName == "towingcapacity") { Html.RenderPartial("_FilterIconsTowingcapacity"); }
+    else if (filterGroupName == "transmission") { Html.RenderPartial("_FilterIconsTransmission"); }
+    else if (filterGroupName == "vehiclecategory") { Html.RenderPartial("_FilterIconsVehicleCategory"); }
+    else { Html.RenderPartial("_FilterIcons"); }
+  }
+}

@@ -1,0 +1,123 @@
+
+/**
+ *	Autobytel (c)2014-2015
+ *	@author: Sam Schulte
+ */
+
+(function (win, $) {
+  $(function () {
+
+    var filtersModule = require('../../modules/abt-filters');
+
+    var abt = ABT,
+      env = abt.ENV,
+      getJsFileNameByAlias = env.getJsFileNameByAlias,
+      libsPath = env.libsPath;
+
+    var jsSupermodel = {
+
+      init: function () {
+
+        var hiddenTrimDivs = $("[id^='js-disablesupertrim']");
+        for (var j = 0; j < hiddenTrimDivs.length; j++) {
+          var hiddenTrimDivId = hiddenTrimDivs[j].id;
+          jsSupermodel.setShowHideTrimButtonClickHandler(hiddenTrimDivId);
+        }
+
+        var filterIcons = $("[id^='js-filter-icon']");
+        for (j = 0; j < filterIcons.length; j++) {
+          var filterIconId = filterIcons[j].id;
+          jsSupermodel.setFilterButtonClickHandler(filterIconId);
+        }
+
+        var showAllTrimsIds = $("[id^='js-show-all-trims']");
+        for (j = 0; j < showAllTrimsIds.length; j++) {
+          var showAllTrimsId = showAllTrimsIds[j].id;
+          jsSupermodel.setShowAllTrimsButtonClickHandler(showAllTrimsId); 
+        }
+
+        jsSupermodel.setYearSelectorClickHandler();
+
+        var makename = ABT.ADS.pageCtx.makeseoname;
+        var supermodelname = ABT.ADS.pageCtx.supermodelseoname;
+        filtersModule.setSuperModelFilterGroups(makename, supermodelname);
+        filtersModule.setSuperModelTrimFilterAttributes(makename, supermodelname);
+
+        $("img.lazy").lazyload();
+
+      },
+      showHideTrimBlock: function (hiddenTrimButtonId) {
+
+        var hiddenViewTrimsCollectionId = hiddenTrimButtonId.replace("js-disablesupertrim", "js-trimcollection");
+
+        //if the supertrim is not grayed out and disabled from the filters.updateButtonCounts()...
+        if (!$('#' + hiddenTrimButtonId).hasClass('disabled')) {
+
+          //set-up the trims block visibility
+          if ($('#' + hiddenViewTrimsCollectionId).css('display') == 'none') {
+            $('#' + hiddenViewTrimsCollectionId).css('display', 'block');
+          } else {
+            $('#' + hiddenViewTrimsCollectionId).css('display', 'none');
+          }
+
+          //set-up and display the overlay containing the trims block
+          var $hiddenTrimDivOverlay = $('#overlay' + hiddenViewTrimsCollectionId);
+          $hiddenTrimDivOverlay.popup({
+            blur: false
+          });
+          $hiddenTrimDivOverlay.popup('show');
+
+          //set-up the click event to let the user close the overlay
+          var $overlayCloseBtn = $('.overlay-close');
+          $overlayCloseBtn.on('click', function (e) {
+            $('#' + hiddenViewTrimsCollectionId).css('display', 'none');
+            $hiddenTrimDivOverlay.popup('hide');
+          });
+        } 
+
+      },
+      setShowAllTrimsButtonClickHandler: function (showAllTrimsId) {
+        $('#' + showAllTrimsId).on('click', function (e) {
+          filtersModule.showAllTrims();
+        });
+      },
+      setShowHideTrimButtonClickHandler: function (hiddenTrimButtonId) {
+        $('#' + hiddenTrimButtonId).on('click', function (e) {
+          jsSupermodel.showHideTrimBlock(this.id);
+        });
+      },
+      setFilterButtonClickHandler: function (filterIconId) {
+        $('#' + filterIconId).on('click', function (e) {
+          filtersModule.applyFilters(this.id);
+        });
+      },
+      setYearSelectorClickHandler: function () {
+        $('#js-supermodel-year-select').on('change', function (e) {
+          var makename = ABT.ADS.pageCtx.make;
+          var supermodelname = ABT.ADS.pageCtx.supermodelseoname;
+          var year = $('#js-supermodel-year-select').val();
+          var url = '/' + makename.toLowerCase() + '/' + supermodelname.toLowerCase() + '/' + year + '/';
+          location.assign(url);
+        });
+      }
+    };
+
+    var bygData = {
+
+      init: function () {
+        ABT.OFR.updateBygMakeModel(ABT.ADS.pageCtx.make, ABT.ADS.pageCtx.model);
+      },
+    };
+
+    $(function () {
+      $.when(
+        $.getCachedScript(libsPath + '/' + getJsFileNameByAlias('popup'))
+        .then(function() {
+          filtersModule.init();
+          jsSupermodel.init();
+          bygData.init();
+    }));
+    });
+
+  });
+})(window, jQuery)

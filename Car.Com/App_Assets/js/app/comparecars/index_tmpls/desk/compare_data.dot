@@ -1,0 +1,70 @@
+﻿{{ var carIndx = 0,
+       carsArr = [],
+       genItemArr = ["name", "invoice", "msrp"],
+       genNameArr = ["Trim", "Invoice Price", "MSRP"],
+       genValArr = [],
+       availCompairArr = [0,1];
+}}
+
+{{
+  for(var carCount=0; carCount<it.carArr.length; carCount++) {
+    carsArr[carCount] = carCount;
+  }
+  { }}
+  {{ } 
+
+  for(var genItIndx=0; genItIndx<genItemArr.length; genItIndx++) {
+    genValArr[genItIndx] = [];
+    for(carIndx=0; carIndx<it.carArr.length; carIndx++) {
+      genValArr[genItIndx][carIndx] = [];
+      genValArr[genItIndx][carIndx] = it.carArr[carIndx][genItemArr[genItIndx]];
+    }
+    { }}
+    {{ }
+  }
+  { }}
+  {{ } 
+
+  
+}}
+
+{{~availCompairArr :availItem:AIidx}}
+  {{?it.carArr.length > AIidx}}
+    <button class="btn-tools left js_delete_compare_car" data-trimid="{{=it.carArr[AIidx].id}}">
+    <div style="margin-bottom: 10px; height: 5px; float: right;"><a class="js_delete_compare_car" data-trimid="{{=it.carArr[AIidx].id}}" style="z-index: 9000;">
+      <span class="icon i-close">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+        </svg>
+      </span></a></div>
+    {{?it.carArr[AIidx].images.length > 0}}
+    <picture>
+      <!--[if IE 9]><video style="display: none;"><![endif]-->
+      <source srcset="{{=it.carArr[AIidx].images[0].large}}" media="(min-width: 1024px)" />
+      <source srcset="{{=it.carArr[AIidx].images[0].medium}}" media="(min-width: 640px)" />
+      <source srcset="{{=it.carArr[AIidx].images[0].small}}" media="(min-width: 320px)" />
+      <!--[if IE 9]></video><![endif]-->
+      <img src="{{=it.carArr[AIidx].images[0].small}}" alt="{{=it.carArr[AIidx].year}} {{=it.carArr[AIidx].make}} {{=it.carArr[AIidx].model}}">
+    </picture>
+    {{?? true }}
+    <img src="/assets/svg/no-image-avail.svg" alt="{{=it.carArr[AIidx].year}} {{=it.carArr[AIidx].make}} {{=it.carArr[AIidx].model}}">
+    {{?}}
+
+
+      <h3 class="heading">{{=it.carArr[AIidx].year}} {{=it.carArr[AIidx].make}} {{=it.carArr[AIidx].model}}</h3>
+    </button>
+  {{?? true }}
+    <button class="btn-tools left js_add_compare_car">
+      <span class="icon i-select-car">
+        <svg  viewbox="0 0 1986 1024">
+          <use xlink:href="/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar"></use>
+        </svg>
+      </span>
+      <h3 class="heading">Select a Car</h3>
+    </button>
+  {{?}}
+{{~}}       
+          
+          
+
+

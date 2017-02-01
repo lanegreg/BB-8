@@ -1,0 +1,111 @@
+﻿@model Car.Com.Models.Calculator.LeaseOrPurchaseViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>Car Lease vs. Buy Calculator</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="box solid" id="calc_form_div_js">
+        <form class="calc-form">
+          <fieldset>
+            <h3>Common Assumptions</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_downPayment">Down payment (capital reduction) ($)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_downPayment" type="number" value="0" autofocus />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_termMonths">Lease/Loan term (months)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_termMonths" type="number" value="36" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_loanRate">Annual percentage rate (%)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_loanRate" type="number" value="6" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_residualValue">Value of vehicle at end of loan/lease (residual) ($)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_residualValue" type="number" value="0" />
+            </p>
+            <h3>Lease Information</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_leasePayment">Monthly lease payment amount ($)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_leasePayment" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_leaseFee">One time security deposit/leasing fee ($)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_leaseFee" type="number" value="0" />
+            </p>
+            <h3>Purchase Information</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_purchasePrice">
+                Purchase price ($)&nbsp;&nbsp;<a href="#" id="js_add_compare_car" style="color:#337AAF; font-size:8pt; font-weight:bold; text-decoration:underline;">Select a Car</a>&nbsp;&nbsp;
+                <span id="js_selected_trim_label" style="font-size:8pt;"></span>
+              </label>
+              <input class="form-item-value" id="LeaseOrPurchase_purchasePrice" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_salesTax">Sales tax rate (%)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_salesTax" type="number" value="5" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="LeaseOrPurchase_rebate">Rebate amount ($)</label>
+              <input class="form-item-value" id="LeaseOrPurchase_rebate" type="number" value="0" />
+            </p>
+            <p style="text-align:center;">
+              <input id="btnCalculateLeaseOrPurchase" type="button" value="Calculate" class="btn-primary lg" />
+            </p>
+          </fieldset>
+        </form>
+        <p>
+          The question of car loan vs lease is a difficult one. Lease deals make expensive cars seem attainable and new technologies like EV, hydrogen and natural gas vehicles can seem risky to buy, yet affordable to lease. The benefit of leasing versus buying a car is that you only pay the difference of the car’s price and what it's expected to be worth at the end of the lease. The disadvantages are that you need to carefully maintain the car throughout the lease term and usually cannot drive more than 15,000 miles per year without incurring major fees. In essence, you are renting, rather than buying the car and doing so to gain an advantage.
+          Taking a step back and considering which way to move forward is wise and our lease vs purchase calculator can help – starting with the assumed lease deal. The most desirable leases are offered for 3 years (36 months) and "money factors" vary – which means the interest on those leases are dependent on your credit rating and/or the deal being offered. Place both the lease information and the purchase information into the tool and our calculator will tell you whether a lease or a purchase is the right choice for you.
+        </p>
+      </div>
+      <div class="center" id="resultdiv_js">
+        <p id="LeaseOrPurchase_decision" style="font-size:36px; color:#145083; font-weight:bold; margin-bottom: 0;"></p>
+        <a class="btn-primary lg" href="http://finance.car.com/?id=32803" style="font-size:22px; padding: 25px 30px 25px 30px; margin-top: 30px; margin-bottom: 20px;"
+           title="Apply today for great auto loan rates" target="_new" rel="nofollow">Apply For a Car Loan</a><br />
+        <a href="." style="font-size:14px; text-decoration:underline;">Start Over</a><br /><br /><br />
+      </div>
+      <section class="widget-cont" id="js_similar_vehicles" style="display: none;">
+        <h2 class="h2 line-on-sides">Research</h2>
+        <div class="sugged-widget-cont" id="js_similar_vehicles_content"></div>
+      </section>
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

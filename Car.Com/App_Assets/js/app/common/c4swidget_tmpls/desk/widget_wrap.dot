@@ -1,0 +1,24 @@
+﻿<h3 class="widget-heading">Cars for Sale</h3>
+<div id="c4s_wdg_zip_notfound_js" class="widget-byline" style="padding:0 6px 6px;border:1px solid #ddd">
+  <div style="position:relative">
+    <span id="c4s_wdg_zip_close_btn_js" class="icon"
+          style="height:1em;width:1em;position:absolute;top:4px;right:4px;cursor:pointer">
+      <svg style="fill:#aaa">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </div>
+  <p>Please enter your zipcode to find <b class="c4s_wdg_makemodel_display_js"></b> for sale near you.</p>
+  <form>
+    <input id="c4s_wdg_zip_inp_js" type="text" class="inline-input-box" style="margin-right:4px"
+           placeholder="Enter zip" pattern="[0-9]{5}" size="6" required />
+    <button class="btn-primary">Find</button>
+  </form>
+</div>
+<div id="c4s_wdg_zip_found_js">
+  <p class="widget-byline">We found <b class="c4s_wdg_makemodel_display_js"></b> for sale near
+    <a id="c4s_wdg_zip_alter_lnk_js" class="link" href="#"></a>
+  </p>
+  <div id="c4s_wdg_cars_wrap_js"></div>
+  <button id="c4s_wdg_viewall_btn_js" class="btn-primary">View All</button>
+</div>

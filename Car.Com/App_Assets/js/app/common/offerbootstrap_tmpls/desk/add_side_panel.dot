@@ -1,0 +1,51 @@
+﻿<aside id="offerpanel_wrap_js" class="side-panel">
+  <a href="" id="offerpanel_close_btn_js">
+    <span class="overlay-close">
+      <span class="icon">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+        </svg>
+      </span>
+    </span>
+  </a>
+  <div class="side-panel-inner-cont" id="sp_Parent">
+    <div class="col1">
+      <section id="sp_c4s_Lead" style="display: none;">
+        <p>
+          <a href="" class="btn-primary lg js_sp_contact_dealer_btn" style="width: 225px;">
+            Contact the Seller
+          </a>
+        </p>
+        <div id="sp_c4s_offer_links"></div>
+      </section>
+      <section id="sp_NewCar_Lead">
+      </section>
+
+      <section id="sp_OfferZip" style="display: none;">
+        <hr />      
+        <p>
+          <span>
+            Enter your zipcode for additional offers<br />
+          </span>
+          <label>
+            <input type="text" id="offersZipcode" name="offersZipcode" class="full js_offers_zipcode" pattern="[0-9]*" placeholder="ZIP Code" value="" maxlength="5" />
+          </label>
+        </p>
+        <p>
+          <span id="offersZipErrorMessage" class="error" style="display: none;">
+            You must enter a valid ZIP Code<br />
+          </span>
+          <button id="SetOffersZip" class="btn-primary block">See Offers</button>
+        </p>
+      </section>
+
+      <section id="sp_c4s_inventory_link" style="display: none;">
+      </section>
+    </div>
+    <div class="col2">
+      <section class="special-offers" id="sp_Special_Offers" style="display: none;">
+      </section>
+    </div>
+  </div>
+</aside>
+

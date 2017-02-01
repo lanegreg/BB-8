@@ -1,0 +1,100 @@
+﻿@model Car.Com.Models.Finance.IndexViewModel
+@section Pagination
+{
+  @Model.Paginator.PrevTag()
+  @Model.Paginator.NextTag()
+}
+
+<div class="header">
+  <div class="page-title">
+    <h1>Car Buying Guides</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div class="group-inline mgb-half">
+        @Html.SeoRouteLink("BuyingGuides_Index",
+          new RouteValues { { UriTokenNames.Page, "" } },
+          "Buying Guides",
+          new Attributes {
+          {"class", "h3 item"}
+        })
+        <h2 class="h1 item">Finance</h2>
+      </div>
+      <ul class="grid-view-container">
+        @foreach (var article in Model.FinanceArticles) {
+          <li class="grid-view-item">
+            <article class="post post-card-view">
+              @if (article.MainArticleImage.IsNotNullOrEmpty()) {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="@article.MainArticleImage" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h4 class="title">@article.Title</h4>
+                  </div>
+                </a>
+              }
+              else if (article.VideoImageUrl.IsNotNullOrEmpty()) {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="@article.VideoImageUrl" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h4 class="title">@article.Title</h4>
+                  </div>
+                </a>
+              }
+              else {
+                <a href="@article.Url">
+                  <div class="img-container">
+                    <img src="/assets/svg/no-image-avail_4x3.svg" alt="@article.ImageAlt" title="@article.ImageTitle">
+                  </div>
+                  <div class="desc">
+                    <h4 class="title">@article.Title</h4>
+                  </div>
+                </a>
+              }
+            </article>
+          </li>
+        }
+      </ul>
+      <div class="pager">
+        <ul>
+          @Model.Paginator.EmmitHtml()
+        </ul>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

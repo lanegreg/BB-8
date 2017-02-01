@@ -1,0 +1,12 @@
+﻿/**
+ *  This sass module represents the desktop version of research.year http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base";
+
+.trim-tile-container {
+  @extend %trim-tile-container;
+}
+

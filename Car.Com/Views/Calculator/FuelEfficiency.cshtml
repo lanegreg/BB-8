@@ -1,0 +1,121 @@
+﻿@model Car.Com.Models.Calculator.FuelEfficiencyViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>Fuel Savings Calculator</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="box solid" id="calc_form_div_js">
+        <form class="calc-form">
+          <fieldset>
+            <h3>Gasoline Assumptions</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_gasCostGallon">Gasoline cost per gallon ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_gasCostGallon" type="number" value="4.00" autofocus />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_milesDrivenDaily">Miles you drive each day</label>
+              <input class="form-item-value" id="FuelEfficiency_milesDrivenDaily" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_mpgOld">MPG (old vehicle)</label>
+              <input class="form-item-value" id="FuelEfficiency_mpgOld" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_mpgNew">MPG (new vehicle)</label>
+              <input class="form-item-value" id="FuelEfficiency_mpgNew" type="number" value="0" />
+            </p>
+            <h3>Cost Assumptions - Old Vehicle</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_paymentOld">Current monthly payment amount (old vehicle) ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_paymentOld" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_termOld">Number of payments remaining</label>
+              <input class="form-item-value" id="FuelEfficiency_termOld" type="number" value="12" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_salesOld">Anticipated sales price ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_salesOld" type="number" value="0" />
+            </p>
+            <h3>Cost Assumptions - New Vehicle</h3>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_termNew">New car loan term (months)</label>
+              <input class="form-item-value" id="FuelEfficiency_termNew" type="number" value="48" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_priceNew">New car sale price ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_priceNew" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_downNew">New car down payment ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_downNew" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_intRateNew">New car interest rate (%)</label>
+              <input class="form-item-value" id="FuelEfficiency_intRateNew" type="number" value="5" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_feesNew">One-time taxes/registration/fees ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_feesNew" type="number" value="0" />
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="FuelEfficiency_creditNew">State/Federal income tax credit (if applicable) ($)</label>
+              <input class="form-item-value" id="FuelEfficiency_creditNew" type="number" value="0" /><br/>
+              <a href="http://www.fueleconomy.gov/feg/taxcenter.shtml" target="_blank"><small>Click here for DOE Fuel Efficient Vehicle Tax Info</small></a>
+            </p>
+            <p style="text-align:center;">
+              <input id="btnCalculateFuelSavings" type="button" value="Calculate" class="btn-primary lg" />
+            </p>
+          </fieldset>
+        </form>
+        <p>
+          When considering whether to upgrade to a new, more fuel efficient car, it's natural to think you will ultimately save money in the long run. We have developed a fuel economy comparison calculator that will crunch the numbers and tell you just how long that long run is.
+          Plug in the numbers for both your current and prospective car purchases along with the mpg you currently get and hope to get on both cars. Remember that, because of depreciation and the general costs associated with buying a new car vs keeping the car you have, gas mileage numbers will have to be quite high to make the comparison impressive. Of course, if you are a person who cannot put a price on eco-friendliness, you'll at least be able to see how long it will take to make a difference financially, if not only ecologically.
+        </p>
+      </div>
+      <div class="center" id="resultdiv_js">
+        <p id="FuelEfficiency_decision" style="font-size:36px; color:#145083; font-weight:bold; margin-bottom: 0;"></p>
+        <a class="btn-primary lg" href="http://finance.car.com/?id=32803" style="font-size:22px; padding: 25px 30px 25px 30px; margin-top: 30px; margin-bottom: 20px;"
+           title="Apply today for great auto loan rates" target="_new" rel="nofollow">Apply For a Car Loan</a><br />
+        <a href="." style="font-size:14px; text-decoration:underline;">Start Over</a><br /><br /><br />
+      </div>
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+﻿@model Car.Com.Models.Research.TrimIncentivesViewModel
+
+@{ // Nativo in-content ads
+    var nativoAds = String.Format("<!-- Nativo Ads -->");
+    nativoAds = nativoAds + String.Format("<script type=\"text/javascript\" src=\"http://a.postrelease.com/serve/load.js?async=true\"></script>");
+}
+
+@section Nativo { @Html.Raw(nativoAds) }
+
+<div class="mobilead-cont top">
+  <div class="ad-container">
+    <div id="js_tile_11" class="ad"></div>
+  </div>
+</div>
+<div class="header has-nav-tab">
+  <div class="page-title">
+    <div class="group-inline">
+      @* -- To do in later time --
+          <span class="item">
+          <a href="" class="btn-back-to">
+            <span class="icon inline">
+              <svg>
+                <use xlink:href="/assets/svg/global-sprite.svg#i_level_up"></use>
+              </svg>
+            </span>
+            <span class="text">Back to BMW 3 Series</span>
+          </a>
+        </span>*@
+      @*<span class="item i-double-up">
+          <button class="btn-zero">
+            <span class="icon inline">
+              <svg>
+                <use xlink:href="/assets/svg/global-sprite.svg#i_angle_double_up"></use>
+              </svg>
+            </span>
+          </button>
+        </span>*@
+      @{ Html.RenderPartial("_TrimHeader"); }
+    </div>
+  </div>
+  <button class="nav-tab">
+    <span class="icon inline">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_angle_double_down"></use>
+      </svg>
+    </span>
+    <span class="text"></span>
+  </button>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <h1>@Model.Trim.FullDisplayName</h1>
+      <div id="IncentivesZipForm" style="display: none;">
+        Enter your ZIP Code to see local rebates and incentives.<br />
+        <input type="hidden" id="TrimId" name="year" value="@Model.Trim.TrimId" />
+        <input type="text" id="zipcode" name="zipcode" value="" maxlength="5" />
+        <a id="VDRebateZipform" class="btn-primary">Submit</a>
+        <div id="zipErrorMessage" style="display: none;" class="validation-summary-errors">Enter a valid ZIP Code</div>
+      </div>
+      <p id="IncentivesNotAvailableDiv" class="data-table" style="display: none;">
+        We did not find an incentive for this vehicle, see your dealer for special rebates or offers
+      </p>
+      <div id="IncentivesWithZipDiv" style="display: none;"></div>    
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+    <section data-widget="c4s" class="widget-cont sidebar-widget" style="display: none"></section>
+    <section data-widget="viewed-recently" class="widget-cont sidebar-widget" style="display: none"></section>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

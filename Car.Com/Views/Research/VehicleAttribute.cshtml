@@ -1,0 +1,115 @@
+﻿@using System.Text.RegularExpressions
+@using Car.Com.Models.Research
+@model VehicleAttributeViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>@Model.PageMeta.H1</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+
+      @{
+        var aOrAn = "a";
+
+        if (@Model.VehicleAttribute.Name.ToLower()[0] == 'a'
+            || @Model.VehicleAttribute.Name.ToLower()[0] == 'e'
+            || @Model.VehicleAttribute.Name.ToLower()[0] == 'i'
+            || @Model.VehicleAttribute.Name.ToLower()[0] == 'o'
+            || @Model.VehicleAttribute.Name.ToLower()[0] == 'u') {
+          aOrAn = "an";
+        }
+      }
+
+      <p>
+        Please select @aOrAn @Model.VehicleAttribute.Name.ToLower() vehicle category:
+      </p>
+
+      <ul class="category-list">
+        @{
+          foreach (var category in Model.Categories) {
+            var iconName = category.Name;
+
+            if (category.Name == "luxury") {
+              iconName = "luxurycar";
+            }
+            else if (category.Name == "sport") {
+              iconName = "sportscar";
+            }
+
+            var categoryIconName = "filter-icon-vehiclecategory-" + iconName.Replace(" ", "").ToLower();
+            var categoryIconViewboxAttribute3 = "100";
+
+            if (categoryIconName == "filter-icon-vehiclecategory-compact") { categoryIconViewboxAttribute3 = "1621"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-concept") { categoryIconViewboxAttribute3 = "1936"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-coupe") { categoryIconViewboxAttribute3 = "1823"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-convertible") { categoryIconViewboxAttribute3 = "1975"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-crossover") { categoryIconViewboxAttribute3 = "1793"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-hybrid") { categoryIconViewboxAttribute3 = "1784"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-luxurycar") { categoryIconViewboxAttribute3 = "1986"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-sedan") { categoryIconViewboxAttribute3 = "1936"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-sportscar") { categoryIconViewboxAttribute3 = "1823"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-suv") { categoryIconViewboxAttribute3 = "1501"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-truck") { categoryIconViewboxAttribute3 = "1866"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-van") { categoryIconViewboxAttribute3 = "1594"; }
+            else if (categoryIconName == "filter-icon-vehiclecategory-wagon") { categoryIconViewboxAttribute3 = "1793"; }
+            else { categoryIconViewboxAttribute3 = "1986"; }
+
+            <li>
+              @Html.SeoRouteLink("Research_VehicleAttributeResult",
+                new RouteValues {
+                  {UriTokenNames.Category, category.SeoName},
+                  {UriTokenNames.VehicleAttribute, Model.VehicleAttribute.SeoName}
+                },
+                "<span class=\"icon\"><svg viewBox=\"0 0 " + categoryIconViewboxAttribute3 + " 1024\">" +
+                   "<use xlink:href=\"/assets/svg/global-sprite.svg#" + categoryIconName + "\"></use></svg></span>" +
+                "<span class=\"value\">" + category.Name + "</span>",
+                new Attributes {
+                  {"class", "block"}
+                })
+
+            </li>
+          }
+        }
+      </ul>
+    </div><div class="ad-container">
+      <div id="js_tile_4" class="ad"></div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+
+@{
+  Html.RenderPartial("_FilterIconsVehicleCategory");
+}

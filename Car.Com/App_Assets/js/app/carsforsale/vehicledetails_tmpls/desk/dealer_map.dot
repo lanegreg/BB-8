@@ -1,0 +1,6 @@
+﻿{{var car=it;}}
+<div class="tmpl_replace_dealermap_js">
+  <div id="js_dealer_map" data-latitude="{{= car.dealer.latitude}}" data-longitude="{{= car.dealer.longitude}}"></div>
+  <div id="map-canvas" style="display: block; width: 100%; height: 350px; border: 1px solid black"></div>
+  <div style="display: block; width: 100%; text-align: center">{{= car.dealer.name}} {{= car.dealer.city}}, {{= car.dealer.state}}</div>
+</div>

@@ -1,0 +1,233 @@
+﻿@model Car.Com.Models.Article.ArticleViewModel
+@{
+  // Meta Open Graph Used by Facebook, Google, Reddit
+  var openGraph = String.Format("<meta property=\"og:title\" content=\"{0}\" />", Model.OpenGraphMeta.Title);
+
+  openGraph = openGraph + String.Format("<meta property=\"og:description\" content=\"{0}\" />", Model.OpenGraphMeta.Description);
+  openGraph = openGraph + String.Format("<meta property=\"og:type\" content=\"{0}\" />", Model.OpenGraphMeta.Type);
+  openGraph = openGraph + String.Format("<meta property=\"og:url\" content=\"{0}\" />", Model.OpenGraphMeta.Url);
+
+  foreach (var articleImage in Model.OpenGraphMeta.Images) {
+    openGraph = openGraph + String.Format("<meta property=\"og:image\" content=\"{0}\" />", articleImage);
+  }
+}
+
+@section MetaOpenGraph { @Html.Raw(openGraph) }
+
+<div id="content" class="header" data-id="@Model.Article.ContentId" data-relatedarticlestart="1">
+  <div class="page-title">
+    <h1>@Model.Article.Title</h1>
+  </div>
+</div>
+<div id="main-wrapper" class="main" data-currentpage="1" data-numpages="@Model.Article.ArticlePages.Count">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div id="js_endcapNav" class="pager3 two simple" style="display:none;">
+        <ul>
+          <li>
+            <a id="js_backToArticle" href="">
+              <span class="icon inline">
+                <svg>
+                  <use xlink:href="/assets/svg/global-sprite.svg#i_long_arrow_l"></use>
+                </svg>
+              </span>
+              Back To The Article
+            </a>
+          </li>
+          @if (Model.Article.RelatedArticles.Count >= 1) {
+            <li>
+              <a id="js_nextArticle" href="@Model.Article.RelatedArticles.First().Url" class="next">
+                Next Article
+                <span class="icon inline">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_long_arrow_r"></use>
+                  </svg>
+                </span>
+              </a>
+            </li>
+          }
+        </ul>
+      </div>
+      <article class="single-post">
+        @*<h1>@Model.Article.Title</h1>*@
+        <div class="media">
+          <div class="img-container">
+            <div class="banner">
+              <ul id="articleSlider">
+                @foreach (var articlePage in Model.Article.ArticlePages) {
+                  if (articlePage.PageImage.IsNotNullOrEmpty()) {
+                    <li>
+                      <div style="overflow: hidden">
+                        <div class="crop-vertically">
+                          <img src="@articlePage.PageImage" alt="@articlePage.PageTitle" class="js_img_slide">
+                        </div>
+                      </div>
+                    </li>
+                  }
+                  else if (articlePage.VideoUrl.IsNotNullOrEmpty()) {
+                    <li>
+                      <div class="vid-container vid-container-16x9">
+                        <iframe id="js_active_video_frame" src="@articlePage.VideoUrl?rel=0&wmode=transparent" frameborder="0" allowfullscreen
+                                data-omni-track-vars='{"value": "video_thumb", "event": "click", "videoTitle": "@articlePage.PageTitle"}'></iframe>
+                      </div>
+                    </li>
+                  }
+                  else {
+                    <li>
+                      <div>
+                        <picture id="photo-@articlePage.PageOrder" class="pageimage">
+                          <!--[if IE 9]><video style="display: none;"><![endif]-->
+                          <source srcset="http://img.autobytel.com/550-no-img-avail.jpg" />
+                          <!--[if IE 9]></video><![endif]-->
+                          <img src="http://img.autobytel.com/550-no-img-avail.jpg" alt="@articlePage.PageTitle" class="js_img_slide">
+                        </picture>
+                      </div>
+                    </li>
+                  }
+                }
+              </ul>
+            </div>
+            <div class="slider-pager">
+              <button class="prev" id="prev" style="display: none;" data-gotopage="1" title="previous">
+                <span class="icon">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_arrow4_l"></use>
+                  </svg>
+                </span>
+              </button>
+              <button class="next" id="next" data-gotopage="2" title="next">
+                <span class="icon">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_arrow4_r"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="story editor-cont">
+          @foreach (var articlePage in Model.Article.ArticlePages) {
+            if (articlePage.PageOrder == 1) {
+              <span id="page-@articlePage.PageOrder" data-pagenumber="@articlePage.PageOrder" class="pagetext">
+                <h2>@articlePage.PageTitle</h2>
+                @Html.Raw(articlePage.PageText)
+              </span>
+            }
+            else {
+              <span id="page-@articlePage.PageOrder" data-pagenumber="@articlePage.PageOrder" class="pagetext" style="display: none;">
+                <h2>@articlePage.PageTitle</h2>
+                @Html.Raw(articlePage.PageText)
+              </span>
+            }
+          }
+          <section id="page-@(Model.Article.ArticlePages.Count + 1)" data-pagenumber="@(Model.Article.ArticlePages.Count + 1)" class="pagetext" rel="endcap" style="display: none;">
+            <ul id="js_related_articles" class="grid-view-container">
+              @{
+                var relatedArticleCount = 0;
+
+                foreach (var article in Model.Article.RelatedArticles) {
+                  <li id="relatedArticle-@(relatedArticleCount)" class="grid-view-item">
+                    <article class="post post-card-view">
+                      @if (article.MainArticleImage.IsNotNullOrEmpty()) {
+                        <a href="@article.Url">
+                          <div class="img-container">
+                            <img src="@article.MainArticleImage" alt="@article.ImageAlt" title="@article.ImageTitle">
+                          </div>
+                          <div class="desc">
+                            <h2 class="title">@article.Title</h2>
+                          </div>
+                        </a>
+                      }
+                      else if (article.VideoImageUrl.IsNotNullOrEmpty()) {
+                        <a href="@article.Url">
+                          <div class="img-container">
+                            <img src="@article.VideoImageUrl" alt="@article.ImageAlt" title="@article.ImageTitle">
+                          </div>
+                          <div class="desc">
+                            <h2 class="title">@article.Title</h2>
+                          </div>
+                        </a>
+                      }
+                      else {
+                        <a href="@article.Url">
+                          <div class="img-container">
+                            <img src="/assets/svg/no-image-avail_4x3.svg" alt="@article.ImageAlt" title="@article.ImageTitle">
+                          </div>
+                          <div class="desc">
+                            <h2 class="title">@article.Title</h2>
+                          </div>
+                        </a>
+                      }
+                    </article>
+                  </li>
+
+                      relatedArticleCount++;
+                      if (relatedArticleCount == 5) {
+                        break;
+                      }
+                }
+              }
+              <li class="grid-view-item grid-view-item-more" id="js_fill_height">
+                <a id="js_viewMoreArticles" href="/buying-guides/">View More Articles</a>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </article>
+      <div class="pager3 two mobi">
+        <ul>
+          <li>
+            <a class="prev" style="display: none;" data-gotopage="1">
+              <span class="icon inline">
+                <svg>
+                  <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_l"></use>
+                </svg>
+              </span>
+              Previous
+            </a>
+          </li>
+          <li>
+            <a class="next" data-gotopage="2">
+              Next
+              <span class="icon inline">
+                <svg>
+                  <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+                </svg>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

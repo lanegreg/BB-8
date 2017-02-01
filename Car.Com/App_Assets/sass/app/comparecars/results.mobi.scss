@@ -1,0 +1,124 @@
+﻿/*
+ *  This sass module represents the mobile version of {controller}.{action} http://www.autobytel.com/{path}
+ */
+@charset "UTF-8";
+
+@import "app-base";
+
+.inline-block-list {
+  @extend %btn-list;
+}
+
+.mobi-compare-head-cont {
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 4;
+  }
+}
+
+.mobi-compare-grp-head {
+  margin: 0;
+  padding: .5em;
+  background: $gray2;
+  color: #FFF;
+  text-align: center;
+
+  button {
+    background: rgba(0, 0, 0, 0);
+
+    svg {
+      fill: currentColor;
+    }
+  }
+
+  .fixed + & {
+    margin-top: 9px;
+  }
+}
+
+.mobi-compare-tbl {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  .i-pencil, i-doc {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  .i-arrow4-r {
+    width: .75em;
+    height: .75em;
+  }
+
+  thead {
+
+    td, th {
+      color: #fff;
+      background: $tundora;
+    }
+
+    .btn-unstyled {
+      padding: 0;
+      color: #fff;
+    }
+
+    svg {
+      fill: $concrete;
+    }
+  }
+
+  tbody {
+    overflow: auto;
+    width: 100%;
+
+    th {
+      background: $mercury;
+    }
+  }
+
+  th, td {
+    width: 50%;
+    padding: .5em;
+    border-right: solid 1px $alto;
+    line-height: normal;
+    text-align: center;
+  }
+
+  svg {
+    fill: $silver;
+  }
+
+  img {
+    margin: 0 auto;
+  }
+
+  .btn-primary {
+    margin-top: .5em;
+  }
+}
+
+.act-cont {
+  @include cf;
+
+  .act-icon {
+    width: 15%;
+    float: left;
+  }
+
+  .act-content {
+    float: left;
+    width: 85%;
+  }
+
+  // stick it at top left corner
+  .act-icon-tl {
+    width: 25%;
+    float: left
+  }
+}

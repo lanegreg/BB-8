@@ -1,0 +1,13 @@
+﻿<div id="c4s_recvwd_wdg_wrap_js">
+  <h3 class="widget-heading">Recently Viewed</h3>
+  <div id="c4s_varray">
+    <div id="c4s_recvwd_wdg_cars_wrap_js"></div>
+  </div>
+  <!--<button id="vwrec_wdg_showall_btn_js" class="btn-default block" style="display:none">See More +</button>-->
+  <div align="center">
+    <p><label for="c4s_wdg_checkAll"><input type="checkbox" id="c4s_wdg_checkAll" />Select All</label></p>
+  </div>
+  <div align="center">
+      <button id="c4s_wdg_getpricing_btn_js" class="leadoverlay_pop_btn_js btn-primary block">Get Pricing</button>
+  </div>
+</div>

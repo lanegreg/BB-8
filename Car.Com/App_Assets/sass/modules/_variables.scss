@@ -1,0 +1,102 @@
+﻿/**
+ *  This sass module contains the application-wide variables that apply to all devices.
+ */
+
+@charset "UTF-8";
+
+$susy: ( global-box-sizing: border-box, gutters: 1/8, debug: (image: hide), container: 100% );
+
+/* Breakpoint */
+// Smartphones (portrait and landscape)
+$xsmall: 320px;
+$small: 768px; // Most tablet portlait. Use 1024px ($medium) layout unless it requires some custom styling. 
+$medium: 1024px; // Or 1024px in window size. Good ol' desktop viewport width.
+$large: 1264px; // Or 1280px in window size. Minimum viewport width for the 728x90 ad to fit in the main column.
+$xlarge: 1350px; // Or 1366px in window size. The most popular viewport size as of 3/2015.
+$xxlarge: 1584px; // Or 1600px in window size.
+$xxxlarge: 1920px; // Or 1920px in window size.
+$xsmall-up: ($xsmall + 1);
+$xsmall-down: max-width ($small - 1);
+$small-only: $xsmall ($medium - 1); //Small range
+$medium-only: $medium ($large - 1); //Medium range
+$medium-portrait: 768px (orientation portrait);
+
+$full-nav-height: (min-height 768px);
+$min-nav-height: (min-height 600px);
+
+/* Layout */
+$fluid-pg-width: 100%;
+$fixed-pg-width: 1130px;
+$primary-v-pad: 2em;
+$primary-side-pad: 2em;
+$sitenav-col-width: 100px;
+$top-ldrboard-offset: 115px;
+$offer-panel-width: 320px;
+$default-btn-padding: .5em 1em;
+
+/* Primary Colors */
+$brand-color: #5CB1E5; /* rgb(92,177,229) */
+$accent-color: #0ba14a; /* rgb(102,204,0) salem */
+$accent-color-hover: #6c0; /* rgb(102,204,0) */
+
+/* Blue Variations */
+$chathams-blue: #145083; /* rgb(20,80,131) */
+$astral: #337AAF; /* rgb(51,122,175) */
+$picton-blue: $brand-color;
+$malibu: #8CD3F5; /* logo color, rgb(136,213,252) */
+$tropical-blue: #cee9fa;
+$pattens-blue:#E2F4FF; 
+
+/* AutoWeb Blue Variations */
+$endeavour: #005ea4;
+$curious-blue: #2687c8;
+
+/* Grey Variations */
+$cod-gray: #1B1B1B;
+$mine-shaft: #3B3B3B;
+$tundora: #4D4D4D; /* rgb(77,77,77) */
+$dove-gray: #666;
+$gray2: #808080;
+$gray: #939393;
+$silver: #bbb;
+$alto: #ddd;
+$mercury: #E6E6E6;
+$porcelain: #e7e8ea;
+$concrete: #F2F2F2;
+$alabaster: #F7F7F7;
+
+/* Filter */
+$filter-highlight: $accent-color;
+$filter-background: $porcelain;
+
+$radio-off: #F8F8F8;
+$radio-on: $accent-color;
+
+$footer: #333;
+
+$body-background-color: #F1F5F6;
+$body-font-color: #000;
+
+/* Links */
+$normal: $picton-blue;
+$hover: $malibu;
+$nav: $gray;
+$sidebar-ad-width: 300px;
+
+/* Tab Label */
+$tab-label-line-height: 3;
+
+/* Overlay */
+$overlay: $mine-shaft;
+$overlay-body-text: $mercury;
+
+$overlay-dk: $mine-shaft;
+$overlay-dk-body-text: $mercury;
+
+$overlay-lt: $alabaster;
+$overlay-lt-body-text: $cod-gray;
+
+$overlay-inner-cont-bg-color: rgba(0,0,0,.1);
+
+$header-font-family: 'Montserrat', sans-serif;
+$body-font-family: 'Open Sans', Helvetica, Arial, sans-serif;

@@ -1,0 +1,398 @@
+﻿@model Car.Com.Models.CarValue.IndexViewModel
+
+<div class="header">
+  <div class="page-title group">
+    <div class="group-inline">
+      <h1 class="item">Used Car Values</h1>
+      <span class="item">
+        <span class="kbb-logo"></span>
+      </span>
+    </div>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad ucv-form">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div class="accordion">
+        <div id="section1" class="accordion-section">
+          <h2 class="h2">
+            <a class="accordion-section-title active" href="#step_1">
+              <span class="label-circle">1</span> Tell us about your car
+            </a>
+          </h2>
+          <div id="step_1" data-offset-tweak="-80" class="accordion-section-content" style="display: block">
+            <form class="car-form">
+              <div class="ucv-step1">
+                <select data-ord="1" class="hint-mode" id="evalType" name="evalType">
+                  <option disabled selected class='prompt'>Type</option>
+                  @foreach (var type in @Model.EvaluationTypes) {
+                    <option value="@type.Key">@type.Value</option>
+                  }
+                </select>
+                <div class="type-cont" style="visibility:hidden;">
+                  <div id="tradeInDesc" class="tip-bubble evalTypeDesc" style="display:none /* Marvin, swap this to 'display: block' once this type is selected */">
+                    <p><span class="em">Trade-In Value</span><br />Trade-in Value is what consumers can expect to receive from a dealer for a trade-in vehicle assuming an accurate appraisal of condition. This value will likely be less than the Private Party Value because the reselling dealer incurs the cost of safety inspections, reconditioning and other costs of doing business.</p>
+                  </div>
+                  <div id="privatePartyDesc" class="tip-bubble evalTypeDesc" style="display:none">
+                    <p><span class="em">Private Party Value</span><br />Private Party Value is what a buyer can expect to pay when buying a used car from a private party. The Private Party Value assumes the vehicle is sold "As Is" and carries no warranty (other than the continuing factory warranty). The final sale price may vary depending on the vehicle's actual condition and local market conditions. This value may also be used to derive Fair Market Value for insurance and vehicle donation purposes.</p>
+                  </div>
+                  <div id="suggestedRetailDesc" class="tip-bubble evalTypeDesc" style="display:none">
+                    <p><span class="em">Suggested Retail Value</span><br />The Kelley Blue Book Suggested Retail Value is representative of dealers' asking prices and is the starting point for negotiation between a consumer and a dealer. This Suggested Retail Value assumes that the vehicle has been fully reconditioned and has a clean Title History . This value also takes into account the dealers' profit, costs for advertising, sales commissions and other costs of doing business. The final sale price will likely be less depending on the vehicle's actual condition, popularity, type of warranty offered and local market conditions.</p>
+                  </div>
+                </div>
+                <select data-ord="2" disabled class="select-ymm hint-mode" id="year" name="year">
+                  <option disabled selected class='prompt'>Year</option>
+                  @foreach (var year in @Model.Years) {
+                    <option value="@year.Key">@year.Value</option>
+                  }
+                </select>
+                <select data-ord="3" disabled class="select-ymm hint-mode" id="make" name="make">
+                  <option disabled selected class='prompt'>Make</option>
+                </select>
+                <select data-ord="4" disabled class="select-ymm hint-mode" id="model_trim" name="model_trim">
+                  <option disabled selected class='prompt'>Model</option>
+                </select>
+                <span id="requiredTextSection1" class="validation-summary-errors center" style="display:none"></span>
+                <button id="btnDetails" class="btn-primary next">
+                  Next
+                </button>
+              </div>
+            </form>
+          </div>
+          <div class="disclaimer-cont">
+            <h3 class="h5">
+              About Kelley Blue Book
+            </h3>
+            <p class="disclaimer">
+              If you're searching for used car pricing information, then you'll want to use the most trusted source in the car business: Kelley Blue Book. The Blue Book® is the vehicle information resource used by consumers and the automobile industry to establish price guidelines. Since 1926, new and used car buyers and sellers have relied upon Kelley Blue Book for authoritative and unbiased information to make well-informed car, truck and SUV buying decisions. Kelley Blue Book reports used car values for a variety of buying and selling transactions: trading in your automobile to a dealer, buying a used car from a dealer, buying a used car from a private party and selling your used car to a private party. Blue Book used car values are determined by taking into consideration the equipment and options on the automobile, the vehicle's mileage, the condition of the automobile and the geographic area where the car has been driven.
+            </p>
+            <p class="disclaimer">
+              Kelley Blue Book® and Blue Book® are registered trademarks of Kelley Blue Book Co., Inc.
+            </p>
+          </div>
+        </div>
+        <div id="section2" class="accordion-section " style="display:none; position:relative;">
+          <h2 class="h2">
+            <a class="accordion-section-title active" href="#step_2">
+              <span class="label-circle">2</span> Provide Details
+            </a>
+          </h2>
+          <button class="btn-default new-search newSearch">New Search</button>
+          <div id="step_2" data-offset-tweak="-80" class="accordion-section-content" style="display: block">
+            <form class="car-form">
+              <h3 id="step2_cardesc" class="h3"></h3>
+              <input id="mileage" type="text" value="" placeholder="Mileage" maxlength="7" class="xs mi" />
+              <input id="zipCode" type="text" value="" placeholder="Zip Code" maxlength="5" class="xs" />
+              <div class="details-list">
+                <div class="row">
+                  <div class="item"><strong>Drive</strong></div>
+                  <div id="drives" class="option">
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="item"><strong>Transmission</strong></div>
+                  <div id="transmissions" class="option">
+
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="item"><strong>Engine</strong></div>
+                  <div id="engines" class="option">
+
+                  </div>
+                </div>
+              </div>
+              <h4 class="h4">Equipment:</h4>
+              <ul id="vehicleoptions" class="more-details-list"></ul>
+              <h4 class="h4">Condition:</h4>
+              <ul class="condition-list">
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionExcellent" name="condition" class="condition" value="E" checked />
+                    <label for="conditionExcellent">
+                      <span></span>Excellent
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionGood" name="condition" class="condition" value="G" />
+                    <label for="conditionGood">
+                      <span></span>Good
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionFair" name="condition" class="condition" value="F" />
+                    <label for="conditionFair">
+                      <span></span>Fair
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionPoor" name="condition" class="condition" value="P" />
+                    <label for="conditionPoor">
+                      <span></span>Poor
+                    </label>
+                  </div>
+                </li>
+              </ul>
+
+              <div id="conditionExcellentDesc" class="tip-bubble conditionDesc" style="display:block">
+                <p>
+                  <span class="em">Excellent</span><br />
+                  Excellent condition means that the vehicle looks new, is in excellent mechanical condition and needs no reconditioning. This vehicle has never had any paint or body work and is free of rust. The vehicle has a clean Title History and will pass a smog and safety inspection. The engine compartment is clean, with no fluid leaks and is free of any wear or visible defects. The vehicle also has complete and verifiable service records. Less than 5% of all used vehicles fall into this.
+                </p>
+              </div>
+              <div id="conditionGoodDesc" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Good</span><br />
+                  Good condition means that the vehicle is free of any major defects. This vehicle has a clean Title History . The paint, body and interior have only minor (if any) blemishes, and there are no major mechanical problems. There should be little or no rust on this vehicle. The tires match and have substantial tread wear left. A "good" vehicle will need some reconditioning to be sold at retail. Most consumer owned vehicles fall into this category.
+                </p>
+              </div>
+              <div id="conditionFairDesc" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Fair</span><br />
+                  Fair condition means that the vehicle has some mechanical or cosmetic defects and needs servicing but is still in reasonable running condition. This vehicle has a clean Title History. The paint, body and/or interior need work performed by a professional. The tires may need to be replaced. There may be some repairable rust damage.
+                </p>
+              </div>
+              <div id="conditionPoorDesc" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Poor</span><br />
+                  Poor condition means that the vehicle has severe mechanical and/or cosmetic defects and is in poor running condition. The vehicle may have problems that cannot be readily fixed such as a damaged frame or a rusted-through body. A vehicle with a branded title (salvage, flood, etc.) or unsubstantiated mileage is considered "poor." A vehicle in poor condition may require an independent appraisal to determine its value.
+                </p>
+              </div>
+              <span id="requiredTextSection2" class="validation-summary-errors center" style="display:none"></span>
+              <button id="btnSubmit" class="btn-primary next" type="button">
+                Next
+              </button>
+            </form>
+          </div>
+        </div>
+        <div id="section3" class="accordion-section" style="display:none; position:relative;">
+          <h2 class="h3">
+            <a class="accordion-section-title active" href="#step_3">
+              <span class="label-circle">3</span> View Your Car Value
+            </a>
+          </h2>
+          <button class="btn-default new-search newSearch">New Search</button>
+          <div id="step_3" data-offset-tweak="-80" class="accordion-section-content" style="display: block">
+            <h3 id="step3_cardesc" class="h3"></h3>
+            <div class="car-value-cont">
+              <select id="evalType2">
+                <option value="TI">Trade-In Value</option>
+                <option value="PP">Private Party Value</option>
+                <option value="R">Suggested Retail Value</option>
+              </select>
+              <span class="car-value">
+                <span id="dollarSign">$</span><span id="vehicleValue" class="value"></span>
+                <span class="validation-summary-errors" style="display: none">
+                  We are not able to estimate the current value of this vehicle.
+                </span>
+              </span>
+            </div>
+            <div class="type-cont" style="visibility:visible;">
+              <div id="tradeInDesc2" class="tip-bubble evalTypeDesc2" style="display:block">
+                <p><span class="em">Trade-In Value</span><br />Trade-in Value is what consumers can expect to receive from a dealer for a trade-in vehicle assuming an accurate appraisal of condition. This value will likely be less than the Private Party Value because the reselling dealer incurs the cost of safety inspections, reconditioning and other costs of doing business.</p>
+              </div>
+              <div id="privatePartyDesc2" class="tip-bubble evalTypeDesc2" style="display:none">
+                <p><span class="em">Private Party Value</span><br />Private Party Value is what a buyer can expect to pay when buying a used car from a private party. The Private Party Value assumes the vehicle is sold "As Is" and carries no warranty (other than the continuing factory warranty). The final sale price may vary depending on the vehicle's actual condition and local market conditions. This value may also be used to derive Fair Market Value for insurance and vehicle donation purposes.</p>
+              </div>
+              <div id="suggestedRetailDesc2" class="tip-bubble evalTypeDesc2" style="display:none">
+                <p><span class="em">Suggested Retail Value</span><br />The Kelley Blue Book Suggested Retail Value is representative of dealers' asking prices and is the starting point for negotiation between a consumer and a dealer. This Suggested Retail Value assumes that the vehicle has been fully reconditioned and has a clean Title History . This value also takes into account the dealers' profit, costs for advertising, sales commissions and other costs of doing business. The final sale price will likely be less depending on the vehicle's actual condition, popularity, type of warranty offered and local market conditions.</p>
+              </div>
+            </div>
+
+            <form class="car-form">
+              <h4 class="h4">Condition:</h4>
+              <ul class="condition-list">
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionExcellent2" name="condition" class="condition" value="E" checked />
+                    <label for="conditionExcellent2">
+                      <span></span>Excellent
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionGood2" name="condition" class="condition" value="G" />
+                    <label for="conditionGood2">
+                      <span></span>Good
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionFair2" name="condition" class="condition" value="F" />
+                    <label for="conditionFair2">
+                      <span></span>Fair
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="radio">
+                    <input type="radio" id="conditionPoor2" name="condition" class="condition" value="P" />
+                    <label for="conditionPoor2">
+                      <span></span>Poor
+                    </label>
+                  </div>
+                </li>
+              </ul>
+              <div id="conditionExcellentDesc2" class="tip-bubble conditionDesc" style="display:block">
+                <p>
+                  <span class="em">Excellent</span><br />
+                  Excellent condition means that the vehicle looks new, is in excellent mechanical condition and needs no reconditioning. This vehicle has never had any paint or body work and is free of rust. The vehicle has a clean Title History and will pass a smog and safety inspection. The engine compartment is clean, with no fluid leaks and is free of any wear or visible defects. The vehicle also has complete and verifiable service records. Less than 5% of all used vehicles fall into this.
+                </p>
+              </div>
+              <div id="conditionGoodDesc2" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Good</span><br />
+                  Good condition means that the vehicle is free of any major defects. This vehicle has a clean Title History . The paint, body and interior have only minor (if any) blemishes, and there are no major mechanical problems. There should be little or no rust on this vehicle. The tires match and have substantial tread wear left. A "good" vehicle will need some reconditioning to be sold at retail. Most consumer owned vehicles fall into this category.
+                </p>
+              </div>
+              <div id="conditionFairDesc2" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Fair</span><br />
+                  Fair condition means that the vehicle has some mechanical or cosmetic defects and needs servicing but is still in reasonable running condition. This vehicle has a clean Title History. The paint, body and/or interior need work performed by a professional. The tires may need to be replaced. There may be some repairable rust damage.
+                </p>
+              </div>
+              <div id="conditionPoorDesc2" class="tip-bubble conditionDesc" style="display:none">
+                <p>
+                  <span class="em">Poor</span><br />
+                  Poor condition means that the vehicle has severe mechanical and/or cosmetic defects and is in poor running condition. The vehicle may have problems that cannot be readily fixed such as a damaged frame or a rusted-through body. A vehicle with a branded title (salvage, flood, etc.) or unsubstantiated mileage is considered "poor." A vehicle in poor condition may require an independent appraisal to determine its value.
+                </p>
+              </div>
+            </form>
+            <div class="details-list">
+              <div class="row">
+                <strong class="item">Zip Code:</strong>
+                <span id="zipCodeVal" class="option"></span>
+              </div>
+              <div class="row">
+                <strong class="item">Engine:</strong>
+                <span id="enginesVal" class="option"></span>
+              </div>
+              <div class="row">
+                <strong class="item">Drive</strong>
+                <span id="drivesVal" class="option"></span>
+              </div>
+              <div class="row">
+                <strong class="item">Transmission:</strong>
+                <span id="transmissionsVal" class="option"></span>
+              </div>
+              <div class="row">
+                <strong class="item">Mileage:</strong>
+                <span id="mileageVal" class="option"></span>
+              </div>
+            </div>
+            <h4 class="h4">Equipment:</h4>
+            <ul class="more-details-list has-bullet" id="vehicleoptionsVal"></ul>
+            <div class="disclaimer-cont">
+              <p class="disclaimer">Copyright &copy; 2015 by Kelley Blue Book Co., All Rights Reserved. 03/30/2015 Edition. The specific information required to determine the value for this particular vehicle was supplied by the person generating this report. Vehicle valuations are opinions and may vary from vehicle to vehicle. Actual valuations will vary based upon market conditions, specifications, vehicle condition or other particular circumstances pertinent to this particular vehicle or the transaction or the parties to the transaction. This report is intended for the individual use of the person generating this report only and shall not be sold or transmitted to another party. Kelley Blue Book assumes no responsibility for errors or omissions. (v.11023)</p>
+            </div>
+          </div>
+        </div>
+
+        @*<div id="section4" class="accordion-section" style="display:none; position:relative;">
+          <h2 class="h2">
+              <a class="accordion-section-title active" href="#step_3">
+                  Search for a New Car
+              </a>
+          </h2>
+          <div id="step_4" data-offset-tweak="-80" class="accordion-section-content" style="display: block">
+              <div class="col">
+                  Now that you know the price of your Car are you ready to find your next car?
+              </div>*@
+        @*<div class="col">
+          <select data-ord="2" disabled class="hint-mode" id="year" name="year">
+              <option disabled selected class='prompt'>Year</option>
+          </select>
+          <select data-ord="3" disabled class="hint-mode" id="make" name="make">
+              <option disabled selected class='prompt'>Make</option>
+          </select>
+          <select data-ord="4" disabled class="hint-mode" id="model_trim" name="model_trim">
+              <option disabled selected class='prompt'>Model</option>
+          </select>
+
+              <input id="zipCode2" type="text" value="" placeholder="Zip Code" class="xs" />
+          </div>*@
+
+        @*<div class="col">
+          <p>There are XXX used <make> <model>in <zip code>.</p>*@
+
+        @*<button id="btnSearchCars" class="btn-primary next">
+              See the XXX <make> <model>’s in <zip code>
+          </button>*@
+
+        @*<button id="btnSearchCars" class="btn-primary next">
+                          Search For Your Next Car
+                      </button>
+                  </div>
+
+            </div>
+          </div>*@
+      </div>
+      <div class="ucv-last" id="" style="display:none;">
+        <h2>Shop for New and Used Car</h2>
+        <div class="col">
+          <form class="car-form">
+            <select name="year">
+              <option>Year</option>
+              <option value="">2014</option>
+            </select>
+            <select name="make">
+              <option>Make</option>
+            </select>
+            <select name="model_trim">
+              <option>Model</option>
+            </select>
+          </form>
+        </div>
+        <div class="col">
+        </div>
+      </div>
+      <div class="ucv-last" style="display:none;">
+        <div class="col">
+          <h3 class="rec-car-name">2013 Land Rover Range Rover Autobiography Black Sport Utility 4D</h3>
+          <button class="btn-primary">Search Used</button>
+          <button class="btn-primary">Get Pricing</button>
+        </div>
+        <div class="col"><img src="//img.car.com/2014/honda/odyssey/33210_11_2_320x.png" alt="2014 Honda Odyssey"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

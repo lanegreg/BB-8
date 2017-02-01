@@ -1,0 +1,61 @@
+﻿@model Car.Com.Models.BuyingGuides.ArticleViewModel
+@{
+  // Meta Open Graph Used by Facebook, Google, Reddit
+  var openGraph = String.Format("<meta property=\"og:title\" content=\"{0}\" />", Model.OpenGraphMeta.Title);
+
+  openGraph = openGraph + String.Format("<meta property=\"og:description\" content=\"{0}\" />", Model.OpenGraphMeta.Description);
+  openGraph = openGraph + String.Format("<meta property=\"og:type\" content=\"{0}\" />", Model.OpenGraphMeta.Type);
+  openGraph = openGraph + String.Format("<meta property=\"og:url\" content=\"{0}\" />", Model.OpenGraphMeta.Url);
+
+  foreach (var articleImage in Model.OpenGraphMeta.Images) {
+    openGraph = openGraph + String.Format("<meta property=\"og:image\" content=\"{0}\" />", articleImage);
+  }
+}
+
+@section MetaOpenGraph { @Html.Raw(openGraph) }
+
+<div id="content" class="header" data-id="@Model.Article.ContentId" data-relatedarticlestart="1">
+  <div class="page-title">
+    <h1>@Model.Article.Title</h1>
+  </div>
+</div>
+<div id="main-wrapper" class="main" data-currentpage="1" data-numpages="@Model.Article.ArticlePages.Count">
+  <div class="cell primary">
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div>
+
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+
+        @{ Html.RenderPartial("_ArticleGallery", Model.ArticleGallery); }
+
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

@@ -1,0 +1,110 @@
+﻿@using System.Text.RegularExpressions
+@using Car.Com.Models.Research
+@model AlternativeFuelViewModel
+
+<section class="hero">
+  <div class="backdrop alt-fuel" role="img">
+    <span class="inner">
+    </span>
+    <div class="hero-link-container">
+      <div class="page-title">
+        <h1>Alternative Fuel Vehicles</h1>
+      </div>
+      <div class="hero-link">
+        <a href="#fuel-types" class="hero-btn one">
+          Select Fuel Types
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div> 
+  <div class="ldrboard-cont">
+    <div class="ad-container">
+      <div id="js_tile_1" class="ad"></div>
+    </div>
+  </div>
+</section>
+<div class="main">
+  <div class="cell primary">
+    <div class="section-pad">     
+      <section id="fuel-types" class="jump-to">
+
+        <ul class="category-list">
+          @{
+            foreach (var vehicleAttribute in Model.VehicleAttributes)
+            {
+              
+              var iconName = vehicleAttribute.Name;
+
+              var fuelTypeIconName = "filter-icon-fueltype-" + iconName.Replace(" ", "").ToLower();
+              var fuelTypeIconViewboxAttribute3 = "100";
+
+              if (fuelTypeIconName == "filter-icon-fueltype-diesel") { fuelTypeIconViewboxAttribute3 = "753"; }
+              else if (fuelTypeIconName == "filter-icon-fueltype-electric") { fuelTypeIconViewboxAttribute3 = "1024"; }
+              else if (fuelTypeIconName == "filter-icon-fueltype-gas") { fuelTypeIconViewboxAttribute3 = "753"; }
+              else if (fuelTypeIconName == "filter-icon-fueltype-hybrid") { fuelTypeIconViewboxAttribute3 = "1384"; }
+              else if (fuelTypeIconName == "filter-icon-fueltype-hydrogen") { fuelTypeIconViewboxAttribute3 = "1024"; }
+              else
+              {
+                fuelTypeIconName = "filter-icon-fueltype-other";
+                fuelTypeIconViewboxAttribute3 = "1283";
+              }
+
+              <li>
+                @Html.SeoRouteLink("Research_VehicleAttributeNoCategoryResult",
+                  new RouteValues {
+                    {UriTokenNames.VehicleAttribute, vehicleAttribute.SeoName}
+                  },
+                  "<span class=\"icon\"><svg viewBox=\"0 0 " + fuelTypeIconViewboxAttribute3 + " 1024\">" +
+                  "<use xlink:href=\"/assets/svg/global-sprite.svg#" + fuelTypeIconName + "\"></use></svg></span>" +
+                  "<span class=\"value\">" + vehicleAttribute.Name + "</span>",
+                  new Attributes {
+                    {"class", "block"}
+                  })
+              </li>
+
+
+            }
+
+          }
+        </ul>
+      </section>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+
+@{
+  Html.RenderPartial("_FilterIconsFueltype");
+}

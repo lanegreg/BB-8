@@ -1,0 +1,12 @@
+﻿/**
+ *  This sass module represents the desktop version of carsforsale.make http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base";
+
+// $MAKE, MODEL LIST
+.make-list, .model-list {
+  @extend %mnm-list;
+}

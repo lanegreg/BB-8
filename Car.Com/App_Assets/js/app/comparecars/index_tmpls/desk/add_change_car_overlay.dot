@@ -1,0 +1,40 @@
+﻿<div id="add_change_car_overlay_js" class="overlay overlay-dk max-450" style="display:none">
+  <button type="button" class="overlay-close">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div class="dead-middle">
+    <h1>Select a Car</h1>
+    <section class="add-change-car-container" id="" style="display: block">
+      <form>
+        <p>
+          <label>
+            <select id="compareCarMakeSelect" class="full">
+              <option value="">Select a Make</option>
+              {{~it.makeArr :makeItem:midx}}
+              <option value="{{=makeItem.seo_name}}">{{=makeItem.name}}</option>
+              {{~}}
+            </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            <select id="compareCarModelSelect" class="full" disabled="disabled">
+              <option value="">Select a Model</option>
+            </select>
+          </label>
+        </p>
+        <p>
+          <label>
+            <select id="compareCarTrimSelect" class="full" disabled="disabled">
+              <option value="">Select a Vehicle</option>
+            </select>
+          </label>
+        </p>
+      </form>
+    </section>
+  </div>
+</div>

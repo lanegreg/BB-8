@@ -1,0 +1,19 @@
+﻿
+<div class="cell primary">
+  <div class="section-pad">
+
+
+    <div class="compare-head-cont">
+      <table>
+        <tr>
+          <th class="rowhead">
+            <button class="btn-primary add-car js_add_compare_car" style="top: 3px;">Add a Car</button>
+          </th>
+        </tr>
+     </table>
+    </div>
+
+  </div>
+</div>
+
+

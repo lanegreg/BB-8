@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C8B66331-9EC5-4DD2-B7F9-BCF2389AA5B7}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Com", "Car.Com\Car.Com.csproj", "{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Com.Common", "Car.Com.Common\Car.Com.Common.csproj", "{E4302754-10C7-4C43-B4C3-9D8031132092}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Com.Domain", "Car.Com.Domain\Car.Com.Domain.csproj", "{38D76885-8EF0-4D84-8376-D66B206DFF57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Com.Service", "Car.Com.Service\Car.Com.Service.csproj", "{17D290F4-4928-4471-9AA7-3FF62867983A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Car.Com.Tests", "Car.Com.Tests\Car.Com.Tests.csproj", "{72AF9296-9FC2-4543-9F82-500962DB60CB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".build", ".build", "{0CAB6DDA-B459-4B29-A26F-5CD99A9E79EA}"
+	ProjectSection(SolutionItems) = preProject
+		.build\Build-Carnado.ps1 = .build\Build-Carnado.ps1
+		.build\Deploy-Carnado.ps1 = .build\Deploy-Carnado.ps1
+		.build\environment.json = .build\environment.json
+		.build\exclude.txt = .build\exclude.txt
+		.build\Get-CarnadoChanges.ps1 = .build\Get-CarnadoChanges.ps1
+		.build\growlnotify.json = .build\growlnotify.json
+		.build\PostBuild-GrowlNotify.ps1 = .build\PostBuild-GrowlNotify.ps1
+		.build\Publish-CarCom.ps1 = .build\Publish-CarCom.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "config_files", "config_files", "{58DA5988-173D-4924-8C32-A4249482FB24}"
+	ProjectSection(SolutionItems) = preProject
+		.build\config_files\DEV-Web.config = .build\config_files\DEV-Web.config
+		.build\config_files\PRD-Services.config = .build\config_files\PRD-Services.config
+		.build\config_files\PRD-Web.config = .build\config_files\PRD-Web.config
+		.build\config_files\QA-Services.config = .build\config_files\QA-Services.config
+		.build\config_files\QA-Web.config = .build\config_files\QA-Web.config
+		.build\config_files\STG-Services.config = .build\config_files\STG-Services.config
+		.build\config_files\STG-Web.config = .build\config_files\STG-Web.config
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://tfsapp401.prod.autobytel.com:8080/tfs/consumer
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Car.Com.Common\\Car.Com.Common.csproj
+		SccProjectName1 = Car.Com.Common
+		SccLocalPath1 = Car.Com.Common
+		SccProjectUniqueName2 = Car.Com.Domain\\Car.Com.Domain.csproj
+		SccProjectName2 = Car.Com.Domain
+		SccLocalPath2 = Car.Com.Domain
+		SccProjectUniqueName3 = Car.Com.Service\\Car.Com.Service.csproj
+		SccProjectName3 = Car.Com.Service
+		SccLocalPath3 = Car.Com.Service
+		SccProjectUniqueName4 = Car.Com.Tests\\Car.Com.Tests.csproj
+		SccProjectName4 = Car.Com.Tests
+		SccLocalPath4 = Car.Com.Tests
+		SccProjectUniqueName5 = Car.Com\\Car.Com.csproj
+		SccProjectName5 = Car.Com
+		SccLocalPath5 = Car.Com
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65E13D00-255C-45A4-A4DE-9EE41ECEBDA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E4302754-10C7-4C43-B4C3-9D8031132092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E4302754-10C7-4C43-B4C3-9D8031132092}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E4302754-10C7-4C43-B4C3-9D8031132092}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E4302754-10C7-4C43-B4C3-9D8031132092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D76885-8EF0-4D84-8376-D66B206DFF57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D76885-8EF0-4D84-8376-D66B206DFF57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D76885-8EF0-4D84-8376-D66B206DFF57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D76885-8EF0-4D84-8376-D66B206DFF57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17D290F4-4928-4471-9AA7-3FF62867983A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17D290F4-4928-4471-9AA7-3FF62867983A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17D290F4-4928-4471-9AA7-3FF62867983A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17D290F4-4928-4471-9AA7-3FF62867983A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72AF9296-9FC2-4543-9F82-500962DB60CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72AF9296-9FC2-4543-9F82-500962DB60CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72AF9296-9FC2-4543-9F82-500962DB60CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72AF9296-9FC2-4543-9F82-500962DB60CB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{58DA5988-173D-4924-8C32-A4249482FB24} = {0CAB6DDA-B459-4B29-A26F-5CD99A9E79EA}
+	EndGlobalSection
+EndGlobal

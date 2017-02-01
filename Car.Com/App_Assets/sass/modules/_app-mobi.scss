@@ -1,0 +1,11 @@
+﻿/**
+ *  This sass module contains the application-wide base styles that apply to mobile devices http://www.autobytel.com/
+ */
+
+@charset "UTF-8";
+
+@import "normalize", "variables", "mixins", "helpers", "base", "layout", "components";
+
+.navigation nav .i-nav {
+    display: none;
+}

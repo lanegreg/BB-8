@@ -1,0 +1,106 @@
+﻿@model Car.Com.Models.Calculator.PaymentEstimateViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>Car Payment Calculator </h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div itemscope itemtype="http://schema.org/WebApplication" class="box solid" id="calc_form_div_js">
+        <meta itemprop="url" content="http://www.car.com/tools/calculators/payment-calculator/" />
+        <meta itemprop="name" content="Car Payment Calculator" />
+        <meta itemprop="description" content="Use our Car Payment Calculator to assess the amount of your monthly car payment. You can adjust calculations like interest rate and loan length quickly and easily." />
+        <meta itemprop="applicationCategory" content="Calculator" />
+        <meta itemprop="applicationSubCategory" content="Online Car Payment Calculator" />
+        <meta itemprop="operatingSystem" content="Windows, iOS, Mac OS X, Android" />
+        <meta itemprop="featureList" content="Purchase Price, Cash Rebate, Value of Your Trade-In, Down Payment, Annual Interest Rate, Term of Loan, Calculate Monthly Payment" />
+        <form class="calc-form">
+          <fieldset>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_purchasePrice">
+                Purchase price ($)&nbsp;&nbsp;<a href="#" id="js_add_compare_car" style="color: #337AAF; font-size: 8pt; font-weight: bold; text-decoration: underline;">Select a Car</a>&nbsp;&nbsp;
+                <span id="js_selected_trim_label" style="font-size: 8pt;"></span>
+              </label>
+              <input class="form-item-value" id="PaymentEstimate_purchasePrice" maxlength="10" type="number" value="0" autofocus/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_cashRebate">Cash rebate ($)</label>
+              <input class="form-item-value" id="PaymentEstimate_cashRebate" maxlength="10" type="number" value="0"/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_tradeIn">Value of your trade-in ($)</label>
+              <input class="form-item-value" id="PaymentEstimate_tradeIn" maxlength="10" type="number" value="0"/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_tradeInOwed">Amount owed on your trade-in ($)</label>
+              <input class="form-item-value" id="PaymentEstimate_tradeInOwed" maxlength="10" type="number" value="0"/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_downPayment">Down payment ($)</label>
+              <input class="form-item-value" id="PaymentEstimate_downPayment" maxlength="10" type="number" value="0"/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_interestRate">Annual interest rate (%)</label>
+              <input class="form-item-value" id="PaymentEstimate_interestRate" maxlength="6" type="number" value="3"/>
+            </p>
+            <p class="form-item-row">
+              <label class="form-item-label" for="PaymentEstimate_termMonths">Term of loan (months)</label>
+              <input class="form-item-value" id="PaymentEstimate_termMonths" maxlength="6" type="number" value="60"/>
+            </p>
+            <p style="text-align: center;">
+              <input id="btnCalculateMonthlyPayment" type="submit" value="Calculate Monthly Payment" class="btn-primary lg"/>
+            </p>
+          </fieldset>
+        </form>
+        <p>
+          Use our car payment calculator to assess the amount of your monthly car payment. Every car shopper is unique and so are the many deals on new cars. Do your research and plug in all the variables. You’ll need the price, trade-in values, and interest rates and/or rebates available on the vehicle, then our monthly car payment calculator will quickly forecast what your payment will be each month.
+        </p>
+      </div>
+      <div class="center" id="resultdiv_js">
+        <p id="PaymentEstimate_monthlyPayment" style="font-size:36px; color:#145083; font-weight:bold; margin-bottom: 0;"></p>
+        <a class="btn-primary" href="http://finance.car.com/?id=32803" style="font-size:22px; padding: 25px 30px 25px 30px; margin-top: 30px; margin-bottom: 20px;"
+           title="Apply today for great auto loan rates" target="_new" rel="nofollow">Apply For a Car Loan</a><br />
+        <a href="." style="font-size:14px; text-decoration:underline;">Calculate a New Payment</a><br /><br /><br />
+      </div>
+      <section class="widget-cont" id="js_similar_vehicles" style="display: none;">
+        <h2 class="h2 line-on-sides">Research</h2>
+        <div class="sugged-widget-cont" id="js_similar_vehicles_content"></div>
+      </section>
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

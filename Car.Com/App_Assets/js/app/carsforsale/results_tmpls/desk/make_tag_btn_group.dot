@@ -1,0 +1,2 @@
+﻿<h2 class="h3">Select {{=it.name}} {{=it.descr}}</h2>
+<ul data-value="{{=it.value}}" class="inline-block-list"></ul>

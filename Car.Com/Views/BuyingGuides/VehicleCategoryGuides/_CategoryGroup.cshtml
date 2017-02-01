@@ -1,0 +1,62 @@
+﻿@using System.Web.DynamicData
+@using Car.Com.Domain.Models.Content
+@model Car.Com.Models.BuyingGuides.IndexViewModel
+@{
+  var viewBox = ViewData["viewBox"];
+  var href = ViewData["href"];
+  var category = ViewData["VehicleCategory"];
+}
+    <div class="line-on-sides">
+      <span class="icon inline">
+        <svg viewBox="@(viewBox)"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="@(href)"></use></svg>
+      </span>
+    </div>
+    <div class="flex-grid-cont">
+      @{
+        var i3 = 0;
+      }
+      @foreach (var article in Model.CategoriesArticles.Where(a => a.CategorySeoName == category.ToString()))
+      {
+        if (i3 > 2)
+        {
+          break;
+        }
+        if (i3 == 0)
+        {
+          <div class='flex-grid-col'>
+            <article class='post post-card-view'>
+              <a href="@(article.Url)">
+                <div class="img-container">
+                  <img src="@(article.MainArticleImage)">
+                </div>
+                <div class='desc'>
+                  <h4 class='title'>@(article.Title)</h4>
+                </div>
+              </a>
+            </article>
+          </div>
+        }
+        else
+        {
+          <div class='flex-grid-col'>
+            <article class='post post-list-view'>
+              <a href="@(article.Url)">
+                <div class="img-container">
+                  <img src="@(article.MainArticleImage)">
+                </div>
+                <div class='desc'>
+                  <h4 class='title'>@(article.Title)</h4>
+                </div>
+              </a>
+            </article>
+          </div>
+        }
+        i3++;
+      }
+    </div>
+
+
+
+
+
+

@@ -1,0 +1,12 @@
+﻿/**
+ *  This sass module represents the mobile version of carsforsale.results http://www.autobytel.com/
+ */
+
+@charset "UTF-8";
+
+@import "results.desk";
+
+.inline-block-list {
+  @extend %btn-list;
+}
+

@@ -1,0 +1,286 @@
+﻿/**
+ *  This sass module represents the desktop version of carsforsale.vehicledetails http://www.autobytel.com/cars-for-sale/vehicle-detials/
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "unslider";
+
+.uc-details {
+  @include breakpoint($large) {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5em;
+  }
+
+  .banner {
+    margin-bottom: .25em;
+    position: relative;
+
+    img {
+      margin: 0 auto;
+    }
+  }
+
+  .an-recall-free-badge {
+    position: absolute;
+    bottom: 2px;
+    left: -2px;
+    width: 60px;
+    height: 45px;
+    background-repeat: no-repeat;
+    background-image: url(/assets/img/autonation/an-recall-free-badge-60x45.png);
+    z-index: 1;
+
+    @include breakpoint($medium) {
+      width: 126px;
+      height: 95px;
+      background-image: url(/assets/img/autonation/recall-free-badge-126x95.png);
+    }
+
+    &.disabled {
+      display: none;
+    }
+  }
+
+  .col1, .col2 {
+    @include breakpoint($large) {
+    }
+  }
+
+  .col1 {
+    @include breakpoint($large) {
+      max-width: 60%;
+    }
+
+    @include breakpoint($xxlarge) {
+      width: 640px;
+      max-width: initial;
+      min-width: 640px;
+    }
+  }
+
+  .frame_js {
+    width: 100%;
+    height: auto;
+  }
+
+  .col2 {
+
+    @include breakpoint($large) {
+      padding: 0 0 0 2em;
+    }
+  }
+
+  .contact-dlr {
+
+    p {
+      margin: 0;
+      color: $mercury;
+      @include font(1.4, 1.3);
+    }
+  }
+
+  .phone {
+    text-align: center;
+    margin: .5em 0;
+
+    .call {
+      color: $mercury;
+      @include font(1.4, 1.3);
+    }
+
+    .number {
+      font-weight: 700;
+      @include font(2, 1.3);
+    }
+  }
+
+  h3 {
+    @include breakpoint($medium) {
+      margin-top: 0;
+    }
+  }
+
+  .inpage-jump {
+    display: none;
+
+    @include breakpoint($large) {
+      display: block;
+    }
+  }
+
+  .member-dlr-cont {
+    margin: 42px 0 .75em;
+    background: $tundora;
+
+    @include breakpoint($medium) {
+      h2 {
+        @include font(1.8, 1.3);
+      }
+    }
+
+    @include breakpoint($large) {
+      padding: 1.5em 4em;
+      margin: 0 0 1.5em;
+    }
+  }
+
+  .member-label {
+    @include breakpoint($small) {
+      @include font(1.4, 1.2);
+    }
+  }
+
+  .data {
+    @include font(1.4, 1.8);
+  }
+}
+
+.vdp-data-list {
+  margin-bottom: 1.5em;
+  @include data-list;
+
+  @include breakpoint($xlarge) {
+  }
+
+  ul {
+    @include breakpoint($small) {
+      margin-bottom: 0;
+      @include column-count(2);
+      @include column-gap(40px);
+      @include column-fill(balance);
+      @include column-rule(5px solid #efefef);
+    }
+  }
+
+  .label, .value {
+    width: auto;
+  }
+
+  .label {
+    margin-right: .5em;
+  }
+}
+
+.dlr-message-cont {
+  display: table;
+  width: 100%;
+  padding: 0 1em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  border: solid 2px $mercury;
+  @include border-radius(10px);
+
+  p {
+    text-align: center;
+    @include font(1.4, 1.5);
+  }
+}
+
+.dlr-maps-hours-cont {
+  margin-bottom: 1.5em;
+   
+  @include breakpoint($large) {
+    @include cf;
+  }
+  .col1 {
+    @include breakpoint($small) {
+      @include span(6 of 12);
+    }
+
+    @include breakpoint($xlarge) {
+      @include span(8 of 12);
+    }
+  }
+
+  .col2 {
+    @include breakpoint($small) {
+      padding-left: 20px;
+      @include span(6 of 12 last);
+    }
+
+    @include breakpoint($xlarge) {
+      padding-left: 30px;
+      @include span(4 of 12 last);
+    }
+  }
+}
+
+.dlr-hours {
+  max-width: 300px;
+  margin: 1.5em auto 3em;
+
+    @include breakpoint($small) {
+      margin: 0 auto;
+    }
+
+    @include breakpoint($xlarge) {
+      margin: 0;
+    }
+  h2 {
+    margin-top: 0;
+  }
+  .label {
+    font-weight: bold;
+  }
+}
+
+.pager3 {
+  margin-bottom: 0;
+
+  button {
+    margin: .75em 0;
+  }
+}
+
+.an-banner {
+  position: relative;
+  padding: 1em;
+  background: #353535;
+  @include cf;
+
+  .an-logo-copy-container {
+    width: 88%;
+    float: right;
+    text-align: center;
+  }
+
+  .an-logo {
+    margin: 0 auto;
+  }
+
+  .an-copy {
+    font-weight: bold;
+    color: white;
+    @include font(1, 1.3);
+
+    @include breakpoint(($medium-portrait, $medium)) {
+      @include font(1.8, 1.3);
+    }
+
+    @include breakpoint($xlarge) {
+      @include font(1.8, 1.3);
+    }
+  }
+
+  .an-rep-container {
+    width: 20%;
+    float: left;
+  }
+
+  .an-rep {
+    position: absolute;
+    bottom: 0;
+    left: 5%;
+    width: 70px;
+    height: 90px;
+    background-image: url(/assets/img/autonation/autonation-rep_70x90.png);
+  }
+}
+
+.an-copy-container {
+  .an-logo {
+    margin: 0 auto;
+  }
+}

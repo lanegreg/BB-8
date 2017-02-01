@@ -1,0 +1,12 @@
+﻿{{var car=it;}}
+<div class="tmpl_replace_js">
+
+  {{? car.dealer.autonationdealer}} 
+   <div class="an-copy-container">
+      <img src="/assets/img/autonation/an-logo-wh-108x23.png" alt="AutoNation logo" class="an-logo" />
+    </div>
+  {{?}}
+
+  <h2 class="h2">{{= car.dealer.name}}</h2>
+  <span>{{= car.dealer.city}}</span>
+</div>

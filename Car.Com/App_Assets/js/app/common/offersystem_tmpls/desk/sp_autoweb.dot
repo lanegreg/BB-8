@@ -1,0 +1,27 @@
+﻿
+<h2 class="h5">Get the best price on a {{=it.adData.Make}} {{=it.adData.Model}} in {{=it.adData.Location}} and Save!</h2>
+<div class="aw-feed-cont-sm">
+  <ul>
+    {{~it.adData.adList.Listings :adItem:adidx}}
+    {{?adidx < 5}}
+      <li>
+      <a href="{{=adItem.LandingUrl}}" target="_blank">
+        <div class="col-thumb">
+          <img src="{{=adItem.LogoUrl}}" />
+      </div>
+      <div class="col-desc">
+        <h3 class="header">{{=adItem.Title}}</h3>
+        <p>
+          <span>{{=adItem.DisplayUrl}}</span>
+          <br/>
+          <span>{{=adItem.Description1}}</span>
+          <!--<br/>
+          <span>{{=adItem.Description2}}</span>-->
+        </p>
+        </div>
+      </a>
+    </li>
+    {{?}}
+    {{~}}
+  </ul>
+</div>

@@ -1,0 +1,28 @@
+﻿@model Car.Com.Models.Sponsored.NativoViewModel
+
+@{ // Nativo in-content ads
+    var nativoAds = String.Format("<!-- Nativo Ads -->");
+    nativoAds = nativoAds + String.Format("<meta http-equiv=\"X-UA-Compatible\" content=\"IE =10\" />");
+    nativoAds = nativoAds + String.Format("<meta name=\"robots\" content=\"noindex, nofollow\" />");
+    nativoAds = nativoAds + String.Format("<script type=\"text/javascript\" src=\"http://a.postrelease.com/serve/load.js?async =true\"></script>");
+}
+
+@section Nativo { @Html.Raw(nativoAds) }
+
+<div class="fill-temp2-col-side clearfix">
+    <div class="temp2-col-main new">
+        <div id="ntv-contentbox" class="col-pad">
+            <div class="module" id="blank-format">
+                <h5>Sponsored post by <span id="ContentAuthor"></span>| on <span id="ContentDateTime"></span></h5>
+                <h1 class="margin-bottom-none"><span id="ContentTitle"></span></h1>
+                <br />
+                <div id="js_content_container" class="entry-content">
+                    <div class="js-page-content">
+                        <div id="ContentBody"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

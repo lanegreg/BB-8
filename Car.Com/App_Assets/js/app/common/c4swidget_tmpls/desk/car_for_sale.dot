@@ -1,0 +1,23 @@
+﻿{{~ it.cars_for_sale :t:index}}
+{{var img=t.primary_image_url,p=t.price,m=t.mileage,d=t.dealer;}}
+  {{? img!="/assets/svg/no-image-avail.svg"}}
+      <div class="widget-list-item">
+      <a href="/cars-for-sale/vehicle-details/?q={{= d.id}}|{{= t.id}}|{{= it.zipcode}}|{{= t.make_id}}|{{= t.model}}">
+        <div class="img-container">
+          <img src="{{= img}}" alt="" />
+          <span class="img-label">{{= t.year}}</span>
+        </div>
+        <div class="desc">
+          {{? p.length}}
+          <span class="data primary-data">${{= p}}</span>
+          {{?}}
+          {{? m.length}}
+          <span class="data secondary-data">{{= m}} Miles</span>
+          {{?}}
+          <span class="data secondary-data">{{= d.city}}, {{= d.state}}</span>
+          <span class="data secondary-data">VIN {{= t.vin}}</span>
+        </div>
+      </a>
+    </div>
+  {{?}}
+{{~}}

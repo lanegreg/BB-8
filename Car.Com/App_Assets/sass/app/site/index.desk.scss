@@ -1,0 +1,335 @@
+﻿/**
+ *  This sass module represents the desktop version of site.index http://www.autobytel.com/
+ */
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+.side-panel-container {
+  display: none;
+
+  &.hidden {
+    display: none;
+  }
+}
+
+.wrapper {
+  padding-left: 0;
+}
+
+.section-wrap {
+  margin: 0 auto;
+  max-width: $fixed-pg-width;
+
+  @include breakpoint($small) {
+    padding: 3em $primary-side-pad;
+  }
+}
+
+.hero {
+  border-bottom: solid 5px $accent-color;
+
+  &.arrow-down {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 36px;
+      height: 0;
+      z-index: 1;
+      border-left: 18px solid transparent;
+      border-right: 18px solid transparent;
+      border-top: 20px solid $accent-color;
+      left: 0;
+      right: 0;
+      bottom: -20px;
+      margin: 0 auto;
+    }
+  }
+
+  .page-title {
+    padding: .5em 0;
+    background: #222;
+    margin-left: 0;
+
+    @include breakpoint($small) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: .75em 0 .25em;
+      background: rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    .icon-carlogo {
+      width: 70px;
+      height: 32px;
+      margin: 0 auto;
+
+      @include breakpoint($small) {
+        width: 90px;
+        height: 41px;
+      }
+    }
+  }
+
+  .hero-btn {
+    width: 250px;
+  }
+
+  .ldrboard-cont {
+    padding: 0;
+
+    .ad-container {
+      @include breakpoint($small) {
+        margin-bottom: 1.5em;
+      }
+    }
+  }
+}
+
+.more {
+  display: block;
+  font-weight: 400;
+  padding: .75em 0;
+  color: #fff;
+  text-align: center;
+  @include font(2, 1.3);
+
+  &:hover {
+    color: $astral;
+  }
+
+  @include breakpoint($small) {
+    @include font(2.8, 1.3);
+  }
+}
+
+.section-pad {
+  padding: 3em 1em;
+
+  @include breakpoint($small) {
+    padding: 3em 0;
+  }
+}
+
+.content-bg {
+  background: #222;
+}
+
+.ad300 {
+  .ad {
+    width: 300px;
+    margin: 0 auto;
+  }
+}
+
+.tools-bg {
+  position: relative;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url(img/home-alfa-romeo.jpg);
+  @include background-size(cover);
+  z-index: 0;
+
+  @include breakpoint($small) {
+    padding: 1em 0 3em;
+  }
+
+  .section-wrap {
+    position: relative;
+    z-index: 2;
+  }
+
+  a, .block-list a {
+    color: $astral;
+
+    &:hover {
+      color: $malibu;
+    }
+  }
+}
+
+.tools-grid-outer {
+  @include cf;
+
+  .col1 {
+    margin-bottom: 1.5em;
+  }
+
+  @include breakpoint($small) {
+
+    .col1 {
+      padding-right: 1em;
+      margin-bottom: 0;
+      @include span(6 of 12);
+    }
+
+    .col2 {
+      padding-left: 1em;
+      @include span(6 of 12 last);
+    }
+  }
+
+  @include breakpoint($large) {
+  }
+
+  h2 {
+    margin: 0 0 .5em;
+  }
+}
+
+.tools-list {
+  margin: 0 0 2em;
+  @include font(1.5);
+  @include block-list(.5em);
+
+  li {
+    border-bottom: solid 1px rgba(51, 122, 175, 0.23);
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+
+    @include breakpoint($small) {
+      @include font(1.6);
+    }
+
+    @include breakpoint($medium) {
+      @include font(1.7);
+    }
+  }
+
+  a {
+    display: block;
+    padding: .125em 0;
+  }
+
+  .sub {
+    margin: 0 .5em;
+    @include font(1.4);
+  }
+}
+
+.block-list {
+  @include block-list;
+  margin-bottom: 0;
+
+  li {
+    margin-bottom: .5em;
+
+    a {
+      color: $normal;
+      @include font(1.4, 1.5);
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+  }
+}
+
+.grid-view-container {
+  .grid-view-item {
+    @include breakpoint($xxxlarge) {
+      @include gallery(4 of 12);
+      margin-bottom: gutter(12);
+    }
+  }
+
+  .ad-container {
+    margin-bottom: 0;
+  }
+}
+
+.post {
+  @include post;
+  
+  // display article in card-view on any size screen
+  &.post-card-view {
+    @include post-card-view;
+  }
+}
+
+.mini-list {
+  padding: .5em 1.5em;
+  margin: 0;
+  @include no-bullet;
+
+  li {
+    border-bottom: solid 1px $tundora;
+    text-align: center;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: block;
+    padding: .125em 0;
+    color: $alto;
+    @include font(1.5);
+
+    @include breakpoint($small) {
+      @include font(1.5);
+    }
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  & + .ad-container {
+    margin: 0;
+    text-align: center;
+  }
+}
+
+.caption-container {
+  padding: 1.5rem;
+
+  h2 {
+    display: block;
+    margin: 0;
+    color: #f1f1f1;
+    @include font(1.8, 1.3);
+    text-align: center;
+
+    @include breakpoint($small) {
+      @include font(1.5, 1.3);
+    }
+  }
+
+  a:hover & {
+    background: #2C2C2C;
+  }
+}
+
+.home-header {
+  color: #fff;
+
+  .icon {
+    width: 1em;
+    height: 1em;
+  }
+
+  &:hover {
+    color: $astral;
+  }
+}
+
+.util-icon-arrow-right {
+  width: 16px;
+}
+
+.site-footer {
+  margin-left: 0;
+
+  .section-wrap {
+
+    @include breakpoint($small) {
+      padding: 3em $primary-side-pad;
+    }
+  }
+}

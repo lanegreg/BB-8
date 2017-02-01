@@ -1,0 +1,29 @@
+﻿{{?it.prinfo.prnumber == 0}}
+  <p>  
+    <span class="h2">Sorry {{=it.prinfo.firstname}}</span> A local dealer match was not found.  We were unable to locate a nearby dealer partner who is a match for your 
+      {{=it.prinfo.year}} {{=it.prinfo.make}} {{=it.prinfo.model}} purchase request.
+  </p>
+{{?? true }}
+  <p>
+    <span class="h2">Thank you, {{=it.prinfo.firstname}}!</span> We have received your request for a {{=it.prinfo.year}} {{=it.prinfo.make}} {{=it.prinfo.model}}. Your 
+      confirmation# is <span class="conf-num" id="prnumber_st">{{=it.prinfo.prnumber}}</span>. You'll be hearing from the following dealership, usually within 24 hrs.
+  </p>
+	
+	{{~it.prinfo.dealers :dealerItem:didx}}
+		<div class="an-dlr-conf-cont">
+
+      {{? dealerItem.autonationnewcardealer || dealerItem.autonationusedcardealer}} 
+        <img src="/assets/img/autonation/an-logo-wh-108x23.png" alt="AutoNation logo" class="logo" />
+      {{?}}
+			
+      <h3 class="h4">{{=dealerItem.name}}</h3>
+      <span class="address">{{=dealerItem.address}} &bull; {{=dealerItem.city}}, {{=dealerItem.state}} {{=dealerItem.zip}}</span>
+      {{?dealerItem.message}}
+        <blockquote>
+          <p>"{{=dealerItem.message}}"</p>
+        </blockquote>
+      {{?}}
+		</div>
+  {{~}}
+    
+{{?}}

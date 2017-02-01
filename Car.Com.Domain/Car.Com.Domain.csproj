@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{38D76885-8EF0-4D84-8376-D66B206DFF57}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Car.Com.Domain</RootNamespace>
+    <AssemblyName>Car.Com.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\Entity.cs" />
+    <Compile Include="Models\CarsForSale\CarForSale.cs" />
+    <Compile Include="Models\CarsForSale\Common\ComboTag.cs" />
+    <Compile Include="Models\CarsForSale\Common\IComboFilter.cs" />
+    <Compile Include="Models\CarsForSale\Common\IExclusion.cs" />
+    <Compile Include="Models\CarsForSale\Common\IFilterDomains.cs" />
+    <Compile Include="Models\CarsForSale\Common\FilterDomains.cs" />
+    <Compile Include="Models\CarsForSale\Dealer.cs" />
+    <Compile Include="Models\CarsForSale\DealerCoverage.cs" />
+    <Compile Include="Models\CarsForSale\Exclusions\CarsDealerDedupe .cs" />
+    <Compile Include="Models\CarsForSale\Exclusions\DealersExclusion.cs" />
+    <Compile Include="Models\CarsForSale\Feature.cs" />
+    <Compile Include="Models\CarsForSale\Filters\NewStatusFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\CategoryMakeComboFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\MakeModelComboFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\MileageRangeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\PriceRangeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\TrimIdFilter.cs" />
+    <Compile Include="Models\CarsForSale\IFeature.cs" />
+    <Compile Include="Models\CarsForSale\Common\IRecacheable.cs" />
+    <Compile Include="Models\CarsForSale\Api\IPage.cs" />
+    <Compile Include="Models\CarsForSale\Api\ISearchResults.cs" />
+    <Compile Include="Models\CarsForSale\Api\Page.cs" />
+    <Compile Include="Models\CarsForSale\Filters\OptionBitsFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\TransmissionTypeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\FuelTypeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\DriveTypeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\CylindersFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\YearRangeFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\HighwayMpgFilter.cs" />
+    <Compile Include="Models\CarsForSale\Filters\CityMpgFilter.cs" />
+    <Compile Include="Models\CarsForSale\Common\IFilter.cs" />
+    <Compile Include="Models\CarsForSale\ICarForSale.cs" />
+    <Compile Include="Models\CarsForSale\IDealer.cs" />
+    <Compile Include="Models\CarsForSale\Api\SearchCriteria.cs" />
+    <Compile Include="Models\CarsForSale\Api\SearchResults.cs" />
+    <Compile Include="Models\CarsForSale\Common\Sort.cs" />
+    <Compile Include="Models\CarsForSale\ISuggestedVehicles.cs" />
+    <Compile Include="Models\CarsForSale\SuggestedVehicles.cs" />
+    <Compile Include="Models\Content\AdUnit.cs" />
+    <Compile Include="Models\Content\Article.cs" />
+    <Compile Include="Models\Content\ArticleAd.cs" />
+    <Compile Include="Models\Content\ArticleList.cs" />
+    <Compile Include="Models\Content\ArticleListWithCategory.cs" />
+    <Compile Include="Models\Content\ArticleListWithSort.cs" />
+    <Compile Include="Models\Content\ArticlePage.cs" />
+    <Compile Include="Models\Content\ArticleWithSort.cs" />
+    <Compile Include="Models\Content\Author.cs" />
+    <Compile Include="Models\Content\Category.cs" />
+    <Compile Include="Models\Content\IAdUnit.cs" />
+    <Compile Include="Models\Content\IArticle.cs" />
+    <Compile Include="Models\Content\IArticleAd.cs" />
+    <Compile Include="Models\Content\IArticleListWithCategory.cs" />
+    <Compile Include="Models\Content\IArticleListWithSort.cs" />
+    <Compile Include="Models\Content\IArticlePage.cs" />
+    <Compile Include="Models\Content\IArticleWithSort.cs" />
+    <Compile Include="Models\Content\IAuthor.cs" />
+    <Compile Include="Models\Content\ICategory.cs" />
+    <Compile Include="Models\Content\ITopic.cs" />
+    <Compile Include="Models\Content\ITopTenCar.cs" />
+    <Compile Include="Models\Content\ITopTenCategory.cs" />
+    <Compile Include="Models\Content\ITopTenClassification.cs" />
+    <Compile Include="Models\Content\Topic.cs" />
+    <Compile Include="Models\Content\TopTenCar.cs" />
+    <Compile Include="Models\Content\TopTenCategory.cs" />
+    <Compile Include="Models\Content\TopTenClassification.cs" />
+    <Compile Include="Models\Dealer\DisplayContent.cs" />
+    <Compile Include="Models\Dealer\IDisplayContent.cs" />
+    <Compile Include="Models\Dealer\ITexasAdContent.cs" />
+    <Compile Include="Models\Dealer\TexasAdContent.cs" />
+    <Compile Include="Models\Evaluation\Feature.cs" />
+    <Compile Include="Models\Evaluation\FeatureType.cs" />
+    <Compile Include="Models\Geo\ILocationData.cs" />
+    <Compile Include="Models\Geo\LatLngCombination.cs" />
+    <Compile Include="Models\Geo\City.cs" />
+    <Compile Include="Models\Geo\ILatLngCombination.cs" />
+    <Compile Include="Models\Geo\ICity.cs" />
+    <Compile Include="Models\Geo\ILocation.cs" />
+    <Compile Include="Models\Geo\IState.cs" />
+    <Compile Include="Models\Geo\IZipcode.cs" />
+    <Compile Include="Models\Geo\Location.cs" />
+    <Compile Include="Models\Geo\LocationData.cs" />
+    <Compile Include="Models\Geo\State.cs" />
+    <Compile Include="Models\Geo\Zipcode.cs" />
+    <Compile Include="Models\Content\IArticleList.cs" />
+    <Compile Include="Models\Image\IImageMeta.cs" />
+    <Compile Include="Models\Image\ImageMeta.cs" />
+    <Compile Include="Models\Evaluation\Evaluation.cs" />
+    <Compile Include="Models\Evaluation\KeyValuePairBase.cs" />
+    <Compile Include="Models\Evaluation\Make.cs" />
+    <Compile Include="Models\Evaluation\Criteria.cs" />
+    <Compile Include="Models\Evaluation\Trim.cs" />
+    <Compile Include="Models\Evaluation\Year.cs" />
+    <Compile Include="Models\Evaluation\EvaluationType.cs" />
+    <Compile Include="Models\Lead\DealerHours.cs" />
+    <Compile Include="Models\Lead\IDealer.cs" />
+    <Compile Include="Models\Lead\Dealer.cs" />
+    <Compile Include="Models\Lead\IDealerHours.cs" />
+    <Compile Include="Models\Sitemap\ChangeFrequency.cs" />
+    <Compile Include="Models\Sitemap\IPage.cs" />
+    <Compile Include="Models\Sitemap\ISection.cs" />
+    <Compile Include="Models\Sitemap\Page.cs" />
+    <Compile Include="Models\Sitemap\Priority.cs" />
+    <Compile Include="Models\Sitemap\Section.cs" />
+    <Compile Include="Models\Affiliate\Affiliate.cs" />
+    <Compile Include="Models\SiteMeta\Breadcrumb.cs" />
+    <Compile Include="Models\Affiliate\IAffiliate.cs" />
+    <Compile Include="Models\SiteMeta\IMetadata.cs" />
+    <Compile Include="Models\SiteMeta\Keyword.cs" />
+    <Compile Include="Models\SiteMeta\Metadata.cs" />
+    <Compile Include="Models\SiteMeta\OpenGraphMeta.cs" />
+    <Compile Include="Models\SiteMeta\PageMeta.cs" />
+    <Compile Include="Models\SiteMeta\PageTemplate.cs" />
+    <Compile Include="Models\Translators\CategoryTranslator.cs" />
+    <Compile Include="Models\Translators\ICategoryTranslator.cs" />
+    <Compile Include="Models\Translators\IMakeTranslator.cs" />
+    <Compile Include="Models\Translators\ISuperModelTranslator.cs" />
+    <Compile Include="Models\Translators\IVehicleAttributeTranslator.cs" />
+    <Compile Include="Models\Translators\IYearTranslator.cs" />
+    <Compile Include="Models\Translators\ITrimTranslator.cs" />
+    <Compile Include="Models\Translators\IModelTranslator.cs" />
+    <Compile Include="Models\Translators\MakeTranslator.cs" />
+    <Compile Include="Models\Translators\SuperModelTranslator.cs" />
+    <Compile Include="Models\Translators\VehicleAttributeTranslator.cs" />
+    <Compile Include="Models\Translators\YearTranslator.cs" />
+    <Compile Include="Models\Translators\TrimTranslator.cs" />
+    <Compile Include="Models\Translators\ModelTranslator.cs" />
+    <Compile Include="Models\VehicleSpec\Category.cs" />
+    <Compile Include="Models\VehicleSpec\CategoryFilterGroup.cs" />
+    <Compile Include="Models\VehicleSpec\CategoryTrimFilterAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\ICategory.cs" />
+    <Compile Include="Models\VehicleSpec\ICategoryFilterGroup.cs" />
+    <Compile Include="Models\VehicleSpec\ICategoryTrimFilterAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\IMake.cs" />
+    <Compile Include="Models\VehicleSpec\IModel.cs" />
+    <Compile Include="Models\VehicleSpec\ISuperModelFilterGroup.cs" />
+    <Compile Include="Models\VehicleSpec\ISuperModelTrimFilterAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\ITrimIncentive.cs" />
+    <Compile Include="Models\VehicleSpec\ITrimColor.cs" />
+    <Compile Include="Models\VehicleSpec\ISpecification.cs" />
+    <Compile Include="Models\VehicleSpec\ITrim.cs" />
+    <Compile Include="Models\VehicleSpec\ISuperModel.cs" />
+    <Compile Include="Models\VehicleSpec\IUniqueTrim.cs" />
+    <Compile Include="Models\VehicleSpec\IVehicleAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\Make.cs" />
+    <Compile Include="Models\VehicleSpec\Model.cs" />
+    <Compile Include="Models\VehicleSpec\SuperModelFilterGroup.cs" />
+    <Compile Include="Models\VehicleSpec\SuperModelTrimFilterAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\TrimIncentive.cs" />
+    <Compile Include="Models\VehicleSpec\TrimColor.cs" />
+    <Compile Include="Models\VehicleSpec\Specification.cs" />
+    <Compile Include="Models\VehicleSpec\Trim.cs" />
+    <Compile Include="Models\VehicleSpec\SuperModel.cs" />
+    <Compile Include="Models\VehicleSpec\UniqueTrim.cs" />
+    <Compile Include="Models\VehicleSpec\VehicleAttribute.cs" />
+    <Compile Include="Models\VehicleSpec\Year.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Services\IAffiliateService.cs" />
+    <Compile Include="Services\ICarsForSaleService.cs" />
+    <Compile Include="Services\IGeoService.cs" />
+    <Compile Include="Services\IEvaluationService.cs" />
+    <Compile Include="Services\ILeadService.cs" />
+    <Compile Include="Services\IDealerService.cs" />
+    <Compile Include="Services\ISiteMapService.cs" />
+    <Compile Include="Services\IVehicleContentService.cs" />
+    <Compile Include="Services\IAssetService.cs" />
+    <Compile Include="Services\IImageMetaService.cs" />
+    <Compile Include="Services\IMetadataService.cs" />
+    <Compile Include="Services\IUriTokenTranslators.cs" />
+    <Compile Include="Services\IVehicleSpecService.cs" />
+    <Compile Include="Web References\LeadEngine\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="app.config" />
+    <None Include="Models\CarsForSale\Api_Docs\response_api.json" />
+    <None Include="Models\CarsForSale\Api_Docs\request_api.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\LeadEngine\DispositionResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LeadEngine\DropZone.wsdl" />
+    <None Include="Web References\LeadEngine\Error.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LeadEngine\PingResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LeadEngine\PostResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\LeadEngine\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Car.Com.Common\Car.Com.Common.csproj">
+      <Project>{e4302754-10c7-4c43-b4c3-9d8031132092}</Project>
+      <Name>Car.Com.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\CarsForSale\Counters\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\LeadEngine\</RelPath>
+      <UpdateFromURL>http://leads.dev.autobytel.com/LeadEngine/DropZone.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>Car_Com_Domain_LeadEngine_DropZone</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\LeadEngine\DropZone.disco" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

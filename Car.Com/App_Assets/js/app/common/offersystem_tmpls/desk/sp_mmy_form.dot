@@ -1,0 +1,46 @@
+﻿<h1 class="h2">Get Pricing</h1>
+<form>
+  <p>
+	  <span id="makeErrorMessage" class="error" style="display: none;">You must select a Make<br /></span>
+    <label>
+      <select id="ncLeadMakeSelect" class="full">
+        <option value="">Select a Make</option>
+      </select>
+    </label>
+  </p>
+  <p>
+	  <span id="modelErrorMessage" class="error" style="display: none;">You must select a Model<br /></span>
+    <label>
+      <select id="ncLeadModelSelect" class="full" disabled="disabled">
+        <option value="">Select a Model</option>
+      </select>
+    </label>
+  </p>
+  <p>
+	  <span id="trimErrorMessage" class="error" style="display: none;">There are no vehicles available<br /></span>
+    <label>
+      <select id="ncLeadTrimSelect" class="full" disabled="disabled">
+        <option value="">Select a Vehicle</option>
+      </select>
+    </label>
+  </p>
+  <p>
+	  <span id="zipcodeErrorMessage" class="error" style="display: none;">You must enter a valid ZIP Code<br /></span>
+    <span id="zipcodeConfirmMessage" class="error" style="display: none;">Confirm Your ZIP Code<br /></span>
+    <label>
+      <input type="text"
+             id="ncLeadZipcode" 
+             name="ncLeadZipcode"
+             class="full js_offers_zipcode"
+             pattern="[0-9]*"
+             placeholder="ZIP Code"
+             value="" maxlength="5" />
+    </label>
+  </p>
+  <p>
+    <button id="get_pricing_btn_js" class="btn-primary block"
+            data-omnitarget="panel:getpricing">
+      Continue to Get Pricing
+    </button>
+  </p>
+</form>

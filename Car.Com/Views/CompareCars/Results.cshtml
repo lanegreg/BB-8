@@ -1,0 +1,42 @@
+﻿@model Car.Com.Models.CompareCars.ResultsViewModel
+
+@*@{if (Model.BrowserCaps.DeviceOs.ToLower() == "ios") {
+  Html.RenderPartial("_UtilityIcons");
+}
+}*@
+
+<div class="header">
+  <div class="page-title">
+    <h1>Compare Cars </h1>
+  </div>
+</div>
+<div class="main">
+  <div id="compareTableMain" class="cell primary">
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+
+  @*overlay*@
+  <div id="customize_comparison_overlay_js" class="overlay overlay-dk" style="display:none">
+    <button id="close_customize_compare_js" class="close_btn_js overlay-close">
+      <span class="icon">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+        </svg>
+      </span>
+    </button>
+    <h1 class="h1">Select Important Features</h1>
+    <div id="compareCustomizeMain" class="compare-cust-cont">
+    </div>
+  </div>
+</div>
+
+

@@ -1,0 +1,20 @@
+﻿{{?it.prinfo.dealers.length == 1}}
+  <p>  
+    <span class="h2">Sorry {{=it.prinfo.firstname}}</span> A local dealer match was not found.  We were unable to locate a nearby dealer partner who is a match for your 
+      purchase request.
+  </p>
+{{?? true }}
+  <p>
+    <span class="h2">Thank you, {{=it.prinfo.firstname}}!</span> We have received your request for the vehicles below. You'll be hearing from the following dealerships, 
+    usually within 24 hrs.
+  </p> 
+    {{~it.prinfo.dealers :dealerItem:didx}}
+      <h3 class="h4">{{=dealerItem.name}} <span class="conf-num" id="prnumber_st">- Confirmation# is {{=dealerItem.confirmationnum}}</span></h3>
+      <span class="address">{{=dealerItem.address}} &bull; {{=dealerItem.city}}, {{=dealerItem.state}} {{=dealerItem.zip}}</span>
+      {{?dealerItem.message}}
+        <blockquote>
+          <p>"{{=dealerItem.message}}"</p>
+        </blockquote>
+      {{?}}
+    {{~}}
+{{?}}

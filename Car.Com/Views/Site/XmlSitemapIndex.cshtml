@@ -1,0 +1,13 @@
+﻿@model Car.Com.Models.Site.XmlSitemapIndexViewModel
+@{
+  Layout = null;
+  Response.ContentType = "text/xml";
+  Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+}<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  @foreach (var siteSection in @Model.Sections) {
+    <sitemap>
+      <loc>@siteSection.Url</loc>
+      <lastmod>@siteSection.LastModified</lastmod>
+    </sitemap>
+  }
+</sitemapindex>

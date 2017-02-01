@@ -1,0 +1,15 @@
+﻿@model Car.Com.Models.Site.XmlSitemapSectionViewModel
+@{
+  Layout = null;
+  Response.ContentType = "text/xml";
+  Response.Write("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
+}<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  @foreach (var page in @Model.Pages) {
+    <url>
+      <loc>@page.Url</loc>
+      <lastmod>@page.LastModified</lastmod>
+      <changefreq>@page.ChangeFrequency</changefreq>
+      <priority>@page.Priority</priority>
+    </url>
+  }
+</urlset>

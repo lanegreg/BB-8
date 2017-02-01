@@ -1,0 +1,13 @@
+module.exports.add_change_car_overlay=function anonymous(it
+/**/) {
+var out='<div id="add_change_car_overlay_js" class="overlay overlay-dk max-450" style="display:none"> <button type="button" class="overlay-close"> <span class="icon"> <svg> <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use> </svg> </span> </button> <div class="dead-middle"> <section class="add-change-car-container" id="" style="display: block"> <form> <h1>Select a Car</h1> <p> <label> <select id="rebateVsFinancingMakeSelect" class="full"> <option value="">Select a Make</option> ';var arr1=it.makeArr;if(arr1){var makeItem,midx=-1,l1=arr1.length-1;while(midx<l1){makeItem=arr1[midx+=1];out+=' <option value="'+(makeItem.seo_name)+'">'+(makeItem.name)+'</option> ';} } out+=' </select> </label> </p> <p> <label> <select id="rebateVsFinancingModelSelect" class="full" disabled="disabled"> <option value="">Select a Model</option> </select> </label> </p> <p> <label> <select id="rebateVsFinancingTrimSelect" class="full" disabled="disabled"> <option value="">Select a Vehicle</option> </select> </label> </p> </form> </section> </div></div>';return out;
+};module.exports.model_select_options=function anonymous(it
+/**/) {
+var out='<option value="">Select a Model</option>';var arr1=it.modelArr;if(arr1){var modelItem,midx=-1,l1=arr1.length-1;while(midx<l1){modelItem=arr1[midx+=1];out+='<option value="'+(modelItem.seo_name)+'">'+(modelItem.name)+'</option>';} } return out;
+};module.exports.similar_vehicles=function anonymous(it
+/**/) {
+var out='';var arr1=it.trimlist;if(arr1){var trim,index=-1,l1=arr1.length-1;while(index<l1){trim=arr1[index+=1];out+=' <div class="sugged-item"> <a href="/'+(trim.make_seo)+'/'+(trim.super_model_seo)+'/'+(trim.year)+'/'+(trim.trim_seo_name)+'/"> <div class="img-container"> ';if(trim.image_path && trim.image_path.length > 9){out+=' <img src="'+(trim.image_path)+'" alt="'+(trim.full_display_name)+'"> ';}else if(true){out+=' <img src="/assets/svg/no-image-avail.svg" alt="'+(trim.full_display_name)+'"> ';}out+=' </div> <h3 class="sugged-title"> '+(trim.full_display_name)+'<br /> <small>Starting at</small><br /> '+(trim.starting_msrp)+' </h3> </a> </div>';} } return out;
+};module.exports.trim_select_options=function anonymous(it
+/**/) {
+var out='<option value="">Select a Vehicle</option>';var arr1=it.trimArr;if(arr1){var trimItem,midx=-1,l1=arr1.length-1;while(midx<l1){trimItem=arr1[midx+=1];out+='<option value="'+(trimItem.msrp)+'|'+(trimItem.id)+'">'+(trimItem.year)+' '+(trimItem.name)+'</option>';} } return out;
+};

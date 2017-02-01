@@ -1,0 +1,104 @@
+﻿/**
+ *  This sass module represents the desktop version of {controller}.{action} http://www.autobytel.com/{path}
+ */
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+
+.hero {
+
+  .page-title {
+
+    h1 {      
+      @include font(3, 1.3);
+
+      @include breakpoint($small) {
+        @include font(5, 1.3);
+      }
+    }
+  }
+
+  .hero-btn {
+    margin-bottom: 1em;
+
+    @include breakpoint($small) {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.main-bg {
+  @include breakpoint($small) {
+    background-image: url(img/fade-bg3.jpg);
+  }
+}
+
+.begin-compare-cont {
+  margin-bottom: 3em;
+
+  .popular-comparisons {
+    margin: 0 auto .75em;
+
+    @include breakpoint($small) {
+      width: 50%;
+    }
+
+    .circle-text {
+      margin-top: 1em;
+    }
+  }
+}
+
+.sprite-compare {
+  background-image: url(img/sprite-compare.png);
+  background-repeat: no-repeat;
+  display: block;
+}
+
+.sprite-begin-compare-1 {
+  float: right;
+  width: 171px;
+  height: 82px;
+  background-position: -5px -5px;
+}
+
+.sprite-begin-compare-2 {
+  width: 158px;
+  height: 76px;
+  background-position: -186px -5px;
+}
+
+.btn-car-value {
+  position: relative;
+  padding: .75em 1em .75em 2em;
+  margin: 1em auto 1.5em;
+  font-weight: 700;
+  color: $chathams-blue;
+  @extend %btn-gradient;
+  @include font(1.6, 1.5);
+
+  @include breakpoint($small) {
+    padding-left: 3em;
+    @include font(2.8, 1.5);
+  }
+
+  &:hover {
+    color: $hover;
+  }
+
+  .kbb-logo {
+    position: absolute;
+    left: -20px;
+    top: 0;
+    background: url(img/kbb-small.png) 0 0 no-repeat;
+    width: 49px;
+    height: 64px;
+
+    @include breakpoint($small) {
+      background: url(img/kbb-large.png) 0 0 no-repeat;
+      width: 89px;
+      height: 117px;
+    }
+  }
+}

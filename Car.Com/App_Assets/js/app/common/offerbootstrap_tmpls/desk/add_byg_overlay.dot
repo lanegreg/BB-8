@@ -1,0 +1,17 @@
+﻿<div id="byg_overlay_js" class="overlay byg-bg-b" style="display:none">
+  <button type="button" id="close_byg_ovl_btn_js" class="overlay-close"
+          data-omnitarget="leadpop:closebtn">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div class="dead-middle">
+    <section class="leadform-thx-cont" id="ol_byg_section" style="display: block">
+      <div class="row inner-cont">
+        <div class="aw-feed-cont" id="ol_byg_AutowebAds" style="display: block"></div>
+      </div>
+    </section>
+  </div>
+</div>

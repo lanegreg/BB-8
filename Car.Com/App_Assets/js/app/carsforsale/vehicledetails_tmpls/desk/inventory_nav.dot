@@ -1,0 +1,22 @@
+﻿<ul>
+  <li>
+    <button class="prev" data-goto="prev" title="Previous">
+      <span class="icon inline">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_l"></use>
+        </svg>
+      </span>
+      Previous Car
+    </button>
+  </li>
+  <li>
+    <button class="next" data-goto="next" title="Next">
+      Next Car
+      <span class="icon inline">
+        <svg>
+          <use xlink:href="/assets/svg/global-sprite.svg#i_arrow3_r"></use>
+        </svg>
+      </span>
+    </button>
+  </li>
+</ul>

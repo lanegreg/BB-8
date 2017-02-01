@@ -1,0 +1,18 @@
+﻿{{~it.trimlist :trim:index}}
+  <div class="sugged-item">
+    <a href="/{{=trim.make_seo}}/{{=trim.super_model_seo}}/{{=trim.year}}/{{=trim.trim_seo_name}}/">
+      <div class="img-container">
+        {{? trim.image_path && trim.image_path.length > 9}}
+          <img src="{{=trim.image_path}}" alt="{{=trim.full_display_name}}">
+        {{?? true }}
+          <img src="/assets/svg/no-image-avail.svg" alt="{{=trim.full_display_name}}">
+        {{?}}
+      </div>
+      <h3 class="sugged-title">
+        {{=trim.full_display_name}}<br />
+        <small>Starting at</small><br />
+        {{=trim.starting_msrp}}
+      </h3>
+    </a>
+  </div>
+{{~}}

@@ -1,0 +1,183 @@
+﻿/**
+ *  This sass module represents the desktop version of {controller}.{action} http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base";
+
+// Buying Guides Landing pages
+.flex-grid-cont {
+  @include cf;
+}
+
+.post {
+  @include post;
+  
+  // display article in card-view on any size screen
+  &.post-card-view {
+    @include post-card-view;
+  }
+}
+
+.arts-section-grp-header {
+  display: none;
+
+  &.show {
+  }
+
+  @include breakpoint($small) {
+    display: block;
+    margin-bottom: 0;
+  }
+}
+
+.arts-section-header {
+  padding: .5em 0;
+  margin: 0;
+  border-top: solid 5px #000;
+  font-family: $header-font-family;
+  font-weight: bold;
+  color: #000;
+  text-align: left;
+  @include font(2, 1.3);
+
+  &:after {
+    content: attr(data-append-title);
+    margin-left: .25em;
+    vertical-align: middle;
+    font-weight: normal;
+    @include font(1.4, 1.3);
+  }
+
+  @include breakpoint($small) {
+    padding: 0;
+    border-top: none;
+    text-align: center;
+    @include font(2.4, 1.3);
+
+    &:after {
+      content: "";
+    }
+  }
+
+  &.featured {
+
+    @include breakpoint($small) {
+      padding: 0 0 .5em;
+      margin: 0;
+      @include font(2, 1.3);
+    }
+  }
+}
+
+// Featured (Most Recent) articles
+.primary-arts {
+  // 2:1 layout after breakpoint $small;
+  @include breakpoint($small) {
+
+    .flex-grid-col {
+      float: right;
+      width: 31%;
+    }
+
+    .flex-grid-col:nth-child(1) {
+      float: left;
+      width: 65.5%;
+      margin-right: 3.5%;
+    }
+  }
+
+  @include breakpoint($small) {
+    .flex-grid-col:first-child .title {
+      @include font(2, 1.3);
+    }
+  }
+}
+
+.secondary-arts {
+  margin-bottom: 3em;
+  // 1:1 layout on $small and up size screen
+  @include breakpoint($small) {
+    float: left;
+    width: 48%;
+    margin-bottom: gutter(12);
+    margin-right: 4%;
+
+    &:nth-child(2n) {
+      @include last;
+    }
+  }
+  // 1:1:1 layout on $medium-portrait, and $large and up size screen
+  @include breakpoint(($medium-portrait, $large)) {
+    width: 31%;
+    padding-right: 0;
+    margin-right: 3.5%;
+
+    &:nth-child(3n+1), &:nth-child(3n+2) {
+      float: left;
+      margin-right: 3.5%;
+    }
+
+    &:nth-child(3n) {
+      @include last;
+    }
+
+    &:nth-child(3n+1) {
+      clear: left;
+    }
+  }
+
+  .flex-grid-col {
+    @include breakpoint($small) {
+
+      &:nth-of-type(3n+2) {
+        padding-right: .5em;
+        margin-bottom: gutter(12);
+        @include span(6 of 12);
+      }
+
+      &:nth-of-type(3n) {
+        padding-left: .5em;
+        @include span(6 of 12 last);
+      }
+
+      &:nth-of-type(3n+2), &:nth-of-type(3n) {
+        // display article title below the image on $small and up size screen
+        .desc {
+          position: static;
+          padding: .25em;
+          @include background(transparent);
+        }
+
+        .title {
+          color: #000;
+          margin: 0;
+          font-weight: normal;
+          @include font(1.3, 1.3);
+        }
+      }
+    }
+
+    @include breakpoint($xlarge) {
+      &:nth-of-type(3n+2), &:nth-of-type(3n) {
+        .title {
+          @include font(1.4, 1.3);
+        }
+      }
+    }
+  }
+
+  .line-on-sides {
+    display: none;
+
+    @include breakpoint($small) {
+      display: block;
+    }
+  }
+  // size of the category icons
+  .icon.inline {
+    width: 2.5em;
+    height: 2.5em;
+  }
+}

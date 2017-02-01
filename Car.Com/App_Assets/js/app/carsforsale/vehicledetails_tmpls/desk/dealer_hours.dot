@@ -1,0 +1,48 @@
+﻿{{var car=it;}}
+<div class="tmpl_replace_dealerhours_js">
+  <h2>Hours</h2>
+	<ul>
+		<li class="row">
+			<span class="label">Friday</span>
+			<span class="value">
+        {{= car.dealerhours.salesfriopen}}<span> - </span>{{= car.dealerhours.salesfriclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Saturday</span>
+			<span class="value">
+        {{= car.dealerhours.salessatopen}}<span> - </span>{{= car.dealerhours.salessatclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Sunday</span>
+			<span class="value">
+        {{= car.dealerhours.salessunopen}}<span> - </span>{{= car.dealerhours.salessunclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Monday</span>
+			<span class="value">
+        {{= car.dealerhours.salesmonopen}}<span> - </span>{{= car.dealerhours.salesmonclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Tuesday</span>
+			<span class="value">
+        {{= car.dealerhours.salestueopen}}<span> - </span>{{= car.dealerhours.salestueclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Wednesday</span>
+			<span class="value">
+       {{= car.dealerhours.saleswedopen}}<span> - </span>{{= car.dealerhours.saleswedclose}}
+			</span>
+		</li>
+		<li class="row">
+			<span class="label">Thursday</span>
+			<span class="value">
+       {{= car.dealerhours.salesthropen}}<span> - </span>{{= car.dealerhours.salesthrclose}}
+			</span>
+		</li>
+	</ul>
+</div>

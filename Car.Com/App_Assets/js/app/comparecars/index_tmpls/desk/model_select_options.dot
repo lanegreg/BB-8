@@ -1,0 +1,4 @@
+﻿<option value="">Select a Model</option>
+{{~it.modelArr :modelItem:midx}}
+<option value="{{=modelItem.seo_name}}">{{=modelItem.name}}</option>
+{{~}}

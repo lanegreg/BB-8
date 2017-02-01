@@ -1,0 +1,12 @@
+﻿{{~it :el:idx}}
+<li>
+  <button data-value="{{=el.matchVal}}" data-type="{{=el.type}}" class="btn-search-tag" title="Remove filter tag">
+    {{=el.descr}}
+    <span class="icon inline">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+</li>
+{{~}}

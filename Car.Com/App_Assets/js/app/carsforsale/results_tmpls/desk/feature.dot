@@ -1,0 +1,9 @@
+﻿{{~it.years :el:index}}
+<li>
+  <button id="{{=el.match_value}}" class="has-checkmark">
+    <svg width="21" height="18" viewBox="0 0 21 18" class="icon inline">
+      <use xlink:href="/assets/svg/global-sprite.svg#i_checkmark"></use>
+    </svg>{{=el.description}}
+  </button>
+</li>
+{{~}}

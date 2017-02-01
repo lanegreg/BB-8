@@ -1,0 +1,29 @@
+﻿
+// POST - page context json data structure
+{
+  "zipcode": "92627",
+  "radius_miles": 100,
+  "page": {
+    "current": 1,
+    "items_per_page": 10
+  },
+  "sort": {
+    "by": "distance",
+    "dir": "asc"
+  },
+  "reducers": {
+    "price_range": "0|40",
+    "mileage_range": "0|80",
+    "year_range": "2009|2014",
+    "make_ids": "1|5|3",
+    "model_ids": "43|87|29|134|204",
+    "city_mpg": "30",
+    "highway_mpg": "40",
+    "body_style_ids": "8|3",
+    "cylinders": "4|8",
+    "drive_types": "2WD|FWD",
+    "fuel_type_ids": "6|2",
+    "tranny_types": "AUTO|MAN",
+    "option_ids": "10011101"
+  }
+}

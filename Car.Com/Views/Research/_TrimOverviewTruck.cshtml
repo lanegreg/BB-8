@@ -1,0 +1,46 @@
+﻿@{
+  var msrp = String.Format("${0:0,0}", Model.Trim.Msrp);
+  int msrpRaw = Convert.ToInt32(Model.Trim.Msrp);
+  if (msrpRaw == 0) { msrp = "NA"; }
+
+  var invoice = String.Format("${0:0,0}", Model.Trim.Invoice);
+  
+  var cityMpg = Model.Trim.CityMpg;
+  var hwyMpg = Model.Trim.HwyMpg;
+  var seating = Model.Trim.Seating;
+  var fuelType = Model.Trim.FuelType;
+  var towingCapacity = Model.Trim.TowingCapacity;
+  var bedLength = Model.Trim.BedLength;
+
+  if (cityMpg == "0") { cityMpg = "NA"; }
+  if (hwyMpg == "0") { hwyMpg = "NA"; }
+  
+}
+
+
+<div class="summary-cont">
+  <ul class="summary">
+    <li>
+      <div class="col-1of2">
+        <span class="col">
+          <small class="sub wrap">MSRP</small><em class="highlight">@msrp</em>
+        </span>
+        <span class="col">
+          <small class="sub wrap">Invoice</small><em class="highlight">@invoice</em>
+        </span>
+      </div>
+    </li>
+    <li>
+      <ul class="mpg">
+        <li><em class="highlight">@cityMpg</em> <small class="sub">City</small></li>
+        <li><em class="highlight">@hwyMpg</em> <small class="sub">Hwy</small></li>
+      </ul>
+    </li>
+    <li><small class="sub">Seating</small><em>@seating</em></li>
+    <li><small class="sub">Fuel Type</small><em>@fuelType</em></li>
+    <li><small class="sub">Towing</small><em>@towingCapacity</em></li>
+    <li><small class="sub">BedLength</small><em>@bedLength</em></li>
+  </ul>
+</div>
+
+<button class="btn-primary trim-get-pricing js_get_quote_btn">Get Pricing</button>

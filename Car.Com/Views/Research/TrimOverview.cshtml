@@ -1,0 +1,212 @@
+﻿@model Car.Com.Models.Research.TrimOverviewViewModel
+           
+@{ // Nativo in-content ads
+    var nativoAds = String.Format("<!-- Nativo Ads -->");
+    nativoAds = nativoAds + String.Format("<script type=\"text/javascript\" src=\"http://a.postrelease.com/serve/load.js?async=true\"></script>");
+}
+
+@section Nativo { @Html.Raw(nativoAds) }
+
+<div class="mobilead-cont top">
+  <div class="ad-container">
+    <div id="js_tile_11" class="ad"></div>
+  </div>
+</div>
+<div class="header has-nav-tab">
+  <div class="page-title">
+    <div class="group-inline">
+      @{ Html.RenderPartial("_TrimHeader"); }
+    </div>
+  </div>
+  <button class="nav-tab">
+    <span class="icon inline">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_angle_double_down"></use>
+      </svg>
+    </span>
+    <span class="text"></span>
+  </button>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <h1 class="mgb-0">@Model.Trim.FullDisplayName</h1>
+      <div class="trim-hero-cont">
+        <div class="col1">
+          <picture id="@Model.Images.ImageId" class="trim-picsnvids">
+            <!--[if IE 9]><video style="display: none;"><![endif]-->
+            <source srcset="@Model.Images.Large" media="(min-width: 1024px)" />
+            <source srcset="@Model.Images.Medium" media="(min-width: 640px)" />
+            <source srcset="@Model.Images.Small" media="(min-width: 320px)" />
+            <!--[if IE 9]></video><![endif]-->
+            <img src="@Model.Images.Small" alt="@Model.Year @Model.Make.Name @Model.Trim.Model @Model.Trim.Name">
+          </picture>
+        </div>
+        <div class="col2">
+          @{ Html.RenderPartial(Model.Trim.Template, Model); }
+        </div>
+      </div>
+      <div class="r-tbl">
+        <div class="group-inline mgb-half has-tooltip">
+          <h3 class="item">
+            Estimated Monthly Payment
+            <a id="disclaimer_btn_js" href="#">
+              <span class="icon inline i-info">
+                <svg>
+                  <use xlink:href="/assets/svg/global-sprite.svg#i_info"></use>
+                </svg>
+              </span>
+            </a>
+          </h3>
+          <button type="menu" class="item btn-zero" id="open_calculator_overlay_js">Customize</button>
+          <div id="disclaimer_js" style="display: none">
+            <p>
+              <small>
+                *<i>Disclaimer: Estimated Monthly Payment is based on MSRP shown, 5% interest rate and the term displayed (24, 36, 48, 60, 72, 84 months) and is for illustrative purposes only. This calculation reflects amounts in U.S. Dollars rounded to the nearest whole dollar. Estimated monthly payments DO NOT include license, doc, emissions, or other possible fees.<br /><br />All loan figures are based upon non-commercial usage and are subject to credit approval from an independent lending source. Actual down payment and resulting monthly payments may vary depending upon type and use of vehicle, regional lender requirements, and the strength of your credit. Check with your dealer for exact monthly payment.</i>
+              </small>
+            </p>
+          </div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Term</th>
+              <th>24 <sub>mo</sub></th>
+              <th>36 <sub>mo</sub></th>
+              <th>48 <sub>mo</sub></th>
+              <th>60 <sub>mo</sub></th>
+              <th>72 <sub>mo</sub></th>
+              <th>84 <sub>mo</sub></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td data-label="Term">Payment</td>
+              <td data-label="24 mo">$@Model.Trim.GetPayment(24)</td>
+              <td data-label="36 mo">$@Model.Trim.GetPayment(36)</td>
+              <td data-label="48 mo">$@Model.Trim.GetPayment(48)</td>
+              <td data-label="60 mo">$@Model.Trim.GetPayment(60)</td>
+              <td data-label="72 mo">$@Model.Trim.GetPayment(72)</td>
+              <td data-label="84 mo">$@Model.Trim.GetPayment(84)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+      <section class="editor-cont">
+        @Html.Raw(Model.Trim.Overview)
+      </section>
+      <section class="widget-cont" id="js_similar_vehicles" style="display: none;">
+        <h3 class="widget-heading">People Who Viewed This Vehicle Also Viewed </h3>
+        <div class="sugged-widget-cont" id="js_similar_vehicles_content"></div>
+      </section>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+    <section data-widget="c4s" class="widget-cont sidebar-widget" style="display: none"></section>
+    <section data-widget="viewed-recently" class="widget-cont sidebar-widget" style="display: none"></section>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+<div id="display_trim_list" class="overlay overlay-dk" style="display: none">
+  <button class="close_btn_js overlay-close">
+    <span class="icon">
+      <svg>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <h1 class="h1">
+    <small>
+      @Model.Make.Name @Model.SuperModel.Name <span id="js_ol_supertrim"></span>
+    </small>
+  </h1>
+  <div class="tabs-wrapper" style="display: block;" id="">
+    <input type="radio" name="" id="tab1" checked="">
+    <label style="padding: 0 1em;">@Model.Year</label>
+    <div class="tab-body-wrapper">
+      <div id="tab-body-1" class="tab-body">
+        <div class="section-pad-tb">
+          <div class="trim-list-cont" id="js_ol_trimlist">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="overlay_calculate_car_payment_js" class="overlay overlay-dk" style="display: none">
+  <button type="button" class="overlay-close" id="close_calculator_overlay_js">
+    <span class="icon">
+      <svg>
+        <use xlink:href="/assets/svg/global-sprite.svg#i_close"></use>
+      </svg>
+    </span>
+  </button>
+  <div>
+    <form class="calc-form">
+      <fieldset>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_purchasePrice">Purchase price ($)</label>
+          <input class="form-item-value" id="PaymentEstimate_purchasePrice" maxlength="10" type="number" value="@Model.Trim.Msrp" autofocus />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_cashRebate">Cash rebate ($)</label>
+          <input class="form-item-value" id="PaymentEstimate_cashRebate" maxlength="10" type="number" value="0" />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_tradeIn">Value of your trade-in ($)</label>
+          <input class="form-item-value" id="PaymentEstimate_tradeIn" maxlength="10" type="number" value="0" />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_tradeInOwed">Amount owed on your trade-in ($)</label>
+          <input class="form-item-value" id="PaymentEstimate_tradeInOwed" maxlength="10" type="number" value="0" />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_downPayment">Down payment ($)</label>
+          <input class="form-item-value" id="PaymentEstimate_downPayment" maxlength="10" type="number" value="0" />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_interestRate">Annual interest rate (%)</label>
+          <input class="form-item-value" id="PaymentEstimate_interestRate" maxlength="6" type="number" value="5" />
+        </p>
+        <p class="form-item-row">
+          <label class="form-item-label" for="PaymentEstimate_termMonths">Term of loan (months)</label>
+          <input class="form-item-value" id="PaymentEstimate_termMonths" maxlength="6" type="number" value="60" />
+        </p>
+        <input id="btnCalculateMonthlyPayment" type="submit" value="Calculate Monthly Payment" class="btn-default-ovl" /> <input id="calculator_reset_js" type="reset" class="btn-default-ovl" value="Clear Fields" />
+      </fieldset>
+    </form>
+  </div>
+  <div class="center" id="resultDiv" style="display: none">
+    <span id="PaymentEstimate_monthlyPayment" style="color: #8CD3F5; font-weight: bold"></span>
+    <p align="left">
+        <small style=" color:  #ccc;">
+            <i>*Disclaimer: This calculation is based on the information you entered and is for illustrative purposes only. This calculation reflects amounts in U.S. Dollars rounded to the nearest whole dollar. Estimated monthly payments DO NOT include license, doc, emissions, or other possible fees.<br /><br />All loan figures are based upon non-commercial usage and are subject to credit approval from an independent lending source. Actual down payment and resulting monthly payments may vary depending upon type and use of vehicle, regional lender requirements, and the strength of your credit. Check with your dealer for exact monthly payment.</i>
+        </small>
+</p>
+  </div>
+</div>

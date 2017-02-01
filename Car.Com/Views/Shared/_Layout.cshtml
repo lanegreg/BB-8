@@ -1,0 +1,236 @@
+﻿@model Car.Com.Models.ViewModelBase
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <!--
+    server: @AppEnvironment.ServerName
+    build: @AppEnvironment.BuildVersion
+    -->
+  <meta charset="utf-8" />
+  <link rel="dns-prefetch" href="//static.car.com" />
+  <link rel="dns-prefetch" href="//img.car.com" />
+  <link rel="dns-prefetch" href="//www.youtube.com" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <title>@HttpUtility.HtmlEncode(Model.PageMeta.Title)</title>
+  <meta name="description" content="@Model.PageMeta.Description" />
+  <meta name="keywords" content="@Model.PageMeta.Keywords" />
+  <meta name="google-site-verification" content="4Y1ZmsLMAjWbzh_e7JGQvFgu_ONnTcDLXM-BtebISXQ" />
+  @RenderSection("BingMeta", false)
+  @RenderSection("MetaOpenGraph", false)
+  <link rel="canonical" href="@Model.PageMeta.Canonical" />
+  @RenderSection("Pagination", false)
+  @RenderSection("Nativo", required: false)
+  <link rel="author" href="/humans.txt" />
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicon/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicon/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicon/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicon/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicon/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicon/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicon/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicon/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicon/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="/assets/img/favicon/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="/assets/img/favicon/manifest.json">
+  <link rel="shortcut icon" href="/assets/img/favicon/favicon.ico">
+  <meta name="msapplication-TileColor" content="#145083">
+  <meta name="msapplication-TileImage" content="/assets/img/favicon/mstile-144x144.png">
+  <meta name="msapplication-config" content="/assets/img/favicon/browserconfig.xml">
+  <meta name="theme-color" content="#393939">
+  <style>@Model.InlineHeadStyles </style>
+  <link id="main_css" rel="stylesheet" href="" />
+  <script>
+  !function(w){
+    w.ABT=w.ABT||{};
+    var e=w.ABT.ENV={};
+    e.routeName='@Model.AssetsPrefix';
+    e.staticEndpoint='@AppEnvironment.AssetsUrlPrefix';
+    e.isDev=@AppEnvironment.IsLocalDev.ToString().ToLower();
+    e.isProd=@AppEnvironment.IsProduction.ToString().ToLower();
+    e.staticAssets=@Model.GetStaticAssetsJsonString();
+  }(window)
+  </script>
+  <script> @Model.InlineHeadScript </script>
+  <script src='@( AppEnvironment.StaticLibrariesUrlPrefix + "svg4ie-1.0.0.min.js" )'></script>
+  <noscript>
+    <link href="@Model.GetNoScriptStylesUrl()" rel="stylesheet" media="all"/>
+  </noscript>
+</head>
+<body vocab="http://schema.org/" data-omnipage="@Model.OmniPage">
+  <noscript>
+    <p class="scriptless">
+      You do not currently have <strong>javascript</strong> enabled. Please enable javascript to enjoy the best experience.
+    </p>
+    <p>
+      Need to know how to enable it? <a href="http://enable-javascript.com/" target="_blank">Go here.</a>
+    </p>
+  </noscript>
+  <!--[if lt IE 9]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+  <div class="side-panel-container hidden" id="sidepanel_wrap_js">
+    <section class="navigation">
+      @{ Html.RenderPartial("_DefaultHeader"); }
+      @{ Html.RenderPartial("_SiteNav"); }
+    </section>
+  </div>
+  <div class="wrapper">
+    @RenderBody()
+    <footer class="site-footer">
+      <div class="section-wrap">
+        <a name="siteFooter"></a>
+        @{ Html.RenderPartial("_DefaultFooter"); }
+      </div>
+    </footer>
+  </div>
+  @{ Html.RenderPartial("_GlobalSpriteInline"); }
+  <!--[if lt IE 9]>
+    <script src='@( AppEnvironment.StaticLibrariesUrlPrefix + "jquery-1.11.0.min.js" )'></script>
+  <![endif]-->
+  <!--[if gte IE 9]><!-->
+  <script src='@( AppEnvironment.StaticLibrariesUrlPrefix + "jquery-2.1.3.min.js" )'></script>
+  <!--<![endif]-->
+  @if ((Model.PageMeta.SiteSection != null) && (Model.PageMeta.SiteSection.ToLower() == "research")) {
+    <script src='@( AppEnvironment.StaticLibrariesUrlPrefix + "jquery.lazyload.min.js")'></script>
+  }
+  <script>
+    !function(g, s) {
+      var t = g.TRK, a = g.ADS, o = g.OFR, p = 'pageCtx';
+      t[p] = @Model.TrackMeta.SerializePageCtxToJson();
+      t[p].set = s;
+      a[p] = @Model.AdvertMeta.SerializePageCtxToJson();
+      a[p].set = s;
+      o[p] = @Model.OfferMeta.SerializePageCtxToJson();
+      @Html.Raw(Model.EmmitPageJson())
+    }(ABT, function(d) {
+      ABT.UTILS.mergeObjs(this, d);
+      return this
+    })
+  </script>
+  <script src="@( AppEnvironment.StaticLibrariesUrlPrefix + AppEnvironment.GlobalSiteJavaScriptAssetName )"></script>
+  @* This is where we detect the device group and fetch the appropriate js file for page *@
+  <script id="main_js">
+    !function(a, d) {
+      a.ready(function() {
+        var s = d.createElement('script'),
+            e = d.getElementById('main_js');
+        s.src = a.ENV.getScriptUri();
+        s.async = 1;
+        e.parentNode.insertBefore(s, e)
+      })
+    }(ABT, document)
+  </script>
+
+  @* Omniture Tracker *@
+  <script src="@( AppEnvironment.StaticLibrariesUrlPrefix
+                + (AppEnvironment.IsProduction ? "omni.prod-20150908.min.js" : "omni.dev-20150908.min.js") )">
+  </script>
+  <script>
+    !function(a) {
+      a.ready(function() {
+        var t = a.TRK;
+        a.ADS.init();
+        $.when(t.session.init()).then(function(){t.omni.init().track('pageview')});
+      })
+    }(ABT)
+  </script>
+
+  @* Google Analytics (async) *@
+  <script>
+    !function(i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r;
+      i[r] = i[r] || function() {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date();
+      a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0];
+      a.async = 1;
+      a.src = g;
+      m.parentNode.insertBefore(a, m)
+    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    ga('create', 'UA-5499372-7', 'auto');
+    if (!ABT.TRK.pageCtx.delayPageviewTracking)
+      ga('send', 'pageview')
+  </script>
+
+  @* Load Google Publisher Tag (GPT) library *@
+  <script>
+    !function(w, d, s, u, gt) {
+      var o = w[gt] = w[gt] || {};
+      o.cmd = o.cmd || [];
+      var hs = 'https:',
+        g = d.createElement(s),
+        n = d.getElementsByTagName(s)[0];
+      g.async = 1;
+      g.src = (hs === d.location.protocol ? hs : 'http:') + u;
+      n.parentNode.insertBefore(g, n);
+    }(window, document, 'script', '//www.googletagservices.com/tag/js/gpt.js', 'googletag');
+  </script>
+
+  <!-- Cross Pixel Tag (CWEB-45) -->
+  <script type="text/javascript">
+    try {
+      (function () {
+        var cb = new Date().getTime();
+        var s = document.createElement("script");
+        s.defer = true;
+        s.src = "//tag.crsspxl.com/s1.js?d=2399&cb=" + cb;
+        var s0 = document.getElementsByTagName('script')[0];
+        s0.parentNode.insertBefore(s, s0);
+      })();
+    } catch (e) {
+    }
+  </script>
+
+  @* Videology Tracker *@
+  <img height="1" width="1" alt="" src="http://set.tidaltv.com/Ping.aspx?tids=2641945|1440" style="display: none"/>
+
+  @* Lotame Tracker *@
+  <script src="//tags.crwdcntrl.net/c/5950/cc_af.js?ns=_cc5950" id="LOTCC_5950"></script>
+  <script>
+    !function(cc, pc, i) {
+      cc.add(i, 'fuel : ' + (pc.fuel || ''));
+      cc.add(i, 'make : ' + (pc.make || ''));
+      cc.add(i, 'model : ' + (pc.model || ''));
+      cc.add(i, 'year : ' + (pc.year || ''));
+      cc.add(i, 'type : ' + (pc.category || ''));
+      cc.add(i, 'prod: ' + (pc.section || ''));
+      cc.add(i, 'site: car');
+      cc.add(i, 'style: ' + (pc.bodystyle || ''));
+      cc.bcp();
+    }(_cc5950, ABT.ADS.pageCtx, 'int')
+  </script>
+
+  @* Comscore Tracker *@
+  <script>
+    !function(d, t, e) {
+      var cs = d.createElement(e),
+          s = d.getElementsByTagName(e)[0];
+      cs.async = 1;
+      cs.src = ('https:' === d.location.protocol ? 'https://sb' : 'http://b') + '.scorecardresearch.com/beacon.js';
+      s.parentNode.insertBefore(cs, s);
+      if (!t.pageCtx.delayPageviewTracking) {
+        t.comscore.track('pageview')
+      }
+    }(document, ABT.TRK, 'script')
+  </script>
+
+  @* SaleMove *@
+  <script>
+    !function(d, a, e) {
+      var v = a.ENV
+      if (v.isDev || !a.DEVICE.isDesk)return;
+      var cs = d.createElement(e),
+          s = d.getElementsByTagName(e)[0];
+      cs.async = 1;
+      cs.src = v.getJsFileNameByAlias('salemove');
+      s.parentNode.insertBefore(cs, s);
+    }(document, ABT, 'script')
+  </script>
+</body>
+</html>

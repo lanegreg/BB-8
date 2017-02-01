@@ -1,0 +1,21 @@
+﻿/**
+ *  This sass module represents the desktop version of {controller}.{action} http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "unslider";
+
+.post {
+  @include post;
+  
+  // display article in card-view on any size screen
+  &.post-card-view {
+    @include post-card-view;
+  }
+}
+
+.media .img-container {
+  margin-bottom: 1.5em;
+}
+

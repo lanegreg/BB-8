@@ -1,0 +1,1937 @@
+﻿/**
+ *  This sass module contains the application-wide base styles that apply to all devices http://www.car.com/
+ */
+
+@charset "UTF-8";
+
+@import "normalize", "variables", "mixins", "helpers", "base", "layout", "components";
+
+.mask-lt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(255, 255, 255, .9);
+  z-index: -1;
+}
+
+.img-container {
+  position: relative;
+
+  .gradient-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    @include background-image(linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 45%, rgba(0,0,0,.65) 100%));
+  }
+
+  &:hover {
+    .gradient-mask {
+      @include background-image(linear-gradient(to bottom, transparent 0%, transparent 100%));
+    }
+  }
+
+  .title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: .75em;
+    margin: 0;
+    color: $alto;
+    font-weight: normal;
+    @include font(2, 1.3);
+    @include text-shadow(1px 1px 3px #444);
+  }
+}
+
+.inpage-jump {
+  svg {
+    fill: currentColor;
+  }
+}
+
+.box {
+  position: relative;
+  display: block;
+  margin-bottom: 1.5em;
+  @include border-radius(2px);
+  padding: 1em 2em;
+
+  ul, ol, dl, table {
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  p {
+    margin: 0 0 1.5em;
+  }
+
+  &.border {
+    border: solid 2px $silver;
+  }
+
+  &.solid {
+    background: $concrete;
+  }
+
+  &.info {
+    background: $tropical-blue;
+    border: solid 1px $malibu;
+    color: $astral;
+  }
+  // Down Pointing Arrow
+  &.arrow-down {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 1;
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      border-top: 18px solid $silver;
+      left: 50%;
+      bottom: -18px;
+      margin-left: -15%;
+    }
+  }
+  // Up Pointing Arrow
+  &.arrow-up {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 1;
+      border-left: 17px solid transparent;
+      border-right: 17px solid transparent;
+      border-bottom: 18px solid $silver;
+      left: 41%;
+      top: -18px;
+      margin-left: -15%;
+    }
+  }
+  // Left Pointing Arrow
+  &.arrow-left {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 1;
+      border-right: 17px solid $silver;
+      border-top: 18px solid transparent;
+      border-bottom: 17px solid transparent;
+      left: 50%;
+      bottom: -18px;
+      margin-left: -15%;
+    }
+  }
+  // Right Pointing Arrow
+  &.arrow-right {
+    &:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      z-index: 1;
+      border-left: 17px solid $silver;
+      border-top: 17px solid transparent;
+      border-bottom: 18px solid transparent;
+      left: 50%;
+      top: -18px;
+      margin-left: -15%;
+    }
+  }
+}
+
+.select-to-compare {
+  display: flex;
+  width: 80%;
+  margin: 0 auto .75em;
+  @include cf;
+
+  @include breakpoint($large) {
+    width: 60%;
+    margin: 0 auto .75em;
+  }
+
+  @include breakpoint($xlarge) {
+    width: 50%;
+    margin: 0 auto .75em;
+  }
+
+  button {
+    @include span(6 of 12);
+
+    &:last-of-type {
+      @include last;
+    }
+  }
+}
+
+.btn-tools {
+  position: relative;
+  display: block;
+  padding: 1.5em;
+  background: $alabaster;
+
+  .i-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.5em;
+    height: 2.5em;
+
+    svg {
+      fill: $silver;
+    }
+  }
+
+  .i-select-car {
+    padding-top: 18px;
+    margin: 0 auto 1em;
+    @include transform(rotateY(180deg));
+
+    svg {
+      fill: $alto;
+    }
+  }
+
+  &:hover {
+    .i-select-car {
+
+      svg {
+        fill: $silver;
+      }
+    }
+  }
+
+  .heading {
+    @include font(1.6, 1.3);
+  }
+}
+
+form {
+  .form-item-row {
+    @include cf;
+    @include font(1.5, 1.5);
+
+    @include breakpoint($small) {
+      @include font(1.6, 1.5);
+    }
+  }
+
+  h3 {
+    border-bottom: solid 5px $mercury;
+  }
+
+  .form-item-label {
+    width: 65%;
+    float: left;
+  }
+
+  .form-item-value {
+    width: 30%;
+    float: right;
+    font-weight: bold;
+    @include box-shadow(inset 0 1px 2px rgba(0, 0, 0, 0.2));
+  }
+}
+
+.year-changer {
+  display: inline;
+  margin: 0 0 0 1.5em;
+  @include inline-block-list;
+
+  select {
+    background: $chathams-blue;
+    border: none;
+    color: #fff;
+  }
+}
+
+@include keyframe(content-opacity) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@include keyframe(content-rotate-y) {
+  from {
+    @include transform(rotateY(90deg));
+  }
+
+  to {
+    opacity: 1;
+    @include transform(rotateY(0deg));
+  }
+}
+
+@include keyframe(content-rotate-x) {
+  from {
+    @include transform(rotateX(90deg));
+  }
+
+  to {
+    opacity: 1;
+    @include transform(rotateX(0deg));
+  }
+}
+
+@include keyframe(content-rotate-both) {
+  from {
+    @include transform(rotate(90deg));
+    @include transform-origin(0% 50%);
+  }
+
+  to {
+    opacity: 1;
+    @include transform(rotate(0deg));
+    @include transform-origin(0% 50%);
+  }
+}
+
+@include keyframe(content-pop-out) {
+  0% {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+
+  50% {
+    opacity: 1;
+    @include transform(scale(1.1));
+  }
+
+  100% {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+}
+
+@include keyframe(content-pop-in) {
+  from {
+    opacity: 1;
+    @include transform(scale(1.1));
+  }
+
+  to {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+}
+
+@include keyframe(content-slide-bot) {
+  from {
+    top: 20px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+
+@include keyframe(content-slide-top) {
+  from {
+    top: -20px;
+    opacity: 0;
+  }
+
+  to {
+    top: 0px;
+    opacity: 1;
+  }
+}
+// used for wrapper animation after the load of the page
+@include keyframe(show) {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.tabs-wrapper {
+  margin: 0;
+
+  &.has-line {
+    border-bottom: solid 3px $porcelain;
+    margin-bottom: .75em;
+  }
+
+  @include breakpoint($small) {
+    .hero + & {
+      margin-top: -2.8em;
+    }
+  }
+
+  input[type=radio] {
+    display: none;
+  }
+
+  .tabish-head {
+    padding: 0 1em;
+  }
+
+  label, .tabish-head {
+    display: inline-block;
+    width: auto;
+    height: 3em;
+    margin-bottom: .25em;
+    color: $body-font-color;
+    background: $porcelain;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    @include transition(background 0.4s ease-in-out, height 0.2s linear);
+    @include font(1.3, $tab-label-line-height);
+
+    @include breakpoint($small) {
+      @include font(1.4, $tab-label-line-height);
+    }
+
+    a {
+      display: block;
+      padding: 0 1em;
+      color: $body-font-color;
+    }
+
+    &:hover {
+      background: $accent-color;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .tabish-head {
+    margin-bottom: 0;
+    cursor: default;
+    font-size: 2rem;
+    height: auto;
+
+    &:hover {
+      background: $porcelain;
+    }
+  }
+
+  #tab1, #tab2, #tab3, #tab4, #tab5, #tab6, #tab7 {
+    &:checked {
+      + label {
+        background: $accent-color;
+
+        a {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+.tab-body {
+  position: absolute;
+  top: -9999px;
+  /*opacity: 0;*/
+  background: #fff;
+
+  .section-pad {
+    padding: 1.5em 0;
+  }
+}
+
+#tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4, #tab5:checked ~ .tab-body-wrapper #tab-body-5, #tab6:checked ~ .tab-body-wrapper #tab-body-6, #tab7:checked ~ .tab-body-wrapper #tab-body-7 {
+  position: relative;
+  top: 0;
+  // Choose one
+  @include animation(0.2s,0.8s,content-opacity);
+}
+
+.data-list {
+  @include data-list;
+}
+
+.price-tag {
+  vertical-align: top;
+
+  svg {
+    fill: currentColor;
+  }
+}
+
+.grid-view-container {
+  margin-top: 0;
+  padding: 0;
+  @include cf;
+  @include no-bullet;
+
+  .grid-view-item {
+    position: relative;
+    margin-bottom: 1em;
+
+    @include breakpoint($small) {
+      @include gallery(6 of 12);
+      margin-bottom: gutter(12);
+    }
+
+    @include breakpoint($medium-portrait) {
+      @include gallery(6 of 12);
+      margin-bottom: gutter(12);
+    }
+
+    @include breakpoint($medium) {
+      @include gallery(6 of 12);
+      margin-bottom: gutter(12);
+    }
+
+    @include breakpoint($large) {
+      @include gallery(4 of 12);
+      margin-bottom: gutter(12);
+    }
+
+    @include breakpoint($xxxlarge) {
+      @include gallery(3 of 12);
+      margin-bottom: gutter(12);
+    }
+
+    &.grid-view-item-more {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      padding: 1em;
+      background: $accent-color;
+      text-align: center;
+
+      &:hover {
+        background: $accent-color-hover;
+      }
+
+      a {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #fff;
+        @include font(2.5, 1.3);
+
+        @include breakpoint($medium) {
+          @include font(2, 1.3);
+        }
+
+        @include breakpoint($xlarge) {
+          @include font(2.4, 1.3);
+        }
+
+        @include breakpoint($xxlarge) {
+          @include font(3, 1.3);
+        }
+      }
+    }
+  }
+
+  .zoom-item {
+    overflow: hidden;
+
+    img {
+      @include transition(all .8s ease);
+    }
+
+    &:hover img {
+      top: 0;
+      @include transform(scale(1.25));
+    }
+  }
+
+  .desc {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5em .5em .5em;
+    text-align: center;
+    @include background-image(linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.75) 100%));
+
+    .title {
+      margin: .25em .5em;
+      color: #fff;
+      @include text-shadow(1px 1px 1px #000);
+      @include font(1.5, 1.3);
+    }
+  }
+}
+
+.rotate {
+  display: inline-block;
+  @include rotate(-2.5deg);
+
+  .text {
+    @include rotate(2.5deg);
+  }
+}
+
+.card {
+  display: block;
+
+  .caption-1 {
+    padding: .75em;
+    color: #F1F1F1;
+    background: rgba(0,0,0,.9);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .h3 {
+      margin: 0;
+    }
+  }
+}
+
+// Table Layout
+.data-table {
+  table {
+    width: 100%;
+    margin-bottom: 1.5em;
+
+    caption {
+      margin-bottom: .75em;
+      color: #000;
+      font-weight: bold;
+      text-align: left;
+      @include font(2, 1.3);
+    }
+
+    thead {
+      td, th {
+        background-color: $concrete;
+        border-top: solid 1px $alto;
+      }
+    }
+
+    th {
+      text-align: left;
+    }
+
+    td, th {
+      padding: .25em .75em;
+      border-bottom: solid 1px $alto;
+      border-right: solid 1px $alto;
+      text-align: center;
+
+      @include breakpoint($small) {
+        @include font(1.4, 1.5);
+      }
+
+      &:first-child {
+        border-left: solid 1px $alto;
+      }
+    }
+
+    ul, ol {
+      margin: 0;
+    }
+  }
+}
+
+.compare-table {
+  th {
+    width: 25%;
+  }
+
+  td {
+    width: 25%;
+  }
+}
+
+// svg Icons
+.icon {
+  display: block;
+
+  &.inline {
+    display: inline-block;
+    width: 1.2em;
+    height: 1.2em;
+    vertical-align: middle;
+    line-height: 1;
+  }
+
+  svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+symbol, svg:not(:root) {
+  overflow: visible;
+}
+
+// SVG fall back for non-js browsers
+.no-js {
+
+  [class^="nav-icon-"] {
+    display: inline-block;
+    background-repeat: no-repeat;
+    background-image: url(img/sprite.png);
+  }
+}
+
+.wrapper {
+  position: relative;
+}
+
+.get-pricing-dlr-list {
+  padding-left: 0;
+  margin-top: 0;
+  @include no-bullet;
+
+  li {
+    margin-bottom: .75em;
+  }
+
+  .select-all, .member-dlr-cont, .list-item {
+    padding: .75em 1em;
+    @include border-radius(5px);
+  }
+
+  .select-all {
+    color: #FFF;
+    background: $accent-color;
+  }
+
+  .member-dlr-cont {
+    margin: 32px 0 .75em;
+  }
+
+  .list-item {
+    position: relative;
+    background: $tundora;
+  }
+
+  [type=checkbox]:checked + label, [type=checkbox]:not(:checked) + label {
+    display: block;
+    @include font(1.6, 1.3);
+  }
+
+  .show-more {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 0 5px;
+    color: #fff;
+    @include font(2, 1);
+  }
+
+  .dlr-details {
+    color: $silver;
+    @include font(1.3, 1.5);
+    @include transition(display 0.2s);
+
+    h5 {
+      color: $accent-color;
+      font-weight: bold;
+      @include font(1.3, 1.3);
+    }
+  }
+
+  .msg {
+    display: none;
+    position: relative;
+    margin-top: 1em;
+    margin-left: 2em;
+    color: $silver;
+    @include font(1.3, 1.3);
+
+    &.has-ellipsis:after {
+      content: "...";
+    }
+
+    &.show {
+      display: block;
+    }
+
+    p {
+      margin: 0;
+
+      &:before {
+        content: "/201C";
+      }
+
+      &:after {
+        content: "/201D";
+      }
+    }
+  }
+}
+
+.get-pricing-step2-container {
+  @include cf;
+
+  .col {
+    padding: 0 .75em;
+    margin-bottom: 3em;
+
+    @include breakpoint($medium) {
+      margin-bottom: none;
+      @include span(4 of 12);
+
+      &:last-of-type {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+// AutoNation Label
+.an-dlr-cont {
+  position: relative;
+  padding: 1em;
+  margin: 34px 0 .75em;
+  background: #fff;
+  @include border-radius(3px);
+
+  .h2 {
+    margin: 0;
+
+    @include breakpoint($small) {
+      @include font(2, 1.2);
+    }
+  }
+}
+
+.an-dlr-conf-cont {
+  padding: 1em;
+  margin-bottom: 1.5em;
+  background: black;
+  @include border-radius(10px);
+}
+
+.an-label {
+  position: absolute;
+  top: -22px;
+  right: 0;
+  left: 0;
+  background: white;
+
+  .label {
+    display: block;
+    padding: 0 .25em;
+    background: #fff;
+    color: #000;
+    vertical-align: middle;
+  }
+
+  .logo {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .copy {
+    margin-left: .25em;
+    font-style: italic;
+    font-weight: bold;
+    @include font(.85, 2.4);
+  }
+
+  &.disabled {
+    display: none;
+  }
+}
+
+/*Cars for Sale Results*/
+.an-label-tab {
+  position: absolute;
+  top: -31px;
+  left: 0;
+
+  &.block {
+    right: 0;
+  }
+
+  &.fix-top {
+    top: 0;
+  }
+
+  .label {
+    display: block;
+    padding: .35em .5em;
+    background: #2f2f2f;
+    color: #fff;
+    vertical-align: middle;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .logo {
+    width: 95px;
+  }
+}
+
+// Member Dealer Label
+.member-dlr-cont {
+  position: relative;
+  padding: 1em;
+  margin: 21px 0 .75em;
+  color: #fff;
+  @include border-radius(3px);
+
+  .h2 {
+    margin: 0;
+
+    @include breakpoint($small) {
+      @include font(2, 1.2);
+    }
+  }
+}
+
+.member-label {
+  position: absolute;
+  top: -22px;
+  right: 0;
+  padding: .4em;
+  background: $tundora;
+  @include font(1.1, 1.5);
+
+  .label {
+    display: inline-block;
+    padding: .25em .5em;
+    background: $accent-color;
+    color: #fff;
+    vertical-align: middle;
+  }
+
+  svg {
+    fill: #fff;
+  }
+
+  &.disabled {
+    display: none;
+  }
+}
+
+.label-circle {
+  display: inline-block;
+  width: 1.35em;
+  margin-right: .25em;
+  background: $accent-color;
+  color: #FFF;
+  text-align: center;
+  line-height: inherit;
+  @include border-radius(30px);
+
+  &.green {
+    background: $accent-color;
+  }
+
+  &.blue {
+    background: $brand-color;
+  }
+}
+
+.get-pricing-thankyou-container {
+
+  @include breakpoint($small) {
+    max-width: 470px;
+  }
+}
+
+// Prevent iPad and iPhone's body element to joint-scroll with overlay
+.popup_wrapper {
+  -webkit-overflow-scrolling: touch;
+}
+
+// Dark and Light color Overlay
+.overlay-close {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: none;
+
+  .icon {
+    width: 2em;
+    height: 2em;
+
+    svg {
+      fill: $overlay-body-text;
+    }
+  }
+}
+
+.overlay {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2em .75em;
+
+  @include breakpoint($small) {
+    max-width: 1024px;
+    min-height: auto !important; // IE
+    min-height: initial !important;
+    height: auto;
+    padding: 2.5em 4em;
+
+    &.auto-width {
+      max-width: none;
+      width: auto;
+    }
+
+    &.max-450 {
+      max-width: 450px;
+    }
+
+    &.max-650 {
+      max-width: 650px;
+    }
+  }
+
+  .inner-cont {
+    padding: .75em;
+    /*background: $overlay-inner-cont-bg-color;*/
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: #000;
+  }
+
+  button {
+
+    &.disabled {
+      background: $gray2;
+      color: $silver;
+    }
+  }
+
+  .btn-search-tag {
+    background: none;
+    color: $mercury;
+    border: solid 1px $dove-gray;
+
+    svg {
+      fill: currentColor;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        fill: currentColor;
+      }
+    }
+  }
+
+  h2 {
+    @include font(1.8, 1.3);
+  }
+
+  &.overlay-dk {
+    background: $overlay-dk;
+    color: $overlay-dk-body-text;
+
+    h1 {
+      color: $tropical-blue;
+    }
+
+    .btn-clear {
+      background: none;
+      @include font(1.5, 1.5);
+      color: #fff;
+
+      &:hover, .selected & {
+        background: $accent-color;
+        color: #fff;
+      }
+    }
+
+    .overlay-close {
+
+      .icon {
+        svg {
+          fill: $overlay-dk-body-text;
+        }
+      }
+    }
+  }
+
+  &.overlay-lt {
+    background: #fff;
+    color: $overlay-lt-body-text;
+    @include box-shadow(1px 1px 5px #000);
+
+    h1 {
+      color: #000;
+    }
+
+    .btn-clear {
+      background: none;
+      @include font(1.5, 1.5);
+      color: #000;
+
+      &:hover, .selected & {
+        background: $accent-color;
+        color: #000;
+      }
+    }
+
+    .overlay-close {
+
+      .icon {
+        svg {
+          fill: $silver;
+        }
+      }
+    }
+  }
+  // tabs
+  .tabs-wrapper {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+
+    input[type=radio] {
+      display: none;
+    }
+
+    label {
+      background: rgba(0, 0, 0, 0.1);
+      color: $silver;
+      display: inline-block;
+      margin: 0;
+      font-weight: 700;
+      width: auto;
+      text-align: center;
+      cursor: pointer;
+      @include transition(background 0.4s ease-in-out, height 0.2s linear);
+
+      @include breakpoint($small) {
+        @include font(1.5, $tab-label-line-height);
+      }
+
+      &:hover {
+        color: $accent-color;
+      }
+
+      &.disabled {
+        cursor: default;
+        color: $tundora;
+      }
+    }
+
+    &.has-two label {
+      width: 49%;
+      padding: 0;
+    }
+    // For Research Trim Overlay
+    input[id^="researchtabstyle"] {
+      + label {
+        padding: 0 1em;
+      }
+    }
+    // For Research Trim Overlay
+    input[id^="researchtabstyle"] {
+      &:checked {
+        + label {
+          background: rgba(0, 0, 0, 0.3);
+          color: $accent-color;
+        }
+      }
+    }
+
+    #tab1, #tab2, #tab3, #tab4, #tab5, #tab6, #tab7 {
+      &:checked {
+        + label {
+          background: rgba(0, 0, 0, 0.3);
+          color: $accent-color;
+        }
+      }
+    }
+
+    .or {
+      position: absolute;
+      top: 3px;
+      left: 44.5%;
+      height: 3.6rem;
+      width: 3.6rem;
+      padding: .75rem;
+      color: $concrete;
+      background: rgba(0, 0, 0, 0.6);
+      @include border-radius(30px);
+      @include font(1.4, 1.3);
+
+      @include breakpoint($small) {
+        top: 5px;
+        left: 133px;
+        @include font(1.3, 1.3);
+      }
+    }
+  }
+
+  .alert-cont {
+    padding: $default-btn-padding;
+    background: $chathams-blue;
+    color: $concrete;
+    text-align: center;
+    margin: 0 0 1.5em;
+    @include cf;
+
+    .alert {
+
+      @include breakpoint($small) {
+        @include font(1.5, 1.3);
+      }
+    }
+  }
+
+  .tab-body {
+    position: absolute;
+    top: -9999px;
+    /*opacity: 0;*/
+    background: rgba(0, 0, 0, .3);
+    margin: 0 -1em;
+
+    .section-pad-tb {
+      padding: 1em;
+
+      @include breakpoint($medium) {
+        padding: 1.5em 2em;
+      }
+    }
+  }
+
+  #tab1:checked ~ .tab-body-wrapper #tab-body-1, #tab2:checked ~ .tab-body-wrapper #tab-body-2, #tab3:checked ~ .tab-body-wrapper #tab-body-3, #tab4:checked ~ .tab-body-wrapper #tab-body-4, #tab5:checked ~ .tab-body-wrapper #tab-body-5, #tab6:checked ~ .tab-body-wrapper #tab-body-6, #tab7:checked ~ .tab-body-wrapper #tab-body-7 {
+    position: relative;
+    top: 0;
+    // Choose one
+    @include animation(0.2s,0.8s,content-opacity);
+  }
+  // For Research Trim Overlay
+  input[id^="researchtabstyle1"]:checked ~ .tab-body-wrapper [id^="researchtabbodystyle1"],
+  input[id^="researchtabstyle2"]:checked ~ .tab-body-wrapper [id^="researchtabbodystyle2"],
+  input[id^="researchtabstyle3"]:checked ~ .tab-body-wrapper [id^="researchtabbodystyle3"],
+  input[id^="researchtabstyle4"]:checked ~ .tab-body-wrapper [id^="researchtabbodystyle4"] {
+    position: relative;
+    top: 0;
+    // Choose one
+    @include animation(0.2s,0.8s,content-opacity);
+  }
+
+  .h1 {
+    margin-bottom: 0;
+    padding: 0 0 1em;
+    text-align: center;
+    @include font(1.8, 1.5);
+
+    small {
+      display: block;
+    }
+
+    @include breakpoint($small) {
+      @include font(3, 1.3);
+    }
+  }
+
+  .tbl {
+    width: 100%;
+    margin-bottom: 3em;
+
+    tbody {
+
+      th {
+        text-align: left;
+
+        @include breakpoint($small) {
+          @include font(2.6, 1.5);
+        }
+      }
+
+      td {
+        padding: .5em 1em;
+        border-bottom: solid 1px $tundora;
+        @include font(1.5, 1.5);
+      }
+    }
+
+    a {
+      color: $overlay-body-text;
+
+      &:hover {
+        color: $accent-color;
+      }
+    }
+
+    small {
+      @include font(1.2, 1);
+
+      @include breakpoint($small) {
+        display: block;
+      }
+    }
+  }
+}
+
+.trim-list-cont {
+  display: table;
+  width: 100%;
+  margin-bottom: .75em;
+  border-collapse: collapse;
+
+  h2 {
+    @include font(2, 1.5);
+
+    @include breakpoint($small) {
+      @include font(2.6, 1.5);
+    }
+  }
+
+  .row {
+    display: table-row-group;
+    border-bottom: solid 1px $tundora;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+
+  a {
+    display: table-row;
+    width: 100%;
+    color: $overlay-body-text;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  .col1, .col2 {
+    display: table-cell;
+    padding: .5em;
+    vertical-align: middle;
+  }
+
+  .col1 {
+    width: 85%;
+  }
+
+  .col2 {
+    width: 15%;
+    padding: .5em 1em;
+  }
+
+  small {
+    @include font(0.9, 1);
+
+    @include breakpoint($small) {
+      @include font(1.2, 1);
+    }
+
+    display: block;
+  }
+}
+// Vertical Accordion
+.accordion, .accordion * {
+  @include box-sizing(border-box);
+}
+
+.accordion {
+  overflow: hidden;
+  @include border-radius(3px);
+}
+
+.accordion-section {
+  position: relative;
+  padding: 2em;
+  margin-bottom: .75em;
+  background: $concrete;
+
+  &:last-child .accordion-section-title {
+    border-bottom: none;
+  }
+}
+
+.accordion-section-title {
+  width: 100%;
+  display: inline-block;
+  color: $dove-gray;
+  @include transition(all linear 0.15s);
+
+  .label-circle {
+    background: $dove-gray;
+  }
+
+  &.active {
+    color: $filter-highlight;
+    text-decoration: none;
+
+    .label-circle {
+      background: $filter-highlight;
+    }
+  }
+}
+
+.accordion-section-content {
+  display: none;
+
+  @include breakpoint($large) {
+    padding: 0 40px 1.5em 40px;
+  }
+}
+
+// Custom Form Elements
+.car-form {
+  .radio {
+    display: inline-block;
+  }
+
+  input[type="radio"] {
+    display: none;
+
+    & + label {
+      color: $body-font-color;
+      @include font(1.4, 1.5);
+    }
+
+    & + label span {
+      display: inline-block;
+      width: 19px;
+      height: 19px;
+      margin: -1px 4px 0 0;
+      vertical-align: middle;
+      cursor: pointer;
+      border: solid 2px #aaa;
+      @include border-radius(50%);
+    }
+
+    & + label span {
+      background-color: $radio-off;
+    }
+
+    &:checked + label span {
+      background-color: $radio-on;
+    }
+
+    & + label span,
+    &:checked + label span {
+      @include transition(background-color 0.4s linear);
+    }
+  }
+  // Base for label styling
+  [type="checkbox"]:not(:checked),
+  [type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+  }
+
+  [type="checkbox"]:not(:checked) + label,
+  [type="checkbox"]:checked + label {
+    position: relative;
+    padding-left: 25px;
+    cursor: pointer;
+    @include font(1.4, 1.5);
+  }
+  // checkbox aspect
+  [type="checkbox"]:not(:checked) + label:before,
+  [type="checkbox"]:checked + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    background: #fff;
+    @include border-radius(3px);
+  }
+  // checked mark aspect
+  [type="checkbox"]:not(:checked) + label:after,
+  [type="checkbox"]:checked + label:after {
+    content: '\2713';
+    position: absolute;
+    top: -3px;
+    left: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    color: $accent-color;
+    @include transition(all 0);
+  }
+  // checked mark aspect changes
+  [type="checkbox"]:not(:checked) + label:after {
+    opacity: 0;
+    @include transform(scale(0));
+  }
+
+  [type="checkbox"]:checked + label:after {
+    opacity: 1;
+    @include transform(scale(1));
+  }
+
+  [type="checkbox"]:not(:checked) + label small,
+  [type="checkbox"]:checked + label small {
+    padding-right: 25px;
+  }
+  // disabled checkbox
+  [type="checkbox"]:disabled:not(:checked) + label:before,
+  [type="checkbox"]:disabled:checked + label:before {
+    background-color: $alto;
+  }
+
+  [type="checkbox"]:disabled:checked + label:after {
+    color: #999;
+  }
+
+  [type="checkbox"]:disabled + label {
+    color: #aaa;
+  }
+  // accessibility
+  [type="checkbox"]:checked:focus + label:before,
+  [type="checkbox"]:not(:checked):focus + label:before {
+    border: 1px dotted blue;
+  }
+}
+
+select {
+  padding: .55em;
+  background: $concrete;
+  border: solid 1px #ccc;
+  color: #000;
+}
+
+.validation-summary-errors {
+  display: inline-block;
+  padding: .25em .5em;
+  margin-bottom: .25em;
+  background: #FDD;
+  color: #f00;
+  @include font(1.4, 1.5);
+}
+
+.hint-mode {
+  color: $gray;
+}
+
+.prompt {
+  display: none;
+}
+
+.required {
+  border-color: $alto;
+  @include box-shadow(0px 0px 2px 0px rgba(255, 0, 0, 1));
+}
+
+.chathams {
+  fill: #145083;
+}
+
+.picton {
+  fill: $picton-blue;
+}
+
+.astral {
+  fill: $astral;
+}
+
+.malibu, .i-util-malibu {
+  fill: $malibu;
+}
+
+.tundora {
+  fill: $tundora;
+}
+
+.white {
+  fill: white;
+}
+
+.i-util-chathams {
+  fill: #145083;
+}
+
+.dark2 {
+  fill: #999;
+}
+
+.aw-feed-cont, .aw-feed-cont-sm {
+  ul {
+    padding-left: 0;
+    margin: 0;
+    @include no-bullet;
+  }
+
+  li {
+    margin: 0;
+    @include cf;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+
+      .col-desc .header {
+        color: $malibu;
+      }
+    }
+  }
+
+  .header {
+    margin: 0;
+    @include font(1.4, 1.3);
+    @include transition(all 0.5s ease);
+
+    @include breakpoint($small) {
+      @include font(1.6, 1.3);
+    }
+  }
+
+  p {
+    margin: .25em 0 0;
+    color: $silver;
+    @include font(1.2, 1.3);
+  }
+}
+
+.aw-feed-cont {
+  h1 {
+    margin-bottom: .5em;
+
+    .byg {
+      display: block;
+      color: $chathams-blue;
+      @include font(2, 1.3);
+
+      @include breakpoint($medium) {
+        @include font(2.8, 1.3);
+      }
+    }
+
+    .h3 {
+      display: block;
+      @include font(1.4, 1.3);
+
+      @include breakpoint($medium) {
+        @include font(2, 1.3);
+      }
+    }
+  }
+
+  .confirm-cont:empty + & > .h3 {
+    margin-top: 0;
+  }
+
+  ul {
+
+    @include breakpoint($medium) {
+      @include columns(2 150px);
+      @include column-gap(0);
+    }
+  }
+
+  li {
+    padding: 1em;
+    margin: .25em .15em;
+    background: $pattens-blue;
+    @include break-inside(avoid);
+  }
+
+  .col-thumb {
+    @include span(2 of 7);
+  }
+
+  .col-desc {
+    padding-left: 1em;
+    @include span(5 of 7 last);
+
+    .header {
+      color: $astral;
+
+      @include breakpoint($small) {
+        @include font(1.7, 1.3);
+      }
+    }
+
+    .aw-url {
+      word-wrap: break-word;
+    }
+
+    p {
+      color: $chathams-blue;
+    }
+  }
+}
+
+// BYG (Before You Go) Version A
+.byg-bg-a {
+  background: #fff;
+}
+
+#v-a {
+  background: #fff;
+
+  .byg {
+  }
+
+  ul {
+  }
+
+  li {
+    background: $pattens-blue;
+    @include break-inside(avoid);
+  }
+
+  .col-thumb {
+    @include span(2 of 7);
+  }
+
+  .col-desc {
+    @include span(5 of 7 last);
+
+    p {
+      color: $chathams-blue;
+    }
+  }
+}
+
+// BYG (Before You Go) Version B
+.byg-bg-b {
+  background: $curious-blue;
+}
+
+#v-b {
+
+  .hdr-cont {
+    background: $endeavour;
+    padding: .75em 1em;
+    text-align: center;
+    margin-bottom: 0;
+    font-family: $body-font-family;
+
+    .byg {
+      @include font(2, 1.5);
+
+      @include breakpoint($medium) {
+        @include font(3.6, 1.3);
+      }
+    }
+
+    .h3 {
+      @include font(1.3, 1.3);
+
+      @include breakpoint($medium) {
+        @include font(2, 1.3);
+      }
+    }
+
+    .byg, .h3 {
+      margin-bottom: 0;
+      color: #fff;
+    }
+  }
+
+  .aw-feed-list {
+
+    @include breakpoint($medium) {
+      @include columns(auto);
+      @include column-gap(auto);
+    }
+  }
+
+  .aw-feed-item {
+    margin: 0;
+    background: #fff;
+    border-bottom: solid 1px $silver;
+
+    @include breakpoint($medium) {
+      display: table;
+      width: 100%;
+
+      &::after {
+        content: "";
+      }
+    }
+  }
+
+  .aw-feed-item:last-of-type {
+    border-bottom: none;
+  }
+
+  .aw-feed-item > a > div {
+    float: none;
+
+    @include breakpoint($medium) {
+      display: table-cell;
+      vertical-align: middle;
+    }
+  }
+
+  .col-thumb {
+    width: 50%;
+    margin: 0 auto .75em;
+
+    @include breakpoint($medium) {
+      width: 20%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .col-desc {
+    width: 100%;
+    padding: 0;
+    margin-bottom: .75em;
+    text-align: center;
+
+    @include breakpoint($medium) {
+      width: 55%;
+      padding-left: 2em;
+      text-align: left;
+    }
+
+    .headder {
+      @include font(1.3, 1.3);
+
+      @include breakpoint($medium) {
+        @include font(2, 1.3);
+        color: $astral;
+      }
+    }
+
+    p {
+      color: #000;
+      @include font(1, 1.3);
+
+      @include breakpoint($medium) {
+        @include font(1.4, 1.3);
+      }
+    }
+
+    .aw-url {
+      color: $accent-color;
+    }
+  }
+
+  .col-btn {
+    width: 100%;
+    text-align: center;
+
+    @include breakpoint($medium) {
+      width: 25%;
+    }
+
+    button {
+      padding: .5em 1em;
+      background: $endeavour;
+      @include font(1.2, 1.3);
+
+      @include breakpoint($medium) {
+        padding: .5em 1em;
+        @include font(1.8, 1.3);
+      }
+    }
+  }
+}
+
+.overlay-dk {
+  .aw-feed-cont {
+    h1 {
+      color: $picton-blue;
+    }
+
+    li {
+      background: #353535;
+    }
+
+    .col-desc {
+      .header {
+        color: $picton-blue;
+      }
+    }
+
+    p {
+      color: $silver;
+    }
+  }
+}
+
+.aw-feed-cont-sm {
+
+  h1 {
+    color: $picton-blue;
+  }
+
+  li {
+    padding: 1em 0;
+    border-bottom: solid 1px $dove-gray;
+  }
+
+  .col-thumb {
+    width: 35%;
+    float: left;
+  }
+
+  .col-desc {
+    width: 62%;
+    float: right;
+    margin-left: 3%;
+
+    .header {
+      color: $picton-blue;
+
+      @include breakpoint($small) {
+        @include font(1.4, 1.2);
+      }
+    }
+
+    p {
+      color: $silver;
+    }
+  }
+}
+
+.confirm-cont {
+  @include font(1.5, 1.5);
+
+  > p {
+    margin-top: 0;
+  }
+
+  .h2, .h4 {
+    display: block;
+  }
+
+  .h2 {
+    margin-bottom: .5em;
+    color: white;
+  }
+
+  .h4 {
+    color: $picton-blue;
+    @include font(1.5, 1.3);
+  }
+
+  .conf-num {
+    color: $picton-blue;
+  }
+
+  .address {
+    display: block;
+  }
+
+  .blockquote {
+    margin: 1.5em 0;
+  }
+}

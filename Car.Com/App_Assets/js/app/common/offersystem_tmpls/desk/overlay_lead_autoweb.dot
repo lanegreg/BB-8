@@ -1,0 +1,27 @@
+﻿<h1 id="awThankyouMessage" style="display: none">Find other deals on {{=it.adData.Make}} {{=it.adData.Model}} in {{=it.adData.Location}} and Save!</h1>
+<h1 id="awAbandonMessage">Get the best price on a {{=it.adData.Make}} {{=it.adData.Model}} in {{=it.adData.Location}} and Save!</h1>
+<ul>
+  {{~it.adData.adList.Listings :adItem:adidx}}
+  {{?adidx < 5}}
+  <li>
+    <a href="{{=adItem.LandingUrl}}"
+       data-omnitarget="leadpop:autoweb"
+       data-omnicallback="trackAutoweb" target="_blank">
+      <div class="col-thumb">
+        <img src="{{=adItem.LogoUrl}}" />
+      </div>
+      <div class="col-desc">
+        <h3 class="header">{{=adItem.Title}}</h3>
+        <p>
+          <span class="aw_url_js">{{=adItem.DisplayUrl}}</span>
+          <br />
+          <span>{{=adItem.Description1}}</span>
+          <br />
+          <span>{{?adItem.Description2}}{{=adItem.Description2}}{{?}}</span>
+        </p>
+      </div>
+    </a>
+  </li>
+  {{?}}
+  {{~}}
+</ul>

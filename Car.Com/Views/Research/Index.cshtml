@@ -1,0 +1,228 @@
+﻿@model Car.Com.Models.Research.IndexViewModel
+<section class="hero">
+  <div class="backdrop research" role="img">
+    <span class="inner">
+    </span>
+    <div class="hero-link-container">
+      <div class="page-title">
+        <h1>@Model.PageMeta.H1</h1>
+      </div>
+      <div class="hero-link">
+        <a id="by_make_st" href="#byMake" class="hero-btn one">
+          By Make
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="hero-link">
+        <a id="by_cat_st" href="#byCategory" class="hero-btn two">
+          By Category
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div>
+  <div class="ldrboard-cont">
+    <div class="ad-container">
+      <div id="js_tile_1" class="ad"></div>
+    </div>
+  </div>
+</section>
+<div class="main main-bg">
+  <div class="mask-lt"></div>
+  <div class="cell primary">
+    <div class="section-pad">
+      <section id="byMake" class="jump-to">
+        <h2 class="h2 line-on-sides">Make</h2>
+        <ul class="make-list">
+          @{
+            var makeList = Model.Makes.ToList();
+            var makeCount = Model.Makes.Count();
+            var makeLinkRenderedCount = 0;
+            var currFirstLetter = makeList[0].Name.Substring(0, 1).ToUpper();
+          }
+          @do {
+            if (makeLinkRenderedCount > 0) {
+              currFirstLetter = makeList[makeLinkRenderedCount].Name.Substring(0, 1).ToUpper();
+            }
+            <li>
+              <span class="list-head">@currFirstLetter</span>
+              <ul>
+                @{
+                  var currFirstLetterMakes = Model.Makes.Where(m => m.Name.Substring(0, 1).ToUpper() == currFirstLetter);
+                  foreach (var letterMake in currFirstLetterMakes) {
+                    <li>
+                      @Html.SeoRouteLink("Research_Make",
+                        new RouteValues {
+                          {UriTokenNames.Make, letterMake.SeoName}
+                        },
+                        "{SEO_ANCHOR_TEXT}",
+                        new Attributes {
+                          {"id", letterMake.SeoName + "_st"},
+                          {"class", "block"}
+                        })
+                    </li>
+                    makeLinkRenderedCount++;
+                  }
+                }
+              </ul>
+            </li>
+          } while (makeLinkRenderedCount < makeCount);
+        </ul>
+      </section>
+      <section id="byCategory" class="jump-to">
+        <h2 class="h2 line-on-sides">Category</h2>
+        <ul class="category-list">
+          <li>
+            @Html.SeoRouteLink("Research_AlternativeFuel",
+              null,
+              "<span class=\"icon\"><svg>" +
+              "<use xlink:href=\"/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-alternativefuel\"></use></svg></span>" +
+              "<span class=\"value\">Alternative Fuels</span>",
+              new Attributes {
+                {"id", "alt_fuel_st"},
+                {"class", "block"}
+              })
+          </li>
+
+          @foreach (var category in Model.Categories) {
+            if (category.Name.Replace(" ", "").ToLower() == "alternativefuel") {
+              continue;
+            }
+
+            var categoryIconName = "filter-icon-vehiclecategory-" + category.Name.Replace(" ", "").ToLower();
+            var categoryIconViewboxAttribute3 = "100";
+
+            if (categoryIconName == "filter-icon-vehiclecategory-compact") {
+              categoryIconViewboxAttribute3 = "1621";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-concept") {
+              categoryIconViewboxAttribute3 = "1936";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-coupe") {
+              categoryIconViewboxAttribute3 = "1823";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-convertible") {
+              categoryIconViewboxAttribute3 = "1975";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-crossover") {
+              categoryIconViewboxAttribute3 = "1793";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-hybrid") {
+              categoryIconViewboxAttribute3 = "1784";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-luxurycar") {
+              categoryIconViewboxAttribute3 = "1986";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-sedan") {
+              categoryIconViewboxAttribute3 = "1936";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-sportscar") {
+              categoryIconViewboxAttribute3 = "1823";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-suv") {
+              categoryIconViewboxAttribute3 = "1501";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-truck") {
+              categoryIconViewboxAttribute3 = "1866";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-van") {
+              categoryIconViewboxAttribute3 = "1594";
+            }
+            else if (categoryIconName == "filter-icon-vehiclecategory-wagon") {
+              categoryIconViewboxAttribute3 = "1793";
+            }
+            else {
+              categoryIconViewboxAttribute3 = "1986";
+            }
+            <li>
+              @Html.SeoRouteLink("Research_Category",
+                new RouteValues {
+                  {UriTokenNames.Category, category.SeoName}
+                },
+                "<span class=\"icon\"><svg viewBox=\"0 0 " + categoryIconViewboxAttribute3 + " 1024\">" +
+                "<use xlink:href=\"/assets/svg/global-sprite.svg#" + categoryIconName + "\"></use></svg></span>" +
+                "<span class=\"value\">" + category.PluralName + "</span>",
+                new Attributes {
+                  {"id", category.Name.ToLower() + "_st"},
+                  {"class", "block"}
+                })
+            </li>
+          }
+          <li>
+            @Html.SeoRouteLink("Research_VehicleAttributeNoCategoryResult",
+              new RouteValues {
+                {UriTokenNames.VehicleAttribute, "compact-cars"}
+              },
+              "<span class=\"icon\"><svg viewbox=\"0 0 1621 1024\">" +
+              "<use xlink:href=\"/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-compact\"></use></svg></span>" +
+              "<span class=\"value\">Compacts</span>",
+              new Attributes {
+                {"id", "compact_st"},
+                {"class", "block"}
+              })
+          </li>
+          <li>
+            @Html.SeoRouteLink("Research_VehicleAttributeNoCategoryResult",
+              new RouteValues {
+                {UriTokenNames.VehicleAttribute, "luxury-vehicles"}
+              },
+              "<span class=\"icon\"><svg viewbox=\"0 0 1986 1024\">" +
+              "<use xlink:href=\"/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-luxurycar\"></use></svg></span>" +
+              "<span class=\"value\">Luxury</span>",
+              new Attributes {
+                {"id", "luxury_st"},
+                {"class", "block"}
+              })
+          </li>
+          <li>
+            @Html.SeoRouteLink("Research_VehicleAttributeNoCategoryResult",
+              new RouteValues {
+                {UriTokenNames.VehicleAttribute, "sports-cars"}
+              },
+              "<span class=\"icon\"><svg viewbox=\"0 0 1823 1024\">" +
+              "<use xlink:href=\"/assets/svg/global-sprite.svg#filter-icon-vehiclecategory-sportscar\"></use></svg></span>" +
+              "<span class=\"value\">Sport</span>",
+              new Attributes {
+                {"id", "sports_st"},
+                {"class", "block"}
+              })
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+@{ Html.RenderPartial("_FilterIconsVehicleCategory"); }

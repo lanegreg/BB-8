@@ -1,0 +1,26 @@
+﻿{{var car=it;}}
+<ul>
+	{{? car.hasDetails()}}
+	<li>
+		<input type="checkbox" checked>
+		<i></i>
+		<h2>More Details</h2>
+		<p>{{= car.details}}</p>
+	</li>
+  {{?}}
+  {{? car.hasNotes()}}
+	<li>
+		<input type="checkbox" checked>
+    <i></i>
+    <h2>Seller's Notes</h2>
+    <p>{{= car.seller_notes}}</p>
+  </li>
+  {{?}}
+</ul>
+{{? car.hasDlrMsg()}}
+	<div class="dlr-message-cont">
+    <p>
+      {{= car.dealer.message}} &ndash; <strong>{{= car.dealer.name}}</strong>
+    </p>
+  </div>
+{{?}}

@@ -1,0 +1,129 @@
+﻿/**
+ *  This sass module contains placeholders and helper classes that apply to all devices.
+ */
+
+@charset "UTF-8";
+
+// $PLACEHOLDER
+// vertical align anything
+%vertical-align {
+  position: relative;
+  top: 50%;
+  @include transform(translateY(-50%));
+}
+
+%btn-gradient {
+  border: solid 1px $alto !important;
+  background: $concrete;
+  @include background-image(linear-gradient(to bottom, #FAFAFA 0%,#EFEFEF 100%));
+  @include box-shadow(3px 3px 0px $mercury);
+  @include link-colors($astral, $malibu);
+}
+
+
+// $HELPER CLASSES
+.form {
+
+  &.center {
+    text-align: center;
+  }
+}
+
+input, select, label {
+
+  &.xxs {
+    width: 55px;
+  }
+
+  &.xs {
+    width: 110px;
+  }
+
+  &.sm {
+    width: 150px;
+  }
+
+  &.md {
+    width: 240px;
+  }
+
+  &.full {
+    width: 100%;
+  }
+}
+
+input[type=text].lg-text {
+  @include breakpoint($medium) {
+    font-size: 3rem;
+  }
+}
+
+.inline {
+  display: inline;
+}
+
+.block {
+  display: block;
+}
+
+.center {
+  text-align: center;
+}
+
+.smaller {
+  font-size: 0.8em;
+}
+
+.larger {
+  font-size: 1.2em;
+}
+
+.group-inline {
+  .item {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .5em 0 0;
+  }
+}
+
+.mgb-0 {
+  margin-bottom: 0 !important;
+}
+
+.mgb-half {
+  margin-bottom: .75em !important;
+}
+
+.mgb-full {
+  margin-bottom: 1.5em !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.group {
+  @include cf;
+
+  .left {
+    float: left;
+    margin-right: .5em;
+  }
+
+  .right {
+    float: right;
+  }
+}
+
+.error {
+  color: #F00;
+  @include font(1.3, 1.2);
+
+  @include breakpoint($small) {
+    @include font(1.4, 1.2);
+  }
+}
+
+.col-1of2 {
+  @include col-1of2;
+}

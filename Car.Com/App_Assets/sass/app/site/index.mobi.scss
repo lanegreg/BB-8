@@ -1,0 +1,19 @@
+﻿/**
+ *  This sass module represents the mobile version of site.index http://www.autobytel.com/
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "hero", "index.desk";
+
+.wrapper {
+  margin-top: 0;
+}
+
+.section-pad {
+  padding: 3em 1em;
+}
+
+.mini-list + .ad-container {
+  display: none;
+}

@@ -1,0 +1,11 @@
+﻿/*
+ *  This sass module represents the mobile version of research.category http://www.autobytel.com/{path}
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+.category-list {
+  @extend %category-list;
+}

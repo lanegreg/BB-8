@@ -1,0 +1,7 @@
+module.exports.similar_vehicles=function anonymous(it
+/**/) {
+var out='';var arr1=it.trimlist;if(arr1){var trim,index=-1,l1=arr1.length-1;while(index<l1){trim=arr1[index+=1];out+=' <div class="sugged-item"> <a href="/'+(trim.make_seo)+'/'+(trim.super_model_seo)+'/'+(trim.year)+'/'+(trim.trim_seo_name)+'/"> <div class="img-container"> ';if(trim.image_path && trim.image_path.length > 9){out+=' <img src="'+(trim.image_path)+'" alt="'+(trim.full_display_name)+'"> ';}else if(true){out+=' <img src="/assets/svg/no-image-avail.svg" alt="'+(trim.full_display_name)+'"> ';}out+=' </div> <h3 class="sugged-title"> '+(trim.full_display_name)+'<br /> <small>Starting at</small><br /> '+(trim.starting_msrp)+' </h3> </a> </div>';} } return out;
+};module.exports.trimlist_by_supertrim=function anonymous(it
+/**/) {
+var out='';var arr1=it.trimlist;if(arr1){var trim,index=-1,l1=arr1.length-1;while(index<l1){trim=arr1[index+=1];out+=' <div class="row">  <a class="link-group" href="/'+(trim.make_seo)+'/'+(trim.super_model_seo)+'/'+(trim.year)+'/'+(trim.trim_seo_name)+'/" title="'+(trim.full_display_name)+'"><div class="col1">'+(trim.full_display_name)+'</div><div class="col2"><small>Starting at</small>'+(trim.starting_msrp)+'</div></a> </div>';} } return out;
+};

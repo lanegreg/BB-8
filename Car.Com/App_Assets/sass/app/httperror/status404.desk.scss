@@ -1,0 +1,32 @@
+﻿/**
+ *  This sass module represents the desktop version of httperror.status404 http://www.autobytel.com/error/status-404/
+ */
+
+@charset "UTF-8";
+
+@import "app-base", "hero";
+
+.page-title {
+    display: none;
+}
+
+.hero {
+  @extend %hero-error;
+
+  .hero-copy-content {
+    padding: 1.5em 1em;
+  }
+}
+
+// $MAKE, MODEL LIST
+.make-list, .model-list {
+  @extend %mnm-list;
+}
+
+.make-list {
+  @extend %make-list;
+}
+
+.category-list {
+  @extend %category-list;
+}

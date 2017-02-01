@@ -1,0 +1,67 @@
+﻿@model Car.Com.Models.CarsForSale.MakeViewModel
+
+<div class="header">
+  <div class="page-title">
+    <h1>@Model.PageMeta.H1</h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">  
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <ul id="models_js" class="model-list">
+        @{ var firstLetter = String.Empty; }
+        @foreach (var model in Model.Models) {
+          var currFirstLetter = model.Name.Substring(0, 1).ToLower();
+          var getsFirstLetterBoldTreatment = true;
+          getsFirstLetterBoldTreatment = firstLetter != currFirstLetter;
+          firstLetter = currFirstLetter;
+          <li>
+            @Html.SeoRouteLink("CarsForSale_Results",
+              null,
+              (getsFirstLetterBoldTreatment)
+                ? "<span class=\"first-letter-bold\">" + model.Name + "</span>"
+                : model.Name,
+              new Attributes {
+                {"id", model.SeoName + "_st"},
+                {"class", "block"},
+                {"data-id", model.MatchValue}
+              })
+          </li>
+        }
+      </ul>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+﻿{{ var pStartRe = new RegExp('<p>', 'g'), pEndRe = new RegExp('</p>', 'g');}}
+{{?it.dealerData.coverage }}
+<input type="hidden" id="CoverageCount" name="CoverageCount" value="1" />
+{{?it.dealerData.dealers.length > 1 }}
+<li>
+  <div class="select-all">
+    <input type="checkbox" name="selectAllDealers" id="select_all_dealers_js"
+           data-omnitarget="popstep2:selectalldealers"
+           data-omnicallback="trackDealers" />
+    <label for="select_all_dealers_js"><strong class="h4">Select All Dealer(s)</strong></label>
+  </div>
+</li>
+{{?}}
+{{~it.dealerData.dealers :dealer:Didx}}
+<li>
+  {{?dealer.TrustedDealer}}
+  <div class="member-dlr-cont list-item">
+    <div class="member-label has-tooltip">
+      <span class="label">
+        <span class="icon inline">
+          <svg>
+            <use xlink:href="/assets/svg/global-sprite.svg#i_member-dlr"></use>
+          </svg>
+        </span>
+        Member Dealer
+      </span>
+      <div class="tooltip">
+        <ul class="block-list">
+          <li>Superior Customer Service</li>
+          <li>Trusted Autobytel Partner</li>
+          <li>Competitive Pricing</li>
+        </ul>
+      </div>
+    </div>
+
+    {{? dealer.IsAutoNationNewCarDealer}} 
+      <div class="an-dlr-cont list-item">
+			<div class="an-label">
+				<div class="label">
+					<img src="/assets/img/autonation/an-logo_75x16.png" alt="AutoNation logo" class="logo" />
+					<span class="copy">Save Time. Save Hassle. Save Money.</span>
+				</div>
+			</div>
+    {{?}}
+
+    {{?? true }}
+    <div class="list-item">
+      {{?}}
+      {{?it.dealerData.dealers.length > 1 }}
+      <input type="checkbox" name="dealerchkbox[]" id="{{=dealer.DealerID}}^{{=dealer.DealerCode}}^{{=dealer.ProgramID}}" {{=dealer.PreChecked}} style="display: " />
+      {{?? true }}
+      <input type="checkbox" name="dealerchkbox[]" id="{{=dealer.DealerID}}^{{=dealer.DealerCode}}^{{=dealer.ProgramID}}" checked="checked" style="display: none" />
+      {{?}}
+      <label for="{{=dealer.DealerID}}^{{=dealer.DealerCode}}^{{=dealer.ProgramID}}">
+        <strong class="h4">{{=dealer.Name}}</strong>
+        <div class="dlr-details">
+          {{=dealer.Address}}, {{=dealer.City}}<br />
+          {{=dealer.State}} {{=dealer.ZipCode}}<br />
+          {{?dealer.PhoneLeadsFlag}}
+          <span class="h5">Ask for Internet Sales</span>
+          <br />
+          {{=dealer.PhoneLeadsPhone}}
+          <br /> 
+          {{?}}        
+          ({{=dealer.Distance}} miles)
+        </div>
+      </label>
+      {{?dealer.DealerMessageFlag}}
+      {{?dealer.DealerMessage.length > 29}}
+      <button class="btn-unstyled show-more js_dealer_message_init" data-json-values='{"DealerID":"{{=dealer.DealerID}}"}'>+</button>
+      <div id="dealer-message-short{{=dealer.DealerID}}" style="display: block;">
+        <div class="msg show has-ellipsis">{{=dealer.DealerMessage.substring(0,28)}}</div>
+      </div>
+      <div id="dealer-message-display{{=dealer.DealerID}}" style="display: none;">
+        <div class="msg show">{{=dealer.DealerMessage}}</div>
+      </div>
+      {{?? true }}
+      <div id="dealer-message-display{{=dealer.DealerID}}" style="display: block;">
+        <div class="msg show">{{=dealer.DealerMessage}}</div>
+      </div>
+      {{?}}
+      {{?}}
+    </div>
+    {{?dealer.TexasAdFlag}}
+    <div id="texasAdSection" style="Display: none;">
+      <a class="x-smaller js-show-texas-ad"
+         data-json-values='{"DealerName":"{{=dealer.Name}}","ProgramID":"{{=dealer.ProgramID}}","DealerTypeID":"{{=dealer.DealerTypeID}}","DealerID":"{{=dealer.DealerID}}","TexasAdWidth":"{{=dealer.TexasAdWidth}}","TexasAdHeight":{{=dealer.TexasAdHeight}}"}'>Dealer Ad</a>
+      <div id="texasAd">{{=dealer.SupplierAdDescription}}</div>
+    </div>
+    {{?}}
+  </div>
+</li>
+{{~}}
+{{?? true }}
+We were unable to find any inventory in your area.
+<input type="hidden" id="CoverageCount" name="CoverageCount" value="0" />
+{{?}}

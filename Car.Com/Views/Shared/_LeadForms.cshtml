@@ -1,0 +1,143 @@
+﻿<div class="leadform-overlay" style="display: none">
+  <span class="icon-close">
+    <svg viewBox="0 0 100 100" class="icon i-util-malibu">
+      <use xlink:href="/assets/svg/global-sprite.svg#util-icon-close"></use>
+    </svg>
+  </span>
+  <section class="get-pricing-step2-container" id="" style="display: block">
+    <h1>Get Pricing</h1>
+    <div class="col">
+      <h2><span class="label-circle">1</span> 2014 Honda Accord EX (CVT) Sedan <button><small>Edit</small></button></h2>
+      <div id="">
+        @*If "Edit" button is clicked display the form below*@
+        <form>
+          <p>
+            <label>
+              <select class="full">
+                <option>Make</option>
+                <option>Honda</option>
+              </select>
+            </label>
+          </p>
+          <p>
+            <label>
+              <select class="full">
+                <option>Model</option>
+                <option>Accord</option>
+              </select>
+            </label>
+          </p>
+          <p>
+            <label>
+              <select class="full">
+                <option>Trim (optional)</option>
+                <option>LX</option>
+              </select>
+            </label>
+          </p>
+          <p>
+            <label>
+              <input type="text" class="full" pattern="[0-9]*" placeholder="ZIP Code" />
+            </label>
+          </p>
+          <p><button class="btn-primary block">Continue to Get Pricing</button></p>
+        </form>
+      </div>
+      <div href="#">
+        <div class="img-container">
+          <img src="http://img.autobytel.com//2014/honda/accord/2-800-oemexteriorfront-72620.jpg">
+        </div>
+      </div>
+    </div>
+
+    <div class="col">
+      <h2><span class="label-circle">2</span> Select Dealers</h2>
+      <ul class="get-pricing-dlr-list border">
+        <li>
+          <label class="checkbox"><input type="checkbox" /> Select All Dealers</label>
+        </li>
+        <li>
+          <label class="checkbox">
+            <input type="checkbox" />
+            Honda Newport Beach
+          </label><button class="btn-clear">+</button><br />
+          <div class="dlr-details show">
+            2888 Harbor Blvd<br />
+            Costa Mesa, CA 92626<br />
+            (888) 746-9183
+          </div>
+          <small class="sub">(3 miles)</small>
+        </li>
+        <li>
+          <label class="checkbox">
+            <input type="checkbox" />
+            Honda Newport Beach
+          </label><button class="btn-clear">+</button><br />
+          <div class="dlr-details">
+            2888 Harbor Blvd<br />
+            Costa Mesa, CA 92626<br />
+            (888) 746-9183
+          </div>
+          <small class="sub">(3.5 miles)</small>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <h2><span class="label-circle">3</span> Provide Info</h2>
+      <form>
+        <p>
+          <label>
+            <input type="text" class="full" placeholder="First Name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="text" class="full" placeholder="Last Name" />
+          </label>
+        </p>
+        <p>
+          <label>
+            <input type="text" class="full" placeholder="Street Address" />
+          </label>
+        </p>
+        <p>
+          Irvine, CA 92614
+        </p>
+        <p>
+          <label>
+            <input type="tel" class="xxs" placeholder="" />
+          </label>
+          <label>
+            <input type="tel" class="xxs" placeholder="" />
+          </label>
+          <label>
+            <input type="tel" class="xs" placeholder="" />
+          </label>
+          <small>Phone Number</small>
+        </p>
+        <p><button class="btn-primary block">Submit and Get Pricing</button></p>
+
+        <ul class="block-list">
+          <li>
+            <label class="checkbox"><input type="checkbox" /> <small>Yes, please create blah blah</small></label>
+          </li>
+          <li>
+            <label class="checkbox"><input type="checkbox" /> <small>Optional Marketing Consent. By checking the blah blah</small></label>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+  </section>
+
+  <section id="" class="get-pricing-thankyou-container" style="display: block">
+    <h1>Success! Your request was sent. </h1>
+    <p>We have received your request for a new 2015 Honda Accord and are in the process of sending you a confirmation email. Your confirmation# is 55627205.</p>
+
+    <h2>What's Next?</h2>
+    <p></p>
+  </section>
+</div>
+
+@{ Html.RenderPartial("_UtilityIcons"); }

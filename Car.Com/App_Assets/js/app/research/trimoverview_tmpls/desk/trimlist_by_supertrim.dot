@@ -1,0 +1,5 @@
+﻿{{~it.trimlist :trim:index}}
+  <div class="row">   
+    <a class="link-group" href="/{{=trim.make_seo}}/{{=trim.super_model_seo}}/{{=trim.year}}/{{=trim.trim_seo_name}}/" title="{{=trim.full_display_name}}"><div class="col1">{{=trim.full_display_name}}</div><div class="col2"><small>Starting at</small>{{=trim.starting_msrp}}</div></a>
+  </div>
+{{~}}

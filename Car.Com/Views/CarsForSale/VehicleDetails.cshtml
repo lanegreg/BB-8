@@ -1,0 +1,418 @@
+﻿@using System.Globalization
+@model Car.Com.Models.CarsForSale.VehicleDetailsViewModel
+@{
+  var yearMakeModelDescr = Model.CarForSale.Year + " " + Model.CarForSale.Make + " " + Model.CarForSale.Model;
+}
+<style>
+  .banner ul, .banner li {
+    height: 100%;
+  }
+</style>
+<div class="header">
+  <div class="page-title">
+    <h1 class="group-inline">
+      <span id="h1_ymm_js" class="item">@yearMakeModelDescr</span>
+      <span class="item">
+        <span class="price-tag">
+          <span class="icon inline">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_tag"></use>
+            </svg>
+          </span>
+        </span>
+        <span id="h1_price_js">
+          @Model.CarForSale.AskingPrice.ToString("$#,###")
+        </span>
+      </span>
+      <a id="back_2_search_btn_js" href="/cars-for-sale/results/" class="btn-opaque" style="display:none">
+        All Inventory
+      </a>
+    </h1>
+  </div>
+</div>
+<div class="main">
+  <div class="cell primary">
+    <div class="mobilead-cont top">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+    <div class="section-pad">
+      <div class="ldrboard-cont">
+        <div class="ad-container">
+          <div id="js_tile_1" class="ad"></div>
+        </div>
+      </div>
+      <div class="uc-details">
+        <div class="col1">
+          <div class="pager3 two inv_nav_wrap_js"></div>
+
+
+          @*=============== AUTONATION (Over-the-slider banner) ===============*@
+          @*NOTES: These Autonation DIVs are required so that when a user's
+                   first selection/click from search results is not for an
+                   Autonation vehicle and the VehicleDetails view is invoked
+                   rather than VehicleDetailsBranded, if they paginate through
+                   the results in the VDP and encounter an Autonation vehicle,
+                   the appropriate decorations and badging will be made visible.
+            ===================================================================*@
+          <div class="an-banner" id="autonation_navdecorator_js" style="display: none">
+            <div class="an-logo-copy-container">
+              <img src="/assets/img/autonation/an-logo-wh-108x23.png" alt="AutoNation logo" class="an-logo" />
+              <i class="an-copy">Save Time. Save Hassle. Save Money.</i>
+            </div>
+            <div class="an-rep-container">
+              <div class="an-rep"></div>
+            </div>
+          </div>
+
+          <div id="slider_js" class="banner" style="display: none">
+
+            @*=============== AUTONATION (Recall Free Badge) ===============*@
+            <div class="an-recall-free-badge" id="autonation_recallfreebadge_js" style="display: none"></div>
+
+            <ul>
+              @{ var imgCount = 0; }
+              @foreach (var imageUrl in @Model.CarForSale.ImageUrls)
+              {
+                <li>
+                  <img src="@( imgCount < 2 ? imageUrl : "")"
+                       data-lazysrc="@( imgCount > 1 ? imageUrl : "")"
+                       class="frame_js" alt="@yearMakeModelDescr @Model.CarForSale.Trim">
+                </li>
+                imgCount++;
+              }
+            </ul>
+            <div id="slider_btns_js" class="slider-pager">
+              <button class="prev" data-slide-to="prev" title="Previous">
+                <span class="icon">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_arrow4_l"></use>
+                  </svg>
+                </span>
+              </button>
+              <button class="next" data-slide-to="next" title="Next">
+                <span class="icon">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_arrow4_r"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col2">
+          <div id="dlr_box_js" class="member-dlr-cont center">
+            <div class="member-label has-tooltip @(Model.CarForSale.Dealer.IsTrusted ? "" : " disabled")">
+              <span class="label">
+                <span class="icon inline">
+                  <svg>
+                    <use xlink:href="/assets/svg/global-sprite.svg#i_member-dlr"></use>
+                  </svg>
+                </span>
+                Member Dealer
+              </span>
+              <div class="tooltip">
+                <ul class="block-list">
+                  <li>Superior Customer Service</li>
+                  <li>Trusted Autobytel Partner</li>
+                  <li>Competitive Pricing</li>
+                </ul>
+              </div>
+            </div>
+            <div class="tmpl_replace_js">
+              <h2 class="h2">
+                @Model.CarForSale.Dealer.Name <br />
+                <small>@Model.CarForSale.Dealer.City</small>
+              </h2>
+            </div>
+            <button id="inventory_contactseller_st" class="leadoverlay_pop_btn_js btn-primary lg">
+              Contact This Seller
+            </button>
+            <div class="contact-dlr tmpl_replace_js">
+              @if (Model.CarForSale.Dealer.HasValidPhoneNumber)
+              {
+                <div class="phone">
+                  <span class="call">or Call</span>
+                  <span class="number">
+                    <a href="tel:@Model.CarForSale.Dealer.Phone">@Model.CarForSale.Dealer.PhoneFormatted</a>
+                  </span>
+                </div>
+                <p class="center">
+                  Call Internet Sales and refer to the @yearMakeModelDescr @Model.CarForSale.Trim with Stock ID "#@Model.CarForSale.InventoryId" that you saw on Car.com.
+                </p>
+              }
+            </div>
+          </div>
+          <div id="feature_grid_js" class="vdp-data-list">
+            <ul>
+              <li class="row">
+                <span class="label">Price:</span>
+                <span class="value">
+                  @(@Model.CarForSale.HasMissingPrice ? "N/A" : "$" + Model.CarForSale.AskingPrice.ToString("#,###"))
+                </span>
+              </li>
+              <li class="row">
+                <span class="label">Mileage:</span>
+                <span class="value">@(@Model.CarForSale.HasMissingMileage ? "N/A" : Model.CarForSale.Mileage.ToString("#,###") + " miles")</span>
+              </li>
+              <li class="row">
+                <span class="label">MPG City / Hwy:</span>
+                <span class="value">@Model.CarForSale.CityMpg / @Model.CarForSale.HighwayMpg</span>
+              </li>
+              <li class="row">
+                <span class="label">Trim:</span>
+                <span class="value">@Model.CarForSale.Trim</span>
+              </li>
+              <li class="row">
+                <span class="label">Exterior Color:</span>
+                <span class="value">@Model.CarForSale.ExteriorColor.NotAvailify()</span>
+              </li>
+              <li class="row">
+                <span class="label">Interior Color:</span>
+                <span class="value">@Model.CarForSale.InteriorColor.NotAvailify()</span>
+              </li>
+              <li class="row">
+                <span class="label">Location:</span>
+                <span class="value">@Model.CarForSale.Dealer.City</span>
+              </li>
+              <li class="row">
+                <span class="label">Engine:</span>
+                <span class="value">@Model.CarForSale.Cylinders Cylinders</span>
+              </li>
+              <li class="row">
+                <span class="label">Transmission:</span>
+                <span class="value">@Model.CarForSale.DisplayTransmissionType</span>
+              </li>
+              <li class="row block">
+                <span class="label">VIN:</span>
+                <span class="value">@Model.CarForSale.Vin.NotAvailify()</span>
+              </li>
+            </ul>
+          </div>
+          @*<div class="center">  //  leave here for now, in case they want it back ...
+              <a class="inpage-jump btn-default block" href="#more-details">
+                See More Details
+              </a>
+            </div>*@
+        </div>
+      </div>
+
+      <div id="messaging_js" class="accordion">
+        <ul>
+          @if (Model.CarForSale.HasVehicleDetails)
+          {
+            <li>
+              <input type="checkbox" checked>
+              <i></i>
+              <h2>More Details</h2>
+              <p>@Model.CarForSale.VehicleDetails</p>
+            </li>
+          }
+          @if (Model.CarForSale.HasSellerNotes)
+          {
+            <li>
+              <input type="checkbox" checked>
+              <i></i>
+              <h2>Seller's Notes</h2>
+              <p>@Model.CarForSale.SellerNotes</p>
+            </li>
+          }
+        </ul>
+        @if (Model.CarForSale.Dealer.HasMessage)
+        {
+          <div class="dlr-message-cont">
+            <p>
+              @Html.Raw(Model.CarForSale.Dealer.Message) &ndash; <strong>@Model.CarForSale.Dealer.Name</strong>
+            </p>
+          </div>
+        }
+      </div>
+
+
+      <div class="dlr-maps-hours-cont">
+        <div class="col1">
+
+          <script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript" charset="utf-8"></script>
+          <div id="tmpl_replace_dealermap_js">
+            <div id="js_dealer_map" data-latitude="@Model.CarForSale.Dealer.Latitude" data-longitude="@Model.CarForSale.Dealer.Longitude"></div>
+            <div id="map-canvas" style="display: block; width: 100%; height: 350px; border: 1px solid black"></div>
+            <div style="display: block; width: 100%; text-align: center">@Model.CarForSale.Dealer.Name @Model.CarForSale.Dealer.City, @Model.CarForSale.Dealer.State</div>
+          </div>
+
+        </div>
+        <div class="col2">
+
+          <div id="autonation_dealerhours_js" style="display: none" class="data-list dlr-hours">
+            <div id="tmpl_replace_dealerhours_js">
+              <h2>Hours</h2>
+              <ul>
+                <li class="row">
+                  <span class="label">Friday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesFriOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesFriOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesFriClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesFriClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Saturday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesSatOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesSatOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesSatClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesSatClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Sunday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesSunOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesSunOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesSunClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesSunClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Monday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesMonOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesMonOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesMonClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesMonClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Tuesday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesTueOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesTueOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesTueClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesTueClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Wednesday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesWedOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesWedOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesWedClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesWedClose)
+                    }
+                  </span>
+                </li>
+                <li class="row">
+                  <span class="label">Thursday</span>
+                  <span class="value">
+                    @if (Model.CarForSale.DealerHours.SalesThrOpen != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesThrOpen)
+                    <span> - </span>
+                    }
+                    else
+                    {
+                    <span>please call</span>
+                    }
+                    @if (Model.CarForSale.DealerHours.SalesThrClose != "NA")
+                    {
+                    @Get12HourTimeString(Model.CarForSale.DealerHours.SalesThrClose)
+                    }
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="pager3 two inv_nav_wrap_js"></div>
+      <div class="ad-container">
+        <div id="js_tile_4" class="ad"></div>
+      </div>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+    <section data-widget="c4s-recvwd" class="widget-cont sidebar-widget" style="display: none"></section>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>
+
+@functions {
+  private string Get12HourTimeString(string input24HourTimeString)
+  {
+    var timeFromInput = DateTime.ParseExact(input24HourTimeString, "H:m:s", null, DateTimeStyles.None);
+    return timeFromInput.ToString("h:mm tt", CultureInfo.InvariantCulture);
+  }
+}

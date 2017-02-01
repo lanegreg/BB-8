@@ -1,0 +1,1069 @@
+﻿{{ var foundItem = false,
+       carIndx = 0,
+       specIndx = 0,
+       notAvailable = "N/A",
+       maxCompareNum = 2,
+       carCount = 0,
+       carsArr = [],
+       carInputArr = it.carArr[0],
+       selectedOverviewArr = it.carArr[1],
+       sortbyValues = it.carArr[2].split(","),
+       sortbyCurrentItem = sortbyValues[0],
+       sortbyCurrentFunc = "",
+       sortbyCurrentChangeFunc = "",
+       InvoiceName = "Invoice Price",
+       MSRPName = "MSRP",
+       HorsepowerName = "Horsepower",
+       SeatingCapName = "Seating Capacity",
+       TowingCapName = "Towing Capacity",
+       MaxCargoName = "Max Cargo",
+       CargoCapName = "Cargo Capacity",
+       FuleCapName = "Fuel Capacity",
+       DoorsName = "Doors",
+       BedLengthName = "Bed Length",
+       FuelTypeName = "Fuel Type",
+       
+       /************** Define Sorting Items Array **************/ 
+       canSortByNameArr = [InvoiceName,MSRPName,HorsepowerName,SeatingCapName,TowingCapName,MaxCargoName,CargoCapName,FuleCapName,DoorsName,BedLengthName],
+       sortByFunctionArr = ["LH","LH","HL","HL","HL","HL","HL","HL","HL","HL"],
+
+       /************** Define General Items Array **************/ 
+       genItemArr = ["name", "invoice", "msrp"],
+       genNameArr = ["Trim", InvoiceName, MSRPName],
+       genValArr = [],
+
+       /************** Define Overview Array **************/ 
+       overviewItemArr = ["MPG", FuelTypeName,FuleCapName,"Engine","Driven Wheels","Number of speeds,Transmission",HorsepowerName,"Torque,Max Torque RPM","Front air conditioning","Power windows",
+          "Steering wheel","Cruise control","Upholstery","Power Adjustments","Sunroof","Exterior Rear View Camera,Exterior Parking Camera","Navigation system","wireless phone connectivity",
+          TowingCapName,"seating capacity","Cargo capacity, all seats in place","Max cargo capacity","Overall Length",DoorsName,"Roof type","Bed Length Measurement","Rear air conditioning"],
+       overviewNameArr = ["MPG", FuelTypeName,FuleCapName,"Engine","Drive","Transmission",HorsepowerName,"Torque","Front A/C","Power Windows",
+          "Tilt Steering","Cruise Control","Leather Seats","Driver Seat Power","Sunroof","Rear View Camera","Navigation","Bluetooth",
+          TowingCapName,SeatingCapName,CargoCapName,MaxCargoName,"Overall Length",DoorsName,"Roof Type",BedLengthName,"Rear A/C"],
+       overviewGroupArr = ["","","","","","","","","","","","","","Driver Seat","","","","","","","","","","","","","",""],
+       overviewSpecArr = [1,2,4,5,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+       overviewValArr = [],
+       overviewItSplitArr = [],
+       overviewItSplitArrSkip = ["Cargo capacity, all seats in place"],
+       overviewItSplitIndx = 0,
+       overviewBestValNameArr = [InvoiceName,MSRPName,HorsepowerName,SeatingCapName,TowingCapName,MaxCargoName,CargoCapName,FuleCapName,DoorsName,BedLengthName],
+       overviewBestFunction = ["LH","LH","HL","HL","HL","HL","HL","HL","HL","HL"],
+       overviewBestValArr = ["","","","","","","","","",""],
+
+
+       /************** Define Audio Array **************/  
+       audioItemArr = ["Audio/Video Remote Control" , "Memory Card Slot", "MP3 player", "Radio", "Satellite Radio", "Total Number of Speakers"],
+       audioNameArr = ["A/V Remote Control " , "Memory Card Slot", "MP3 player", "Radio", "Satellite Radio", "# Speakers"],
+       audioSpecArr = [0,1,2,3,4,5],
+       audioGroupArr = ["Audio System"],
+       audioValArr = [],
+
+       /************** Define Comfort Array **************/ 
+       comfortItemArr_1 = ["Front air conditioning", "Front air conditioning zones", "Rear air conditioning", "Rear air conditioning zones", "Heated steering wheel",
+          "Reading lights", "AC power outlet", "Adjustable pedals", "Audio controls on steering wheel", "Cruise control", "Power Activated Trunk/Hatch", "Steering Wheel Phone Controls", 
+          "Liftgate window", "includes HVAC", "seat memory", "seating capacity"],
+       comfortNameArr_1 = ["Front A/C", "Front A/C Zones", "Rear A/C", "Rear A/C Zones ", "Heated steering wheel",
+          "Reading lights", "AC Outlet", "Adj. Pedals", "Streering Wheel Controls", "Cruise control", "Power Trunk", "Phone Controls ",
+           "Liftgate window", "HVAC", "seat memory", "Max Seats"],
+       comfortGroupArr_1 = ["Air Conditioning","Comfort Features","Convenience Features",DoorsName,"Memorized Settings","Seats"],
+       comfortValArr_1 = [],
+       
+       comfortItemArr_2 = ["Adjustable lumbar support", "Heated", "Power Adjustments"],
+       comfortNameArr_2 = ["Lumbar Support", "Heated Driver Seat", "Driver Seat Power"],
+       comfortGroupArr_2 = ["Driver Seat"],
+       comfortValArr_2 = [],
+
+       comfortItemArr_3 = ["Heated", "Power adjustments"],
+       comfortNameArr_3 = ["Heated Passenger Seat", "Passenger Seat Power"],
+       comfortGroupArr_3 = ["Passenger Seat"],
+       comfortValArr_3 = [],
+       
+       comfortItemArr_4 = ["Center armrest", "Climate controlled", "Folding", "Heated", "Rear heat", "Reclining"],
+       comfortNameArr_4 = ["Rear Seats Center armrest", "Rear Climate Controlled", "Folding Rear Seats", "Heated Rear Seats", "Rear heat", "Reclining Rear Seats"],
+       comfortGroupArr_4 = ["Rear Seats"],
+       comfortValArr_4 = [],
+
+       comfortSpecArr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26],
+
+       /************** Define Dimensions Array **************/  
+       dimItemArr = ["Bed Length Measurement","Front Head Room","Front Leg Room","Overall height","Overall Length","Overall Width","Rear Head Room","Rear Leg Room","Wheelbase"],
+       dimNameArr = [BedLengthName,"Front Head Room","Front Leg Room","Overall height","Overall Length","Overall Width","Rear Head Room","Rear Leg Room","Wheelbase"],
+       dimSpecArr = [0,1,2,3,4,5,6,7,8],
+       dimGroupArr = ["Dimensions"],
+       dimValArr = [],
+
+       /************** Define Engine Array **************/  
+       engineItemArr = ["Cylinders","Size","Total Valves",FuelTypeName,"Horse Power","Electric Motor","Electric Motor Battery Type","Hybrid Gas Engine","Keyless Ignition","Remote engine start","Type"],
+       engineNameArr = ["Cylinders","Size","Total Valves",FuelTypeName,HorsepowerName,"Electric Motor","Battery Type","Hybrid Gas Engine","Keyless Ignition","Remote Start","Type"],
+       engineSpecArr = [0,1,2,3,4,5,6,7,8,9,10],
+       engineGroupArr = ["Engine"],
+       engineValArr = [],
+
+       /************** Define Fuel Economy Array **************/  
+       feconItemArr = ["City", "Highway"],
+       feconNameArr = ["City", "Highway"],
+       feconSpecArr = [0,1],
+       feconValArr = [],
+
+       /************** Define Gauge Array **************/  
+       gaugeItemArr = ["Clock","Compass","External temp","Head-up display","Lane Departure Warning","Tachometer","Transmission Temperature Guage","Trip computer"],
+       gaugeNameArr = ["Clock","Compass","External temp","Head-up display","Lane Departure","Tachometer","Trans Temp","Trip computer"],
+       gaugeSpecArr = [0,1,2,3,4,5,6,7],
+       gaugeValArr = [],
+
+       /************** Define Lights Array **************/ 
+       lightsItemArr = ["Daytime running lights","Front Fog lights","Headlights dusk sensor","Xenon Headlights"],
+       lightsNameArr = ["DTRL","Fog Lights","Auto Headlights","Xenon Headlights"],
+       lightsSpecArr = [0,1,2,3],
+       lightsValArr = [],
+
+       /************** Define Performance Array **************/ 
+       perfItemArr = ["Acceleration 0-60mph","Torque"],
+       perfNameArr = ["0-60mph","Torque"],
+       perfSpecArr = [0,1],
+       perfValArr = [],
+
+       /************** Define Safety Array **************/ 
+       safetyItemArr = ["ABS","Driver Airbag","Head airbags","Knee airbags","Passenger Airbag","Passenger airbag deactivation","Child safety locks","Child seat","Antilock Brakes","Child safety seat"],
+       safetyNameArr = ["ABS","Driver Airbag","Head airbags","Knee airbags","Passenger Airbag","Passenger airbag deactivation","Child safety locks","Child seat","Antilock Brakes","Child safety seat"],
+       safetySpecArr = [0,1,2,3,4,5,6,7,8,9],
+       safetyValArr = [],
+
+       /************** Define Wheels & Tires Array **************/ 
+       wheelsItemArr_1 = ["Diameter","Run flat","Tire Pressure Monitoring System","Type","Width"],
+       wheelsNameArr_1 = ["Tire Diameter","Run flat","Pressure Monitoring","Tire Type","Tire Width"],
+       wheelsGroupArr_1 = ["Tires"],
+       wheelsValArr_1 = [],
+       
+       wheelsItemArr_2 = ["Diameter","Rim Type", "Width"],
+       wheelsNameArr_2 = ["Wheel Diameter","Rim Type", "Wheel Width"],
+       wheelsGroupArr_2 = ["Wheels", "Wheels, Front Size"],
+       wheelsValArr_2 = [],
+
+       wheelsSpecArr = [0,1,2,3,4,5,6,7,8,9],
+
+       
+       /************************** Define Standard/Optional Array **********************************/ 
+       standopItemArr = ["Front air conditioning", "Power windows", "Steering wheel", "Cruise control", "Upholstery", "Power Adjustments", "Tachometer", "Rear defogger", "Radio", "In-Dash CD", "Sunroof", "Adjustable pedals", "Exterior Rear View Camera", "Compass", "External temp", "Trip computer", "seat memory", "Stability control", "Traction control", "Anti-theft alarm system", "Navigation system", "wireless connectivity" ],
+       standopNameArr = ["Air Conditioning", "Power Windows", "Tilt Steering", "Cruise Control", "Leather Seats", "Power Seats", "Tachometer", "Rear Defroster", "AM/FM Radio", "CD Player", "Sunroof", "Adjustable Pedals", "Rear View Camera", "Compass", "External Temp", "Trip Computer", "Seat Memory", "Stability Control", "Traction Control", "Alarm", "Navigation System", "Bluetooth" ],
+       standopSpecArr = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+       standopValArr = [],
+       standopItSplitArr = [],
+       standopItSplitIndx = 0;
+       
+       /**************************                              **********************************/ 
+       if(sortbyValues.length > 1) {
+        sortbyCurrentFunc = sortbyValues[1];
+        if(sortbyCurrentFunc == "LH") {
+          sortbyCurrentChangeFunc = "HL";
+        }
+        else {
+          sortbyCurrentChangeFunc = "LH";
+        }
+       }
+}}
+
+{{
+  /****** Populating Array of Cars for Main Loop ******/  
+  for(carCount=0; carCount<carInputArr.length && carCount<maxCompareNum; carCount++) {
+    carsArr[carCount] = carCount;
+  }
+
+  /****** Populating General Items Array ******/ 
+  for(var genItIndx=0; genItIndx<genItemArr.length; genItIndx++) {
+    genValArr[genItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      genValArr[genItIndx][carIndx] = [];
+      genValArr[genItIndx][carIndx] = carInputArr[carIndx][genItemArr[genItIndx]];
+    }
+  }
+
+   /****** Populating Overview Array ******/  
+   for(var overviewItIndx=0; overviewItIndx<overviewItemArr.length; overviewItIndx++) {
+    overviewValArr[overviewItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      overviewValArr[overviewItIndx][carIndx] = [];
+      if(overviewSpecArr.indexOf(overviewItIndx) > -1) {
+        foundItem = false;
+        if(overviewItSplitArrSkip.indexOf(overviewItemArr[overviewItIndx]) > -1) {
+          while (overviewItSplitArr.pop()) {};
+          overviewItSplitArr[0] = overviewItemArr[overviewItIndx];
+        }
+        else {
+          overviewItSplitArr = overviewItemArr[overviewItIndx].split(",");
+        }
+        for(overviewItSplitIndx=0; overviewItSplitIndx<overviewItSplitArr.length; overviewItSplitIndx++) {
+          for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+            if(carInputArr[carIndx].specifications[specIndx].title == overviewItSplitArr[overviewItSplitIndx] && 
+                  (overviewGroupArr[overviewItIndx].length === 0 || overviewGroupArr[overviewItIndx] == carInputArr[carIndx].specifications[specIndx].group)) {
+              foundItem = true;
+              overviewValArr[overviewItIndx][carIndx] = overviewValArr[overviewItIndx][carIndx] + ' ' + carInputArr[carIndx].specifications[specIndx].data;
+              if(overviewItSplitArr[overviewItSplitIndx] == "Number of speeds") {
+                overviewValArr[overviewItIndx][carIndx] = overviewValArr[overviewItIndx][carIndx] + ' Speed';
+              }
+              if(overviewItSplitArr[overviewItSplitIndx] == "Torque") {
+                overviewValArr[overviewItIndx][carIndx] = overviewValArr[overviewItIndx][carIndx] + ' @';
+              }
+              break;
+            }
+          }
+        }
+        if(!foundItem) {
+          overviewValArr[overviewItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  /****** Populating Fixed items In Overview Array ******/  
+  for(carIndx=0; carIndx<carCount; carIndx++) {
+    overviewValArr[0][carIndx] = carInputArr[carIndx].city_mpg + ' City / ' + carInputArr[carIndx].highway_mpg + ' Hwy';
+    overviewValArr[3][carIndx] = carInputArr[carIndx].engine_size + 'L ' + carInputArr[carIndx].engine_type;
+    overviewValArr[6][carIndx] = carInputArr[carIndx].horsepower.replace(" hp", "");
+  }
+
+  /****** Adding General Item Array to Overview Array ******/  
+  overviewNameArr = genNameArr.concat(overviewNameArr); 
+  overviewValArr = genValArr.concat(overviewValArr); 
+
+  /****** Populating Overview Best Values Array  ******/ 
+  var  bestValIndx = -1,
+       bestOverviewItemValArray = [],
+       bestItemFuncType = '';
+
+  for(var bestItIndx=0; bestItIndx<overviewBestValNameArr.length; bestItIndx++) {
+    bestValIndx = overviewNameArr.indexOf(overviewBestValNameArr[bestItIndx]);
+    if (bestValIndx >= 0) {
+       while (bestOverviewItemValArray.pop()) {};
+      for(carIndx=0; carIndx<carCount; carIndx++) {
+        bestOverviewItemValArray[carIndx] = overviewValArr[bestValIndx][carIndx].replace(/\D/g,'');
+      }
+      bestItemFuncType = overviewBestFunction[bestItIndx];
+      if(bestItemFuncType == 'LH')
+        bestOverviewItemValArray = bestOverviewItemValArray.sort(function(a, b){return a-b});
+      else
+        bestOverviewItemValArray = bestOverviewItemValArray.sort(function(a, b){return b-a});
+      overviewBestValArr[bestItIndx] = bestOverviewItemValArray[0];
+    }
+  }
+
+ /****** Populating Audio Array ******/  
+ for(var audioItIndx=0; audioItIndx<audioItemArr.length; audioItIndx++) {
+    audioValArr[audioItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      audioValArr[audioItIndx][carIndx] = [];
+      if(audioSpecArr.indexOf(audioItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == audioItemArr[audioItIndx] && audioGroupArr.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            audioValArr[audioItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          audioValArr[audioItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+ 
+  /****** Populating Comfort Array ******/  
+  var comfortItIndx = 0;
+
+  for(comfortItIndx=0; comfortItIndx<comfortItemArr_1.length; comfortItIndx++) {
+    comfortValArr_1[comfortItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      comfortValArr_1[comfortItIndx][carIndx] = [];
+      if(comfortSpecArr.indexOf(comfortItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == comfortItemArr_1[comfortItIndx] && comfortGroupArr_1.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            comfortValArr_1[comfortItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          comfortValArr_1[comfortItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  for(comfortItIndx=0; comfortItIndx<comfortItemArr_2.length; comfortItIndx++) {
+    comfortValArr_2[comfortItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      comfortValArr_2[comfortItIndx][carIndx] = [];
+      if(comfortSpecArr.indexOf(comfortItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == comfortItemArr_2[comfortItIndx] && comfortGroupArr_2.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            comfortValArr_2[comfortItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          comfortValArr_2[comfortItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  for(comfortItIndx=0; comfortItIndx<comfortItemArr_3.length; comfortItIndx++) {
+    comfortValArr_3[comfortItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      comfortValArr_3[comfortItIndx][carIndx] = [];
+      if(comfortSpecArr.indexOf(comfortItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == comfortItemArr_3[comfortItIndx] && comfortGroupArr_3.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            comfortValArr_3[comfortItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          comfortValArr_3[comfortItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  for(comfortItIndx=0; comfortItIndx<comfortItemArr_4.length; comfortItIndx++) {
+    comfortValArr_4[comfortItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      comfortValArr_4[comfortItIndx][carIndx] = [];
+      if(comfortSpecArr.indexOf(comfortItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == comfortItemArr_4[comfortItIndx] && comfortGroupArr_4.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            comfortValArr_4[comfortItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          comfortValArr_4[comfortItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  /****** Populating Dimensions Array ******/  
+  for(var dimItIndx=0; dimItIndx<dimItemArr.length; dimItIndx++) {
+    dimValArr[dimItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      dimValArr[dimItIndx][carIndx] = [];
+      if(dimSpecArr.indexOf(dimItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == dimItemArr[dimItIndx] && dimGroupArr.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            dimValArr[dimItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          dimValArr[dimItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+ 
+  /****** Populating Engine Array ******/  
+  for(var engineItIndx=0; engineItIndx<engineItemArr.length; engineItIndx++) {
+    engineValArr[engineItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      engineValArr[engineItIndx][carIndx] = [];
+      if(engineSpecArr.indexOf(engineItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == engineItemArr[engineItIndx] && engineGroupArr.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            engineValArr[engineItIndx][carIndx] = engineValArr[engineItIndx][carIndx] + ' ' + carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          engineValArr[engineItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  } 
+
+  /****** Populating Fuel Economy Array ******/  
+  for(var feconItIndx=0; feconItIndx<feconItemArr.length; feconItIndx++) {
+    feconValArr[feconItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      feconValArr[feconItIndx][carIndx] = [];
+      if(feconSpecArr.indexOf(feconItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == feconItemArr[feconItIndx]) {
+            foundItem = true;
+            feconValArr[feconItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          feconValArr[feconItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+  /****** Populating Gauge Array ******/  
+  for(var gaugeItIndx=0; gaugeItIndx<gaugeItemArr.length; gaugeItIndx++) {
+    gaugeValArr[gaugeItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      gaugeValArr[gaugeItIndx][carIndx] = [];
+      if(gaugeSpecArr.indexOf(gaugeItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == gaugeItemArr[gaugeItIndx]) {
+            foundItem = true;
+            gaugeValArr[gaugeItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          gaugeValArr[gaugeItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+  /****** Populating Lights Array ******/  
+  for(var lightsItIndx=0; lightsItIndx<lightsItemArr.length; lightsItIndx++) {
+    lightsValArr[lightsItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      lightsValArr[lightsItIndx][carIndx] = [];
+      if(lightsSpecArr.indexOf(lightsItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == lightsItemArr[lightsItIndx]) {
+            foundItem = true;
+            lightsValArr[lightsItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          lightsValArr[lightsItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+  /****** Populating Performance Array ******/  
+  for(var perfItIndx=0; perfItIndx<perfItemArr.length; perfItIndx++) {
+    perfValArr[perfItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      perfValArr[perfItIndx][carIndx] = [];
+      if(perfSpecArr.indexOf(perfItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == perfItemArr[perfItIndx]) {
+            foundItem = true;
+            perfValArr[perfItIndx][carIndx] = perfValArr[perfItIndx][carIndx] + ' ' + carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          perfValArr[perfItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+  /****** Populating Safety Array ******/  
+  for(var safetyItIndx=0; safetyItIndx<safetyItemArr.length; safetyItIndx++) {
+    safetyValArr[safetyItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      safetyValArr[safetyItIndx][carIndx] = [];
+      if(safetySpecArr.indexOf(safetyItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == safetyItemArr[safetyItIndx]) {
+            foundItem = true;
+            safetyValArr[safetyItIndx][carIndx] = safetyValArr[safetyItIndx][carIndx] + ' ' + carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          safetyValArr[safetyItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+  
+  /****** Populating Wheels & Tires Array ******/  
+  var wheelsItIndx = 0;
+
+  for(wheelsItIndx=0; wheelsItIndx<wheelsItemArr_1.length; wheelsItIndx++) {
+    wheelsValArr_1[wheelsItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      wheelsValArr_1[wheelsItIndx][carIndx] = [];
+      if(wheelsSpecArr.indexOf(wheelsItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == wheelsItemArr_1[wheelsItIndx] && wheelsGroupArr_1.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            wheelsValArr_1[wheelsItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          wheelsValArr_1[wheelsItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+ for(wheelsItIndx=0; wheelsItIndx<wheelsItemArr_2.length; wheelsItIndx++) {
+    wheelsValArr_2[wheelsItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      wheelsValArr_2[wheelsItIndx][carIndx] = [];
+      if(wheelsSpecArr.indexOf(wheelsItIndx) > -1) {
+        foundItem = false;
+        for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+          if(carInputArr[carIndx].specifications[specIndx].title == wheelsItemArr_2[wheelsItIndx] && wheelsGroupArr_2.indexOf(carInputArr[carIndx].specifications[specIndx].group) > -1) {
+            foundItem = true;
+            wheelsValArr_2[wheelsItIndx][carIndx] = carInputArr[carIndx].specifications[specIndx].data;
+            break;
+          }
+        }
+        if(!foundItem) {
+          wheelsValArr_2[wheelsItIndx][carIndx] = notAvailable;
+        }
+      }
+    }
+  }
+
+
+  /********************* Populating Standard / Optional Array ****************************/  
+  for(var standopItIndx=0; standopItIndx<standopItemArr.length; standopItIndx++) {
+    standopValArr[standopItIndx] = [];
+    for(carIndx=0; carIndx<carCount; carIndx++) {
+      standopValArr[standopItIndx][carIndx] = [];
+      if(standopSpecArr.indexOf(standopItIndx) > -1) {
+        foundItem = false;
+        standopItSplitArr = standopItemArr[standopItIndx].split(",");
+        for(standopItSplitIndx=0; standopItSplitIndx<standopItSplitArr.length; standopItSplitIndx++) {
+          for(specIndx=0; specIndx<carInputArr[carIndx].specifications.length; specIndx++) {
+            if(carInputArr[carIndx].specifications[specIndx].title == standopItSplitArr[standopItSplitIndx]) {
+              foundItem = true;
+              if(carInputArr[carIndx].specifications[specIndx].availability == "S")
+                standopValArr[standopItIndx][carIndx] = "Standard";
+              else
+                standopValArr[standopItIndx][carIndx] = "Optional";
+              break;
+            }
+          }
+        }
+        if(!foundItem) {
+          standopValArr[standopItIndx][carIndx] = "n/a";
+        }
+      }
+    }
+  }
+
+
+  /********************************************************************/
+  /****** If there is a sortby value, sort carsArr by sort value ******/  
+  /********************************************************************/
+  if(sortbyCurrentItem && sortbyCurrentItem.length > 0 && overviewNameArr.indexOf(sortbyCurrentItem) > -1) {
+    var sortedValuesArr = [],
+        sortedCarsArr = [],
+        sortType = '',
+        foundSortItem = false,
+        itemNameIndx = 0,
+        carItemValueIndx = 0,
+        sortedValueIndx = 0,
+        sortItemIndex = 0;
+
+    for(itemNameIndx=0; itemNameIndx<overviewNameArr.length; itemNameIndx++) {
+      if(overviewNameArr[itemNameIndx] == sortbyCurrentItem) {
+        foundSortItem = true;
+        sortItemIndex = itemNameIndx;
+        break;
+      }
+    }
+    if(foundSortItem) {
+      for(carItemValueIndx=0; carItemValueIndx<carsArr.length; carItemValueIndx++) {
+        sortedValuesArr[carItemValueIndx] = overviewValArr[sortItemIndex][carItemValueIndx].replace(/\D/g,'');
+      }
+      if (sortbyCurrentFunc.length > 0) {
+        sortType = sortbyCurrentFunc;
+      }
+      else {
+        sortType = sortByFunctionArr[canSortByNameArr.indexOf(sortbyCurrentItem)];
+      }
+      if(sortType == 'LH')
+        sortedValuesArr = sortedValuesArr.sort(function(a, b){return a-b});
+      else
+        sortedValuesArr = sortedValuesArr.sort(function(a, b){return b-a});
+      for(sortedValueIndx=0; sortedValueIndx<sortedValuesArr.length; sortedValueIndx++){
+        for(carItemValueIndx=0; carItemValueIndx<carsArr.length; carItemValueIndx++) {
+          if(sortedValuesArr[sortedValueIndx] == overviewValArr[sortItemIndex][carItemValueIndx].replace(/\D/g,'') && sortedCarsArr.indexOf(carItemValueIndx) < 0) {
+            sortedCarsArr.push(carItemValueIndx);
+          }
+        }
+      }
+      for(carItemValueIndx=0; carItemValueIndx<carsArr.length; carItemValueIndx++) {
+        if(sortedCarsArr.indexOf(carItemValueIndx) < 0) {
+          sortedCarsArr.push(carItemValueIndx);
+        }
+      }
+      carsArr = sortedCarsArr;
+    }
+
+  }
+
+
+
+  
+}}
+
+    <input type="hidden" name="changeCompId" id="changeCompId" value="">
+
+    <div class="mobilead-cont">
+      <div class="ad-container">
+        <div id="js_tile_11" class="ad"></div>
+      </div>
+    </div>
+
+    <div class="mobi-compare-head-cont">
+      <table class="mobi-compare-tbl">
+        <thead>
+          <tr>
+            {{~carsArr :carItem}}
+              <th>
+                <button class="btn-unstyled js_change_compare_car" data-trimid="{{=carInputArr[carItem].id}}" title="Change vehicle">
+                  <div class="act-cont">
+                    <div class="act-icon">
+                      <span class="icon inline i-pencil">
+                        <svg>
+                          <use xlink:href="/assets/svg/global-sprite.svg#i_pencil"></use>
+                        </svg>
+                      </span>
+                    </div>
+                    <div class="act-content">
+                      {{=carInputArr[carItem].year}} {{=carInputArr[carItem].make}} {{=carInputArr[carItem].name}}
+                    </div>
+                  </div>
+                </button>
+              </th>
+            {{~}}
+            {{?carsArr.length < 2}}
+              <th>
+                <button class="btn-primary add-car js_add_compare_car" style="top: 3px;">Add a Car</button>
+              </th>
+            {{?}}
+          </tr>
+        </thead>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Overview">
+        Overview
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Overview" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Overview" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          <tr>
+            {{~carsArr :carItem}}
+              <td>
+                <a href="/{{=carInputArr[carItem].makeseoname}}/{{=carInputArr[carItem].super_model_seoname}}/{{=carInputArr[carItem].year}}/{{=carInputArr[carItem].seo_name}}/" title="View Details">
+                  <div class="act-cont">
+                    <div class="act-icon-tl">
+                      <span class="icon inline i-doc">
+                        <svg>
+                          <use xlink:href="/assets/svg/global-sprite.svg#i_doc"></use>
+                        </svg>
+                      </span>
+                      <span class="icon inline i-arrow4-r">
+                        <svg>
+                          <use xlink:href="/assets/svg/global-sprite.svg#i_arrow4_r"></use>
+                        </svg>
+                      </span>
+                    </div>
+                    {{?carInputArr[carItem].images.length > 0}}
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="{{=carInputArr[carItem].images[0].large}}" media="(min-width: 1024px)" />
+                      <source srcset="{{=carInputArr[carItem].images[0].medium}}" media="(min-width: 640px)" />
+                      <source srcset="{{=carInputArr[carItem].images[0].small}}" media="(min-width: 320px)" />
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="{{=carInputArr[carItem].images[0].small}}" alt="{{=carInputArr[carItem].year}} {{=carInputArr[carItem].make}} {{=carInputArr[carItem].model}}">
+                    </picture>
+                    {{?? true }}
+                    <img src="/assets/svg/no-image-avail.svg" alt="{{=carInputArr[carItem].year}} {{=carInputArr[carItem].make}} {{=carInputArr[carItem].model}}">
+                    {{?}}
+                  </div>
+                </a>
+              </td>
+            {{~}}
+          </tr>
+          {{~overviewNameArr :overviewItem:indexOverview}}
+            {{?selectedOverviewArr.indexOf(overviewItem) > -1}}
+              <tr>
+                <th colspan="2">{{=overviewItem}}</th>
+              </tr>
+              <tr>
+                {{~carsArr :carItem}}
+                  <td>
+                    {{=overviewValArr[indexOverview][carItem]}}
+                    {{?overviewItem == "MSRP"}}
+                      <br />
+                      <button class="btn-primary js_get_quote_btn" data-year="{{=carInputArr[carItem].year}}" data-make="{{=carInputArr[carItem].makeseoname}}" data-supermodel="{{=carInputArr[carItem].super_model_seoname}}" data-trim="{{=carInputArr[carItem].seo_name}}">Get Pricing</button>
+                    {{?}}
+                  </td>
+                {{~}}
+              </tr>
+            {{?}}
+          {{~}}
+
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Audio">
+        Audio 
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Audio" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Audio" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~audioNameArr :audioItem:indexAudio}}
+            <tr>
+              <th colspan="2">{{=audioItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=audioValArr[indexAudio][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Comfort">
+        Comfort
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Comfort" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Comfort" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~comfortNameArr_1 :comfortItem:indexComfort}}
+            <tr>
+              <th colspan="2">{{=comfortItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=comfortValArr_1[indexComfort][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+          {{~comfortNameArr_2 :comfortItem:indexComfort}}
+            <tr>
+              <th colspan="2">{{=comfortItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=comfortValArr_2[indexComfort][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+          {{~comfortNameArr_3 :comfortItem:indexComfort}}
+            <tr>
+              <th colspan="2">{{=comfortItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=comfortValArr_3[indexComfort][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+          {{~comfortNameArr_4 :comfortItem:indexComfort}}
+            <tr>
+              <th colspan="2">{{=comfortItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=comfortValArr_4[indexComfort][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+    
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Dimensions">
+        Dimensions
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Dimensions" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Dimensions" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~dimNameArr :dimItem:indexDimensions}}
+            <tr>
+              <th colspan="2">{{=dimItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=dimValArr[indexDimensions][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Engine">
+        Engine
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Engine" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Engine" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~engineNameArr :engineItem:indexEngine}}
+            <tr>
+              <th colspan="2">{{=engineItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=engineValArr[indexEngine][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Fuel-Economy">
+        Fuel Economy
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Fuel-Economy" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Fuel-Economy" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~feconNameArr :feconItem:indexFecon}}
+            <tr>
+              <th colspan="2">{{=feconItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=feconValArr[indexFecon][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Gauges">
+        Gauges
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Gauges" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Gauges" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~gaugeNameArr :gaugeItem:indexGauge}}
+            <tr>
+              <th colspan="2">{{=gaugeItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=gaugeValArr[indexGauge][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Lights">
+        Lights
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Lights" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Lights" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~lightsNameArr :lightsItem:indexLights}}
+            <tr>
+              <th colspan="2">{{=lightsItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=lightsValArr[indexLights][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Performance">
+        Performance
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Performance" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Performance" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~perfNameArr :perfItem:indexPerf}}
+            <tr>
+              <th colspan="2">{{=perfItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=perfValArr[indexPerf][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Safety">
+        Safety
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Safety" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Safety" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~safetyNameArr :safetyItem:indexSafety}}
+            <tr>
+              <th colspan="2">{{=safetyItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=safetyValArr[indexSafety][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="h5 mobi-compare-grp-head">
+      <button class="js_toggle_comp_section" data-section="Wheels">
+        Wheels & Tires
+        <span class="icon inline">
+          <svg>
+            <use id="compareSectionSvg_Wheels" xlink:href="/assets/svg/global-sprite.svg#i_minus"></use>
+          </svg>
+        </span>
+      </button>
+    </h2>
+
+    <div id="compareSection_Wheels" class="mobi-compare-data-cont">
+      <table class="mobi-compare-tbl">
+        <tbody>
+          {{~wheelsNameArr_1 :wheelsItem:indexWheels}}
+            <tr>
+              <th colspan="2">{{=wheelsItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=wheelsValArr_1[indexWheels][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+          {{~wheelsNameArr_2 :wheelsItem:indexWheels}}
+            <tr>
+              <th colspan="2">{{=wheelsItem}}</th>
+            </tr>
+            <tr>
+              {{~carsArr :carItem}}
+                <td>{{=wheelsValArr_2[indexWheels][carItem]}}</td>
+              {{~}}
+            </tr>
+          {{~}}
+        </tbody>
+      </table>
+    </div>
+
+     <div class="mobilead-cont">
+        <div class="ad-container">
+          <div id="js_tile_12" class="ad"></div>
+        </div>
+      </div>
+      <div class="mobilead-cont fixed disabled">
+        <div class="ad-container">
+          <div id="js_tile_10" class="ad"></div>
+        </div>
+      </div>

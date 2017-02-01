@@ -1,0 +1,5 @@
+﻿{{~it :el:idx}}
+<li>
+  <button title="{{=el.descr}}" data-id="{{=el.id}}" class="{{='bar'+(idx+1)}} {{? el.selected }}selected{{?}}"></button>
+</li>
+{{~}}

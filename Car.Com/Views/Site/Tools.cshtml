@@ -1,0 +1,376 @@
+﻿@model Car.Com.Models.Site.ToolsViewModel
+
+<section class="hero">
+  <div class="backdrop tools" role="img">
+    <span class="inner">
+    </span>
+    <div class="hero-link-container three">
+      <div class="page-title">
+        <h1>Car Buying Tools</h1>
+      </div>
+      <div class="hero-link">
+        <a id="comparisons_btn_st" href="#comparisons" class="hero-btn">
+          Car Comparisons
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="hero-link">
+        <a id="calculators_btn_st" href="#calculators" class="hero-btn">
+          Payment Calculators
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+      <div class="hero-link">
+        <a id="car_values_btn_st" href="#carValues" class="hero-btn">
+          Used Car Values
+          <span class="icon inline i-arrow-d">
+            <svg>
+              <use xlink:href="/assets/svg/global-sprite.svg#i_arrow_d"></use>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="mobilead-cont top">
+    <div class="ad-container">
+      <div id="js_tile_11" class="ad"></div>
+    </div>
+  </div>
+  <div class="ldrboard-cont">
+    <div class="ad-container">
+      <div id="js_tile_1" class="ad"></div>
+    </div>
+  </div>
+</section>
+<div class="main main-bg">
+  <div class="mask-lt"></div>
+  <div class="cell primary">
+    <div class="section-pad">
+      <section id="comparisons" class="jump-to">
+        <h2 class="h2 line-on-sides">Car Comparisons</h2>
+        <div class="center">
+          <div class="begin-compare-cont">
+            <div class="popular-comparisons">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="sprite-compare sprite-begin-compare-1">
+                  </div>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="sprite-compare sprite-begin-compare-2">
+                  </div>
+                </div>
+              </div>
+            </div>
+            @Html.SeoRouteLink("CompareCars_Index", null,
+              "Begin Your Comparison",
+              new Attributes {
+                {"id", "custom_comparisons_btn_st"},
+                {"class", "btn-primary lg"}
+              })
+          </div>
+        </div>
+        <div class="tabs-wrapper has-line">
+          <h2 class="h2 tabish-head">Popular Comparisons</h2>
+        </div>
+        <div class="popular-comparisons">
+          <div class="col">
+            <a id="popCompareBtn1" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/honda/odyssey/33210_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/honda/odyssey/33210_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/honda/odyssey/33210_11_2_320x.png" alt="2014 Honda Odyssey">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Honda<br /> Odyssey EXL</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/toyota/sienna/34259_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/toyota/sienna/34259_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/toyota/sienna/34259_11_2_320x.png" alt="2014 Toyota Sienna">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Toyota<br /> Sienna XLE-v6-8-(a6)-FWD</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a id="popCompareBtn2" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/toyota/rav4-ev/34198_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/toyota/rav4-ev/34198_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/toyota/rav4-ev/34198_11_2_320x.png" alt="2014 Toyota RAV4 EV">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Toyota<br /> RAV4-EV Base</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/chevrolet/volt/32437_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/chevrolet/volt/32437_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/chevrolet/volt/32437_11_2_320x.png" alt="2014 Chevrolet Volt">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Chevrolet<br /> Volt Base</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a id="popCompareBtn3" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/nissan/frontier/33802_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/nissan/frontier/33802_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/nissan/frontier/33802_11_2_320x.png" alt="2014 Nissan Frontier">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Nissan<br /> Frontier s-(m5)-4x2-king-Cab</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/toyota/tacoma/34217_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/toyota/tacoma/34217_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/toyota/tacoma/34217_11_2_320x.png" alt="2014 Toyota Tacoma">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Toyota<br /> Tacoma 4x4 Double Cab Long box</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a id="popCompareBtn4" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2015/subaru/brz/36669_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2015/subaru/brz/36669_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2015/subaru/brz/36669_11_2_320x.png" alt="2015 Subaru BRZ">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2015 Subaru<br /> BRZ Limited a6</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2015/scion/fr-s/36634_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2015/scion/fr-s/36634_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2015/scion/fr-s/36634_11_2_320x.png" alt="2015 Scion FR-S">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2015 Scion<br /> FR-S a6</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a id="popCompareBtn5" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/gmc/sierra-1500/33023_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/gmc/sierra-1500/33023_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/gmc/sierra-1500/33023_11_2_320x.png" alt="2014 GMC Sierra 1500">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 GMC<br /> Sierra 1500 Base 4x4 Crew Cab 6 box</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/chevrolet/silverado-1500/32548_11_2_320x.png" alt="2014 Chevrolet Silverado 1500">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Chevrolet<br /> Silverado 1500 LTZ 4x4 Crew Cab</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a id="popCompareBtn6" href="#">
+              <div class="side-by-side">
+                <div class="col1">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/chevrolet/camaro/32397_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/chevrolet/camaro/32397_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/chevrolet/camaro/32397_11_2_320x.png" alt="2014 Chevrolet Camaro">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Chevrolet<br /> Camaro 2LS Coupe</h2>
+                </div>
+                <div class="col-vs">
+                  <div class="circle-text"><div>vs</div></div>
+                </div>
+                <div class="col2">
+                  <div class="img-container">
+                    <picture>
+                      <!--[if IE 9]><video style="display: none;"><![endif]-->
+                      <source srcset="//img.car.com/2014/ford/mustang/32718_11_2_640x.png" media="(min-width: 640px)">
+                      <source srcset="//img.car.com/2014/ford/mustang/32718_11_2_320x.png" media="(min-width: 320px)">
+                      <!--[if IE 9]></video><![endif]-->
+                      <img src="//img.car.com/2014/ford/mustang/32718_11_2_320x.png" alt="2014 Ford Mustang">
+                    </picture>
+                  </div>
+                  <h2 class="h5">2014 Ford<br /> Mustang GT Premium Coupe</h2>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+      <section id="calculators" class="jump-to">
+        <h2 class="h2 line-on-sides">Car Payment Calculators</h2>
+        <div class="grid-view-container">
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_PaymentEstimate",
+              null,
+              "<h3>Car Payment <small>Calculator</small></h3>",
+              new Attributes {
+                {"id", "payment_btn_st"},
+                {"class", "btn-calc"}
+              })
+          </div>
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_LeaseOrPurchase",
+              null,
+              "<h3>Lease vs Buy <small>Calculator</small></h3>",
+              new Attributes {
+                {"class", "btn-calc"}
+              })
+          </div>
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_LoanVsFinancing",
+              null,
+              "<h3>Rebate vs. 0% <small>Financing Calculator</small></h3>",
+              new Attributes {
+                {"class", "btn-calc"}
+              })
+          </div>
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_Affordability",
+              null,
+              "<h3>Car Affordability <small>Calculator</small></h3>",
+              new Attributes {
+                {"class", "btn-calc"}
+              })
+          </div>
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_AcceleratedPayoff",
+              null,
+              "<h3>Auto Loan Payoff <small>Calculator</small></h3>",
+              new Attributes {
+                {"class", "btn-calc"}
+              })
+          </div>
+          <div class="grid-view-item">
+            @Html.SeoRouteLink("Calculator_FuelEfficiency",
+              null,
+              "<h3>Fuel Savings <small>Calculator</small></h3>",
+              new Attributes {
+                {"class", "btn-calc"}
+              })
+          </div>
+        </div>
+      </section>
+      <section id="carValues" class="jump-to">
+        <h2 class="h2 line-on-sides">Used Car Values</h2>
+        <div class="center">
+          @Html.SeoRouteLink("CarValue_Index",
+            null,
+            "Get Used Car Values<div class='kbb-logo'></div>",
+            new Attributes {
+              {"class", "btn-car-value"}
+            })
+        </div>
+      </section>
+    </div>
+    <div class="mobilead-cont bottom">
+      <div class="ad-container">
+        <div id="js_tile_12" class="ad"></div>
+      </div>
+    </div>
+  </div>
+  <aside class="cell sidebar">
+    <div class="ad-set">
+      <div class="ad-container">
+        <div id="js_tile_2" class="ad"></div>
+      </div>
+      <div class="ad-container">
+        <div id="js_tile_3" class="ad"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+<div class="mobilead-cont fixed disabled">
+  <div class="ad-container">
+    <div id="js_tile_10" class="ad"></div>
+  </div>
+</div>

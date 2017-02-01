@@ -1,0 +1,7 @@
+﻿<div class="alert_js alert-cont" style="display:none">
+  <p class="alert">You have already selected a {{=it.descr1}}, if you want search by {{=it.descr2}} you will lose your selections.</p>
+  <div data-type="{{=it.type}}">
+    <button type="button" class="continue_btn_js btn-opaque">Continue</button>
+    <button type="button" class="cancel_btn_js btn-zero">Don't change</button>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+﻿{{~it :el:idx}}
+  <li data-id="{{=el.id}}" data-value="{{=el.matchVal}}" class="{{? el.selected }}selected{{?}}">
+    <button type="button" class="btn-default-ovl">{{=el.descr}}</button>
+  </li>
+{{~}}

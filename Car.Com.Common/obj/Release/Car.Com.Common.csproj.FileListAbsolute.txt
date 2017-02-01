@@ -1,0 +1,7 @@
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\bin\Release\Car.Com.Common.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\bin\Release\Car.Com.Common.pdb
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\bin\Release\log4net.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\bin\Release\log4net.xml
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\obj\Release\Car.Com.Common.csprojResolveAssemblyReference.cache
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\obj\Release\Car.Com.Common.dll
+E:\code\tfs\Consumer\Core\Web\Carnado-Dev\Car.Com.Common\obj\Release\Car.Com.Common.pdb

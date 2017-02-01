@@ -1,0 +1,75 @@
+.icon {
+	display: inline-block;
+	background-repeat: no-repeat;
+	background-image: url(sprite.svg);
+}
+.util-icon-arrow-down {
+	width: 69px;
+	height: 69px;
+	background-position: 0 0;
+}
+.util-icon-arrow-left {
+	width: 69px;
+	height: 69px;
+	background-position: -69px 0;
+}
+.util-icon-arrow-right {
+	width: 69px;
+	height: 69px;
+	background-position: -138px 0;
+}
+.util-icon-arrow-up {
+	width: 69px;
+	height: 69px;
+	background-position: -207px 0;
+}
+.util-icon-calculators {
+	width: 97px;
+	height: 69px;
+	background-position: -276px 0;
+}
+.util-icon-checkmark {
+	width: 69px;
+	height: 69px;
+	background-position: -345px 0;
+}
+.util-icon-close {
+	width: 69px;
+	height: 69px;
+	background-position: -414px 0;
+}
+.util-icon-comparisons {
+	width: 97px;
+	height: 69px;
+	background-position: -483px 0;
+}
+.util-icon-email {
+	width: 95px;
+	height: 69px;
+	background-position: -552px 0;
+}
+.util-icon-help {
+	width: 69px;
+	height: 69px;
+	background-position: -621px 0;
+}
+.util-icon-info {
+	width: 69px;
+	height: 69px;
+	background-position: -690px 0;
+}
+.util-icon-minus {
+	width: 69px;
+	height: 69px;
+	background-position: -759px 0;
+}
+.util-icon-plus {
+	width: 69px;
+	height: 69px;
+	background-position: -828px 0;
+}
+.util-icon-tag {
+	width: 69px;
+	height: 69px;
+	background-position: -897px 0;
+}

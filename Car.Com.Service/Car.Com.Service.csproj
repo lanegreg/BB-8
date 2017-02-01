@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{17D290F4-4928-4471-9AA7-3FF62867983A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Car.Com.Service</RootNamespace>
+    <AssemblyName>Car.Com.Service</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=1.38.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Dapper.1.38\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="StackExchange.Redis, Version=1.0.316.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\StackExchange.Redis.1.0.371\lib\net45\StackExchange.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\HttpRequestExtensions.cs" />
+    <Compile Include="Data\Impl\AffiliateService.cs" />
+    <Compile Include="Data\Impl\CarsForSaleService.cs" />
+    <Compile Include="Data\Impl\GeoService.cs" />
+    <Compile Include="Data\Impl\SitemapService.cs" />
+    <Compile Include="Data\Impl\UriTokenNames.cs" />
+    <Compile Include="Data\Impl\UriTokenTranslators.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Common\IDbConnectionFactory.cs" />
+    <Compile Include="Common\ICacheable.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Rest\Common\IWrapper.cs" />
+    <Compile Include="Rest\Common\RestServiceBase.cs" />
+    <Compile Include="Rest\Common\ServiceJsonEnvelope.cs" />
+    <Compile Include="Common\SqlConnectionFactory.cs" />
+    <Compile Include="Rest\Common\ServiceOdataEnvelope.cs" />
+    <Compile Include="Rest\Impl\VehicleContentService.cs" />
+    <Compile Include="Data\Impl\AssetService.cs" />
+    <Compile Include="Data\Impl\MetadataService.cs" />
+    <Compile Include="Rest\Impl\ImageMetaService.cs" />
+    <Compile Include="Rest\Impl\VehicleSpecService.cs" />
+    <Compile Include="ServiceLocator.cs" />
+    <Compile Include="Rest\Impl\DealerService.cs" />
+    <Compile Include="Soap\Impl\EvaluationService.cs" />
+    <Compile Include="Soap\Impl\LeadService.cs" />
+    <Compile Include="Web References\Kbb\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.map</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Car.Com.Common\Car.Com.Common.csproj">
+      <Project>{e4302754-10c7-4c43-b4c3-9d8031132092}</Project>
+      <Name>Car.Com.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Car.Com.Domain\Car.Com.Domain.csproj">
+      <Project>{38d76885-8ef0-4d84-8376-d66b206dff57}</Project>
+      <Name>Car.Com.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Sms\" />
+    <Folder Include="Soap\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".editorconfig" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Web References\Kbb\GetConditionQuestionsResponseGetConditionQuestionsResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetDataVersionResponseGetDataVersionResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetEquipmentsByVehicleIDResponseGetEquipmentsByVehicleIDResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetMakeByYearResponseGetMakeByYearResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetModelTrimByYearMakeResponseGetModelTrimByYearMakeResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetVehicleValueByQuizResponseGetVehicleValueByQuizResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetVehicleValueForDealerResponseGetVehicleValueForDealerResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetVehicleValueResponseGetVehicleValueResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetVehicleValuesForConsumerResponseGetVehicleValuesForConsumerResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\GetYearListResponseGetYearListResult.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
+    <None Include="Web References\Kbb\PricingService.wsdl" />
+    <None Include="Web References\Kbb\Reference.map">
+      <Generator>MSDiscoCodeGenerator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetPurchaseRequestDealers.sql" />
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetCityListByZipcode.sql" />
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetInventoryItemDetails.sql" />
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetDealerCoverage.sql" />
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetInventorySupportCache.sql" />
+    <Content Include="Data\App_Sql\Abt_Prod\CCWeb.GetAffiliatesCache.sql" />
+    <Content Include="Data\App_Sql\1_create_schemas_for_CCWeb.sql" />
+    <Content Include="Data\App_Sql\3_inserts_for_PageTemplateMeta.sql" />
+    <Content Include="Data\App_Sql\2_PageTemplateMeta.sql" />
+    <Content Include="Data\App_Sql\CacheDB\CCWeb.GetInventoryCache.sql" />
+    <Content Include="Data\App_Sql\ReplDB %28future%29\CCWeb.GetInventoryCacheFull.sql" />
+    <Content Include="Data\App_Sql\ReplDB %28future%29\CCWeb.GetInventoryCacheDiff.sql" />
+    <Content Include="Data\App_Sql\ReplDB %28future%29\CCWeb.GetInventoryCache.sql" />
+    <Content Include="Data\App_Sql\VehicleContent\CCWeb.GetPageMetaCache.sql" />
+    <Content Include="Data\App_Sql\VehicleContent\CCWeb.GetRewriteForCarCom.sql" />
+    <Content Include="Data\App_Sql\VehicleContent\CCWeb.UrlRewriteLogRequest.sql" />
+    <None Include="Web References\Kbb\PricingService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferences Include="Web References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WebReferenceUrl Include="http://kbb.services.autobytel.com/KBBWebService/PricingService.asmx">
+      <UrlBehavior>Dynamic</UrlBehavior>
+      <RelPath>Web References\Kbb\</RelPath>
+      <UpdateFromURL>http://kbb.services.autobytel.com/KBBWebService/PricingService.asmx</UpdateFromURL>
+      <ServiceLocationURL>
+      </ServiceLocationURL>
+      <CachedDynamicPropName>
+      </CachedDynamicPropName>
+      <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
+      <CachedSettingsPropName>KbbService_endpoint</CachedSettingsPropName>
+    </WebReferenceUrl>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

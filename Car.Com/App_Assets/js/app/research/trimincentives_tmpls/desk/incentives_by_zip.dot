@@ -1,0 +1,55 @@
+﻿{{ var currentIncentiveType = ""; }}
+{{ var currentIncentiveCount = 0; }}
+{{~it.incentives :incentive:index}}
+  {{?incentive.groupdesc != currentIncentiveType}}
+    {{?currentIncentiveCount > 0}}
+      </tbody>
+    </table>    
+    {{?}}
+    {{ currentIncentiveType = incentive.groupdesc; }}
+    {{ currentIncentiveCount++; }}
+    
+    <div class="r-tbl">
+      <table>
+        <caption>{{=currentIncentiveType}} Incentives and Rebates</caption>
+        <thead>
+          <tr>
+            <th>Rebate</th>
+            <th>24 Mo</th>
+            <th>36 Mo</th>
+            <th>48 Mo</th>
+            <th>60 Mo</th>
+            <th>72 Mo</th>
+            <th>Expires</th>
+            <th>Category</th>
+          </tr>
+        </thead>
+        <tbody>
+    {{?}}
+
+    <tr>
+      <td data-label="Rebate">
+        {{?incentive.amount > 0}}${{=incentive.amount}}{{?? true }}-{{?}}
+      </td>
+      <td data-label="24 month term">
+        {{?incentive.amount === 0}}{{=incentive.apr_24}}%{{?? true }}-{{?}}
+      </td>
+      <td data-label="36 month term">
+        {{?incentive.amount === 0}}{{=incentive.apr_36}}%{{?? true }}-{{?}}
+      </td>
+      <td data-label="48 month term">
+        {{?incentive.amount === 0}}{{=incentive.apr_48}}%{{?? true }}-{{?}}
+      </td>
+      <td data-label="60 month term">
+        {{?incentive.amount === 0}}{{=incentive.apr_60}}%{{?? true }}-{{?}}
+      </td>
+      <td data-label="72 month term">
+        {{?incentive.amount === 0}}{{=incentive.apr_72}}%{{?? true }}-{{?}}
+      </td>
+      <td data-label="Expires">{{=incentive.expires}}</td>
+      <td data-label="Category">{{=incentive.catdesc}}</td>
+    </tr>
+  {{~}}
+    </tbody>
+  </table>
+</div>
